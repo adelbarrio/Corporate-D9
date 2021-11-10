@@ -1,0 +1,5 @@
+popup_agree_button_message: 'Jā, es piekrītu'
+popup_more_info_button_message: 'Nē, lūdzu, sniedziet plašāku informāciju'
+popup_info:
+  value: "<p><span><strong>EU-OSHA tīmekļa vietne izmanto sīkdatnes, lai iegūtu informāciju, kas nepieciešama tīmekļa vietnes pārlūkošanai saskaņā ar EU-OSHA paziņojumu par konfidencialitāti.</strong></span></p>\r\n"
+disagree_button_label: Atteikties

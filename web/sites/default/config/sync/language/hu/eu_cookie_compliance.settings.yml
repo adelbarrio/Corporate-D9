@@ -1,0 +1,5 @@
+popup_agree_button_message: Elfogadom
+popup_more_info_button_message: 'Nem, további információt kérek'
+popup_info:
+  value: "<p><span><strong>Az EU-OSHA weboldala az EU-OSHA adatvédelmi nyilatkozatával összhangban cookie-kat használ, hogy összegyűjtse a weboldal böngészéséhez szükséges információkat.</strong></span></p>\r\n"
+disagree_button_label: Elutasítom

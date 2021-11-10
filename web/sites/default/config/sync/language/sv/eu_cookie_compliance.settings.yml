@@ -1,0 +1,5 @@
+popup_agree_button_message: 'OK, jag samtycker'
+popup_more_info_button_message: 'Nej, ge mig mer info'
+popup_info:
+  value: "<p><span><strong>På EU-Oshas webbplats används cookies för att sammanställa den information som behövs när du använder webbplatsen, vilket sker i enlighet med EU-Oshas policy för integritetsskydd.</strong></span></p>\r\n"
+disagree_button_label: Avböja

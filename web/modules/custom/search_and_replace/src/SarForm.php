@@ -65,7 +65,6 @@ class SarForm implements ContainerInjectionInterface {
 
     unset($form['options']['published']);
 
-    ksm($form);
   }
 
   /**

@@ -10,10 +10,11 @@ weight: 0
 module: osha_import_export
 callback: osha_import_export_cron
 scheduler:
-  id: simple
+  id: crontab
   configuration:
     rules:
-      - '0+@ 0 * * *'
+      - '0 3 * * *'
+    catch_up: 0
 launcher:
   id: serial
   configuration:

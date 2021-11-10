@@ -1,0 +1,5 @@
+popup_agree_button_message: 'OK, zgadzam się'
+popup_more_info_button_message: 'Nie, poproszę o więcej informacji'
+popup_info:
+  value: "<p><span><strong>Na stronie EU-OSHA używane są pliki cookies w celu gromadzenia informacji koniecznych do przeglądania strony, zgodnie z informacją o polityce prywatności EU-OSHA.</strong></span></p>\r\n"
+disagree_button_label: Opadać

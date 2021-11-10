@@ -8,7 +8,7 @@ description: ''
 entityType: node
 entityBundle: publication
 language: und
-breadcrumbPaths: '/publications/*'
+breadcrumbPaths: /publications/
 breadcrumbTitles: Publications
 type: '1'
 pathPattern: ''

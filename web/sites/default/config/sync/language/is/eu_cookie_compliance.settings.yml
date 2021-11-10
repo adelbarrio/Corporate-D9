@@ -1,0 +1,5 @@
+popup_agree_button_message: 'Í lagi, ég samþykki'
+popup_more_info_button_message: 'Nei, gefðu mér meiri upplýsingar'
+popup_info:
+  value: "<p><span><strong>Vefsíða EU-OSHA notar kökur til þess að safna nauðsynlegum upplýsingum fyrir skoðun vefsíðunnar í samræmi við friðhelgisyfirlýsingu EU-OSHA.</strong></span></p>\r\n"
+disagree_button_label: Neita

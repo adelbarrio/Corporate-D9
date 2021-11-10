@@ -1,0 +1,5 @@
+popup_agree_button_message: 'Gerai, sutinku'
+popup_more_info_button_message: 'Ne, suteikite man daugiau informacijos'
+popup_info:
+  value: "<p><span><strong>EU-OSHA svetainėje slapukai naudojami siekiant surinkti informaciją, kuri, atsižvelgiant į EU-OSHA privatumo pranešimą, yra reikalinga naršant svetainėje.</strong></span></p>\r\n"
+disagree_button_label: Atsisakyti

@@ -72,7 +72,6 @@ class SarScannerForm extends ScannerForm {
       $build['options']['#collapsible'] = TRUE;
       $build['options']['#open'] = FALSE;
       $build['submit_replace']['#validate'] = [$this, '::validateReplace'];
-      ksm($build['submit_replace']['#validate']);
     }
 
     $build['replace']['#weight'] = 98;
@@ -136,10 +135,7 @@ class SarScannerForm extends ScannerForm {
   public function validateReplace(&$form, FormStateInterface $form_state) {
     $scannerStore = $this->tempStore->get('scanner');
     $results = $scannerStore->get('results');
-    ksm($form_state->getValues());
-    ksm($results);
     $to_replace = array_filter($form_state->getValues()['results_final']);
-    ksm($to_replace);
     if (empty($to_replace)) {
       $form_state->setErrorByName('ALL', 'Perform a search first and select at least 1 node.');
     }
