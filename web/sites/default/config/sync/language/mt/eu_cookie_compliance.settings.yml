@@ -1,0 +1,5 @@
+popup_agree_button_message: 'Kollox sew, naqbel'
+popup_more_info_button_message: 'Le, agħtini aktar informazzjoni'
+popup_info:
+  value: "<p><span><strong>Il-websajt tal-EU-OSHA tuża l-cookies biex tiġbor l-informazzjoni meħtieġa għall-ibbrawżjar tal-websajt, skont l-avviż ta’ privatezza tal-EU-OSHA.</strong></span></p>\r\n"
+disagree_button_label: Iddeklina

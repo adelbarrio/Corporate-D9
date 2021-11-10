@@ -1,0 +1,5 @@
+popup_agree_button_message: 'U redu. Slažem se.'
+popup_more_info_button_message: 'Ne, molim više informacija'
+popup_info:
+  value: "<p><span><strong>Na EU-OSHA-inoj internetskoj stranici upotrebljavaju se kolačići kako bi se mogle prikupiti informacije potrebne za pregled stranice u skladu s EU-OSHA-inom obaviješću o privatnosti.</strong></span></p>\r\n"
+disagree_button_label: Odbiti

@@ -32,7 +32,6 @@ dependencies:
     - user.role.project_manager
     - user.role.review_manager
   module:
-    - csv_serialization
     - datetime
     - datetime_range
     - link
@@ -44,6 +43,7 @@ dependencies:
     - taxonomy
     - user
     - views_data_export
+    - xls_serialization
 id: admin_events
 label: Events
 module: views
@@ -3669,7 +3669,7 @@ display:
         type: data_export
         options:
           formats:
-            csv: csv
+            xlsx: xlsx
           csv_settings:
             delimiter: ','
             enclosure: '"'
@@ -3679,7 +3679,19 @@ display:
             encoding: utf8
             utf8_bom: '0'
             use_serializer_encode_only: false
-      filename: events.xls
+          xls_settings:
+            xls_format: Excel2007
+            metadata:
+              creator: ''
+              last_modified_by: ''
+              title: ''
+              description: ''
+              subject: ''
+              keywords: ''
+              category: ''
+              manager: ''
+              company: ''
+      filename: events.xlsx
       automatic_download: true
       store_in_public_file_directory: null
       redirect_to_display: none

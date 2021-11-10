@@ -1,6 +1,6 @@
 uuid: 83bd07e2-b62e-4d9a-9319-dfb1d7c27dcf
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - oshwiki_import

@@ -320,7 +320,7 @@
         "drupal/entity_reference_views": "^1.0@beta",
         "drupal/entityqueue": "^1.2",
         "drupal/entityreference_extensions": "^1.2",
-        "drupal/eu_cookie_compliance": "^1.14",
+        "drupal/eu_cookie_compliance": "^1.19",
         "drupal/exclude_node_title": "^1.1",
         "drupal/extlink": "^1.5",
         "drupal/extra_field": "^2.0",
@@ -392,6 +392,7 @@
         "drupal/pathauto": "^1.8",
         "drupal/pathologic": "^1.0@alpha",
         "drupal/pdfpreview": "^1.0",
+        "drupal/phpspreadsheet": "^2.0",
         "drupal/printfriendly": "^3.5",
         "drupal/purge": "^3.0",
         "drupal/quicktabs": "^3.0@alpha",
@@ -456,6 +457,7 @@
         "drupal/workbench": "^1.3",
         "drupal/workbench_access": "^1.0@beta",
         "drupal/workbench_moderation": "^1.6",
+        "drupal/xls_serialization": "^1.2",
         "drupal/xmlsitemap": "^1.0",
         "drupal/youtube": "^1.2",
         "drush/drush": "^10.3",
@@ -467,6 +469,7 @@
         "jquery_touch_punch/library": "^0.2.3",
         "json2/library": "^0.1.0",
         "link/library": "^1.8",
+        "phpoffice/phpspreadsheet": "^1.19",
         "recurser/jquery-simple-color": "master",
         "resize/library": "^1.17",
         "slick/library": "^1.8",
@@ -535,6 +538,9 @@
             },
             "drupal/tmgmt": {
                 "Use of deprecated theme function": "https://git.drupalcode.org/project/tmgmt/-/merge_requests/6.diff"
+            },
+            "drupal/pathologic": {
+                "Internal URL handling (Aliases, language prefixes, base://, ...)": "https://www.drupal.org/files/issues/2021-03-23/internal_url_handling-2418369-29.patch"
             }
         },
         "patchLevel": {

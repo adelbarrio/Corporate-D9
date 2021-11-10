@@ -10,10 +10,11 @@ weight: 0
 module: ldap_user
 callback: ldap_user_cron
 scheduler:
-  id: simple
+  id: crontab
   configuration:
     rules:
-      - '0+@ * * * *'
+      - '*/10 * * * *'
+    catch_up: 0
 launcher:
   id: serial
   configuration:

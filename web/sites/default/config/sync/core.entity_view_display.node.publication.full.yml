@@ -149,8 +149,15 @@ content:
     region: content
     label: hidden
     settings:
-      link: true
-    third_party_settings: {  }
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
   field_related_oshwiki_articles:
     type: entity_reference_entity_view_delta
     weight: 10

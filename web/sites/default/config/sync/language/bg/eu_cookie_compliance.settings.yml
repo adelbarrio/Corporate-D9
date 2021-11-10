@@ -1,0 +1,5 @@
+popup_agree_button_message: 'Съгласен съм'
+popup_more_info_button_message: 'Не, дайте ми допълнителна информация'
+popup_info:
+  value: "<p><span><strong>Уебсайтът на EU-OSHA използва „бисквитки“, за да събере информация, необходима за преглеждането на уебсайта, в съответствие с декларацията за поверителност на EU-OSHA.</strong></span></p>\r\n"
+disagree_button_label: Oтказвам

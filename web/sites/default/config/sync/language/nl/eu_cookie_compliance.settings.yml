@@ -1,0 +1,5 @@
+popup_agree_button_message: 'OK, ik ga akkoord'
+popup_more_info_button_message: 'Nee, geef mij meer informatie'
+popup_info:
+  value: "<p><span><strong>De website van EU-OSHA gebruikt cookies om informatie te verzamelen die nodig is voor het bekijken van de website, overeenkomstig de privacyverklaring van EU-OSHA.</strong></span></p>\r\n"
+disagree_button_label: Dalen

@@ -1,0 +1,5 @@
+popup_agree_button_message: 'Áno, súhlasím'
+popup_more_info_button_message: 'Nie, poskytnite mi viac informácií'
+popup_info:
+  value: "<p><span><strong>Webová lokalita agentúry EU-OSHA používa cookies na získavanie informácií potrebných na prehľadávanie webovej lokality v súlade s vyhlásením agentúry EU-OSHA o používaní osobných údajov.</strong></span></p>\r\n"
+disagree_button_label: Neprijať
