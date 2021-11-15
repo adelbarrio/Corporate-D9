@@ -9,7 +9,8 @@ dependencies:
     - field.field.media.document.field_tags
     - media.type.document
   module:
-    - file
+    - ds
+    - file_entity
 _core:
   default_config_hash: DXitcriWmE5QHvGvk2OzWouaSnXD5uipkRdAG6_pnkg
 id: media.document.default
@@ -17,41 +18,29 @@ targetEntityType: media
 bundle: document
 mode: default
 content:
-  field_description:
-    weight: 4
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
-    region: content
   field_media_document:
     label: visually_hidden
     settings:
-      use_description_as_link_text: true
-    third_party_settings: {  }
-    type: file_default
-    weight: 1
-    region: content
-  field_nace:
-    weight: 2
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_tags:
-    weight: 3
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
+      access_message: 'You don''t have access to download this file.'
+      text: '[media:field_description]'
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    type: file_download_link
+    weight: 0
     region: content
 hidden:
   addtoany: true
   breadcrumbs: true
   created: true
+  field_description: true
+  field_nace: true
+  field_tags: true
   langcode: true
   name: true
   search_api_excerpt: true
