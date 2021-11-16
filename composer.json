@@ -473,6 +473,8 @@
         "recurser/jquery-simple-color": "master",
         "resize/library": "^1.17",
         "slick/library": "^1.8",
+        "symfony/css-selector": "^5.3",
+        "symfony/dom-crawler": "^5.3",
         "w8tcha/ckeditor-wordcount-plugin": "^1.17"
     },
     "require-dev": {

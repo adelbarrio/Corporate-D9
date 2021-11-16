@@ -12,7 +12,6 @@ permissions:
   - 'access content'
   - 'access contextual links'
   - 'access dashboard'
-  - 'access devel information'
   - 'access media browser'
   - 'access media overview'
   - 'access toolbar'
