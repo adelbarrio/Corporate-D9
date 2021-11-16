@@ -69,10 +69,10 @@ class MultipleTargetLanguageRetranslateForm extends FormBase {
             break;
 
           case 'text_with_summary':
-            if (strpos('tmgmt', $value)) {
+            if (strpos($value, 'tmgmt')) {
               $domDocument = new \DOMDocument('1.0', 'utf-8');
               $domDocument->loadHTML(mb_convert_encoding($value, 'HTML-ENTITIES', 'UTF-8'));
-              $paragraphs = $domDocument->getElementsByTagName('p');
+              $paragraphs = $domDocument->getElementsByTagName('*');
               $options = [];
               foreach ($paragraphs as $paragraph) {
                 $elemId = $paragraph->getAttribute('id');
@@ -144,10 +144,20 @@ class MultipleTargetLanguageRetranslateForm extends FormBase {
     $retranslateFields = $form_state->get('retranslate_fields');
     $values = [];
     if ($retranslateFields) {
-      $values = array_filter($form_state->getValues(), function ($value, $key) use ($retranslateFields) {
+      $values = array_filter($form_state->getValues(), function (&$value, $key) use ($retranslateFields) {
         $ret = FALSE;
         if (in_array($key, $retranslateFields)) {
-          $ret = $value != 0;
+          if (is_array($value)) {
+            foreach ($value as $tmgmtId => $tmgmtSelected) {
+              if ($tmgmtSelected === 0) {
+                unset($value[$tmgmtId]);
+              }
+            }
+            $ret = !empty($value);
+          }
+          else {
+            $ret = $value != 0;
+          }
         }
         return $ret;
       }, ARRAY_FILTER_USE_BOTH);

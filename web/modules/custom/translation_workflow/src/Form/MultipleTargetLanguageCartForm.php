@@ -124,6 +124,11 @@ class MultipleTargetLanguageCartForm extends CartForm {
         foreach ($targetLanguagesTemp as $langCode) {
           if ($langCode !== $source_language) {
             $newJobItem = tmgmt_job_item_create($job_item->getPlugin(), $job_item->getItemType(), $job_item->getItemId(), ['target_language' => $langCode]);
+            if (($job_item instanceof MultipleTargetLanguageJobItem) && ($newJobItem instanceof MultipleTargetLanguageJobItem)) {
+              if ($job_item->hasRetranslationData()) {
+                $newJobItem->setRetranslationData($job_item->getRetranslationData());
+              }
+            }
             $newJobItem->save();
             $jobItems[$newJobItem->id()] = $newJobItem;
           }

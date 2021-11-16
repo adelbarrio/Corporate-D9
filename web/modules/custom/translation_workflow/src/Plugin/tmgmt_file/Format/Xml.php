@@ -9,6 +9,8 @@ use Drupal\tmgmt\JobItemInterface;
 use Drupal\tmgmt_file\Format\FormatInterface;
 use Drupal\translation_workflow\Entity\MultipleTargetLanguageJob;
 use Drupal\translation_workflow\Entity\MultipleTargetLanguageJobItem;
+use Drupal\translation_workflow\Entity\PriorityJobInterface;
+use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Export into XML translation format.
@@ -238,7 +240,8 @@ class Xml extends \XMLWriter implements FormatInterface {
       foreach ($this->importedXML->xpath('//Translation') as $translation) {
         $target_language = (string) $translation->TranslationTargetLanguage;
         if (!$target_language) {
-          $this->messenger()->addWarning($this->t('Invalid translation detected on imported file.'));
+          $this->messenger()
+            ->addWarning($this->t('Invalid translation detected on imported file.'));
           continue;
         }
         if ($target_language == 'pt') {
@@ -294,7 +297,7 @@ class Xml extends \XMLWriter implements FormatInterface {
         if ($reader->getAttribute('ctype') == 'image') {
           $text .= '<img';
           while ($reader->moveToNextAttribute()) {
-            // @todo - we have to use x-html: prefixes for attributes.
+            // @todo we have to use x-html: prefixes for attributes.
             if ($reader->name != 'ctype' && $reader->name != 'id') {
               $text .= " {$reader->name}=\"{$reader->value}\"";
             }
@@ -390,6 +393,7 @@ class Xml extends \XMLWriter implements FormatInterface {
    * Adds a job item to the xml export.
    */
   protected function addItem(JobItemInterface $item, JobInterface $job) {
+    $retranslationData = [];
     // <Translation>
     $this->startElement('Translation');
     $this->writeElement('TranslationSourceLanguage', $item->getSourceLangCode());
@@ -402,6 +406,9 @@ class Xml extends \XMLWriter implements FormatInterface {
           $langCode = 'pt';
         }
         $this->writeElement('TranslationTargetLanguage', $langCode);
+      }
+      if ($item->hasRetranslationData()) {
+        $retranslationData = $item->getRetranslationData();
       }
     }
     else {
@@ -421,7 +428,7 @@ class Xml extends \XMLWriter implements FormatInterface {
     }
     else {
       // Default jobs does not have priority so put normal for all.
-      $this->writeElement('Priority', 'normal');
+      $this->writeElement('Priority', PriorityJobInterface::PRIORITY_NORMAL);
     }
     $this->writeElement('CharacterLength', $item->getWordCount());
     $this->writeElement('PreviewLink', 'NO PREVIEW LINK');
@@ -440,7 +447,26 @@ class Xml extends \XMLWriter implements FormatInterface {
       $this->writeAttribute('name', '][' . $key);
       $this->writeAttribute('repeatable', 'false');
       $this->startElement('DynamicContent');
-      $this->writeCdata($field['#text']);
+      $textContent = $field['#text'];
+      if (!empty($retranslationData)) {
+        $fieldNameParts = explode(']', $key);
+        $fieldName = reset($fieldNameParts);
+        $newTextContent = [];
+        if (isset($retranslationData[$fieldName])) {
+          $crawler = new Crawler($textContent);
+          $crawler->filter('*[id*="tmgmt"]')
+            ->each(function (Crawler $node, $i) use ($retranslationData, &$newTextContent, $fieldName) {
+              $idAttr = $node->attr('id');
+              if (!is_null($idAttr) && in_array($idAttr, $retranslationData[$fieldName])) {
+                $newTextContent[] = $node->outerHtml();
+              }
+            });
+          if (!empty($newTextContent)) {
+            $textContent = implode('', $newTextContent);
+          }
+        }
+      }
+      $this->writeCdata($textContent);
       // </DynamicContent>
       $this->endElement();
       // </DynamicElement>

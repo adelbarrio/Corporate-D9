@@ -388,6 +388,20 @@ body {
 }
 
 /* File icons */
+#main{
+  .file {
+    padding-left: 25px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    a{
+      padding-left: 0;
+    }
+    .file-size{
+      display: none;
+    }
+  }
+}
+
 .ico-img {
   display: inline-block;
   background: url(../images/file-icons/image-x-generic.png) no-repeat 1px 4px;
@@ -1425,4 +1439,9 @@ body.node--type-infographic{
   word-wrap: break-word;
   padding-left: 0;
   padding-top: 0;
+}
+
+span.ckeditorimage{
+  float: left;
+  margin-right: 10px;
 }
