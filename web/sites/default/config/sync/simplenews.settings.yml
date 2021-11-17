@@ -3,7 +3,7 @@ newsletter:
   format: html
   priority: 0
   receipt: true
-  from_address: iarias@bilbomatica.es
+  from_address: no-reply@osha.europa.eu
   from_name: 'Safety and health at work EU-OSHA'
 subscriber:
   sync_fields: true

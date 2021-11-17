@@ -8,7 +8,7 @@ description: ''
 entityType: node
 entityBundle: news
 language: und
-breadcrumbPaths: '/oshnews/*'
+breadcrumbPaths: /oshnews/
 breadcrumbTitles: 'OSH news'
 type: '1'
 pathPattern: ''

@@ -7,12 +7,14 @@ use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleExtensionList;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageManager;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Render\Renderer;
 use Drupal\Core\Url;
+use Drupal\views\Views;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -42,13 +44,21 @@ class ShortMessageForm extends ContentEntityForm {
   private $languageManager;
 
   /**
+   * The entity type manager.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
    * {@inheritdoc}
    */
-  public function __construct(EntityRepositoryInterface $entity_repository, EntityTypeBundleInfoInterface $entity_type_bundle_info, TimeInterface $time, Renderer $rendererService, ModuleExtensionList $moduleList, LanguageManager $languageManager) {
+  public function __construct(EntityRepositoryInterface $entity_repository, EntityTypeBundleInfoInterface $entity_type_bundle_info, TimeInterface $time, Renderer $rendererService, ModuleExtensionList $moduleList, LanguageManager $languageManager, EntityTypeManagerInterface $entity_type_manager) {
     parent::__construct($entity_repository, $entity_type_bundle_info, $time);
     $this->rendererService = $rendererService;
     $this->moduleList = $moduleList;
     $this->languageManager = $languageManager;
+    $this->entityTypeManager = $entity_type_manager;
   }
 
   /**
@@ -61,7 +71,8 @@ class ShortMessageForm extends ContentEntityForm {
       $container->get('datetime.time'),
       $container->get('renderer'),
       $container->get('extension.list.module'),
-      $container->get('language_manager')
+      $container->get('language_manager'),
+      $container->get('entity_type.manager')
     );
   }
 
@@ -116,12 +127,20 @@ class ShortMessageForm extends ContentEntityForm {
       }
     }
 
+
     $bodyElements = [
       '#theme' => 'short_messages_body',
       '#body_content' => $fieldElements,
+      '#node_id' => $this->entity->id(),
       '#bundle' => $this->entity->bundle(),
-      '#contacts' => '',
     ];
+
+    if ($this->entity->get('type')->getString() == 'press_release') {
+      /** @var \Drupal\views\ViewExecutable $view */
+      $view = Views::getView('press_contacts');
+      $bodyElements['#contacts'] = $view->buildRenderable('block_1');
+    }
+
     $body = $this->rendererService->renderPlain($bodyElements);
 
     $footerElements = [

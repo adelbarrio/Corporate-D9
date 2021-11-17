@@ -1,0 +1,15 @@
+uuid: 08c42f2e-82e7-49d1-89d6-973aa7a76000
+langcode: en
+status: true
+dependencies: {  }
+id: seminars
+label: Seminars
+description: ''
+entityType: node
+entityBundle: seminar
+language: und
+breadcrumbPaths: "/tools-and-resources\r\n/tools-and-resources/seminars"
+breadcrumbTitles: "Tools & Resources\r\nSeminar reports"
+type: '1'
+pathPattern: ''
+extraCacheContexts: ''

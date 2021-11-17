@@ -60,6 +60,8 @@ settings:
             - DrupalImage
             - DrupalMediaLibrary
             - ImceLink
+            - Styles
+            - Resize
         -
           name: Tools
           items:
@@ -70,14 +72,9 @@ settings:
           name: Source
           items:
             - Source
-      -
-        -
-          name: Count
-          items:
-            - Resize
   plugins:
     stylescombo:
-      styles: ''
+      styles: 'span.ckeditorimage|Margin to IMG.'
     language:
       language_list: un
     drupallink:

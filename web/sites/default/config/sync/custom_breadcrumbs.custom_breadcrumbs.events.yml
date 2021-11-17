@@ -8,7 +8,7 @@ description: ''
 entityType: node
 entityBundle: events
 language: und
-breadcrumbPaths: '/oshevents/*'
+breadcrumbPaths: /oshevents/
 breadcrumbTitles: 'OSH events '
 type: '1'
 pathPattern: ''

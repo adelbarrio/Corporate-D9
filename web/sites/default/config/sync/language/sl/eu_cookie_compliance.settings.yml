@@ -1,0 +1,5 @@
+popup_agree_button_message: 'Strinjam se'
+popup_more_info_button_message: 'Ne, želim podrobnejše informacije.'
+popup_info:
+  value: "<p><span><strong>Spletna stran agencije EU-OSHA uporablja piškotke za zbiranje informacij, potrebnih za brskanje po spletišču, v skladu z obvestilom o zasebnosti.</strong></span></p>\r\n"
+disagree_button_label: Odkloniti

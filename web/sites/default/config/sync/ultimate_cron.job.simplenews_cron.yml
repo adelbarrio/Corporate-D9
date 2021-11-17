@@ -1,6 +1,6 @@
 uuid: 1f04fd44-3919-4a01-90bb-c9d905447093
 langcode: en
-status: false
+status: true
 dependencies:
   module:
     - simplenews

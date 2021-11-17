@@ -19,11 +19,8 @@
 <table border="0" cellpadding="28" cellspacing="0" width="800">
   <tbody>
   <tr>
-    <td
-      style="padding-top: 15px; padding-bottom: 15px; text-align: center; font-family: Arial,sans-serif; font-size: 12px; color: #333333;">
-
-      <span> {% trans %} Occupational Safety and Health News &ndash; Europe {% endtrans %}</span>
-      {{ 'Brought to you by EU-OSHA. Visit us at: <a href="@base_url" style="@style">@base_url</a>'|t({'@style': 'color: #003399; border-bottom-color: #DC2F82; border-bottom-style: solid; border-bottom-width: 1px; text-decoration: none;', '@base_url': urlFront['#markup']}) }}
+    <td style="padding-top: 15px; padding-bottom: 15px; text-align: center; font-family: Arial,sans-serif; font-size: 12px; color: #333333;">
+      <span>Occupational Safety and Health News – Europe</span> Brought to you by EU-OSHA. Visit us at: <a href="https://osha.europa.eu/en" style="color: #003399; border-bottom-color: #DC2F82; border-bottom-style: solid; border-bottom-width: 1px; text-decoration: none;">https://osha.europa.eu/en</a>
     </td>
   </tr>
   </tbody>
@@ -36,45 +33,24 @@
       <table border="0" cellpadding="28" cellspacing="0" width="800">
         <tbody>
         <tr style="background-color: #B2B3B5;">
-          <td
-            style="padding-top: 10px; padding-bottom: 10px; color: #FFFFFF; font-family: Arial, sans-serif; font-size: 13px; background-color: #B2B3B5; border: 0 ">
-            {{ 'Subscribe to our <a href="@url" style="@style">Alert service</a> for <br/> customised content delivery'| t({'@style': 'color: #FFFFFF;', '@url': 'https://osha.europa.eu/en/alertservice'}) }}
-          </td>
-          <td class="social" style="padding-top: 20px; padding-bottom: 10px; float: right; background-color: #B2B3B5; border: 0 ">
-            {% set socials = {
-              'twitter': {
-                'path': 'https://twitter.com/eu_osha',
-                'alt': 'Twitter'|t
-              },
-              'linkedin': {
-                'path': 'https://www.linkedin.com/company/european-agency-for-safety-and-health-at-work',
-                'alt': 'LinkedIn'|t
-              },
-              'face': {
-                'path': 'https://www.facebook.com/EuropeanAgencyforSafetyandHealthatWork',
-                'alt': 'Facebook'|t
-              },
-              'blog': {
-                'path': urlFront['#markup'] ~ '/tools-and-resources/blog',
-                'alt': 'blog'|t
-              },
-              'youtube': {
-                'path': 'https://www.youtube.com/user/EUOSHA',
-                'alt': 'Youtube'|t
-              }
-            } %}
-            {% set module_path = _self|split('/templates') %}
-            {% for social_key,social in socials %}
-              {% set imageUrl = '/' ~ module_path[0] ~ '/images/' ~ social_key ~ '.png' %}
-              <a style="color: #144989; text-decoration: none;" href="{{ social.path }}"
-                 data-mce-href="{{ social.path }}" data-mce-style="color: #144989; text-decoration: none;">
-                <img style="border: 0px;"
-                     src="{{ imageUrl }}"
-                     alt="Twitter"
-                     data-mce-src="{{ imageUrl }}"
-                     data-mce-style="border: 0px;" width="auto" height="26">
-              </a>
-            {% endfor %}
+          <td style="padding-top: 10px; padding-bottom: 10px; color: #FFFFFF; font-family: Arial, sans-serif; font-size: 13px; background-color: #B2B3B5; border: 0 ">Subscribe to our <a href="https://osha.europa.eu/en/alertservice" style="color: #FFFFFF;">Alert service</a> for<br>
+            customised content delivery</td>
+          <td class="social" style="padding-top: 20px; padding-bottom: 10px; float: right; background-color: #b2b3b5; border: 0;">
+            <a target="_blank" style="color: #144989; text-decoration: none;" href="https://twitter.com/eu_osha">
+              <img style="border: 0px;" src="https://osha.europa.eu/modules/custom/short_message/images/twitter.png" alt="Twitter" width="auto" eight="26"/>
+            </a>
+            <a target="_blank" style="color: #144989; text-decoration: none;" href="https://www.linkedin.com/company/european-agency-for-safety-and-health-at-work">
+              <img style="border: 0px;" src="https://osha.europa.eu/modules/custom/short_message/images/linkedin.png" alt="Twitter" width="auto" height="26"/>
+            </a>
+            <a target="_blank" style="color: #144989; text-decoration: none;" href="https://www.facebook.com/EuropeanAgencyforSafetyandHealthatWork">
+              <img style="border: 0px;" src="https://osha.europa.eu/modules/custom/short_message/images/face.png" alt="Twitter" width="auto" height="26" />
+            </a>
+            <a target="_blank" style="color: #144989; text-decoration: none;" href="https://osha.europa.eu/en/tools-and-resources/blog">
+              <img style="border: 0px;" src="https://osha.europa.eu/modules/custom/short_message/images/blog.png" alt="Twitter" width="auto" height="26" />
+            </a>
+            <a target="_blank" style="color: #144989; text-decoration: none;" href="https://www.youtube.com/user/EUOSHA">
+              <img style="border: 0px;" src="https://osha.europa.eu/modules/custom/short_message/images/youtube.png" alt="Twitter" width="auto" height="26" />
+            </a>
           </td>
         </tr>
         </tbody>

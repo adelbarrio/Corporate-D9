@@ -1,0 +1,5 @@
+popup_agree_button_message: 'Sallin evästeiden käytön'
+popup_more_info_button_message: 'Ei, haluan lisätietoa'
+popup_info:
+  value: "<p><span><strong>EU-OSHAn verkkosivusto käyttää evästeitä EU-OSHAn tietosuojaselosteen mukaisesti sivuston selaamiseen tarvittavien tietojen keräämiseen.</strong></span></p>\r\n"
+disagree_button_label: Kieltäytyä

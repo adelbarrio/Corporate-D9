@@ -1,0 +1,5 @@
+popup_agree_button_message: 'OK, je suis d''accord.'
+popup_more_info_button_message: 'Non, donnez-moi plus d’informations'
+popup_info:
+  value: "<p><span><strong>Le site web de l'EU-OSHA utilise les cookies pour recueillir les informations nécessaires à la consultation du site web conformément à la déclaration de confidentialité de l'Agence.</strong></span></p>\r\n"
+disagree_button_label: Refuser

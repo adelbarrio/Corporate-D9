@@ -88,7 +88,7 @@ source:
     -
       name: summary
       label: 'Summary'
-      selector: item/field_summary_html/en/0
+      selector: item/field_summary/en/0
     -
       name: field_migration_source
       label: 'Migration Source'
@@ -113,7 +113,7 @@ process:
   sticky: sticky
   field_summary_html:
     - plugin: get
-      source: field_summary_html
+      source: summary
   'field_summary_html/0/format':
     - plugin: default_value
       default_value: full_html

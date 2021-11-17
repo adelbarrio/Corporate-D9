@@ -8,9 +8,11 @@ use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\Exception\UndefinedLinkTemplateException;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Messenger\MessengerTrait;
+use Drupal\Core\Render\Element;
 use Drupal\tmgmt\Entity\JobItem;
 use Drupal\tmgmt\JobItemInterface;
 use Drupal\translation_workflow\Event\TranslationEvent;
+use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Class to extends functionalities of job items.
@@ -42,6 +44,7 @@ class MultipleTargetLanguageJobItem extends JobItem {
       ->setLabel(t('Retranslation data'))
       ->setDescription(t('The source retranslation data'));
     return $fieldsDefinitions;
+
   }
 
   /**
@@ -50,6 +53,7 @@ class MultipleTargetLanguageJobItem extends JobItem {
   public static function getStateLabel($state = NULL) {
     $states = static::getStates();
     return $state[$state] ?? NULL;
+
   }
 
   /**
@@ -65,6 +69,7 @@ class MultipleTargetLanguageJobItem extends JobItem {
       static::STATE_ACCEPTED => t('Ready to Publish'),
       static::STATE_INACTIVE => t('Inactive'),
     ];
+
   }
 
   /**
@@ -74,7 +79,8 @@ class MultipleTargetLanguageJobItem extends JobItem {
    *   Page count.
    */
   public function getPageCount() {
-    return number_format($this->getCharactersCount() / MultipleTargetLanguageJob::CHARACTERS_PER_PAGE, 2, ',', '');
+    return number_format(($this->getCharactersCount() / MultipleTargetLanguageJob::CHARACTERS_PER_PAGE), 2, ',', '');
+
   }
 
   /**
@@ -90,9 +96,12 @@ class MultipleTargetLanguageJobItem extends JobItem {
     $itemId = $this->getItemId();
     if (!isset($countedItems[$itemId])) {
       $countedItems[$itemId] = TRUE;
-      $data = array_filter($dataService->flatten($this->getData()), function ($value) {
-        return !(empty($value['#text']) || (isset($value['#translate']) && $value['#translate'] === FALSE));
-      });
+      $data = array_filter(
+        $dataService->flatten($this->getData()),
+        function ($value) {
+          return !(empty($value['#text']) || (isset($value['#translate']) && $value['#translate'] === FALSE));
+        }
+      );
       foreach ($data as $key => $field) {
         if (isset($field['#text'])) {
           $text = $field['#text'];
@@ -105,6 +114,7 @@ class MultipleTargetLanguageJobItem extends JobItem {
     }
 
     return $count;
+
   }
 
   /**
@@ -115,6 +125,7 @@ class MultipleTargetLanguageJobItem extends JobItem {
    */
   public function getTargetLanguage() {
     return $this->get('target_language')->language;
+
   }
 
   /**
@@ -125,6 +136,7 @@ class MultipleTargetLanguageJobItem extends JobItem {
    */
   public function setTargetLanguage(string $langcode) {
     $this->set('target_language', $langcode);
+
   }
 
   /**
@@ -135,6 +147,7 @@ class MultipleTargetLanguageJobItem extends JobItem {
    */
   public function getTargetLangcode() {
     return $this->getTargetLanguage()->getId();
+
   }
 
   /**
@@ -142,6 +155,7 @@ class MultipleTargetLanguageJobItem extends JobItem {
    */
   public function getJob() {
     return MultipleTargetLanguageJob::load($this->getJobId());
+
   }
 
   /**
@@ -153,6 +167,41 @@ class MultipleTargetLanguageJobItem extends JobItem {
     if ($this->isInactive()) {
       // The job item can not be inactive and receive translations.
       $this->setState(JobItemInterface::STATE_ACTIVE);
+    }
+
+    if ($this->hasRetranslationData()) {
+      $originalData = $this->getData();
+      foreach (Element::children($translation) as $fieldName) {
+        foreach (Element::children($translation[$fieldName]) as $fieldIndex) {
+          foreach (Element::children($translation[$fieldName][$fieldIndex]) as $fieldValueName) {
+            $fieldValue = &$translation[$fieldName][$fieldIndex][$fieldValueName]['#text'];
+            if (isset($originalData[$fieldName]) && isset($originalData[$fieldName][$fieldIndex])
+              && isset($originalData[$fieldName][$fieldIndex][$fieldValueName]) && isset($originalData[$fieldName][$fieldIndex][$fieldValueName]['#text'])
+            ) {
+              $crawler = new Crawler($originalData[$fieldName][$fieldIndex][$fieldValueName]['#text']);
+              $newTranslatedValue = [];
+              $crawler->filter('*[id*="tmgmt"]')->each(
+                function (Crawler $node, $i) use ($fieldValue, &$newTranslatedValue) {
+                  $idAttr = $node->attr('id');
+                  if (!is_null($idAttr) && (strpos($fieldValue, $idAttr) !== FALSE)) {
+                    $subCrawler = new Crawler($fieldValue);
+                    $subCrawler = $subCrawler->filter('#' . $idAttr);
+                    if ($subCrawler->count()) {
+                      $newTranslatedValue[] = $subCrawler->outerHtml();
+                    }
+                  }
+                  else {
+                    $newTranslatedValue[] = $node->outerHtml();
+                  }
+                }
+              );
+              if (!empty($newTranslatedValue)) {
+                $fieldValue = implode('', $newTranslatedValue);
+              }
+            }
+          }
+        }
+      }
     }
 
     $this->addTranslatedDataRecursive($translation, $key, $status);
@@ -169,6 +218,7 @@ class MultipleTargetLanguageJobItem extends JobItem {
           break;
         }
       }
+
       if ($finished && $job->hasTranslator()) {
         // There are no unfinished elements left.
         if ($job->getTranslator()->isAutoAccept()) {
@@ -192,7 +242,9 @@ class MultipleTargetLanguageJobItem extends JobItem {
         }
       }
     }
+
     $this->save();
+
   }
 
   /**
@@ -206,6 +258,7 @@ class MultipleTargetLanguageJobItem extends JobItem {
    */
   public function currentItemExists() {
     return self::itemExists($this->getItemType(), $this->getItemId());
+
   }
 
   /**
@@ -223,9 +276,10 @@ class MultipleTargetLanguageJobItem extends JobItem {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public static function itemExists(string $entityType, string $itemId) {
-    return !is_null(\Drupal::entityTypeManager()
-      ->getStorage($entityType)
-      ->load($itemId));
+    return !is_null(
+      \Drupal::entityTypeManager()->getStorage($entityType)->load($itemId)
+    );
+
   }
 
   /**
@@ -249,14 +303,20 @@ class MultipleTargetLanguageJobItem extends JobItem {
         $query->condition($field, $values);
       }
     }
-    $query->condition('state', [
-      static::STATE_ACTIVE,
-      static::STATE_REVIEW,
-      static::STATE_TRANSLATION_VALIDATED,
-      static::STATE_TRANSLATION_VALIDATION_REQUIRED,
-    ], 'IN');
+
+    $query->condition(
+      'state',
+      [
+        static::STATE_ACTIVE,
+        static::STATE_REVIEW,
+        static::STATE_TRANSLATION_VALIDATED,
+        static::STATE_TRANSLATION_VALIDATION_REQUIRED,
+      ],
+      'IN'
+    );
     $existingJobItems = $query->execute();
     return !empty($existingJobItems);
+
   }
 
   /**
@@ -267,6 +327,18 @@ class MultipleTargetLanguageJobItem extends JobItem {
    */
   public function setRetranslationData(array $retranslationData = []) {
     $this->set('retranslation_data', Json::encode($retranslationData));
+
+  }
+
+  /**
+   * Return TRUE if job item has retranslation data.
+   *
+   * @return bool
+   *   TRUE if has retranslation data.
+   */
+  public function hasRetranslationData() {
+    return !empty($this->get('retranslation_data')->value);
+
   }
 
   /**
@@ -275,22 +347,29 @@ class MultipleTargetLanguageJobItem extends JobItem {
    * @return array|null
    *   Retranslation data.
    */
-  public function getRetranlationData() {
+  public function getRetranslationData() {
     return Json::decode($this->get('retranslation_data')->value);
+
   }
 
   /**
    * {@inheritdoc}
    */
   public function getSourceData() {
-    $retranslationData = $this->getRetranlationData();
+    $retranslationData = $this->getRetranslationData();
     $ret = parent::getSourceData();
     if (!empty($retranslationData)) {
-      $ret = array_filter($ret, function ($key) use ($retranslationData) {
-        return in_array($key, array_keys($retranslationData));
-      }, ARRAY_FILTER_USE_KEY);
+      $ret = array_filter(
+        $ret,
+        function ($key) use ($retranslationData) {
+          return in_array($key, array_keys($retranslationData));
+        },
+        ARRAY_FILTER_USE_KEY
+      );
     }
+
     return $ret;
+
   }
 
   /**
@@ -308,9 +387,12 @@ class MultipleTargetLanguageJobItem extends JobItem {
         $this->addMessage($message, $variables, $type);
       }
     }
+
     $ret = $this->get('state')->value;
-    \Drupal::service('event_dispatcher')->dispatch(new TranslationEvent(NULL, NULL, $this), TranslationEvent::TRANSLATION_JOB_ITEM_STATE_CHANGED);
+    \Drupal::service('event_dispatcher')
+      ->dispatch(new TranslationEvent(NULL, NULL, $this), TranslationEvent::TRANSLATION_JOB_ITEM_STATE_CHANGED);
     return $ret;
+
   }
 
   /**
@@ -319,25 +401,10 @@ class MultipleTargetLanguageJobItem extends JobItem {
    * When re-enabled the translation by t manager.
    */
   public function toOnTranslation($message = '') {
-    // @todo Reset validators.
-    /*$validators = osha_tmgmt_load_validators_by_job_item($this);
-    if (!empty($validators)) {
-    $index = 0;
-    foreach ($validators as $validator) {
-    $validator->message = '';
-    $validator->approved = NULL;
-    $validator->next = 0;
-    if ($index == 0) {
-    $validator->next = 1;
-    }
-    entity_save('translation_validator', $validator);
-    $index++;
-    }
-    }
-    OshaWorkflowNotifications::notifyTranslationLayoutApprovers($this);*/
-    $this->setState(static::STATE_ACTIVE, '@name re-enabled the translation' .
-      ' for job item @tjiid, item @item_id (@bundle), language @lang. ' .
-      'Status is now "@state". Message: @message', [
+    $this->setState(
+      static::STATE_ACTIVE,
+      '@name re-enabled the translation' . ' for job item @tjiid, item @item_id (@bundle), language @lang. ' . 'Status is now "@state". Message: @message',
+      [
         '@name' => \Drupal::currentUser()->getAccountName(),
         '@state' => static::getStateLabel(static::STATE_ACTIVE),
         '@message' => $message,
@@ -345,17 +412,20 @@ class MultipleTargetLanguageJobItem extends JobItem {
         '@item_id' => $this->getItemId(),
         '@bundle' => $this->getItemType(),
         '@lang' => strtoupper($this->getTargetLangcode()),
-      ]);
+      ]
+    );
     $this->messenger()->addMessage(t('You have Enabled the Translation'));
+
   }
 
   /**
    * Move the Job Item to Translated state.
    */
   public function toTranslated($message = '') {
-    $this->setState(static::STATE_REVIEW, '@name approved the layout' .
-      ' for job item @tjiid, item @item_id (@bundle), language @lang. ' .
-      'Status is now "@state". Message: @message', [
+    $this->setState(
+      static::STATE_REVIEW,
+      '@name approved the layout' . ' for job item @tjiid, item @item_id (@bundle), language @lang. ' . 'Status is now "@state". Message: @message',
+      [
         '@name' => \Drupal::currentUser()->getAccountName(),
         '@state' => static::getStateLabel(static::STATE_REVIEW),
         '@message' => $message,
@@ -363,19 +433,22 @@ class MultipleTargetLanguageJobItem extends JobItem {
         '@item_id' => $this->getItemId(),
         '@bundle' => $this->getItemType(),
         '@lang' => strtoupper($this->getTargetLangcode()),
-      ]);
+      ]
+    );
     // @todo Validators
     // OshaWorkflowNotifications::notifyTranslationLayoutApproved($this);
     $this->messenger()->addMessage(t('You have approved the layout'));
+
   }
 
   /**
    * Move the Job Item to Translation Validated state.
    */
   public function toTranslationValidated($message = '') {
-    $this->setState(static::STATE_TRANSLATION_VALIDATED, '@name validated translation content' .
-      ' for job item @tjiid, item @item_id (@bundle), language @lang. ' .
-      'Status is now "@state". Message: @message', [
+    $this->setState(
+      static::STATE_TRANSLATION_VALIDATED,
+      '@name validated translation content' . ' for job item @tjiid, item @item_id (@bundle), language @lang. ' . 'Status is now "@state". Message: @message',
+      [
         '@name' => \Drupal::currentUser()->getAccountName(),
         '@state' => static::getStateLabel(static::STATE_TRANSLATION_VALIDATED),
         '@message' => $message,
@@ -383,39 +456,46 @@ class MultipleTargetLanguageJobItem extends JobItem {
         '@item_id' => $this->getItemId(),
         '@bundle' => $this->getItemType(),
         '@lang' => strtoupper($this->getTargetLangcode()),
-      ]);
+      ]
+    );
     // @todo Validators
     // OshaWorkflowNotifications::notifyTranslationValidated($this);
-    $this->messenger()->addMessage(t('All content validators have validated the translation!'));
+    $this->messenger()
+      ->addMessage(t('All content validators have validated the translation!'));
+
   }
 
   /**
    * Move the Job Item to Translation Validation Required state.
    */
   public function toTranslationValidationRequired($message = '') {
-    $this->setState(static::STATE_TRANSLATION_VALIDATION_REQUIRED, '@name: Content validation required' .
-      ' for job item @tjiid, item @item_id (@bundle), language @lang. ' .
-      'Status is now "@state". Message: @message', [
+    $this->setState(
+      static::STATE_TRANSLATION_VALIDATION_REQUIRED,
+      '@name: Content validation required' . ' for job item @tjiid, item @item_id (@bundle), language @lang. ' . 'Status is now "@state". Message: @message',
+      [
         '@name' => \Drupal::currentUser()->getAccountName(),
         '@state' => static::getStateLabel(static::STATE_TRANSLATION_VALIDATION_REQUIRED),
         '@tjiid' => $this->getJobId(),
         '@item_id' => $this->getItemId(),
         '@bundle' => $this->getItemType(),
         '@lang' => strtoupper($this->getTargetLangcode()),
-      ]);
+      ]
+    );
     // @todo Validators
     // OshaWorkflowNotifications::notifyTranslationValidators($this);
     $this->messenger()
       ->addMessage(t('You have Required Translation Validation for this translation'));
+
   }
 
   /**
    * Move the Job Item to Translation Validation Required state.
    */
   public function toTranslationRejected($message = '') {
-    $this->setState(static::STATE_ABORTED, '@name: Translation rejected' .
-      ' for job item @tjiid, item @item_id (@bundle), language @lang. ' .
-      'Status is now "@state". Message: @message', [
+    $this->setState(
+      static::STATE_ABORTED,
+      '@name: Translation rejected' . ' for job item @tjiid, item @item_id (@bundle), language @lang. ' . 'Status is now "@state". Message: @message',
+      [
         '@name' => \Drupal::currentUser()->getAccountName(),
         '@state' => static::getStateLabel(static::STATE_ABORTED),
         '@message' => $message,
@@ -423,19 +503,21 @@ class MultipleTargetLanguageJobItem extends JobItem {
         '@item_id' => $this->getItemId(),
         '@bundle' => $this->getItemType(),
         '@lang' => strtoupper($this->getTargetLangcode()),
-      ]);
+      ]
+    );
     // @todo Validators
     // OshaWorkflowNotifications::notifyTranslationRejected($this);
     $this->messenger()->addMessage(t('You have Rejected this translation'));
+
   }
 
   /**
    * {@inheritdoc}
    */
   public function acceptTranslation(string $message = '') {
-    $this->addMessage('@name accepted the translation' .
-      ' for job item @tjiid, item @item_id (@bundle), language @lang. ' .
-      'Status is now <strong>@state</strong>. @message', [
+    $this->addMessage(
+      '@name accepted the translation' . ' for job item @tjiid, item @item_id (@bundle), language @lang. ' . 'Status is now <strong>@state</strong>. @message',
+      [
         '@name' => \Drupal::currentUser()->getAccountName(),
         '@state' => static::getStateLabel(static::STATE_ACCEPTED),
         '@message' => 'Message: ' . $message,
@@ -443,17 +525,21 @@ class MultipleTargetLanguageJobItem extends JobItem {
         '@item_id' => $this->getItemId(),
         '@bundle' => $this->getItemType(),
         '@lang' => strtoupper($this->getTargetLangcode()),
-      ]);
+      ]
+    );
     if (!$plugin = $this->getSourcePlugin()) {
       return FALSE;
     }
+
     if (!$plugin->saveTranslation($this, $this->getTargetLangcode())) {
       return FALSE;
     }
+
     // If the plugin could save the translation, we will set it
     // to the 'accepted' state.
     $this->accepted();
     return TRUE;
+
   }
 
   /**
@@ -464,12 +550,15 @@ class MultipleTargetLanguageJobItem extends JobItem {
       $source_url = $this->getSourceUrl();
       try {
         // @todo Make sure we use the latest revision.
-        //   Fix in https://www.drupal.org/project/tmgmt/issues/2979126.
-        $translation = \Drupal::entityTypeManager()->getStorage($this->getItemType())->load($this->getItemId());
+        // Fix in https://www.drupal.org/project/tmgmt/issues/2979126.
+        $translation = \Drupal::entityTypeManager()
+          ->getStorage($this->getItemType())
+          ->load($this->getItemId());
       }
       catch (PluginNotFoundException $e) {
         $translation = NULL;
       }
+
       if (isset($translation) && $translation->hasTranslation($this->getTargetLangcode())) {
         $translation = $translation->getTranslation($this->getTargetLangcode());
         try {
@@ -478,6 +567,7 @@ class MultipleTargetLanguageJobItem extends JobItem {
         catch (UndefinedLinkTemplateException $e) {
           $translation_url = NULL;
         }
+
         $message = $source_url && $translation_url ? 'The translation for <a href=":source_url">@source</a> has been accepted as <a href=":target_url">@target</a>.' : 'The translation for @source has been accepted as @target.';
         $variables = $source_url && $translation_url ? [
           ':source_url' => $source_url->toString(),
@@ -490,13 +580,14 @@ class MultipleTargetLanguageJobItem extends JobItem {
         ];
       }
       else {
-        $message   = $source_url ? 'The translation for <a href=":source_url">@source</a> has been accepted.' : 'The translation for @source has been accepted.';
+        $message = $source_url ? 'The translation for <a href=":source_url">@source</a> has been accepted.' : 'The translation for @source has been accepted.';
         $variables = $source_url ? [
           ':source_url' => $source_url->toString(),
-          '@source'     => ($this->getSourceLabel()),
+          '@source' => ($this->getSourceLabel()),
         ] : ['@source' => ($this->getSourceLabel())];
       }
     }
+
     $return = $this->setState(static::STATE_ACCEPTED, $message, $variables, $type);
     // Check if this was the last unfinished job item in this job.
     $job = $this->getJob();
@@ -504,7 +595,9 @@ class MultipleTargetLanguageJobItem extends JobItem {
       // Mark the job as finished in case it is a normal job.
       $job->finished();
     }
+
     return $return;
+
   }
 
 }

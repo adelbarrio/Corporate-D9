@@ -139,6 +139,7 @@ module:
   pathologic: 0
   pdfpreview: 0
   phpexcel: 0
+  phpspreadsheet: 0
   quickedit: 0
   quicktabs: 0
   quicktabs_accordion: 0
@@ -153,6 +154,8 @@ module:
   responsive_image: 0
   rest: 0
   rules: 0
+  scanner: 0
+  search_and_replace: 0
   search_api: 0
   search_api_autocomplete: 0
   search_api_solr: 0
@@ -208,6 +211,7 @@ module:
   workbench: 0
   workbench_access: 0
   workflows: 0
+  xls_serialization: 0
   youtube: 0
   ds: 1
   pathauto: 1
