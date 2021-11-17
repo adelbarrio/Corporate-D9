@@ -23,4 +23,6 @@ permissions:
   - 'use editorial transition send_to_publish_from_final_draft'
   - 'use editorial transition send_to_publish_from_reviewed'
   - 'use workbench access'
+  - 'view any unpublished content'
+  - 'view latest version'
   - 'view workbench access information'
