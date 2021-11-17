@@ -26,6 +26,7 @@ function short_message_theme($existing, $type, $theme, $path) {
     'short_messages_body' => [
       'variables' => [
         'body_content' => NULL,
+        'node_id' => NULL,
         'bundle' => NULL,
         'contacts' => NULL,
       ],
@@ -82,9 +83,11 @@ function _short_message_alter_published_date(NodeInterface $node) {
   if ($node->bundle() == 'press_release') {
     if (!empty($node->hasField('field_pr_embargo_date'))) {
       $embargo_date = strtotime($node->get('field_pr_embargo_date')->getString());
-      $str_embargo_date = $timeFormatService->format($embargo_date, 'short_date_eu');
-      if ($embargo_date - strtotime('now') > 0) {
-        $message = t('HOLD ON FOR PRESS RELEASE UNTIL') . ' ' . $str_embargo_date;
+      if ($embargo_date) {
+        $str_embargo_date = $timeFormatService->format($embargo_date, 'short_date_eu');
+        if ($embargo_date - strtotime('now') > 0) {
+          $message = t('HOLD ON FOR PRESS RELEASE UNTIL') . ' ' . $str_embargo_date;
+        }
       }
     }
     if (!isset($message)) {

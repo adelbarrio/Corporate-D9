@@ -37,9 +37,6 @@ class SarScannerConfirmForm extends ScannerConfirmForm {
       $values[$value] = $scannerStore->get($value);
     }
 
-    ksm($values);
-    ksm($fields = \Drupal::config('scanner.admin_settings')->get('fields_of_selected_content_type'));
-
     return $build;
   }
 

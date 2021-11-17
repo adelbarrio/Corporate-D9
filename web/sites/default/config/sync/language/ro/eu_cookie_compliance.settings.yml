@@ -1,0 +1,5 @@
+popup_agree_button_message: 'Da, sunt de acord'
+popup_more_info_button_message: 'Nu, doresc informații suplimentare'
+popup_info:
+  value: "<p><span><strong>Site-ul EU-OSHA utilizează module cookie pentru a culege informațiile necesare pentru navigarea pe site, în conformitate cu declarația de confidențialitate a EU-OSHA.</strong></span></p>\r\n"
+disagree_button_label: Refuza

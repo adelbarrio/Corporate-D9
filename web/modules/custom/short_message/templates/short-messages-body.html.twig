@@ -6,25 +6,87 @@
         <tr style="border: 0; background: #ffffff">
           <td colspan="2" style="font-family: Arial,sans-serif; font-size: 20px; color: #003399;">
             <h2 style="font-family: Arial,sans-serif; font-size: 20px; color: #003399;">
-              <a style="font-family: Arial,sans-serif; font-size: 20px; color: #003399;" href="">{{ body_content.title }}</a>
+              <a style="font-family: Arial,sans-serif; font-size: 20px; color: #003399;" href="https://osha.europa.eu/node/{{ node_id }}">{{ body_content.title }}</a>
             </h2>
           </td>
         </tr>
         <tr style="border: 0; background: #ffffff">
           <td style="border: 0; background: #ffffff; vertical-align: top; padding-right: 10px;">
-            {{ body_content.field_image_media }}
+            {% for key, image in body_content.field_image_media  %}
+              {%if image.entity %}
+                {% set url_custom = url('<front>') %}
+                {% set split_url = url_custom['#markup']|split('/', -1) %}
+                {% set split_url_join = split_url|join('/') %}
+                {% set media = image.entity %}
+                {% set file = media.field_media_image.entity %}
+                {% set uri = file_url(file.uri.value) %}
+                <img src="{{ split_url_join }}{{ uri }}" alt="{{ media.field_media_image.0.alt }}" />
+                <span style="font-size: 10px;">{{ media.field_caption_copyrigth_.0.value|striptags }}</span>
+              {% endif %}
+            {% endfor %}
           </td>
-          <td style="vertical-align: top; border: 0; background: #ffffff; padding-top: 15px; padding-bottom: 15px; font-family: Arial,sans-serif; font-size: 12px; color: #333333;">
+          <td style="vertical-align: top; border: 0; background: #ffffff; padding-top: 0; padding-bottom: 15px; font-family: Arial,sans-serif; font-size: 12px; color: #333333; text-align: justify">
             {{ body_content.body }}
           </td>
         </tr>
       </table>
-
-      {% if bundle == 'press_release' %}
-        <h2>{% trans %} Press contacts {% endtrans %}</h2>
-        {{ contacts }}
-      {% endif %}
     </td>
   </tr>
   </tbody>
 </table>
+{% if contacts %}
+<table border="0" cellpadding="28" cellspacing="0" width="800">
+  <tbody>
+    <tr style="border: 0; background: #ffffff">
+      <td style="border: 0; background: #ffffff; padding-top: 15px; padding-bottom: 15px; font-family: Arial,sans-serif; font-size: 12px; color: #333333;">
+        <style>
+        .presscontacts{
+          color: rgb(0, 0, 0);
+          font-family: Verdana, Arial, Helvetica, sans-serif;
+          font-size: 10px !important;
+        }
+        .presscontacts h2{
+          font-size: 16px;
+          font-weight: bold;
+          margin: 10px 0;
+          font-family: Arial, sans-serif;
+        }
+        .presscontacts .views-row{
+          border: 1px dashed #BBB;
+          padding: 8px 10px;
+        }
+        .presscontacts .views-row:first-child{
+          border-bottom: 0;
+        }
+        .presscontacts .views-row:last-child{
+          border-top: 0;
+        }
+        .presscontacts .views-content,
+        .presscontacts .field-content{
+          font-size: 10px !important;
+          color: #000000;
+        }
+        .presscontacts a {
+          color: #0074BD;
+          text-decoration: none;
+        }
+        .presscontacts .more-link{
+          margin-top: 10px;
+
+          font-family: Arial, sans-serif;
+          font-size: 12px;
+        }
+        .presscontacts .more-link:hover{
+          text-decoration: underline;
+        }
+
+      </style>
+        <div class="presscontacts mceItemTable">
+          <h2>{% trans %} Press contacts {% endtrans %}</h2>
+          {{ contacts }}
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+{% endif %}

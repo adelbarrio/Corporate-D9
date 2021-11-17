@@ -1,0 +1,5 @@
+popup_agree_button_message: 'Jah, olen nõus'
+popup_more_info_button_message: 'Ei, soovin rohkem teavet'
+popup_info:
+  value: "<p><span><strong>EU-OSHA veebilehel kasutatakse küpsiseid, et koguda veebikoha kasutamiseks vajalikku teavet kooskõlas EU-OSHA isikuandmete kaitse põhimõtetega.</strong></span></p>\r\n"
+disagree_button_label: Vähenema

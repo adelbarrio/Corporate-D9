@@ -4,7 +4,8 @@ description: 'Corporate Website Theme'
 core: 8.x
 core_version_requirement: ^8 || ^9
 base theme: bootstrap_barrio
-
+ckeditor_stylesheets:
+  - css/ckeditor-custom.css
 libraries:
   - ncwtheme/bootstrap_cdn
   - ncwtheme/global-styling

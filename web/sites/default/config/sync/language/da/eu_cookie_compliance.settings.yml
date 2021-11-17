@@ -1,0 +1,5 @@
+popup_agree_button_message: 'OK, jeg accepterer'
+popup_more_info_button_message: 'Nej, giv mig flere oplysninger'
+popup_info:
+  value: "<p><span><strong>EU-OSHA-webstedet anvender cookies til at indsamle oplysninger, der er nødvendige for, at du kan søge på webstedet, i overensstemmelse med EU-OSHA's politik for beskyttelse af privatlivets fred.</strong></span></p>\r\n"
+disagree_button_label: Afslå

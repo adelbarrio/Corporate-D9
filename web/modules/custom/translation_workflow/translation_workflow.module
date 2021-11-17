@@ -5,6 +5,7 @@
  * Translation workflow module hooks.
  */
 
+use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
 use Drupal\Core\Render\Markup;
 use Drupal\tmgmt\Entity\Translator;
@@ -185,7 +186,7 @@ function tmgmt_content_translate_form_submit(array &$form, FormStateInterface $f
       $item = $job->addItem('content', $entity->getEntityTypeId(), $entity->id());
       $item->set('target_language', $langcode);
       $item->save();
-      // Append this job to the array of created jobs so we can redirect the user
+      // Append this job to array of created jobs so we can redirect the user
       // to a multistep checkout form if necessary.
     }
     catch (TMGMTException $e) {
@@ -371,5 +372,21 @@ function translation_workflow_tmgmt_source_plugin_info_alter(&$info) {
 function translation_workflow_entity_type_build(array &$entity_types) {
   if (isset($entity_types['tmgmt_job_item'])) {
     $entity_types['tmgmt_job_item']->setClass(MultipleTargetLanguageJobItem::class);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function translation_workflow_preprocess_breadcrumb(&$variables) {
+  if (isset($variables['links'])) {
+    /**
+     * @var \Drupal\Core\Link $link
+     */
+    foreach ($variables['links'] as $linkKey => $link) {
+      if ($link->getUrl()->getRouteName() == 'view.tmgmt_job_overview.page_1') {
+        $variables['links'][$linkKey]->setUrl(Url::fromRoute('view.translation_workflow_jobs_overview.page_1'));
+      }
+    }
   }
 }

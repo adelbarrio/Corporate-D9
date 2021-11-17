@@ -98,4 +98,9 @@ body.user-logged-in .layout-container .layout-node-form fieldset#edit-simplenews
   display: none;
 }
 
+span.ckeditorimage {
+  float: left;
+  margin-right: 10px;
+}
+
 /*# sourceMappingURL=ncw_backend-d9.css.map */

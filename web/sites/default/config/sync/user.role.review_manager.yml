@@ -38,6 +38,7 @@ permissions:
   - 'administer reviewers'
   - 'administer search and replace settings'
   - 'administer taxonomy'
+  - administer_mailsystem
   - 'assign pm to node'
   - 'assign workbench access'
   - 'bypass workbench moderation'

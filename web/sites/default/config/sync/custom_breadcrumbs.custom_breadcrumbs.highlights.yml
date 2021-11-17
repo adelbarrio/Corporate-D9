@@ -8,7 +8,7 @@ description: ''
 entityType: node
 entityBundle: highlight
 language: und
-breadcrumbPaths: '/highlights/*'
+breadcrumbPaths: /highlights/
 breadcrumbTitles: Highlights
 type: '1'
 pathPattern: ''

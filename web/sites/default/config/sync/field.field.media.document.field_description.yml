@@ -5,13 +5,18 @@ dependencies:
   config:
     - field.storage.media.field_description
     - media.type.document
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
 id: media.document.field_description
 field_name: field_description
 entity_type: media
 bundle: document
 label: Description
-description: ''
-required: false
+description: 'Description to view the label in the Web.'
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
