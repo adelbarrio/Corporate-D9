@@ -75,6 +75,9 @@
 {{ drupal_block("osha_workflow_block") }}
 {% if content.1 %} {{ content.1 }}{% endif %}
 {{ content.content_moderation_control }}
+{% if (content.field_archived.0['#markup'] == 'On' ) %}
+  <div class="archived-container"> {{ '<p>Archived</p><p>We are no longer actively maintaining this information, so don\'t be surprised if you find some broken links or if some of the information is out of date.</p>' | trans }}</div>
+{% endif %}
 <div class="h1-back-wrapper">
   <a href="/publications" class="pull-right-flex back-to-link">{{ 'Back to publications and filter' | trans }}</a>
 </div>
