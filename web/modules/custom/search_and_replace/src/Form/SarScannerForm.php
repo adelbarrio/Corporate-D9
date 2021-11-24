@@ -11,6 +11,9 @@ use Drupal\scanner\Plugin\ScannerPluginManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Component\Render\FormattableMarkup;
 
+/**
+ * Form for performing searching.
+ */
 class SarScannerForm extends ScannerForm {
 
   use StringTranslationTrait;
@@ -46,29 +49,12 @@ class SarScannerForm extends ScannerForm {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $build = parent::buildForm($form, $form_state);
-
-    /*$build['options']['bundles'] = [
-      '#type' => 'checkboxes',
-      '#title' => $this->t('Bundles'),
-      '#options' => $this->getAvailableEntityTypes(),
-      '#weight' => -2,
-      '#description' => $this->t('If none selected, all bundles will be used in search.'),
-    ];*/
-
-    /*$build['options']['version'] = [
-      '#type' => 'radios',
-      '#title' => $this->t('Bundles'),
-      '#options' => [0 => $this->t('Published'), 1 => $this->t('Current Draft')],
-      '#weight' => -1,
-      '#default_value' => 0,
-      '#description' => $this->t('Select the versions of the nodes on which you want to perform the search.'),
-    ];*/
-
     $scannerStore = $this->tempStore->get('scanner');
     if (empty($form_state->getValues())) {
       unset($build['replace']);
       unset($build['submit_replace']);
-    } else {
+    }
+    else {
       $build['options']['#collapsible'] = TRUE;
       $build['options']['#open'] = FALSE;
       $build['submit_replace']['#validate'] = [$this, '::validateReplace'];
@@ -98,10 +84,7 @@ class SarScannerForm extends ScannerForm {
               'title' => $title,
               'type' => $type,
               'count' => count($values['field']),
-              'lang' => $values['lang']
-            ];
-            $snippet = [
-              '#markup' => '',
+              'lang' => $values['lang'],
             ];
             $output = '';
             foreach ($values['field'] as $value) {
@@ -120,7 +103,7 @@ class SarScannerForm extends ScannerForm {
         '#header' => $header,
         '#type' => 'tableselect',
         '#options' => $rows,
-        '#attributes' => array('id' => 'search-and-replace-results'),
+        '#attributes' => ['id' => 'search-and-replace-results'],
         '#weight' => 100,
       ];
 
@@ -132,11 +115,17 @@ class SarScannerForm extends ScannerForm {
     return $build;
   }
 
+  /**
+   * Check if there are any selected operations.
+   *
+   * Multivalue form field checked as string to detect it's set,
+   * as opposed to integer values (not set).
+   */
   public function validateReplace(&$form, FormStateInterface $form_state) {
-    $scannerStore = $this->tempStore->get('scanner');
-    $results = $scannerStore->get('results');
-    $to_replace = array_filter($form_state->getValues()['results_final']);
-    if (empty($to_replace)) {
+    foreach ($form_state->getValues()['results_final'] as $val) {
+      if (gettype($val) == 'string') {
+        break;
+      }
       $form_state->setErrorByName('ALL', 'Perform a search first and select at least 1 node.');
     }
   }
@@ -156,26 +145,29 @@ class SarScannerForm extends ScannerForm {
 
     $scannerStore->set('op', $op);
 
-    if ($op == t('Search')) {
+    if ($op == $this->t('Search')) {
       $fields = \Drupal::config('scanner.admin_settings')->get('fields_of_selected_content_type');
 
       // Build an array of batch operation jobs.
       // Batch job will need the field and the $form_state values.
       $operations = [];
       foreach ($fields as $key => $field) {
-        $operations[] = ['\Drupal\scanner\Form\ScannerForm::batchSearch', [$field, $form_state->getValues()]];
+        $operations[] = [
+          '\Drupal\scanner\Form\ScannerForm::batchSearch',
+              [$field, $form_state->getValues()],
+        ];
       }
 
       $batch = [
-        'title' => t('Scanner Search Batch'),
+        'title' => $this->t('Scanner Search Batch'),
         'operations' => $operations,
         'finished' => '\Drupal\scanner\Form\ScannerForm::batchFinished',
-        'progress_message' => t('Processed @current out of @total'),
+        'progress_message' => $this->t('Processed @current out of @total'),
       ];
       batch_set($batch);
       $form_state->setRebuild(TRUE);
     }
-    elseif ($op == t('Replace')) {
+    elseif ($op == $this->t('Replace')) {
       // Redirect to the confirmation form.
       $form_state->setRedirect('scanner.admin_confirm');
     }

@@ -2,7 +2,6 @@
 
 namespace Drupal\search_and_replace\Routing;
 
-
 use Drupal\Core\Routing\RouteSubscriberBase;
 use Symfony\Component\Routing\RouteCollection;
 
@@ -22,4 +21,5 @@ class SarRouteSubscriber extends RouteSubscriberBase {
       $route->setDefault('_form', '\Drupal\search_and_replace\Form\SarScannerConfirmForm');
     }
   }
+
 }
