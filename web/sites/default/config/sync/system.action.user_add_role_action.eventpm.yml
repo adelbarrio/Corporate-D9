@@ -1,0 +1,14 @@
+uuid: f7b4689e-a9e6-4836-b56c-90ad79f0947a
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.eventpm
+  module:
+    - user
+id: user_add_role_action.eventpm
+label: 'Add the EVENTPM role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: eventpm

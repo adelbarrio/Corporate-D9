@@ -353,6 +353,9 @@ provider_mappings:
   -
     query: 'cn=PROCUR_PM,ou=MainSite,ou=Sites,dc=osha,dc=europa,dc=eu'
     is_regex: false
+  -
+    query: 'cn=EVENTPM,ou=MainSite,ou=Sites,dc=osha,dc=europa,dc=eu'
+    is_regex: false
 consumer_config: {  }
 consumer_mappings:
   -
@@ -581,6 +584,8 @@ consumer_mappings:
     role: procur_edt
   -
     role: procur_pm
+  -
+    role: eventpm
 synchronization_modes:
   user_logon: user_logon
 synchronization_actions:

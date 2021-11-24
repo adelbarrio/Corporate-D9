@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 id: procur_pm
 label: 'PROCUR PM'
-weight: 5
+weight: 6
 is_admin: null
 permissions:
   - 'access workbench'

@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 id: events_editor
 label: 'Events Editor'
-weight: 1
+weight: 0
 is_admin: null
 permissions:
   - 'access administration pages'

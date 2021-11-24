@@ -3,8 +3,17 @@
 namespace Drupal\search_and_replace\Plugin\Scanner;
 
 use Drupal\scanner\Plugin\Scanner\Node;
+use Drupal\node\Entity\Node as CoreNode;
+use Drupal\scanner\AdminHelper;
 
+/**
+ * Class SarNode provides custom search and replace behavior.
+ */
 class SarNode extends Node {
+
+  /**
+   * {@inheritdoc}
+   */
   public function search($field, $values) {
     $title_collect = [];
     // $field will be string composed of entity type, bundle name, and field
@@ -28,27 +37,26 @@ class SarNode extends Node {
     $entities = $query->execute();
     // Iterate over matched entities (nodes) to extract information that will
     // be rendered in the results.
-    foreach ($entities as $key => $id) {
-      $node = \Drupal\node\Entity\Node::load($id);
-      $type = $node->getType();
+    foreach ($entities as $id) {
+      $node = CoreNode::load($id);
       $nodeField = $node->get($fieldname);
       $fieldType = $nodeField->getFieldDefinition()->getType();
-      if (in_array($fieldType, ['text_with_summary','text','text_long'])) {
+      if (in_array($fieldType, ['text_with_summary', 'text', 'text_long'])) {
         $fieldValue = $nodeField->getValue()[0];
         $title_collect[$id]['title'] = $node->getTitle();
         $title_collect[$id]['lang'] = $node->language()->getId();
         // Find all instances of the term we're looking for.
-        preg_match_all($conditionVals['phpRegex'], $fieldValue['value'], $matches,PREG_OFFSET_CAPTURE);
+        preg_match_all($conditionVals['phpRegex'], $fieldValue['value'], $matches, PREG_OFFSET_CAPTURE);
         $newValues = [];
         // Build an array of strings which are displayed in the results.
-        foreach ($matches[0] as $k => $v) {
+        foreach ($matches[0] as $v) {
           // The offset of the matched term(s) in the field's text.
           $start = $v[1];
           if ($values['preceded'] !== '') {
             // Bolding won't work if starting position is in the middle of a
             // word (non-word bounded searches), therefore move the start
             // position back as many character as there are in the 'preceded'
-            // text
+            // text.
             $start -= strlen($values['preceded']);
           }
           // Extract part of the text which include the search term plus six
@@ -73,6 +81,172 @@ class SarNode extends Node {
       }
     }
     return $title_collect;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function replace($field, array $values, array $undo_data) {
+    // Helper objects to generate a subset of id's to filter
+    // (selected items in results_final form)
+    $objects = $values['results']['#data']['values'];
+    $results_final_processed = [];
+    $i = 0;
+    foreach ($objects as $kentity => $ventity) {
+      foreach ($ventity as $kbundle => $vbundle) {
+        foreach ($vbundle as $kfield => $vfield) {
+          foreach ($vfield as $knid => $vnid) {
+            $results_final_processed[$i] = [
+              $knid,
+              $vnid["field"][0],
+              "$kentity:$kbundle:$kfield",
+            ];
+            $i = $i + 1;
+          }
+        }
+      }
+    }
+    // results_final_processed_filtered contains the full list of ops.
+    $results_final_processed_filtered = [];
+    foreach ($values['results_final'] as $k => $v) {
+      if (gettype($v) == 'string') {
+        $results_final_processed_filtered[] = [
+          'nid' => $results_final_processed[$k][0],
+          'field' => $results_final_processed[$k][2],
+          'res' => $results_final_processed[$k][1],
+        ];
+      }
+    }
+    // Extract the list of nids for this current "field"
+    // filter results_final_processed_filtered by $field.
+    $selected_nids = [];
+    foreach ($results_final_processed_filtered as $candidate) {
+      if ($candidate['field'] == $field) {
+        $selected_nids[] = $candidate['nid'];
+      }
+    }
+    if (count($selected_nids) == 0) {
+      return;
+    }
+    $data = $undo_data;
+    if (!is_array($data)) {
+      $data = [];
+    }
+    list($entityType, $bundle, $fieldname) = explode(':', $field);
+
+    $query = \Drupal::entityQuery($entityType);
+    $query->condition('type', $bundle);
+    if ($values['published']) {
+      $query->condition('status', 1);
+    }
+    $query->condition('nid', $selected_nids, 'IN');
+    $conditionVals = parent::buildCondition($values['search'], $values['mode'], $values['wholeword'], $values['regex'], $values['preceded'], $values['followed']);
+    if ($values['language'] !== 'all') {
+      $query->condition($fieldname, $conditionVals['condition'], $conditionVals['operator'], $values['language']);
+    }
+    else {
+      $query->condition($fieldname, $conditionVals['condition'], $conditionVals['operator']);
+    }
+    $entities = $query->execute();
+    foreach ($entities as $id) {
+      $node = CoreNode::load($id);
+      $nodeField = $node->get($fieldname);
+      $fieldType = $nodeField->getFieldDefinition()->getType();
+      if (in_array($fieldType, ['text_with_summary', 'text', 'text_long'])) {
+        if ($values['language'] === 'all') {
+          $other_languages = AdminHelper::getAllEnabledLanguages();
+          foreach ($other_languages as $langcode => $languageName) {
+            if ($node->hasTranslation($langcode)) {
+              $node = $node->getTranslation($langcode);
+              $nodeField = $node->get($fieldname);
+            }
+            $fieldValue = $nodeField->getValue()[0];
+            // Replace the search term with the replace term.
+            $fieldValue['value'] = preg_replace($conditionVals['phpRegex'], $values['replace'], $fieldValue['value']);
+            $node->$fieldname = $fieldValue;
+          }
+          // This check prevents the creation of multiple revisions if more than
+          // one field of the same node has been modified.
+          if (!isset($data["node:$id"]['new_vid'])) {
+            $data["node:$id"]['old_vid'] = $node->vid->getString();
+            // Crete a new revision so that we can have the option of undoing it
+            // later on.
+            $node->setNewRevision(TRUE);
+            $node->revision_log = $this->t(
+            'Replaced %search with %replace via Scanner Search and Replace module.',
+            ['%search' => $values['search'], '%replace' => $values['replace']]
+            );
+          }
+        }
+        else {
+          $requested_lang = $values['language'];
+          if ($node->hasTranslation($requested_lang)) {
+            $node = $node->getTranslation($requested_lang);
+            $nodeField = $node->get($fieldname);
+          }
+          $fieldValue = $nodeField->getValue()[0];
+          // Replace the search term with the replace term.
+          $fieldValue['value'] = preg_replace($conditionVals['phpRegex'], $values['replace'], $fieldValue['value']);
+          $node->$fieldname = $fieldValue;
+          // This check prevents the creation of multiple revisions if more than
+          // one field of the same node has been modified.
+          if (!isset($data["node:$id"]['new_vid'])) {
+            $data["node:$id"]['old_vid'] = $node->vid->getString();
+            // Crete a new revision so that we can have the option of undoing it
+            // later on.
+            $node->setNewRevision(TRUE);
+            $node->revision_log = $this->t(
+            'Replaced %search with %replace via Scanner Search and Replace module.',
+            ['%search' => $values['search'], '%replace' => $values['replace']]
+            );
+          }
+        }
+        // Save the updated node.
+        $node->save();
+        // Fetch the new revision id.
+        $data["node:$id"]['new_vid'] = $node->vid->getString();
+      }
+      elseif ($fieldType == 'string') {
+        if (!isset($data["node:$id"]['new_vid'])) {
+          if ($values['language'] === 'all') {
+            $all_languages = AdminHelper::getAllEnabledLanguages();
+            foreach ($all_languages as $langcode => $languageName) {
+              if ($node->hasTranslation($langcode)) {
+                $node = $node->getTranslation($langcode);
+                $nodeField = $node->get($fieldname);
+              }
+              $fieldValue = preg_replace($conditionVals['phpRegex'], $values['replace'], $nodeField->getString());
+              $node->$fieldname = $fieldValue;
+            }
+            $data["node:$id"]['old_vid'] = $node->vid->getString();
+            $node->setNewRevision(TRUE);
+            $node->revision_log = $this->t(
+            'Replaced %search with %replace via Scanner Search and Replace module.',
+            ['%search' => $values['search'], '%replace' => $values['replace']]
+            );
+          }
+          else {
+            $requested_lang = $values['language'];
+            if ($node->hasTranslation($requested_lang)) {
+              // $nodeField = $nodeField->getTranslation($requested_lang);
+              $node = $node->getTranslation($requested_lang);
+              $nodeField = $node->get($fieldname);
+            }
+            $fieldValue = preg_replace($conditionVals['phpRegex'], $values['replace'], $nodeField->getString());
+            $node->$fieldname = $fieldValue;
+            $data["node:$id"]['old_vid'] = $node->vid->getString();
+            $node->setNewRevision(TRUE);
+            $node->revision_log = $this->t(
+            'Replaced %search with %replace via Scanner Search and Replace module.',
+            ['%search' => $values['search'], '%replace' => $values['replace']]
+            );
+          }
+        }
+        $node->save();
+        $data["node:$id"]['new_vid'] = $node->vid->getString();
+      }
+    }
+    return $data;
   }
 
 }
