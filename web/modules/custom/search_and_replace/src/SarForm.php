@@ -2,13 +2,15 @@
 
 namespace Drupal\search_and_replace;
 
-use Drupal\Component\Plugin\Exception\PluginNotFoundException;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+/**
+ * Alter Form for performing search.
+ */
 class SarForm implements ContainerInjectionInterface {
 
   use StringTranslationTrait;
@@ -20,6 +22,9 @@ class SarForm implements ContainerInjectionInterface {
    */
   protected $entityTypeBundleInfo;
 
+  /**
+   * {@inheritdoc}
+   */
   public function __construct(EntityTypeBundleInfoInterface $entity_type_bundle_info) {
     $this->entityTypeBundleInfo = $entity_type_bundle_info;
   }
@@ -45,23 +50,6 @@ class SarForm implements ContainerInjectionInterface {
 
     $form['replace']['#weight'] = 99;
     $form['submit_replace']['#weight'] = 100;
-
-    /*$form['options']['bundles'] = [
-      '#type' => 'checkboxes',
-      '#title' => $this->t('Bundles'),
-      '#options' => $this->getAvailableEntityTypes(),
-      '#weight' => -2,
-      '#description' => $this->t('If none selected, all bundles will be used in search.'),
-    ];
-
-    $form['options']['version'] = [
-      '#type' => 'radios',
-      '#title' => $this->t('Bundles'),
-      '#options' => [0 => $this->t('Published'), 1 => $this->t('Current Draft')],
-      '#weight' => -1,
-      '#default_value' => 0,
-      '#description' => $this->t('Select the versions of the nodes on which you want to perform the search.'),
-    ];*/
 
     unset($form['options']['published']);
 

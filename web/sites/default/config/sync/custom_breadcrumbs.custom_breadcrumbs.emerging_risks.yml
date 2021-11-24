@@ -11,5 +11,5 @@ language: und
 breadcrumbPaths: /themes
 breadcrumbTitles: Themes
 type: '2'
-pathPattern: '/emerging-risks/*'
+pathPattern: /emerging-risks/
 extraCacheContexts: ''

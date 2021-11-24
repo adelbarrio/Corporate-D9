@@ -16,8 +16,8 @@ class SarEntity {
    *
    * @see \hook_local_tasks_alter()
    */
-  public function localTastAlter(&$local_tasks) {
-    $local_tasks['scanner.admin_content']['title'] = strtoupper($this->t('Search and Replace'));
+  public function localTaskAlter(&$local_tasks) {
+    $local_tasks['scanner.admin_content']['title'] = $this->t('Search and Replace');
     $local_tasks['scanner.admin']['title'] = $this->t('Search');
   }
 

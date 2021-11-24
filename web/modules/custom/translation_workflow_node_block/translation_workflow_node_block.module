@@ -2,6 +2,7 @@
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\translation_workflow_node_block\NCWForm;
+use Drupal\translation_workflow_node_block\NCWView;
 
 /**
  * Implements hook_form_alter().
@@ -10,4 +11,10 @@ function translation_workflow_node_block_form_alter(&$form, FormStateInterface $
   return \Drupal::service('class_resolver')
     ->getInstanceFromDefinition(NCWForm::class)
     ->formAlter($form, $form_state, $form_id);
+}
+
+function translation_workflow_node_block_entity_view_alter(array &$build, Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
+  return \Drupal::service('class_resolver')
+    ->getInstanceFromDefinition(NCWView::class)
+    ->viewAlter($build, $entity, $display);
 }

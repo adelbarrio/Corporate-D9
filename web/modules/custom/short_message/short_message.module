@@ -21,6 +21,7 @@ function short_message_theme($existing, $type, $theme, $path) {
         'newsletter_title' => NULL,
         'newsletter_id' => NULL,
         'newsletter_date' => NULL,
+        'node_id' => NULL,
       ],
     ],
     'short_messages_body' => [

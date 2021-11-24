@@ -11,7 +11,7 @@
           </td>
         </tr>
         <tr style="border: 0; background: #ffffff">
-          <td style="border: 0; background: #ffffff; vertical-align: top; padding-right: 10px;">
+          <td style="width:220px; border: 0; background: #ffffff; vertical-align: top; padding-right: 10px;">
             {% for key, image in body_content.field_image_media  %}
               {%if image.entity %}
                 {% set url_custom = url('<front>') %}
@@ -19,8 +19,8 @@
                 {% set split_url_join = split_url|join('/') %}
                 {% set media = image.entity %}
                 {% set file = media.field_media_image.entity %}
-                {% set uri = file_url(file.uri.value) %}
-                <img src="{{ split_url_join }}{{ uri }}" alt="{{ media.field_media_image.0.alt }}" />
+                {% set uri = file_url(file.uri.value | image_style('home_news')) %}
+                <img width="220" height="220" src="{{ split_url_join }}{{ uri }}" alt="{{ media.field_media_image.0.alt }}" />
                 <span style="font-size: 10px;">{{ media.field_caption_copyrigth_.0.value|striptags }}</span>
               {% endif %}
             {% endfor %}
@@ -34,6 +34,7 @@
   </tr>
   </tbody>
 </table>
+
 {% if contacts %}
 <table border="0" cellpadding="28" cellspacing="0" width="800">
   <tbody>

@@ -241,10 +241,13 @@ class VwCmn implements ContainerInjectionInterface {
       $data['to'] = [];
       foreach ($sectionBelongingUsers as $item) {
         $theUser = \Drupal::entityTypeManager()->getStorage('user')->load($item);
-        if($theUser->isActive()){
-        //  if(count(array_intersect(($theUser->getRoles()), $allowedRoles)) > 0){
+        // @todo - Check if this is correct.
+        if (!is_null($theUser)) {
+          if ($theUser->isActive()) {
+            //  if(count(array_intersect(($theUser->getRoles()), $allowedRoles)) > 0){
             array_push($data['to'], $theUser->mail->value);
-       //   }
+            //   }
+          }
         }
       }
   }

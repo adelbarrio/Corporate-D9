@@ -34,7 +34,6 @@ class HcmImageFromBlob extends ProcessPluginBase {
     }
 
     $name = $row->getSourceProperty('title') . ' ' . $row->getSourceProperty('field_country') . '.' . $row->getSourceProperty('field_logo_type');
-    print_r($name . PHP_EOL);
     $file = file_save_data(base64_decode($value), 'public://ncw/images/' . $name, FileSystemInterface::EXISTS_REPLACE);
     $media = Media::create(
       [

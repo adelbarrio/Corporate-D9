@@ -9,7 +9,6 @@ is_admin: null
 permissions:
   - 'abort job item'
   - 'access dashboard'
-  - 'access devel information'
   - 'access toolbar'
   - 'access workbench'
   - 'access workbench access by role'

@@ -341,6 +341,9 @@ provider_mappings:
   -
     query: 'cn=LEGIS_PM,ou=MainSite,ou=Sites,dc=osha,dc=europa,dc=eu'
     is_regex: false
+  -
+    query: 'cn=EVENTPM,ou=MainSite,ou=Sites,dc=osha,dc=europa,dc=eu'
+    is_regex: false
 consumer_config: {  }
 consumer_mappings:
   -
@@ -561,6 +564,8 @@ consumer_mappings:
     role: review_manager
   -
     role: project_manager
+  -
+    role: eventpm
 synchronization_modes:
   user_logon: user_logon
 synchronization_actions:

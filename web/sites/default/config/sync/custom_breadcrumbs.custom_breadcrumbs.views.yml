@@ -11,5 +11,5 @@ language: und
 breadcrumbPaths: "/about-eu-osha\r\n/photo-gallery"
 breadcrumbTitles: "About EU-OSHA\r\nPhoto Gallery"
 type: '2'
-pathPattern: '/photo-gallery/*'
+pathPattern: /photo-gallery/
 extraCacheContexts: ''

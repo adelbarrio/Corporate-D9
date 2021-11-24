@@ -99,6 +99,7 @@ class ShortMessageForm extends ContentEntityForm {
 
     $headerElements = [
       '#theme' => 'short_messages_header',
+      '#node_id' => $this->entity->id(),
       '#header_link' => [
         '#type' => 'link',
         '#url' => Url::fromRoute('<front>')->setAbsolute(),
