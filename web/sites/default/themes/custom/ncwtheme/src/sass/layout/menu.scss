@@ -362,24 +362,6 @@
 
 } /* End Media 991px */
 
-@media only screen and (max-width : 480px) {
-  #block-logoosha-2 {
-    > div.content {
-      > div {
-        > div {
-          > div:nth-child(1) {
-            img {
-              width: 210px;
-              height: auto;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-
 /*  Menu for inforgraphics - rendered in Infographic twig  */
 .node--type-infographic{
   .sidebar-first .menu--main ul li ul li ul.menu-level-2{
