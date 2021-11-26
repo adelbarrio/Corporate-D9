@@ -3378,6 +3378,11 @@ span.ckeditorimage {
   border-bottom: 1px solid #003399;
 }
 
+/* Hide reCaptcha v3 Ribbon */
+.grecaptcha-badge {
+  display: none !important;
+}
+
 /* Breadcrumbs */
 .breadcrumb-fluid {
   border-bottom: 2px solid #cfddee;
