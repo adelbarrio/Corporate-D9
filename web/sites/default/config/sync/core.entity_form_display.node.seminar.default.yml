@@ -71,12 +71,9 @@ content:
     region: content
   field_expiration_date:
     weight: 3
-    settings:
-      date_order: MDY
-      time_type: '24'
-      increment: 15
+    settings: {  }
     third_party_settings: {  }
-    type: datetime_datelist
+    type: datetime_default
     region: content
   field_location:
     weight: 9
@@ -95,12 +92,9 @@ content:
     region: content
   field_publication_date:
     weight: 2
-    settings:
-      date_order: MDY
-      time_type: '24'
-      increment: 15
+    settings: {  }
     third_party_settings: {  }
-    type: datetime_datelist
+    type: datetime_default
     region: content
   field_related_resources_media:
     type: media_library_widget
@@ -124,21 +118,15 @@ content:
     region: content
   field_seminar_end_date:
     weight: 11
-    settings:
-      date_order: MDY
-      time_type: '24'
-      increment: 15
+    settings: {  }
     third_party_settings: {  }
-    type: datetime_datelist
+    type: datetime_default
     region: content
   field_seminar_start_date:
     weight: 10
-    settings:
-      date_order: MDY
-      time_type: '24'
-      increment: 15
+    settings: {  }
     third_party_settings: {  }
-    type: datetime_datelist
+    type: datetime_default
     region: content
   field_show_eu_flag:
     weight: 14

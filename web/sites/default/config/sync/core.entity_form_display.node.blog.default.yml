@@ -69,12 +69,9 @@ content:
     region: content
   field_expiration_date:
     weight: 5
-    settings:
-      date_order: MDY
-      time_type: '24'
-      increment: 15
+    settings: {  }
     third_party_settings: {  }
-    type: datetime_datelist
+    type: datetime_default
     region: content
   field_image_caption:
     weight: 3
@@ -109,12 +106,9 @@ content:
     region: content
   field_publication_date:
     weight: 4
-    settings:
-      date_order: MDY
-      time_type: '24'
-      increment: 15
+    settings: {  }
     third_party_settings: {  }
-    type: datetime_datelist
+    type: datetime_default
     region: content
   field_section:
     weight: 0

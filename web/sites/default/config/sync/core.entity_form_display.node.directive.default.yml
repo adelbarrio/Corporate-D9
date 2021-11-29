@@ -61,9 +61,9 @@ content:
   field_date_of_directive:
     weight: 5
     settings:
-      date_order: MDY
-      time_type: none
       increment: 15
+      date_order: YMD
+      time_type: '24'
     third_party_settings: {  }
     type: datetime_datelist
     region: content
@@ -75,12 +75,9 @@ content:
     region: content
   field_expiration_date:
     weight: 11
-    settings:
-      increment: 15
-      date_order: YMD
-      time_type: '24'
+    settings: {  }
     third_party_settings: {  }
-    type: datetime_datelist
+    type: datetime_default
     region: content
   field_legislation_category:
     weight: 3
@@ -96,12 +93,9 @@ content:
     region: content
   field_publication_date:
     weight: 4
-    settings:
-      date_order: MDY
-      time_type: '24'
-      increment: 15
+    settings: {  }
     third_party_settings: {  }
-    type: datetime_datelist
+    type: datetime_default
     region: content
   field_section:
     weight: 0
