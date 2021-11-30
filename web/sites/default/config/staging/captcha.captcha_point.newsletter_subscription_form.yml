@@ -1,0 +1,7 @@
+uuid: f3c65caa-7082-4d49-ac60-ebfe52485ac3
+langcode: en
+status: true
+dependencies: {  }
+formId: newsletter_subscription_form
+captchaType: recaptcha_v3/captcha_action
+label: newsletter_subscription_form

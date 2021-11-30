@@ -498,7 +498,9 @@
                 "if you don't want to translate your URL alias": "https://www.drupal.org/files/issues/2020-01-26/2689459-127.patch",
                 "Disabled text formats can't be seen in the GUI": "https://www.drupal.org/files/issues/2020-05-20/2502637-82_0.patch",
                 "Distinct": "https://www.drupal.org/files/issues/2021-04-16/2993688-69.patch",
-                "User can't reference unpublished content even when they have access to it": "https://www.drupal.org/files/issues/2021-06-09/2845144_52.patch"
+                "User can't reference unpublished content even when they have access to it": "https://www.drupal.org/files/issues/2021-06-09/2845144_52.patch",
+                "InvalidArgumentException: Invalid translation language specified.": "https://www.drupal.org/files/issues/2020-07-26/2137815-60.patch",
+                "[PP-1] Drupal.ajax does not guarantee that \"add new JS file to page\" commands have finished before calling said JS": "https://www.drupal.org/files/issues/2021-05-27/1988968-228--9.2.x.patch"
 
             },
             "drupal/linked_field": {
@@ -539,7 +541,8 @@
                 "Drupal breaks when using php version lower than 8": "patches/layoutcomponents-change_str_contains_for_php7.patch"
             },
             "drupal/tmgmt": {
-                "Use of deprecated theme function": "https://git.drupalcode.org/project/tmgmt/-/merge_requests/6.diff"
+                "Use of deprecated theme function": "https://git.drupalcode.org/project/tmgmt/-/merge_requests/6.diff",
+                "validateMaxLength gives bogus errors": "https://www.drupal.org/files/issues/2020-02-26/3116287_2.patch"
             },
             "drupal/pathologic": {
                 "Internal URL handling (Aliases, language prefixes, base://, ...)": "https://www.drupal.org/files/issues/2021-03-23/internal_url_handling-2418369-29.patch"

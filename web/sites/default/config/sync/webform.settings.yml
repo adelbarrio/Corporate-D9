@@ -314,8 +314,6 @@ requirements:
   clientside_validation: true
   spam: true
 langcode: en
-third_party_settings:
-  captcha:
-    replace_administration_mode: true
+third_party_settings: {  }
 _core:
   default_config_hash: 9qAvxkBYFcXXYVGI3KlH9Ks1AxdH0u6GpCrxzqDXO8M

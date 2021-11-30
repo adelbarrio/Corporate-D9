@@ -5,14 +5,14 @@ _core:
   default_config_hash: GLswejPT_b3G9TtpI4NKwR1mhIB_-FnysNn9QKc-01w
 general:
   varnish_purger: true
-  varnish_server: osha-d9-stg-proxy-corp.mainstrat.com
+  varnish_server: 'https://test.osha.europa.eu'
   purger_maintenance_mode: false
-  logging: '0'
+  logging: '1'
   debug: '0'
   noise: ''
-  secret: d72692f4bf61f0a4f974422f8d748f28ea7f49a93eb7f2c80d8fe457f7ac6dcb
+  secret: 0f29c810-0a59-4fc5-b500-1312669c165b
   grace: '10'
-  page_cache_maximum_age: '604800'
+  page_cache_maximum_age: '3600'
 available:
   enable_cache: true
   authenticated_users: false

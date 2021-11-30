@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 id: news_editor
 label: 'News Editor'
-weight: 3
+weight: 4
 is_admin: null
 permissions:
   - 'access administration pages'

@@ -388,10 +388,7 @@ class MultipleTargetLanguageJobItem extends JobItem {
       }
     }
 
-    $ret = $this->get('state')->value;
-    \Drupal::service('event_dispatcher')
-      ->dispatch(new TranslationEvent(NULL, NULL, $this), TranslationEvent::TRANSLATION_JOB_ITEM_STATE_CHANGED);
-    return $ret;
+    return $this->get('state')->value;
 
   }
 

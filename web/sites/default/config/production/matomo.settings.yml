@@ -43,14 +43,14 @@ custom:
       scope: visit
       slot: 4
     5:
-      name: ''
-      value: ''
-      scope: visit
+      name: Language
+      value: '[node:field_language]'
+      scope: page
       slot: 5
 codesnippet:
   before: ''
   after: ''
-translation_set: false
+translation_set: true
 cache: false
 page_title_hierarchy: false
 page_title_hierarchy_exclude_home: true

@@ -27,6 +27,7 @@ dependencies:
     - user.role.approver
     - user.role.content_validator
     - user.role.editor
+    - user.role.eventpm
     - user.role.events_coordinator
     - user.role.events_editor
     - user.role.project_manager
@@ -68,8 +69,9 @@ display:
             project_manager: project_manager
             approver: approver
             content_validator: content_validator
-            events_coordinator: events_coordinator
             events_editor: events_editor
+            events_coordinator: events_coordinator
+            eventpm: eventpm
       cache:
         type: tag
         options: {  }
@@ -84,7 +86,7 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Apply
+          submit_button: Search
           reset_button: true
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
@@ -2939,7 +2941,7 @@ display:
             identifier: field_tags_target_id
             required: false
             remember: false
-            multiple: false
+            multiple: true
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
@@ -2957,6 +2959,10 @@ display:
               osh_collaborator: '0'
               news_editor: '0'
               read_only: '0'
+              procur_pm: '0'
+              procur_edt: '0'
+              career_pm: '0'
+              career_edt: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -2974,7 +2980,7 @@ display:
           type: select
           limit: true
           vid: tags
-          hierarchy: false
+          hierarchy: true
           error_message: true
           plugin_id: taxonomy_index_tid
       sorts:

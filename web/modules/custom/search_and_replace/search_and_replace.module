@@ -11,7 +11,7 @@ use Drupal\search_and_replace\SarEntity;
 function search_and_replace_local_tasks_alter(&$local_tasks) {
   return \Drupal::service('class_resolver')
     ->getInstanceFromDefinition(SarEntity::class)
-    ->localTastAlter($local_tasks);
+    ->localTaskAlter($local_tasks);
 }
 
 /**
@@ -21,6 +21,25 @@ function search_and_replace_form_alter(&$form, FormStateInterface $form_state, $
   /*return \Drupal::service('class_resolver')
     ->getInstanceFromDefinition(SarForm::class)
     ->formAlter($form, $form_state, $form_id);*/
+}
+function search_and_replace_form_scanner_admin_settings_alter(&$form, FormStateInterface $form_state, $form_id) {
+  //hardcoded disabled entity_types and fields
+  $forbidden_entity_types = ['paragraph'];
+  $forbidden_fields = ['moderation_state'];
+  foreach ($form['enabled_content_types']['#options'] as $k => $v){
+    $entity = explode(":",$k);
+    if (in_array($entity[0], $forbidden_entity_types)){
+      unset($form['enabled_content_types']['#options'][$k]);
+    }
+  }
+  foreach ($form['fields_of_selected_content_type']['#options'] as $k => $v){
+    $entity = explode(":",$k);
+    if (in_array($entity[0], $forbidden_entity_types) OR in_array($entity[2],$forbidden_fields)){
+      unset($form['fields_of_selected_content_type']['#options'][$k]);
+    }
+  }
+}
+function search_and_replace_form_scanner_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 }
 
 /**

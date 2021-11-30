@@ -7,13 +7,20 @@ label: Staging
 description: ''
 folder: sites/default/config/staging
 module:
-  adv_varnish: 0
+  migrate: 0
+  migrate_plus: 0
+  migrate_tools: 0
+  osha_import_export: 0
   advagg: 0
   advagg_cdn: 0
   advagg_css_minify: 0
   advagg_js_minify: 0
+  adv_varnish: 0
   authorization: 0
   authorization_drupal_roles: 0
+  captcha: 0
+  externalauth: 0
+  image_captcha: 0
   ldap_authentication: 0
   ldap_authorization: 0
   ldap_query: 0
@@ -22,23 +29,21 @@ module:
   matomo: 0
   memcache: 0
   memcache_admin: 0
-  migrate: 0
-  migrate_plus: 0
-  migrate_tools: 0
-  osha_import_export: 0
-  externalauth: 10
+  recaptcha_v3: 0
 theme: {  }
 blacklist:
+  - migrate_plus.migration.import_crm_advisorygroups
+  - migrate_plus.migration.import_crm_board
+  - migrate_plus.migration.import_crm_bureauforweb
+  - migrate_plus.migration.import_crm_focalpoints
   - migrate_plus.migration_group.osha_import_export
   - migrate_plus.migration.import_crm_advisorygroups_agcp
   - migrate_plus.migration.import_crm_advisorygroups_prag
   - migrate_plus.migration.import_crm_advisorygroups_wesag
-  - migrate_plus.migration.import_crm_board
-  - migrate_plus.migration.import_crm_bureauforweb
-  - migrate_plus.migration.import_crm_focalpoints
-  - migrate_plus.migration.import_crm_advisorygroups
 graylist:
   - search_api.server.solr
+  - xmlsitemap.settings
+  - xmlsitemap.xmlsitemap.g3XYqcXbSKPVBDODwnT6pq7oqhCFkPryj4vVqrl_Kfc
 graylist_dependents: false
 graylist_skip_equal: true
 weight: 0
