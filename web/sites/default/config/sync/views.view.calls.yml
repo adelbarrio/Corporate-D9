@@ -1543,7 +1543,7 @@ display:
             min: ''
             max: ''
             value: now
-            type: offset
+            type: date
           group: 1
           exposed: false
           expose:
@@ -1576,14 +1576,14 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: datetime
-        field_expiration_date_value:
-          id: field_expiration_date_value
-          table: node__field_expiration_date
-          field: field_expiration_date_value
+        field_calls_deadline_value:
+          id: field_calls_deadline_value
+          table: node__field_calls_deadline
+          field: field_calls_deadline_value
           relationship: none
           group_type: group
           admin_label: ''
-          operator: '>='
+          operator: '>'
           value:
             min: ''
             max: ''
