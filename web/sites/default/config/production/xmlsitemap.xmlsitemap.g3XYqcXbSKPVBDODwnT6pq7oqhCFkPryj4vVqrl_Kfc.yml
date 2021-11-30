@@ -1,0 +1,8 @@
+uuid: 0394c7a9-4dd3-442a-9049-7265fa550390
+langcode: en
+status: true
+dependencies: {  }
+id: g3XYqcXbSKPVBDODwnT6pq7oqhCFkPryj4vVqrl_Kfc
+label: 'https://osha.europa.eu/en'
+context:
+  language: en

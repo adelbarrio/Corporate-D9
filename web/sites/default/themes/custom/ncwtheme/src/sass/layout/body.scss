@@ -1496,3 +1496,8 @@ span.ckeditorimage{
     }
   }
 }
+
+/* Hide reCaptcha v3 Ribbon */
+.grecaptcha-badge{
+  display: none !important;
+}

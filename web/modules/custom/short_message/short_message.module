@@ -53,7 +53,7 @@ function short_message_entity_type_build(array &$entity_types) {
  */
 function short_message_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   // Search if form is short_message.
-  if (preg_match('/.*short_message.*/', $form_id) !== FALSE) {
+   if (preg_match('/short_message_form/', $form_id) !== 0) {
     // Remove unused part of the form for short_message action.
     if (isset($form['url_redirects'])) {
       unset($form['url_redirects']);
