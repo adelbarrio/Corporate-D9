@@ -8,7 +8,6 @@ weight: -3
 is_admin: null
 permissions:
   - 'access dashboard'
-  - 'access devel information'
   - 'access toolbar'
   - 'access workbench'
   - 'create blog content'

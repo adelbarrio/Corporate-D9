@@ -11,5 +11,5 @@ language: und
 breadcrumbPaths: "/about-eu-osha\r\n/about-eu-osha/procurement"
 breadcrumbTitles: "About EU-OSHA\r\nProcurement"
 type: '2'
-pathPattern: '/about-eu-osha/procurement/calls_archive/*'
+pathPattern: /about-eu-osha/procurement/calls_archive/
 extraCacheContexts: ''

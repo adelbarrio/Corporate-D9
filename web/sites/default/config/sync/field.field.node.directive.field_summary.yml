@@ -12,7 +12,7 @@ bundle: directive
 label: Summary
 description: 'Please introduce in this box the text of this section.'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

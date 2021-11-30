@@ -6,8 +6,9 @@ visibility:
   request_path_mode: 0
   request_path_pages: "/admin\r\n/admin/*\r\n/batch\r\n/node/add*\r\n/node/*/*\r\n/user/*/*"
   user_role_mode: 0
-  user_role_roles: {  }
-  user_account_mode: 1
+  user_role_roles:
+    anonymous: anonymous
+  user_account_mode: 0
 track:
   mailto: true
   files: true
@@ -22,9 +23,9 @@ privacy:
 custom:
   variable:
     1:
-      name: ''
-      value: ''
-      scope: visit
+      name: Activity
+      value: '[node:field_activity]'
+      scope: page
       slot: 1
     2:
       name: ''
@@ -42,14 +43,14 @@ custom:
       scope: visit
       slot: 4
     5:
-      name: ''
-      value: ''
-      scope: visit
+      name: Language
+      value: '[node:field_language]'
+      scope: page
       slot: 5
 codesnippet:
   before: ''
   after: ''
-translation_set: false
+translation_set: true
 cache: false
 page_title_hierarchy: false
 page_title_hierarchy_exclude_home: true

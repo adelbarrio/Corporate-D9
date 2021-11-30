@@ -11,5 +11,5 @@ language: und
 breadcrumbPaths: "/tools-and-resources\r\n/tools-and-resources/infographics"
 breadcrumbTitles: "Tools & resources\r\nInfographics"
 type: '2'
-pathPattern: '/tools-and-publications/infographics/*'
+pathPattern: /tools-and-publications/infographics/
 extraCacheContexts: ''

@@ -15,7 +15,6 @@ permissions:
   - 'access content overview'
   - 'access contextual links'
   - 'access dashboard'
-  - 'access devel information'
   - 'access entity_additional_reference entity browser pages'
   - 'access media browser'
   - 'access media overview'

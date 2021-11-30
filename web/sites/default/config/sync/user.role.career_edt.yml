@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 id: career_edt
 label: 'CAREER EDT'
-weight: 10
+weight: 9
 is_admin: null
 permissions:
   - 'access media overview'

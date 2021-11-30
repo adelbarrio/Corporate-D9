@@ -305,14 +305,12 @@ jQuery(document).ready(function($) {
     $('#block-mainnavigation-2--2 > ul > li:nth-child(6) > div > ul > li > div > ul > li:nth-child(3) > a').addClass('is-active');
   }
 
-
   //Hierarchical view
   $('#tree ul').css('display', 'none');
   $("#tree .has-child > .expand_menu").click(function(){
     $(this).toggleClass('expanded');
     $(this).parent('.has-child').find('> .item-list > ul').slideToggle('slow');
   });
-
 
   //Tooltip Thesaurus
   if ($(".content-tooltip img")[0]) {
@@ -480,6 +478,11 @@ jQuery(document).ready(function($) {
       $('#block-searchsite').show();
       $('#block-headermenu').appendTo('#navbar-main');
       $('#block-headermenu').show();
+    }
+
+    //Move alert wrapper
+    if ($(".alert-wrapper")[0]) {
+      $('.alert-wrapper').insertBefore('nav.tabs');
     }
 
   });

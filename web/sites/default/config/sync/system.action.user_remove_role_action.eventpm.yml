@@ -1,0 +1,14 @@
+uuid: 53cc19b6-9e22-4438-a83e-55e8b1e621ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.eventpm
+  module:
+    - user
+id: user_remove_role_action.eventpm
+label: 'Remove the EVENTPM role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: eventpm

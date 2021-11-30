@@ -1111,8 +1111,8 @@ body.path-aggregator{
   clear: both;
 }
 
-/* Hide field reviwers */
-#main{
+/* Hide field reviwers - appprove and RM list (tabs) */
+#approver-form{
   .form-item-node-id{
     display: none;
   }
@@ -1444,4 +1444,60 @@ body.node--type-infographic{
 span.ckeditorimage{
   float: left;
   margin-right: 10px;
+}
+
+.archived-container{
+  background: $bg-color-blue-light-2;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid $bg-color-blue-light;
+  p{
+    color: $text-color-blue;
+  }
+  p:nth-child(1){
+    font-weight: 600;
+  }
+}
+
+.alert-wrapper {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-height: 75vh;
+  z-index: 9;
+  margin-bottom: 2rem;
+  .alert-warning {
+    color: #333;
+    background: #FFFBD9;
+    border: 1px solid #FFEBC5;
+    border-radius: 0;
+    margin-top: 0;
+  }
+  .btn-close{
+    display: none;
+  }
+}
+
+.alert-warning::before{
+  float: left;
+  height: 2.15rem !important;
+  margin-right: 1em;
+}
+
+#translation-job-message{
+  padding-top: 6px;
+  color: #b17508;
+  a{
+    border-bottom: 1px solid $bg-color-pink;
+    &:hover{
+      text-decoration: none;
+      border-bottom: 1px solid $bg-color-blue;
+    }
+  }
+}
+
+/* Hide reCaptcha v3 Ribbon */
+.grecaptcha-badge{
+  display: none !important;
 }
