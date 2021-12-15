@@ -7,11 +7,16 @@ dependencies:
     - field.storage.node.field_publication_date
     - image.style.large
     - node.type.gallery
+    - taxonomy.vocabulary.photo_gallery_type
+  content:
+    - 'taxonomy_term:photo_gallery_type:481c4873-5086-48f6-8161-60cbb5f99fc1'
+    - 'taxonomy_term:photo_gallery_type:d1d6b11b-af6f-42c2-ad55-455c75ba7f5d'
   module:
     - datetime
     - image
     - node
     - pagerer
+    - taxonomy
     - user
 id: photo_gallery
 label: 'Photo gallery'
@@ -397,6 +402,214 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_cover_photo'
+        - 'config:field.storage.node.field_publication_date'
+  page_2:
+    display_plugin: page
+    id: page_2
+    display_title: 'Page 2'
+    position: 2
+    display_options:
+      display_extenders:
+        metatag_display_extender: {  }
+      title: 'Healthy Workplaces for All Ages Campaign 2016-2017'
+      defaults:
+        title: false
+        arguments: false
+        filters: false
+        filter_groups: false
+      path: photo-gallery/healthy-workplaces-for-all-ages-campaign-2016-2017
+      arguments: {  }
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            gallery: gallery
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        field_photo_gallery_type_target_id:
+          id: field_photo_gallery_type_target_id
+          table: node__field_photo_gallery_type
+          field: field_photo_gallery_type_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            - 4858
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: textfield
+          limit: true
+          vid: photo_gallery_type
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_cover_photo'
+        - 'config:field.storage.node.field_publication_date'
+  page_3:
+    display_plugin: page
+    id: page_3
+    display_title: 'Page 3'
+    position: 3
+    display_options:
+      display_extenders:
+        metatag_display_extender: {  }
+      arguments: {  }
+      defaults:
+        arguments: false
+        title: false
+        filters: false
+        filter_groups: false
+      title: 'Healthy Workplaces Campaign Manage Dangerous Substances 2018-19'
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            gallery: gallery
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        field_photo_gallery_type_target_id:
+          id: field_photo_gallery_type_target_id
+          table: node__field_photo_gallery_type
+          field: field_photo_gallery_type_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            - 4857
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: textfield
+          limit: true
+          vid: photo_gallery_type
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      path: photo-gallery/Healthy-workplaces-campaign-manage-dangerous-substances-2018-19
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:

@@ -97,7 +97,12 @@ class Xml extends \XMLWriter implements FormatInterface {
     // <TransactionData>
     $this->startElement('TransactionData');
     $this->startElement('TranslationDetails');
-    $this->writeElement('TotalCharacterLength', $job->getWordCount());
+    if ($job instanceof MultipleTargetLanguageJob) {
+      $this->writeElement('TotalCharacterLength', $job->getCharactersCount());
+    }
+    else {
+      $this->writeElement('TotalCharacterLength', $job->getWordCount());
+    }
 
     $addedItems = [];
     $job_items = self::getUniqueItems($job);

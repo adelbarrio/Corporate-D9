@@ -13,7 +13,10 @@
 {% set countryCode = ds_content.group_events_event_details.field_country_code['#object'].field_country_code.0.value %}
 {% set date = ds_content.group_events_event_details.field_date.0['#text'] %}
 {% set event_title = ds_content.node_title.0.0.0['#context'] %}
-{% set event_url = ds_content.node_title.0.0.0['#context'].entity_url.routeParameters.node %}
+{% set event_url = event_title.entity_url %}
+{% set piwik_url_value = 'oshmail_2021_12' %}
+{% set piwik_url = '?pk_campaign=' ~ piwik_url_value %}
+
 <tr class="twig-template-for-events">
   <td colspan="2" style="padding-top: 0">
     {{ countryCode }} {{ city }}, {{ date }}
@@ -24,7 +27,7 @@
     >&nbsp;
   </td>
   <td style="padding-top: 0">
-    <a href="/node/{{ event_url }}" style="color: #003399; text-decoration: none; font-size: 14px; font-weight: 600;">
+    <a href="{{ event_url }}{{ piwik_url }}" style="color: #003399; text-decoration: none; font-size: 14px; font-weight: 600;">
       {{ event_title.output }}
     </a>
   </td>
