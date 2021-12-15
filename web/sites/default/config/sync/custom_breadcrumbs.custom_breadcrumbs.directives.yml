@@ -1,0 +1,15 @@
+uuid: 1d06aac5-d5cf-496b-a2fd-d088c30079cd
+langcode: en
+status: true
+dependencies: {  }
+id: directives
+label: Directives
+description: ''
+entityType: node
+entityBundle: directive
+language: en
+breadcrumbPaths: "/safety-and-health-legislation\r\n/safety-and-health-legislation/european-directives"
+breadcrumbTitles: "Legislation\r\nEU directives"
+type: '1'
+pathPattern: ''
+extraCacheContexts: ''

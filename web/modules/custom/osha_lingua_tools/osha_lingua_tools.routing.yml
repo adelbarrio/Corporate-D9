@@ -1,0 +1,7 @@
+osha_lingua_tools.admin_content:
+  path: '/admin/content/copy_publication_translation'
+  defaults:
+    _form: 'Drupal\osha_lingua_tools\Form\OshaLinguaToolsForm'
+    _title: 'Copy Publication Translation'
+  requirements:
+    _permission: 'access administration pages'

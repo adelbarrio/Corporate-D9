@@ -256,6 +256,13 @@ content:
     weight: 31
     region: content
     third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 34
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   title:
     type: string_textfield
     weight: 0
@@ -297,4 +304,3 @@ hidden:
   field_source_url: true
   promote: true
   simplenews_issue: true
-  sticky: true

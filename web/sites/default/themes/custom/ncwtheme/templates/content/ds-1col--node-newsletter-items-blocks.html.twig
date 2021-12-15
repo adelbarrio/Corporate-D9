@@ -9,7 +9,14 @@
  * - ds_content: content region
  */
 #}
+
+<{{ ds_content_wrapper }}{{ attributes.addClass('ds-1col', 'clearfix') }}>
+
 {% set publication_date = ds_content.field_publication_date.0['#text'] %}
+{% set publication_title = ds_content.node_title.0.0.0['#context'] %}
+{% set publication_url = publication_title.entity_url %}
+{% set piwik_url_value = 'oshmail_2021_12' %}
+{% set piwik_url = '?pk_campaign=' ~ piwik_url_value %}
 <tr>
   <td colspan="2">
     {{ publication_date }}
@@ -19,9 +26,12 @@
   <td style="font-size: 14px; color: #003399;vertical-align: top">
     >&nbsp;
   </td>
-  <td>
-    {{ ds_content.node_title }}
+  <td style="padding-top: 0">
+    <a href="{{ publication_url }}{{ piwik_url }}" style="color: #003399; text-decoration: none; font-size: 14px; font-weight: 600;">
+      {{ publication_title.output }}
+    </a>
   </td>
+</tr>
 </tr>
 <tr>
   <td></td>

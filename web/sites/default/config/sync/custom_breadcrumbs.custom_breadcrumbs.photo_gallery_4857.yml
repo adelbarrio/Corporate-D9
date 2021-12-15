@@ -1,0 +1,15 @@
+uuid: e91c7cc7-a4b6-4995-9e63-40445aa41f6e
+langcode: en
+status: true
+dependencies: {  }
+id: photo_gallery_4857
+label: Photo-gallery-4857
+description: ''
+entityType: _none
+entityBundle: _none
+language: en
+breadcrumbPaths: "/about-eu-osha\r\n/photo-gallery"
+breadcrumbTitles: "About EU-OSHA\r\nPhoto Gallery"
+type: '2'
+pathPattern: /photo-gallery/healthy-workplaces-campaign-manage-dangerous-substances-2018-19
+extraCacheContexts: ''

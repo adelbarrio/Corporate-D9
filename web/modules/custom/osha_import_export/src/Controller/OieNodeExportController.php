@@ -51,6 +51,17 @@ class OieNodeExportController extends ControllerBase implements ContainerInjecti
       return new JsonResponse([]);
     }
 
+//Get providers fields for msds content type
+    if ($node->bundle()=="musculoskeletal_disorders") {
+      $paragraph = $node->field_msd_provider->getValue();
+
+      foreach ($paragraph as $element) {
+        $provider = \Drupal\paragraphs\Entity\Paragraph::load($element['target_id']);
+        $provname = $provider->field_provider_english_->getValue();
+        $provoriginal = $provider->field_provider_original_->getValue();
+      }
+    }
+
     // Get each translation.
     $langs = [];
     foreach ($node->getTranslationLanguages() as $lang => $value) {
@@ -75,6 +86,8 @@ class OieNodeExportController extends ControllerBase implements ContainerInjecti
       'revision_timestamp' => $node->get('revision_timestamp')->getString(),
       'revision_uid' => $node->get('revision_uid')->getString(),
       'pathalias' => mb_substr($node->get('path')->getString() ,0,mb_strpos($node->get('path')->getString(),',')),
+      'provname' => $provname,
+      'provoriginal' => $provoriginal,
     ];
 
     foreach ($node->getFieldDefinitions() as $field_name => $definition) {

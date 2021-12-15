@@ -24,9 +24,32 @@ dependencies:
     - 'taxonomy_term:contact_type:cd4edaa9-78e2-46fd-bc8e-fde26ff2461b'
     - 'taxonomy_term:country_status:65716bcf-0823-4b2a-aa1d-fc33f21aab41'
     - 'taxonomy_term:country_status:7240dc31-08d8-4f4f-9d6a-f15f79e3b276'
+    - 'taxonomy_term:wg_category:03b8bdfe-5e82-4038-8eec-c67c038c818b'
     - 'taxonomy_term:wg_category:25552fad-e958-47c6-aa3f-69a5de6345f5'
     - 'taxonomy_term:wg_category:2c8ab965-3be1-4dce-bde2-9b8832c85a3c'
+    - 'taxonomy_term:wg_category:4dc7626f-a39f-4b28-971a-a16d5eae278b'
+    - 'taxonomy_term:wg_category:581f7576-e7a4-4cea-af82-3a1768d8e125'
+    - 'taxonomy_term:wg_category:6e09a084-64b2-4488-aa67-075bd46f77a0'
+    - 'taxonomy_term:wg_category:70cd206e-3544-4658-b508-e6d4260aae4b'
+    - 'taxonomy_term:wg_category:7b009e4b-2409-499e-b73c-04ce8cd14cd9'
+    - 'taxonomy_term:wg_category:9a076eb4-072d-4de8-bc47-d7f9cbd13b20'
+    - 'taxonomy_term:wg_category:cb97275b-4236-41bb-9fef-dc3f8124ef8e'
+    - 'taxonomy_term:wg_category:d607023b-8b0f-496d-9f3a-cd9f60b584f6'
+    - 'taxonomy_term:wg_role_1:07ac5909-3c19-4e7b-b589-0e07d12dac8d'
+    - 'taxonomy_term:wg_role_1:56a91976-b3b2-43f6-857c-15643529ef80'
+    - 'taxonomy_term:wg_role_1:57f16009-3e38-4282-97de-d43107a9c04f'
     - 'taxonomy_term:wg_role_1:630da401-b072-484b-91a3-95f5e89209e0'
+    - 'taxonomy_term:wg_role_1:72214e6d-7b2c-4ea8-9458-47af31613ab0'
+    - 'taxonomy_term:wg_role_1:78d38b71-75a0-4c8b-89ec-eff514ba9898'
+    - 'taxonomy_term:wg_role_1:8cac9061-8dc4-46b9-ad79-23d5e3f44548'
+    - 'taxonomy_term:wg_role_1:8e2326c9-0577-4486-a79b-e3a57081121e'
+    - 'taxonomy_term:wg_role_1:954cd195-91e7-406e-8b7f-41ae0fd6b28a'
+    - 'taxonomy_term:wg_role_1:968902d0-5050-4415-92f7-184fba0521b1'
+    - 'taxonomy_term:wg_role_1:ab705029-4dc6-4427-8900-adb0de9e7617'
+    - 'taxonomy_term:wg_role_1:af6ce3a3-24dc-4003-a5d2-736d54254b41'
+    - 'taxonomy_term:wg_role_1:b093debd-36a0-4773-9027-a05769b5c0c0'
+    - 'taxonomy_term:wg_role_1:d0ad271a-2095-416c-b7ef-80904aff0510'
+    - 'taxonomy_term:wg_role_1:e90b6168-cc1a-4187-94ef-d7fd2a4df0f1'
   module:
     - node
     - taxonomy
@@ -165,8 +188,8 @@ display:
           label: ''
           exclude: true
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: "{% if field_wg_category ==\"expert nominated by the european parliament\" %}\r\nExpert nominated by the European Parliament\r\n{% else %}\r\n{{ field_wg_category }}\r\n{% endif %}"
             make_link: false
             path: ''
             absolute: false
@@ -228,8 +251,8 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: "{% if field_wg_role_1 ==\"observer\" %}\r\nObserver\r\n{% elseif field_wg_role_1 ==\"observer alternate\" %}\r\nObserver Alternate\r\n{% else %}\r\n{{ field_wg_role_1 }}\r\n{% endif %}"
             make_link: false
             path: ''
             absolute: false
@@ -1375,6 +1398,7 @@ display:
           expose:
             operator_limit_selection: false
             operator_list: {  }
+          group: 1
         field_contact_type_target_id:
           id: field_contact_type_target_id
           table: node__field_contact_type
@@ -1505,6 +1529,120 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: boolean
+        field_wg_role_1_target_id:
+          id: field_wg_role_1_target_id
+          table: node__field_wg_role_1
+          field: field_wg_role_1_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            3097: 3097
+            5229: 5229
+            4998: 4998
+            4893: 4893
+            4981: 4981
+            5228: 5228
+            5167: 5167
+            5227: 5227
+            5142: 5142
+            5232: 5232
+            18986: 18986
+            3082: 3082
+            3088: 3088
+            6754: 6754
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: shs
+          limit: true
+          vid: wg_role_1
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_wg_category_target_id:
+          id: field_wg_category_target_id
+          table: node__field_wg_category
+          field: field_wg_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            302149: 302149
+            302150: 302150
+            3089: 3089
+            4881: 4881
+            3083: 3083
+            3028: 3028
+            3025: 3025
+            3032: 3032
+            3029: 3029
+            3034: 3034
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: shs
+          limit: true
+          vid: wg_category
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
       defaults:
         filters: false
         filter_groups: false
@@ -2074,8 +2212,8 @@ display:
           label: ''
           exclude: true
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: "{% if field_wg_category ==\"expert nominated by the european parliament\" %}\r\nExpert nominated by the European Parliament\r\n{% else %}\r\n{{ field_wg_category }}\r\n{% endif %}"
             make_link: false
             path: ''
             absolute: false
