@@ -10,6 +10,10 @@
  */
 #}
 {% set publication_date = ds_content.field_publication_date.0['#text'] %}
+{% set publication_url = ds_content.node_title.0.0.0['#context'].entity_url %}
+{% set publication_title = ds_content.node_title.0.0.0['#context'].output %}
+{% set piwik_url_value = 'oshmail_2021_12' %}
+{% set piwik_url = '?pk_campaign=' ~ piwik_url_value %}
 <tr>
   <td colspan="2">
     {{ publication_date }}
@@ -20,7 +24,9 @@
     >&nbsp;
   </td>
   <td>
-    {{ ds_content.node_title }}
+    <a href="{{ publication_url }}{{ piwik_url }}" style="color: #003399; text-decoration: none; font-size: 14px; font-weight: 600;">
+      {{ publication_title }}
+    </a>
   </td>
 </tr>
 <tr>

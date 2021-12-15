@@ -16,7 +16,9 @@
 
 {% set publication_date = ds_content.field_publication_date.0['#text'] %}
 {% set highlight_title = ds_content.node_title.0.0.0['#context'] %}
-{% set highlight_url = ds_content.node_title.0.0.0['#context'].entity_url.routeParameters.node %}
+{% set highlight_url = highlight_title.entity_url %}
+{% set piwik_url_value = 'oshmail_2021_12' %}
+{% set piwik_url = '?pk_campaign=' ~ piwik_url_value %}
 
 <tr class="twig-template-for-highlights">
   <td style="padding-top: 20px;">
@@ -27,14 +29,15 @@
      {{ publication_date }}
     </span>
     <h2 style="margin-top: 10px; margin-bottom: 10px;">
-      <a href="/node/{{ highlight_url }}" style="color: #003399; text-decoration: none; font-size: 18px;">
+      <a href="{{ highlight_url }}{{ piwik_url }}" style="color: #003399; text-decoration: none; font-size: 18px;">
         {{ highlight_title.output }}
       </a>
+
     </h2>
     <span style="font-size: 13px; line-height: 20px; font-family: Arial;">
       {{ ds_content.body }}
     </span>
-    <a href="/node/{{ highlight_url }}" style="display: block; color: #003399; text-decoration: none; font-family: Arial,sans-serif; font-size: 13px; font-weight: bold; padding-top: 20px;">
+    <a href="{{ highlight_url }}{{ piwik_url }}" style="display: block; color: #003399; text-decoration: none; font-family: Arial,sans-serif; font-size: 13px; font-weight: bold; padding-top: 20px;">
       {{ 'See more' | trans }} <img src="https://osha.europa.eu/sites/default/themes/custom/ncwtheme/images/newsletter-images/flecha.png" alt="{{ 'See more' | trans }}">
     </a>
   </td>

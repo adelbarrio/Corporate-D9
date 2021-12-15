@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d9c88fcdfb5f947be411b0c6807347d",
+    "content-hash": "51a379b6c3bb66d181318d2c2fb425a3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -12012,10 +12012,6 @@
                 {
                     "name": "Taran2L",
                     "homepage": "https://www.drupal.org/user/473438"
-                },
-                {
-                    "name": "ribel",
-                    "homepage": "https://www.drupal.org/user/1449610"
                 }
             ],
             "description": "Defines a numeric range field type.",
@@ -12403,7 +12399,7 @@
                 },
                 "drupal": {
                     "version": "8.x-3.x-dev",
-                    "datestamp": "1636604902",
+                    "datestamp": "1638592463",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
