@@ -40,6 +40,7 @@ permissions:
   - 'view own quiz_result'
   - 'view quiz_question'
   - 'view results for own quiz'
+  - 'view terms in activity'
   - 'view terms in agency'
   - 'view terms in article_types'
   - 'view terms in attachment_file_type'

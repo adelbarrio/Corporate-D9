@@ -1,0 +1,4 @@
+osha_lingua_tools.admin_content:
+  title: 'Copy Publication Translation'
+  route_name: osha_lingua_tools.admin_content
+  base_route: system.admin_content

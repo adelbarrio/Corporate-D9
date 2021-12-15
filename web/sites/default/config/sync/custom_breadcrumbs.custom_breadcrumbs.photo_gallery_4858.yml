@@ -1,0 +1,15 @@
+uuid: 9167d17f-7ba2-4b15-a09a-9535daf08160
+langcode: en
+status: true
+dependencies: {  }
+id: photo_gallery_4858
+label: Photo-gallery-4858
+description: ''
+entityType: _none
+entityBundle: _none
+language: en
+breadcrumbPaths: "/about-eu-osha\r\n/photo-gallery"
+breadcrumbTitles: "About EU-OSHA\r\nPhoto Gallery"
+type: '2'
+pathPattern: /photo-gallery/healthy-workplaces-for-all-ages-campaign-2016-2017
+extraCacheContexts: ''

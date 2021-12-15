@@ -1,0 +1,1017 @@
+<?php
+/**
+ * @file
+ * osha_lingua_tools module file
+ */
+
+use Drupal\Core\Link;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_permission().
+ */
+function osha_lingua_tools_permission() {
+  $permissions = array();
+  $permissions['use linguatools autocomplete'] = array('title' => t("Use linguatools autocomplete"));
+  $permissions['use linguatools forms'] = array('title' => t("Use linguatools forms"));
+  $permissions['use linguatools forms for calls content'] = array('title' => t("Use linguatools forms for calls content"));
+  return $permissions;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ */
+function osha_lingua_tools_form_alter(&$form, \Drupal\Core\Form\FormStateInterface &$form_state, $form_id) {
+  $user = \Drupal::currentUser();
+  if ($form_id == 'dangerous_substances_node_form') {
+    if ($user->hasPermission('edit any dangerous_substances content')) {
+      $form['options']['#access'] = TRUE;
+    }
+  }
+
+  if ($form_id == 'musculoskeletal_disorders_node_form') {
+    if ($user->hasPermission('edit any musculoskeletal_disorders content')) {
+      $form['options']['#access'] = TRUE;
+    }
+  }
+}
+
+
+function linguatools_access($node) {
+  $user = \Drupal::currentUser();
+  $type = is_string($node) ? $node : $node->type;
+
+  if ($type == 'calls') {
+    if ($user->hasPermission('use linguatools forms for calls content')) {
+      return TRUE;
+    }
+  }
+  elseif ($user->hasPermission('use linguatools forms')) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+function osha_lingua_clone_node(\Drupal\node\NodeInterface $source_node) {
+  $user = \Drupal::currentUser();
+
+  $node = new stdClass();
+  $node->title = 'Copy of - ' . $source_node->getTitle();
+  $node->type = $source_node->getType();
+  node_object_prepare($node);
+
+  $node->language = $source_node->language;
+  $node->uid = $user->uid;
+  $node->status = $source_node->isPublished();
+  $node->promote = $source_node->promote;
+
+  $fields = field_info_instances('node', $source_node->getType());
+  foreach ($fields as $field) {
+    if (in_array($field['field_name'], ['field_file', 'field_publication_related_res', 'field_related_publications'])) {
+      continue;
+    }
+    if (@$source_node->{$field['field_name']}[$source_node->language]) {
+      $node->{$field['field_name']}[$source_node->language] = $source_node->{$field['field_name']}[$source_node->language];
+    }
+    if (@$source_node->{$field['field_name']}[\Drupal\Core\Language\Language::LANGCODE_NOT_SPECIFIED]) {
+      $node->{$field['field_name']}[\Drupal\Core\Language\Language::LANGCODE_NOT_SPECIFIED] = $source_node->{$field['field_name']}[\Drupal\Core\Language\Language::LANGCODE_NOT_SPECIFIED];
+    }
+  }
+  $node->title_field[$node->language][0]['value'] = $source_node->getTitle();
+  $node->workbench_access = $source_node->workbench_access;
+  $node = node_submit($node);
+  $node->save();
+  drupal_goto('node/' . $node->nid . '/edit');
+}
+
+function osha_lingua_clone_access(\Drupal\node\NodeInterface $source_node, Drupal\Core\Session\AccountInterface $account) {
+  $user = \Drupal::currentUser();
+  if (
+    $user->hasPermission('edit any dangerous_substances content') &&
+    ($source_node->getType() == 'dangerous_substances')
+  ) {
+    return TRUE;
+  }
+  if (
+    $user->hasPermission('edit any musculoskeletal_disorders content') &&
+    ($source_node->getType() == 'musculoskeletal_disorders')
+  ) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function osha_lingua_tools_menu() {
+  $items['node/%node/clone'] = array(
+    'title' => 'Lingua Tools',
+    'page callback' => 'osha_lingua_clone_node',
+    'page arguments' => array(1),
+    'access callback' => 'osha_lingua_clone_access',
+    'access arguments' => array(1),
+    'weight' => 7,
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['node/%node/linguatools'] = array(
+    'title' => 'Lingua Tools',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('form_lingua_form'),
+    'access callback' => 'linguatools_access',
+    'access arguments' => array(1),
+
+    'weight' => 7,
+    'type' => MENU_LOCAL_TASK,
+  );
+  $items['publication/node/autocomplete'] = array(
+    'title' => 'Ajax callback autocomplete node',
+    'description' => 'Ajax callback autocomplete node',
+    'page callback' => 'osha_publication_node_autocomplete',
+    'access arguments' => array('use linguatools autocomplete'),
+    'type' => MENU_CALLBACK,
+    'weight' => 2,
+  );
+  $items['admin/content/copy_publication_translation'] = array(
+    'title' => 'Copy publication translation',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('osha_copy_publication_translation'),
+    'access arguments' => array('use linguatools forms'),
+    'weight' => 8,
+    'type' => MENU_LOCAL_TASK,
+  );
+
+  return $items;
+}
+
+function osha_publication_node_autocomplete($string = '') {
+  $database = \Drupal::database();
+  $query = $database->select('node_field_data','n');
+  $query->fields('n',['nid','title']);
+  $query->condition('n.type','publication');
+  $query->condition('n.title','%'.$string.'%','LIKE');
+  $query->range(0,20);
+  $results = $query->execute();
+  $matches = [];
+  foreach ($results as $node) {
+    $matches[$node->nid] = \Drupal\Component\Utility\Html::escape($node->title) . ' (' . $node->nid . ')';
+  }
+  return json_encode($matches);
+}
+
+function osha_copy_publication_translation($form, &$form_state) {
+  $country_options = osha_lingua_tools_get_country_codes();
+
+  $form['node'] = array(
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#title' => t('Choose a publication by title'),
+    '#autocomplete_path' => 'publication/node/autocomplete',
+  );
+  $form['prefix_title'] = array(
+    '#title' => 'Prefix title',
+    '#type' => 'textfield',
+    '#states' => array(
+      'disabled' => array(
+        '#edit-copy-option input[type="radio"]' => array('value' => 'one'),
+      ),
+    ),
+  );
+  $form['suffix_title'] = array(
+    '#title' => 'Suffix title',
+    '#type' => 'textfield',
+    '#states' => array(
+      'disabled' => array(
+        '#edit-copy-option input[type="radio"]' => array('value' => 'one'),
+      ),
+    ),
+  );
+  $form['copy_option'] = array(
+    '#type' => 'radios',
+    '#title' => '',
+    '#options' => array(
+      'publication' => 'Publication',
+      'one' => 'One publication for each country',
+    ),
+    '#default_value' => 'publication',
+  );
+  $form['publication_per_country'] = array(
+    '#type' => 'fieldset',
+  );
+  $form['publication_per_country']['select_all_countries'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Select all countries'),
+    '#states' => array(
+      'disabled' => array(
+        '#edit-copy-option input[type="radio"]' => array('value' => 'publication'),
+      ),
+    ),
+  );
+  $form['publication_per_country']['countries'] = array(
+    '#type' => 'select',
+    '#title' => '',
+    '#options' => $country_options,
+    '#multiple' => TRUE,
+    '#chosen' => FALSE,
+    '#size' => 20,
+    '#states' => array(
+      'disabled' => array(
+        '#edit-copy-option input[type="radio"]' => array('value' => 'publication'),
+      ),
+    ),
+  );
+
+  $form['create'] = array(
+    '#type' => 'submit',
+    '#value' => t('Copy and translate'),
+  );
+  $form['preview'] = array(
+    '#type' => 'submit',
+    '#submit' => array('osha_copy_publication_translation_preview'),
+    '#value' => t('Preview translations'),
+  );
+  if (isset($form_state['translation_info'])) {
+    $form['#prefix'] = $form_state['translation_info'];
+  }
+  return $form;
+}
+
+function osha_copy_publication_translation_preview($form, &$form_state) {
+  $node_text = $form_state->getValue('node');
+  $node_id = substr(explode("]", $node_text)[0],1);
+  $source_node = \Drupal::entityTypeManager()->getStorage('node')->load($node_id);
+  $source_node_translations = [];
+  foreach ( $source_node->getTranslationLanguages() as $lang_code => $language) {
+    $source_node_translations[$lang_code] = $language;
+  }
+  $selected_languages = osha_copy_publication_translation_get_selected_languages($source_node);
+  $rows = [];
+  $header = array(t('Language'), t('Title'), t('Translated Title'));
+
+  $prefix_title = $form_state->getValue('prefix_title');
+  $suffix_title = $form_state->getValue('suffix_title');
+  $copy_option = $form_state->getValue('copy_option');
+  $selected_languages['en'] = 'English';
+  if ($copy_option == 'one') {
+	  $prefix_title = '';
+	  $suffix_title = '';
+    $country_codes = osha_lingua_tools_get_country_codes();
+    $country_codes = array_change_key_case($country_codes, CASE_LOWER);
+    $countries = $form_state->getValue('countries');
+    $countries = array_change_key_case($countries, CASE_LOWER);
+    $selected_languages['en'] = 'English';
+    $languages = array_intersect_key($selected_languages, $source_node_translations, $countries);
+  }else{
+	  $country_codes = [];
+    $languages = array_intersect_key($selected_languages, $source_node_translations);
+  }
+  $rows = [];
+  foreach ($languages  as $lang_code => $lang_name){
+	  $translated_entity = $source_node->getTranslation($lang_code);
+	  $title = $translated_entity->getTitle();
+	  $new_title = osha_copy_publication_translation_get_title($prefix_title, $suffix_title, $title, $lang_code, $country_codes[$lang_code]);
+	  $rows[] = [$lang_name, $title, $new_title];
+  }
+  $table = [
+	  '#type' => 'table',
+	  '#header' => $header,
+	  '#rows' => $rows,
+  ];
+  $markup = \Drupal::service('renderer')->render($table);
+  $form_state->setValue('translation_info', $markup);
+  $form_state->setRebuild();
+}
+
+function osha_copy_publication_translation_get_title($prefix_title, $suffix_title, $title, $lang_code, $country = '') {
+  if ($country) {
+    $title = t(trim($country), [], ['langcode' => $lang_code]) . ': ' . $title;
+  }
+  if ($prefix_title) {
+    $title = t(trim($prefix_title), [], ['langcode' => $lang_code]) . ' ' . $title;
+  }
+  if ($suffix_title) {
+    $title .= ' ' . t(trim($suffix_title), [], ['langcode' => $lang_code]);
+  }
+  return $title;
+}
+
+function osha_copy_publication_translation_get_selected_languages($node) {
+  $languages = tmgmt_available_languages();
+  unset($languages[$node->translations->original]);
+  return array_intersect_key($languages, osha_language_list_options());
+}
+
+function osha_copy_publication_translation_create_base_publication($title, $type, $source_node, $lang_code = 'en') {
+  $user = \Drupal::currentUser();
+  //$node = new stdClass();
+  dpm($type);
+
+  dpm($source_node->nid->value);
+  $node = \Drupal::entityTypeManager()->getStorage('node')->load($source_node->nid->value);
+  $node = $node->createDuplicate();
+  $node->language = $lang_code;
+  $node->uid = $user->uid;
+  $node->status = 0;
+  $node->promote = $source_node->promote;
+
+  foreach ( ['field_file_media', 'field_related_publications'] as $field) {
+      $node->set($field,[]);
+  }
+  $node->set('title',$title);
+  $node->workbench_access = $source_node->workbench_access;
+  $node->enforceIsNew(TRUE);
+  $node->save();
+  return $node;
+}
+
+function osha_copy_publication_translation_validate($form, &$form_state) {
+  $nid = $form_state['values']['node'];
+  if (!is_numeric($nid)) {
+    form_set_error('node', 'The publciation selected is not correct, please could you select another publication?');
+    return FALSE;
+  }
+}
+
+function osha_copy_publication_translation_submit($form, &$form_state) {
+  $prefix_title = $form_state['values']['prefix_title'];
+  $suffix_title = $form_state['values']['suffix_title'];
+  $copy_option = $form_state['values']['copy_option'];
+  $countries = $form_state['values']['countries'];
+  if (!$prefix_title && !$suffix_title) {
+    if (!$copy_option) {
+      \Drupal::messenger()->addError(t('No prefix or suffix!'));
+      return;
+    }
+  }
+  if ($copy_option == 'one') {
+    if (!$countries) {
+      \Drupal::messenger()->addError(t('No countries selected!'));
+      return;
+    }
+    return osha_lingua_tools_copy_one_publication_for_each_country($form, $form_state);
+  }
+  $nid = $form_state['values']['node'];
+  osha_copy_publication_translation_original($nid, $form_state, $prefix_title, $suffix_title);
+}
+
+function osha_copy_publication_translation_original($nid, &$form_state, $prefix_title, $suffix_title, $country = '') {
+  dpm($nid);
+  $source_node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
+  dpm($source_node);
+  $source_lang = $source_node->langcode->value;
+  $source_node = $source_node->getTranslation("$source_lang");
+
+
+  $source_title = $source_node->title->value;
+  $languages = $source_node->getTranslationLanguages();
+  unset($languages[$source_lang]);
+
+  $rows = [];
+  $header = array(t('Language'), t('New Title'), t('Old Title'));
+dpm([$prefix_title, $suffix_title, $source_title, $source_lang, $country]);
+  $new_title = osha_copy_publication_translation_get_title($prefix_title, $suffix_title, $source_title, $source_lang, $country);
+  $node = osha_copy_publication_translation_create_base_publication($new_title, $source_node->bundle(), $source_node, $source_lang);
+  if (!$country) {
+    $url = Url::fromUri('internal:/node/'. $source_node->nid->value);
+    $link = Link::fromTextAndUrl($source_title,$url)->toString();
+    \Drupal::messenger()->addMessage('Source ' . $link . 'publication ' . $source_node->nid->value);
+  }
+  $url = Url::fromUri('internal:/node/'. $node->nid->value);
+  $link = Link::fromTextAndUrl($new_title,$url)->toString();
+  \Drupal::messenger()->addMessage('Created ' . $link .' publication (' . $source_lang . ') ' . $node->nid->value);
+
+return;
+  if ($languages) {
+    $translation_handler = entity_translation_get_handler('node', $node);
+    foreach ($languages as $lang_code => $value) {
+      if ($value) {
+        $translation_handler->setTranslation(
+          array(
+            'translate' => 0,
+            'status' => 1,
+            'uid' => 1,
+            'language' => $lang_code,
+            'source' => $source_lang,
+          )
+        );
+      }
+    }
+    $translation_handler->saveTranslations();
+  }
+//@todo fix
+  $node = workbench_moderation_node_current_load($node);
+  $new_node = new stdClass();
+  $new_node->id = $node->nid;
+  $new_node->nid = $node->nid;
+  $new_node->vid = $node->vid;
+  $new_node->type = $source_node->type;
+  $new_node->bundle = $source_node->type;
+  $new_node->translations = $node->translations;
+
+  $selected_languages = osha_copy_publication_translation_get_selected_languages($source_node);
+  $fields = field_info_instances('node', $source_node->type);
+  foreach ($languages as $lang_code => $value) {
+    if ($value) {
+      foreach ($fields as $field) {
+        if (in_array($field['field_name'], ['field_file', 'field_publication_related_res', 'field_related_publications'])) {
+          continue;
+        }
+        if ($field['field_name'] == 'title_field') {
+          $source_title = $source_node->title_field[$lang_code][0]['value'];
+          $new_title = osha_copy_publication_translation_get_title($prefix_title, $suffix_title, $source_title, $lang_code, $country);
+          $rows[] = [$selected_languages[$lang_code], $new_title, $source_title];
+          $new_node->{$field['field_name']}[$lang_code][0]['value'] = $new_title;
+        }
+        else {
+          if (@$source_node->{$field['field_name']}[$lang_code]) {
+            $new_node->{$field['field_name']}[$lang_code] = $source_node->{$field['field_name']}[$lang_code];
+          }
+          if (@$source_node->{$field['field_name']}[\Drupal\Core\Language\Language::LANGCODE_NOT_SPECIFIED]) {
+            $new_node->{$field['field_name']}[\Drupal\Core\Language\Language::LANGCODE_NOT_SPECIFIED] = $source_node->{$field['field_name']}[\Drupal\Core\Language\Language::LANGCODE_NOT_SPECIFIED];
+          }
+        }
+      }
+    }
+  }
+  field_attach_update('node', $new_node);
+
+  // Clone url_aliases.
+  foreach ($languages as $lang_code => $value) {
+    if ($value) {
+      $args = array(
+        'source' => 'node/' . $node->nid,
+        'alias' => $node->path['alias'],
+        'language' => $lang_code,
+      );
+      path_save($args);
+    }
+  }
+  if ($rows) {
+    if (empty($form_state['translation_info'])) {
+      $form_state['translation_info'] = '';
+    }
+    $form_state['translation_info'] .= '<h2>' . t('Translated titles:') . '</h2>';
+  }
+  return $node;
+}
+
+/**
+ * Implements hook_node_submit().
+ */
+function osha_lingua_tools_node_submit(\Drupal\node\NodeInterface $node, $form, \Drupal\Core\Form\FormStateInterface &$form_state) {
+  // MC-73 When adding/deleting a file in english, it needs to be added/deleted
+  // from other languages too.
+  $old_node = $form['#node'];
+  $fields = _osha_lingua_tools_translatable_field_instances($node->getType());
+  foreach ($fields as $field) {
+    $fieldname = $field['field_name'];
+    $diff = _osha_lingua_tools_filefield_diff($old_node, $node, $fieldname, 'en');
+    $files_added = $diff['files_added'];
+    $files_deleted = $diff['files_deleted'];
+
+    if (!empty($files_deleted)) {
+      foreach ($node->{$fieldname} as $lang => $items) {
+        foreach ($items as $key => $item) {
+          if (array_key_exists($item['fid'], $files_deleted)) {
+            unset($node->{$fieldname}[$lang][$key]);
+          }
+        }
+      }
+    }
+    if (!empty($files_added)) {
+      foreach ($files_added as $file) {
+        foreach ($node->{$fieldname} as $lang => &$items) {
+          if ($lang == 'en') {
+            continue;
+          }
+          $exists = FALSE;
+          foreach ($items as $item) {
+            if ($item['fid'] == $file['fid']) {
+              $exists = TRUE;
+              break;
+            }
+          }
+          if (!$exists) {
+            $items[] = $file;
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Helper function to get the files added/deleted in a certain field after a
+ * node save.
+ *
+ * @param $old_node
+ * @param $new_node
+ * @param $fieldname
+ * @param string $language
+ * @return array
+ *  Array with files added/deleted.
+ */
+function _osha_lingua_tools_filefield_diff($old_node, \Drupal\node\NodeInterface $new_node, $fieldname, $language = 'en') {
+  $files_added = $files_deleted = array();
+  $old_node_elems = isset ($old_node->{$fieldname}[$language]) && !empty($old_node->{$fieldname}[$language]);
+  $node_elems = isset ($new_node->{$fieldname}[$language]) && !empty($new_node->{$fieldname}[$language]);
+  if ($old_node_elems) {
+    foreach ($old_node->{$fieldname}[$language] as $key => $old_file) {
+      $files_deleted[$old_file['fid']] = $old_node->{$fieldname}[$language][$key];
+    }
+    if ($node_elems) {
+      foreach ($new_node->{$fieldname}[$language] as $key => $file) {
+        if (array_key_exists($file['fid'], $files_deleted)) {
+          unset($files_deleted[$file['fid']]);
+        }
+        else {
+          $files_added[$file['fid']] = $new_node->{$fieldname}[$language][$key];
+        }
+      }
+    }
+  }
+  elseif ($node_elems) {
+    foreach ($new_node->{$fieldname}[$language] as $key => $file) {
+      $files_added[$file['fid']] = $old_node->{$fieldname}[$language][$key];
+    }
+  }
+  return array(
+    'files_added' => $files_added,
+    'files_deleted' => $files_deleted,
+  );
+}
+
+function form_lingua_form($form, &$form_state) {
+  $node = \Drupal::routeMatch()->getParameter();
+  $translated_in = array();
+  $numlen = count($node->translations->data);
+
+  if ($numlen <= 1) {
+    $form['header_text'] = array(
+      '#markup' => '<p class="linguaheader">There are no translations for this node.</p>',
+      '#fieldintname' => '0',
+    );
+  }
+  else {
+    // Get the node id, what we want translate.
+    $type = $node->type;
+    $fields = field_info_instances("node", $type);
+    $countfields = 1;
+    $ispublished = $node->workbench_moderation['current']->published;
+
+    foreach ($fields as $field) {
+      $fieldname = $field['label'];
+      $fieldname = str_replace(' ', '_', $fieldname);
+      $fieldintname = $field['field_name'];
+      $arrayfield = $node->$fieldintname;
+
+      // TODO Check that the field has data.
+      $numdatosfield = count($arrayfield) + 1;
+      $fieldid = $field['field_id'];
+      $transfield = istranslatable($fieldid);
+
+      $form['header_text'] = array(
+        '#markup' => '<p class="linguaheader">Please, select the fields to spread and press the <strong>spread data</strong> button.</p>',
+        '#fieldintname' => '0',
+      );
+      if ($transfield == 1 && $field['widget']['module'] != 'media' && $field['widget']['module'] != 'file' && $field['widget']['module'] != 'pdf_to_image' && $numdatosfield > 0) {
+        $countfields++;
+        $form[$fieldname] = array(
+          '#title' => $fieldname,
+          '#type' => 'checkbox',
+          '#fieldintname' => $fieldintname,
+        );
+      }
+    }
+
+    $form['url'] = array(
+      '#title' => 'URL',
+      '#type' => 'checkbox',
+    );
+
+    $form['submit_button'] = array(
+      '#type' => 'submit',
+      '#value' => t('Spread data'),
+      '#numfields' => $countfields,
+      '#nodeid' => $node->nid,
+      '#noderevid' => $node->workbench_moderation['current']->vid,
+      '#ispublished' => $ispublished,
+    );
+  }
+
+  $languages = tmgmt_available_languages();
+  unset($languages[$node->translations->original]);
+  foreach ($node->translations->data as $lang => $translation) {
+    $translated_in[$lang] = $languages[$lang];
+    unset($languages[$lang]);
+  }
+  unset($translated_in['en']);
+  $selected_languages = array_intersect_key($languages, osha_language_list_options());
+
+  $form['target_language'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Add translations for'),
+    '#multiple' => TRUE,
+    '#options' => $languages,
+    '#default_value' => array_keys($selected_languages),
+    '#weight' => array('#weight' => 6),
+  );
+  $form['create_translations_submit_button'] = array(
+    '#type' => 'submit',
+    '#value' => t('Create translations'),
+    '#submit' => array('osha_lingua_tools_create_translations'),
+    '#weight' => array('#weight' => 7),
+  );
+
+  $fields = _osha_lingua_tools_translatable_field_instances($node->type);
+  if (!empty($fields)) {
+    $form['propagate_files_header_text'] = array(
+      '#markup' => '<p class="linguaheader">Please, select the files to spread and the languages where to copy the files, then press the <strong>spread files</strong> button.</p>',
+      '#weight' => array('#weight' => 8),
+    );
+
+    $form['spread_files_fields'] = array(
+      '#weight' => array('#weight' => 9),
+    );
+
+    $form['spread_files_target_language'] = array(
+      '#type' => 'checkboxes',
+      '#title' => t('Copy files to'),
+      '#multiple' => TRUE,
+      '#options' => $translated_in,
+      '#default_value' => array_keys($translated_in),
+      '#weight' => array('#weight' => 10),
+    );
+
+    $form['propagate_files_submit_button'] = array(
+      '#type' => 'submit',
+      '#value' => t('Spread files'),
+      '#submit' => array('osha_lingua_tools_spread_files'),
+      '#weight' => array('#weight' => 11),
+    );
+  }
+  foreach ($fields as $field) {
+    $files_to_copy = array();
+    $selected_files = array();
+    foreach ($node->{$field['field_name']}['en'] as $item) {
+      $files_to_copy[$item['fid']] = $item['filename'];
+      foreach ($translated_in as $lang => $language) {
+        $found = FALSE;
+        foreach ($node->{$field['field_name']}[$lang] as $translated_item) {
+          if ($translated_item['fid'] == $item['fid']) {
+            $found = TRUE;
+            break;
+          }
+        }
+        if (!$found) {
+          $selected_files[$item['fid']] = [$item['fid']];
+          break;
+        }
+      }
+    }
+    $form['spread_files_fields'][$field['field_name']] = array(
+      '#type' => 'checkboxes',
+      '#title' => $field['label'],
+      '#multiple' => TRUE,
+      '#options' => $files_to_copy,
+      '#default_value' => array_keys($selected_files),
+    );
+  }
+
+  return $form;
+}
+
+function istranslatable($idfield) {
+  $result = \Drupal::database()->select('field_config', 'f')
+    ->fields('f', array('translatable'))
+    ->condition('id', $idfield, '=')
+    ->execute()
+    ->fetchAssoc();
+  return $result['translatable'];
+}
+
+function form_lingua_form_validate($form, &$form_state) {
+  if ($form_state['triggering_element']['#id'] != 'edit-submit-button') {
+    return;
+  }
+
+  foreach ($form_state['values'] as $values) {
+
+    if ($values == 1) {
+      return 1;
+    }
+  }
+  \Drupal::messenger()->addError(t("You need to select at least one field for spread!"));
+  return FALSE;
+}
+
+function form_lingua_form_submit($form, &$form_state) {
+  $intnumfields = $form['submit_button']['#numfields'];
+  $intnodeid = $form['submit_button']['#nodeid'];
+  $intrevid = $form['submit_button']['#noderevid'];
+  $ispublished = $form['submit_button']['#ispublished'];
+
+  if ($form_state['values']['url'] == 1) {
+    propage_url($intnodeid);
+  }
+
+  $intcont = 0;
+
+  foreach ($form as $fieldchk) {
+    $fieldintname = $fieldchk['#fieldintname'];
+    // 0 Is the value of the summary field.
+    if ($fieldintname <> '0') {
+
+      $fieldupdate = $form_state['values'][$fieldchk['#title']];
+      if ($fieldupdate) {
+        propage_translation($fieldchk['#title'], $intnodeid, $intrevid, $ispublished, $fieldintname);
+      }
+    }
+    $intcont++;
+    if ($intcont == $intnumfields) {
+      if ($ispublished == 1) {
+        drupal_flush_all_caches();
+      }
+      break;
+    }
+  }
+}
+
+function propage_translation($field_name, $intnodeid, $intrevid, $ispublished, $fieldintname) {
+  $node = \Drupal::entityTypeManager()->getStorage('node')->load($intnodeid);
+
+  if ($field_name == 'body') {
+    $table_name = 'field_data_body';
+    $table_rev_name = 'field_revision_body';
+    $field_name = 'body_value';
+  }
+  elseif (($fieldintname == 'field_external_url') || ($fieldintname == 'field_banner_link')) {
+    $table_name = 'field_data_' . $fieldintname;
+    $table_rev_name = 'field_revision_' . $fieldintname;
+    $field_name = $fieldintname . '_url';
+  }
+  else {
+    $table_name = 'field_data_' . $fieldintname;
+    $table_rev_name = 'field_revision_' . $fieldintname;
+    $field_name = $fieldintname . '_value';
+  }
+
+  // If the status of the node is published then We get the value to spread from the data field else we get the data from the revision field.
+  if ($ispublished == 1) {
+    $result = \Drupal::database()->select($table_name, 'f')
+      ->fields('f', array($field_name))
+      ->condition('entity_id', $intnodeid, '=')
+      ->condition('language', 'en', '=')
+      ->orderBy('revision_id', 'DESC')
+      ->execute()
+      ->fetchAssoc();
+  }
+  else {
+    $result = \Drupal::database()->select($table_rev_name, 'f')
+      ->fields('f', array($field_name))
+      ->condition('entity_id', $intnodeid, '=')
+      ->condition('language', 'en', '=')
+      ->orderBy('revision_id', 'DESC')
+      ->execute()
+      ->fetchAssoc();
+  }
+  $propvalue = $result[$field_name];
+
+  if ($propvalue == "" || $propvalue == NULL) {
+    return FALSE;
+  }
+
+  $new_node = new stdClass();
+  $new_node->id = $node->nid;
+  $new_node->nid = $node->nid;
+  $new_node->vid = $node->vid;
+  $new_node->type = $node->type;
+  $new_node->bundle = $node->type;
+  $new_node->translations = $node->translations;
+  foreach ($node->translations->data as $lang_code => $value) {
+    $new_node->{$fieldintname}[$lang_code] = $node->{$fieldintname}[$node->language];
+  }
+  field_attach_update('node', $new_node);
+
+  \Drupal::messenger()->addStatus(t("Field " . $field_name . " updated"));
+
+}
+
+function propage_url($intnodeid) {
+  $node = \Drupal::entityTypeManager()->getStorage('node')->load($intnodeid);
+  $propvalue = $node->path['alias'];
+
+  $aliasurl = "node/" . $intnodeid;
+  // Update the url field.
+  $data = \Drupal::database()->update('url_alias')
+    ->fields(array(
+      'alias' => $propvalue,
+    ))
+    ->condition('source', $aliasurl)
+    ->execute();
+
+  \Drupal::messenger()->addStatus(t("URL Alias updated"));
+}
+
+function osha_lingua_tools_create_translations($form, &$form_state) {
+  $languages = $form_state['values']['target_language'];
+  $node = \Drupal::routeMatch()->getParameter();
+  $source_lang = $node->translations->original;
+  $translation_handler = entity_translation_get_handler('node', $node);
+  $type = $node->type;
+  $fields = _osha_lingua_tools_translatable_field_instances($type);
+  foreach ($languages as $lang_code => $value) {
+    if ($value) {
+      $translation_handler->setTranslation(
+        array(
+          'translate' => 0,
+          'status' => 1,
+          'uid' => 1,
+          'language' => $lang_code,
+          'source' => $source_lang,
+        )
+      );
+    }
+  }
+  $translation_handler->saveTranslations();
+
+  $node = workbench_moderation_node_current_load($node);
+  $new_node = new stdClass();
+  $new_node->id = $node->nid;
+  $new_node->nid = $node->nid;
+  $new_node->vid = $node->vid;
+  $new_node->type = $type;
+  $new_node->bundle = $type;
+  $new_node->translations = $node->translations;
+  foreach ($languages as $lang_code => $value) {
+    if ($value) {
+      foreach ($fields as $field) {
+        // MC-73 Copy values for translatable file fields.
+        $new_node->{$field['field_name']}[$lang_code] = $node->{$field['field_name']}[$source_lang];
+      }
+    }
+  }
+  field_attach_update('node', $new_node);
+
+  // Clone url_aliases.
+  foreach ($languages as $lang_code => $value) {
+    if ($value) {
+      $args = array(
+        'source' => 'node/' . $node->nid,
+        'alias' => $node->path['alias'],
+        'language' => $lang_code,
+      );
+      path_save($args);
+    }
+  }
+}
+
+/**
+ * Helper function to get translatable fields with cardinality > 1.
+ *
+ * @param $bundle
+ *  The type of the node to call field_info_instances().
+ * @return array
+ *  Array of fields.
+ */
+function _osha_lingua_tools_translatable_field_instances($bundle) {
+  $translatable_fields = array();
+  $fields = field_info_instances('node', $bundle);
+  foreach ($fields as $field) {
+    $fieldname = $field['field_name'];
+    $transfield = istranslatable($field['field_id']);
+    $info = field_info_field($fieldname);
+    if ($transfield == 1
+      && $field['widget']['module'] == 'file'
+      && ($info['cardinality'] > 1 || $info['cardinality'] == FIELD_CARDINALITY_UNLIMITED)) {
+      $translatable_fields[] = $field;
+    }
+  }
+  return $translatable_fields;
+}
+
+/**
+ * Copy the selected files from english to all selected languages.
+ *
+ * @param $form
+ * @param $form_state
+ */
+function osha_lingua_tools_spread_files($form, &$form_state) {
+  $node = \Drupal::routeMatch()->getParameter();
+  $fields = _osha_lingua_tools_translatable_field_instances($node->type);
+
+  foreach ($fields as $field) {
+    // Get files objects that needs to be copied.
+    $items_to_copy = array();
+    foreach ($node->{$field['field_name']}['en'] as $item) {
+      if (in_array($item['fid'], $form_state['values'][$field['field_name']])) {
+        $items_to_copy[] = $item;
+      }
+    }
+
+    // Copy the files to all selected languages.
+    foreach ($form_state['values']['spread_files_target_language'] as $lang_code => $value) {
+      if ($value) {
+        foreach ($items_to_copy as $item_to_copy) {
+          $exists = FALSE;
+          foreach ($node->{$field['field_name']}[$lang_code] as $item) {
+            if ($item_to_copy['fid'] == $item['fid']) {
+              $exists = TRUE;
+              break;
+            }
+          }
+          if (!$exists) {
+            $node->{$field['field_name']}[$lang_code][] = $item_to_copy;
+          }
+        }
+      }
+    }
+  }
+
+  $node->save();
+}
+
+function osha_lingua_tools_get_country_codes() {
+$exclude_country_codes = \Drupal::config('osha_lingua_tools.settings')->get('osha_lingua_tools_exclude_country_codes');
+$exclude_country_statuses = \Drupal::config('osha_lingua_tools.settings')->get('osha_lingua_tools_exclude_country_status');
+  $list = [];
+  $term_tree = \Drupal::EntityTypeManager()->getStorage("taxonomy_term")->loadTree('country',0,NULL);
+  // empty array:
+  if (!$term_tree) { return; }
+  foreach($term_tree as $term) {
+	  $t = \Drupal::EntityTypeManager()->getStorage("taxonomy_term")->load($term->tid);
+	  $iso = $t->get("field_iso2")->value;
+    $list[$iso] = $term->name;
+  }
+  return $list;
+
+}
+
+function osha_lingua_tools_batch_operation_copy($nid, $settings, &$context) {
+  $countries = array_keys($settings['countries']);
+  $country_codes = osha_lingua_tools_get_country_codes();
+  if (!isset($context['sandbox']['progress'])) {
+    $context['sandbox']['progress'] = 0;
+    $context['sandbox']['max'] = count($settings['countries']);
+    $context['results']['settings'] = $settings;
+    $context['results']['results'] = array();
+  }
+
+  $prefix_title = $settings['prefix_title'];
+  $suffix_title = $settings['suffix_title'];
+  $country_code = $countries[$context['sandbox']['progress']];
+  $country = $country_codes[$country_code];
+
+  $node = osha_copy_publication_translation_original($nid, $form_state, $prefix_title, $suffix_title, $country);
+
+  $context['results']['results'][$node->nid] = $node->title;
+  $context['sandbox']['progress']++;
+  $context['message'] = t('Now processing \'%node\'', array('%node' => $node->title));
+  if ($context['sandbox']['progress'] != $context['sandbox']['max']) {
+    $context['finished'] = $context['sandbox']['progress'] / $context['sandbox']['max'];
+  }
+}
+
+function osha_lingua_tools_batch_copy_finished($success, $results, $operations) {
+  if ($success) {
+    $message = t('@count publications successfully copied.', array('@count' => count($results['results'])));
+    \Drupal::messenger()->addMessage($message);
+  }
+  else {
+    $error_operation = reset($operations);
+    $message = t('An error occurred while processing %error_operation with arguments: @arguments',
+      array('%error_operation' => $error_operation[0], '@arguments' => print_r($error_operation[1], TRUE)));
+    \Drupal::messenger()->addError($message);
+  }
+}
+
+function osha_lingua_tools_copy_one_publication_for_each_country($form, &$form_state) {
+  $values = $form_state['values'];
+  if (!empty($form['#node'])) {
+    $values['node'] = $form['#node'];
+  }
+  $nid = $values['node'];
+  $batch = array(
+    'operations' => array(
+      array('osha_lingua_tools_batch_operation_copy', array($nid, $values)),
+    ),
+    'finished' => 'osha_lingua_tools_batch_copy_finished',
+    'title' => t('Processing Copy Publication Translation Batch'),
+    'init_message' => t('Copy Publication Translation Batch is starting.'),
+    'progress_message' => t('Processed @current out of @total.'),
+    'error_message' => t('Copy Publication Translation Batch has encountered an error.'),
+  );
+  batch_set($batch);
+  batch_process();
+}
+
+function osha_language_list_options() {
+  $languages = \Drupal::languageManager()->getLanguages();
+  $return = [];
+  foreach ($languages as $lang => $language) {
+    $return[$lang] = $language->getName($lang);
+  }
+  return $return;
+}

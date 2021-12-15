@@ -1,4 +1,6 @@
 {% set publication_date = content.field_publication_date.0['#text'] %}
+{% set piwik_url_value = 'oshmail_2021_12' %}
+{% set piwik_url = '?pk_campaign=' ~ piwik_url_value %}
 <tr>
   <td colspan="2" style="font-size: 14px; color: #003399;vertical-align: top; padding-bottom: 5px;">
     {{ publication_date }}
@@ -9,7 +11,7 @@
     >&nbsp;
   </td>
   <td>
-    > <a href="{{ url }}" style="color: #003399; text-decoration: none; font-size: 14px; font-weight: 600;">{{ label }}</a>
+    <a href="{{ url }}" style="color: #003399; text-decoration: none; font-size: 14px; font-weight: 600;">{{ label }}</a>
   </td>
 </tr>
 <tr>
