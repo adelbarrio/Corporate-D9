@@ -254,26 +254,68 @@ function osha_copy_publication_translation_preview($form, &$form_state) {
   $suffix_title = $form_state->getValue('suffix_title');
   $copy_option = $form_state->getValue('copy_option');
   $selected_languages['en'] = 'English';
+  $rows = [];
   if ($copy_option == 'one') {
+    $country_options= [
+      "AT" => "Austria",
+      "BE" => "Belgium",
+      "BG" => "Bulgaria",
+      "HR" => "Croatia",
+      "CY" => "Cyprus",
+      "CZ" => "Czech Republic",
+      "DK" => "Denmark",
+      "EE" => "Estonia",
+      "FI" => "Finland",
+      "FR" => "France",
+      "DE" => "Germany",
+      "GR" => "Greece",
+      "HU" => "Hungary",
+      "IE" => "Ireland",
+      "IT" => "Italy",
+      "LV" => "Latvia",
+      "LT" => "Lithuania",
+      "LU" => "Luxembourg",
+      "MT" => "Malta",
+      "NL" => "Netherlands",
+      "PL" => "Poland",
+      "PT" => "Portugal",
+      "RO" => "Romania",
+      "SK" => "Slovakia",
+      "SI" => "Slovenia",
+      "ES" => "Spain",
+      "SE" => "Sweden",
+      "IS" => "Iceland",
+      "LI" => "Liechtenstein",
+      "NO" => "Norway",
+      "CH" => "Switzerland",
+    ];
 	  $prefix_title = '';
 	  $suffix_title = '';
-    $country_codes = osha_lingua_tools_get_country_codes();
-    $country_codes = array_change_key_case($country_codes, CASE_LOWER);
-    $countries = $form_state->getValue('countries');
-    $countries = array_change_key_case($countries, CASE_LOWER);
-    $selected_languages['en'] = 'English';
-    $languages = array_intersect_key($selected_languages, $source_node_translations, $countries);
+
+    if ($form_state->getValue('select_all_countries')){
+      $countries = $country_options;
+    }else{
+      $countries = $form_state->getValue('countries');
+    }
+    $languages = array_intersect_key($country_options, $countries);
+    foreach ($languages  as $lang_code => $lang_name){
+      $title = $source_node->getTitle();
+      $new_title = osha_copy_publication_translation_get_title("$lang_name: ", $suffix_title, $title, $lang_code);
+      $rows[] = ['English', $title, $new_title];
+    }
+
   }else{
 	  $country_codes = [];
     $languages = array_intersect_key($selected_languages, $source_node_translations);
+    foreach ($languages  as $lang_code => $lang_name){
+      $translated_entity = $source_node->getTranslation($lang_code);
+      $title = $translated_entity->getTitle();
+      $new_title = osha_copy_publication_translation_get_title($prefix_title, $suffix_title, $title, $lang_code, $country_codes[$lang_code]);
+      $rows[] = [$lang_name, $title, $new_title];
+    }
+
   }
-  $rows = [];
-  foreach ($languages  as $lang_code => $lang_name){
-	  $translated_entity = $source_node->getTranslation($lang_code);
-	  $title = $translated_entity->getTitle();
-	  $new_title = osha_copy_publication_translation_get_title($prefix_title, $suffix_title, $title, $lang_code, $country_codes[$lang_code]);
-	  $rows[] = [$lang_name, $title, $new_title];
-  }
+
   $table = [
 	  '#type' => 'table',
 	  '#header' => $header,
@@ -306,9 +348,6 @@ function osha_copy_publication_translation_get_selected_languages($node) {
 function osha_copy_publication_translation_create_base_publication($title, $type, $source_node, $lang_code = 'en') {
   $user = \Drupal::currentUser();
   //$node = new stdClass();
-  dpm($type);
-
-  dpm($source_node->nid->value);
   $node = \Drupal::entityTypeManager()->getStorage('node')->load($source_node->nid->value);
   $node = $node->createDuplicate();
   $node->language = $lang_code;
@@ -357,9 +396,7 @@ function osha_copy_publication_translation_submit($form, &$form_state) {
 }
 
 function osha_copy_publication_translation_original($nid, &$form_state, $prefix_title, $suffix_title, $country = '') {
-  dpm($nid);
   $source_node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
-  dpm($source_node);
   $source_lang = $source_node->langcode->value;
   $source_node = $source_node->getTranslation("$source_lang");
 
@@ -369,20 +406,19 @@ function osha_copy_publication_translation_original($nid, &$form_state, $prefix_
   unset($languages[$source_lang]);
 
   $rows = [];
-  $header = array(t('Language'), t('New Title'), t('Old Title'));
-dpm([$prefix_title, $suffix_title, $source_title, $source_lang, $country]);
   $new_title = osha_copy_publication_translation_get_title($prefix_title, $suffix_title, $source_title, $source_lang, $country);
   $node = osha_copy_publication_translation_create_base_publication($new_title, $source_node->bundle(), $source_node, $source_lang);
   if (!$country) {
     $url = Url::fromUri('internal:/node/'. $source_node->nid->value);
-    $link = Link::fromTextAndUrl($source_title,$url)->toString();
-    \Drupal::messenger()->addMessage('Source ' . $link . 'publication ' . $source_node->nid->value);
+    $url = $url->toString();
+    \Drupal::messenger()->addMessage(t('Source <a href="@url">@title</a> publication @nid', ['@url'=>$url, '@title' =>$source_title,'@nid'=>$nid]));
   }
   $url = Url::fromUri('internal:/node/'. $node->nid->value);
-  $link = Link::fromTextAndUrl($new_title,$url)->toString();
-  \Drupal::messenger()->addMessage('Created ' . $link .' publication (' . $source_lang . ') ' . $node->nid->value);
+  $url = $url->toString();
+  \Drupal::messenger()->addMessage(t('Created <a href="@url">@title publication (@lang) @nid</a>',['@url'=>$url,'@title'=>$new_title,'@lang'=>$source_lang,'@nid'=>$node->nid->value]));
 
-return;
+
+return $node;
   if ($languages) {
     $translation_handler = entity_translation_get_handler('node', $node);
     foreach ($languages as $lang_code => $value) {
@@ -977,22 +1013,23 @@ function osha_lingua_tools_batch_operation_copy($nid, $settings, &$context) {
 function osha_lingua_tools_batch_copy_finished($success, $results, $operations) {
   if ($success) {
     $message = t('@count publications successfully copied.', array('@count' => count($results['results'])));
-    \Drupal::messenger()->addMessage($message);
+    drupal_set_message($message);
   }
   else {
     $error_operation = reset($operations);
     $message = t('An error occurred while processing %error_operation with arguments: @arguments',
       array('%error_operation' => $error_operation[0], '@arguments' => print_r($error_operation[1], TRUE)));
-    \Drupal::messenger()->addError($message);
+    drupal_set_message($message, 'error');
   }
 }
 
 function osha_lingua_tools_copy_one_publication_for_each_country($form, &$form_state) {
-  $values = $form_state['values'];
+  $values = $form_state->getValues();
   if (!empty($form['#node'])) {
     $values['node'] = $form['#node'];
   }
   $nid = $values['node'];
+  $nid = substr(explode("]", $nid)[0],1);
   $batch = array(
     'operations' => array(
       array('osha_lingua_tools_batch_operation_copy', array($nid, $values)),
@@ -1003,8 +1040,71 @@ function osha_lingua_tools_copy_one_publication_for_each_country($form, &$form_s
     'progress_message' => t('Processed @current out of @total.'),
     'error_message' => t('Copy Publication Translation Batch has encountered an error.'),
   );
-  batch_set($batch);
-  batch_process();
+  //batch_set($batch);
+  //batch_process();
+  $country_options= [
+    "AT" => "Austria",
+    "BE" => "Belgium",
+    "BG" => "Bulgaria",
+    "HR" => "Croatia",
+    "CY" => "Cyprus",
+    "CZ" => "Czech Republic",
+    "DK" => "Denmark",
+    "EE" => "Estonia",
+    "FI" => "Finland",
+    "FR" => "France",
+    "DE" => "Germany",
+    "GR" => "Greece",
+    "HU" => "Hungary",
+    "IE" => "Ireland",
+    "IT" => "Italy",
+    "LV" => "Latvia",
+    "LT" => "Lithuania",
+    "LU" => "Luxembourg",
+    "MT" => "Malta",
+    "NL" => "Netherlands",
+    "PL" => "Poland",
+    "PT" => "Portugal",
+    "RO" => "Romania",
+    "SK" => "Slovakia",
+    "SI" => "Slovenia",
+    "ES" => "Spain",
+    "SE" => "Sweden",
+    "IS" => "Iceland",
+    "LI" => "Liechtenstein",
+    "NO" => "Norway",
+    "CH" => "Switzerland",
+  ];
+  $prefix_title = '';
+  $suffix_title = '';
+
+  if ($form_state->getValue('select_all_countries')){
+    $countries = $country_options;
+  }else{
+    $countries = $form_state->getValue('countries');
+  }
+  $languages = array_intersect_key($country_options, $countries);
+  $user = \Drupal::currentUser();
+  $base_node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
+  foreach ( ['field_file_media', 'field_related_publications'] as $field) {
+    $base_node->set($field,[]);
+  }
+  $base_title = $base_node->getTitle();
+  foreach ($languages  as $lang_code => $lang_name){
+    //$node = new stdClass();
+    $node = $base_node->createDuplicate();
+    $node->language = strtolower($lang_code);
+    $node->id = $user->id();
+    $node->status = 0;
+    $node->promote = $base_node->promote;
+    $node->set('title',"$lang_name: $base_title");
+    $node->workbench_access = $base_node->workbench_access;
+    $node->enforceIsNew(TRUE);
+    $node->save();
+
+  }
+
+  \Drupal::messenger()->addMessage('Created '. implode(", ", $languages));
 }
 
 function osha_language_list_options() {

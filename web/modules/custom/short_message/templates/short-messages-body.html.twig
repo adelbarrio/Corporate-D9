@@ -26,7 +26,9 @@
             {% endfor %}
           </td>
           <td style="vertical-align: top; border: 0; background: #ffffff; padding-top: 0; padding-bottom: 15px; font-family: Arial,sans-serif; font-size: 12px; color: #333333; text-align: justify">
-            {{ body_content.body }}
+            {% set absolut_url = '<a href=https://osha.europa.eu/' %}
+            {% set body_text = body_content.body.0['#text']|replace({ '<a href=\"../': absolut_url, '<a href=\"/': absolut_url}) %}
+            {{ body_text|raw }}
           </td>
         </tr>
       </table>

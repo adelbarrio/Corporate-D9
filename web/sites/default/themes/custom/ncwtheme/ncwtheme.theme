@@ -175,6 +175,11 @@ function ncwtheme_preprocess_menu(&$variables, $hook) {
               $second_level = $value['below'];
 
               foreach ($second_level as $key=>$value){
+                $link = $value['original_link']->getUrlObject();
+                if (!$link->isRouted()) {
+                  continue;
+                }
+
                 $link = $value['original_link']->getUrlObject()->getInternalPath();
                 $nodeId= null;
                 $theNode = null;
