@@ -129,6 +129,7 @@ module:
   node_title_help_text: 0
   notification: 0
   options: 0
+  osha_lingua_tools: 0
   osha_workflow: 0
   oshwiki_import: 0
   page_cache: 0

@@ -24,7 +24,40 @@ class OshaLinguaToolsForm extends FormBase {
 	 * {@inheritdoc}
 	 */
 	public function buildForm(array $form, FormStateInterface $form_state){
-$country_options = osha_lingua_tools_get_country_codes();
+//$country_options = osha_lingua_tools_get_country_codes();
+    $country_options= [
+      "AT" => "Austria",
+      "BE" => "Belgium",
+      "BG" => "Bulgaria",
+      "HR" => "Croatia",
+      "CY" => "Cyprus",
+      "CZ" => "Czech Republic",
+      "DK" => "Denmark",
+      "EE" => "Estonia",
+      "FI" => "Finland",
+      "FR" => "France",
+      "DE" => "Germany",
+      "GR" => "Greece",
+      "HU" => "Hungary",
+      "IE" => "Ireland",
+      "IT" => "Italy",
+      "LV" => "Latvia",
+      "LT" => "Lithuania",
+      "LU" => "Luxembourg",
+      "MT" => "Malta",
+      "NL" => "Netherlands",
+      "PL" => "Poland",
+      "PT" => "Portugal",
+      "RO" => "Romania",
+      "SK" => "Slovakia",
+      "SI" => "Slovenia",
+      "ES" => "Spain",
+      "SE" => "Sweden",
+      "IS" => "Iceland",
+      "LI" => "Liechtenstein",
+      "NO" => "Norway",
+      "CH" => "Switzerland",
+];
   $form['node'] = array(
     '#type' => 'textfield',
     '#required' => TRUE,
@@ -109,6 +142,7 @@ $country_options = osha_lingua_tools_get_country_codes();
     $prefix_title = $values['prefix_title'];
     $suffix_title = $values['suffix_title'];
     $copy_option = $values['copy_option'];
+    $select_all_countries = $values['select_all_countries'];
     $countries = $values['countries'];
     if (!$prefix_title && !$suffix_title) {
       if (!$copy_option) {
@@ -117,7 +151,7 @@ $country_options = osha_lingua_tools_get_country_codes();
       }
     }
     if ($copy_option == 'one') {
-      if (!$countries) {
+      if (!$countries && !$select_all_countries) {
         \Drupal::messenger()->addError(t('No countries selected!'));
         return;
       }
@@ -125,7 +159,6 @@ $country_options = osha_lingua_tools_get_country_codes();
     }
     $nid = $values['node'];
     $nid = explode("[", explode("]", $nid)[0])[1];
-    dpm($nid);
     osha_copy_publication_translation_original($nid, $form_state, $prefix_title, $suffix_title);
 	}
 }
