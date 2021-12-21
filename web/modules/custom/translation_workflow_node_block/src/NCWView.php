@@ -12,7 +12,7 @@ use Drupal\Core\Entity\EntityInterface;
 class NCWView {
   /**
    * @param array $build
-   * @param EntityInterface $entity
+   * @param EntityInter2face $entity
    * @param EntityViewDisplayInterface $display
    */
   public function viewAlter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
@@ -26,28 +26,33 @@ class NCWView {
 
         // Get the state of the current node
         $queryUserSectionResult = \Drupal::database()
-          ->query('SELECT t.item_id, t.state, t.target_language
+          ->query('SELECT t.item_id, t.state, t.target_language, t.tjid
               FROM tmgmt_job_item t
               WHERE t.item_id = :item_id', array(":item_id" => $nid,)
           );
 
         // Block node if it has been sent to translate.
         foreach ($queryUserSectionResult as $item) {
-          if ($item->state == 0 || $item->state == 1 || $item->state == 2 || $item->state == 5 || $item->state == 6) {
-            // Get the id of the translation job
-            $queryTranslationJobId = \Drupal::database()
-              ->query('SELECT MAX(DISTINCT(tjid)) tjid
-                FROM tmgmt_job_item t
-                WHERE t.item_id= :item_id', array(":item_id" => $nid,)
-              );
+          if ($item->tjid == 0) {
+            \Drupal::messenger()->addWarning(t('<div id="translation-job-message">This node is in the translation cart!</div>'));
 
-            // Add a notification
-            foreach ($queryTranslationJobId as $item) {
-              if ($item->tjid > 0) {
-                $job_number = $item->tjid;
-                $job_path = "/admin/translation_workflow/jobs/" . $job_number;
+          } elseif ($item->tjid > 0) {
+            if ($item->state == 0 || $item->state == 1 || $item->state == 2 || $item->state == 5 || $item->state == 6) {
+              // Get the id of the translation job
+              $queryTranslationJobId = \Drupal::database()
+                ->query('SELECT MAX(DISTINCT(tjid)) tjid
+                  FROM tmgmt_job_item t
+                  WHERE t.item_id= :item_id', array(":item_id" => $nid,)
+                );
 
-                \Drupal::messenger()->addWarning(t('<div id="translation-job-message">This content is in an active translation job: <a href="@job_path">Translation job #@job_number</a></div>', array('@job_path' => $job_path, '@job_number' => $job_number)));
+              // Add a notification
+              foreach ($queryTranslationJobId as $item) {
+                if ($item->tjid > 0) {
+                  $job_number = $item->tjid;
+                  $job_path = "/admin/translation_workflow/jobs/" . $job_number;
+
+                  \Drupal::messenger()->addWarning(t('<div id="translation-job-message">This content is in an active translation job: <a href="@job_path">Translation job #@job_number</a></div>', array('@job_path' => $job_path, '@job_number' => $job_number)));
+                }
               }
             }
           }

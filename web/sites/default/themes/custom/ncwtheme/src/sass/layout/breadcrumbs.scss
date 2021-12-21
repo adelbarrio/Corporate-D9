@@ -47,3 +47,10 @@
   background: url(../images/delimiter-off.png) no-repeat 0px 5px;
 }
 
+.page-view-photo-gallery{
+  .breadcrumb-fluid{
+    .breadcrumb {
+      visibility: visible;
+    }
+  }
+}

@@ -602,7 +602,7 @@ display:
         operator: AND
         groups:
           1: AND
-      path: photo-gallery/Healthy-workplaces-campaign-manage-dangerous-substances-2018-19
+      path: photo-gallery/healthy-workplaces-campaign-manage-dangerous-substances-2018-19
     cache_metadata:
       max-age: -1
       contexts:

@@ -5,13 +5,18 @@ dependencies:
   config:
     - field.storage.node.field_pages_count
     - node.type.publication
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
 id: node.publication.field_pages_count
 field_name: field_pages_count
 entity_type: node
 bundle: publication
 label: 'Number of pages'
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''

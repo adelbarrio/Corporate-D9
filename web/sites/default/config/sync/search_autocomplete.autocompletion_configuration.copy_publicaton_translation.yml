@@ -1,0 +1,21 @@
+uuid: 083a44b9-b570-4c37-8b6b-dad16d023c4f
+langcode: en
+status: true
+dependencies: {  }
+id: copy_publicaton_translation
+label: 'osha lingua tools copy publicaton translation'
+selector: '.osha-lingua-tools-form #edit-node'
+minChar: 1
+autoSubmit: false
+autoRedirect: false
+maxSuggestions: 20
+noResultLabel: 'No results found for [search-phrase]. Click to perform full search.'
+noResultValue: '[search-phrase]'
+noResultLink: ''
+moreResultsLabel: 'View all results for [search-phrase].'
+moreResultsValue: '[search-phrase]'
+moreResultsLink: ''
+source: 'osha_lingua_tools_autocomplete::nodes_autocompletion_callback'
+theme: basic-blue.css
+editable: true
+deletable: true
