@@ -1,0 +1,339 @@
+<?php
+/**
+ * Implements hook_page_attachments().
+ */
+
+use \Drupal\matomo;
+use Drupal\Component\Serialization\Json;
+use Drupal\Core\Url;
+use Drupal\Core\Cache\Cache;
+use Drupal\Component\Utility\UrlHelper;
+use Drupal\matomo\MatomoInterface;
+use Drupal\matomo\Component\Render\MatomoJavaScriptSnippet;
+
+function osha_matomo_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'page_attachments') {
+    unset($implementations['matomo']);
+  }
+}
+
+
+function osha_matomo_page_attachments(array &$page)
+
+{
+  $account = \Drupal::currentUser();
+  $config = \Drupal::config('matomo.settings');
+  $id = $config->get('site_id') ?? '';
+  $request = \Drupal::request();
+
+  // Add module cache tags.
+  //$page['#cache']['tags'] = Cache::mergeTags(isset($page['#cache']['tags']) ? $page['#cache']['tags'] : [], $config->getCacheTags());
+
+  // Get page http status code for visibility filtering.
+  $status = NULL;
+  $exception = $request->attributes->get('exception');
+  if ($exception) {
+    $status = $exception->getStatusCode();
+  }
+  $trackable_status_codes = [
+    // "Forbidden" status code.
+    '403',
+    // "Not Found" status code.
+    '404',
+  ];
+
+  // 1. Check if the matomo account number has a valid value.
+  // 2. Track page views based on visibility value.
+  // 3. Check if we should track the currently active user's role.
+  if (preg_match('/^\d{1,}$/', $id) && (_matomo_visibility_pages() || in_array($status, $trackable_status_codes)) && _matomo_visibility_user($account)) {
+
+    $url_http = $config->get('url_http');
+    $url_https = $config->get('url_https');
+
+    $set_custom_url = '';
+    $set_document_title = '';
+
+    // Add link tracking.
+    $link_settings = [];
+    $link_settings['disableCookies'] = $config->get('privacy.disablecookies');
+    $link_settings['trackMailto'] = $config->get('track.mailto');
+
+    $track_colorbox = $config->get('track.colorbox');
+    if ((\Drupal::moduleHandler()->moduleExists('colorbox')) && $track_colorbox) {
+      $link_settings['trackColorbox'] = $track_colorbox;
+    }
+
+    $page['#attached']['drupalSettings']['matomo'] = $link_settings;
+    $page['#attached']['library'][] = 'matomo/matomo';
+
+    // Matomo can show a tree view of page titles that represents the site
+    // structure if setDocumentTitle() provides the page titles as a "/"
+    // delimited list. This may makes it easier to browse through the statistics
+    // of page titles on larger sites.
+    if ($config->get('page_title_hierarchy') == TRUE) {
+      $titles = _matomo_get_hierarchy_titles();
+
+      // Remove all empty titles.
+      $titles = array_filter($titles);
+
+      if (!empty($titles)) {
+        // Encode title, at least to keep "/" intact.
+        $titles = array_map('rawurlencode', $titles);
+
+        $set_document_title = Json::encode(implode('/', $titles));
+      }
+    }
+
+    // Add messages tracking.
+    $message_events = '';
+    $message_types = $config->get('track.messages');
+    if ($message_types) {
+      $message_types = array_values(array_filter($message_types));
+      $status_heading = [
+        'status' => t('Status message'),
+        'warning' => t('Warning message'),
+        'error' => t('Error message'),
+      ];
+
+      foreach (\Drupal::messenger()->all() as $type => $messages) {
+        // Track only the selected message types.
+        if (in_array($type, $message_types)) {
+          foreach ($messages as $message) {
+            if ($message instanceof MarkupInterface) {
+              $message = $message->__toString();
+            }
+
+            $message_events .= '_paq.push(["trackEvent", ' . Json::encode(t('Messages')) . ', ' . Json::encode($status_heading[$type]) . ', ' . Json::encode(strip_tags($message)) . ']);';
+          }
+        }
+      }
+    }
+
+    // If this node is a translation of another node, pass the original
+    // node instead.
+    if (\Drupal::moduleHandler()->moduleExists('content_translation') && $config->get('translation_set')) {
+      // Check if we have a node object, it has translation enabled, and its
+      // language code does not match its source language code.
+
+      if ($request->attributes->has('node')) {
+        $node = $request->attributes->get('node');
+        // if ($node instanceof NodeInterface && \Drupal::service('entity.repository')->getTranslationFromContext($node) !== $node->getUntranslated()) {
+        $set_custom_url = Json::encode(Url::fromRoute('entity.node.canonical', ['node' => $node->id()], ['language' => $node->getUntranslated()->language()])->toString());
+        $set_custom_url = str_replace('\/' . \Drupal::languageManager()->getCurrentLanguage()->getId() . '\/', '\/', $set_custom_url);
+        $set_custom_url = str_replace('\/en\/', '\/', $set_custom_url);
+
+        if ($set_custom_url == '"\/node\/28067"') {
+          $set_custom_url = '"\/home"';
+        }
+      }else if (\Drupal::routeMatch()->getRouteName() == 'view.publications_index.page_1'){
+        $set_custom_url = '"\/publications"';
+      }
+    }
+
+    // Track access denied (403) and file not found (404) pages.
+    if ($status == '403') {
+      $set_document_title = '"403/URL = " + encodeURIComponent(document.location.pathname+document.location.search) + "/From = " + encodeURIComponent(document.referrer)';
+    }
+    elseif ($status == '404') {
+      $set_document_title = '"404/URL = " + encodeURIComponent(document.location.pathname+document.location.search) + "/From = " + encodeURIComponent(document.referrer)';
+    }
+
+    // #2693595: User has entered an invalid login and clicked on forgot
+    // password link. This link contains the username or email address and may
+    // get send to Matomo if we do not override it. Override only if 'name'
+    // query param exists. Last custom url condition, this need to win.
+    //
+    // URLs to protect are:
+    // - user/password?name=username
+    // - user/password?name=foo@example.com
+    if (\Drupal::routeMatch()->getRouteName() == 'user.pass' && $request->query->has('name')) {
+      $set_custom_url = Json::encode(Url::fromRoute('user.pass')->toString());
+    }
+
+    // Add custom variables.
+    $matomo_custom_vars = $config->get('custom.variable');
+    $custom_variable = '';
+    for ($i = 1; $i < 6; $i++) {
+      $custom_var_name = !empty($matomo_custom_vars[$i]['name']) ? $matomo_custom_vars[$i]['name'] : '';
+      if (!empty($custom_var_name)) {
+        $custom_var_value = !empty($matomo_custom_vars[$i]['value']) ? $matomo_custom_vars[$i]['value'] : '';
+        $custom_var_scope = !empty($matomo_custom_vars[$i]['scope']) ? $matomo_custom_vars[$i]['scope'] : 'visit';
+
+        $types = [];
+        if ($request->attributes->has('node')) {
+          $node = $request->attributes->get('node');
+          if ($node instanceof NodeInterface) {
+            $types += ['node' => $node];
+          }
+        }
+        $custom_var_name = \Drupal::token()->replace($custom_var_name, $types, ['clear' => TRUE]);
+        $custom_var_value = \Drupal::token()->replace($custom_var_value, $types, ['clear' => TRUE]);
+
+        // Suppress empty custom names and/or variables.
+        if (!mb_strlen(trim($custom_var_name)) || !mb_strlen(trim($custom_var_value))) {
+          continue;
+        }
+
+        // Custom variables names and values are limited to 200 characters in
+        // length. It is recommended to store values that are as small as
+        // possible to ensure that the Matomo Tracking request URL doesn't go
+        // over the URL limit for the webserver or browser.
+        $custom_var_name = rtrim(substr($custom_var_name, 0, 200));
+        $custom_var_value = rtrim(substr($custom_var_value, 0, 200));
+
+        // Add variables to tracker.
+        $custom_variable .= '_paq.push(["setCustomVariable", ' . Json::encode($i) . ', ' . Json::encode($custom_var_name) . ', ' . Json::encode($custom_var_value) . ', ' . Json::encode($custom_var_scope) . ']);';
+      }
+    }
+
+    // Add any custom code snippets if specified.
+    $codesnippet_before = $config->get('codesnippet.before');
+    $codesnippet_after = $config->get('codesnippet.after');
+
+    // Build tracker code.
+    // @see https://matomo.org/docs/javascript-tracking/#toc-asynchronous-tracking
+    $script = 'var _paq = _paq || [];';
+    $script .= '(function(){';
+    $script .= 'var u=(("https:" == document.location.protocol) ? "' . UrlHelper::filterBadProtocol($url_https) . '" : "' . UrlHelper::filterBadProtocol($url_http) . '");';
+    $script .= '_paq.push(["setSiteId", ' . Json::encode($id) . ']);';
+    $script .= '_paq.push(["setTrackerUrl", u+"matomo.php"]);';
+
+    // Track logged in users across all devices.
+    if ($config->get('track.userid') && $account->isAuthenticated()) {
+      $script .= '_paq.push(["setUserId", ' . Json::encode(matomo_user_id_hash($account->id())) . ']);';
+    }
+
+    // Set custom url.
+    if (!empty($set_custom_url)) {
+      $script .= '_paq.push(["setCustomUrl", ' . $set_custom_url . ']);';
+    }
+    // Set custom document title.
+    if (!empty($set_document_title)) {
+      $script .= '_paq.push(["setDocumentTitle", ' . $set_document_title . ']);';
+    }
+
+    // Custom file download extensions.
+    if ($config->get('track.files') && !($config->get('track.files_extensions') == MatomoInterface::MATOMO_TRACKFILES_EXTENSIONS)) {
+      $script .= '_paq.push(["setDownloadExtensions", ' . Json::encode($config->get('track.files_extensions')) . ']);';
+    }
+
+    // Disable tracking for visitors who have opted out from tracking via DNT
+    // (Do-Not-Track) header.
+    if ($config->get('privacy.donottrack')) {
+      $script .= '_paq.push(["setDoNotTrack", 1]);';
+    }
+
+    // Disable all Matomo tracking cookies.
+    if ($config->get('privacy.disablecookies')) {
+      $script .= '_paq.push(["disableCookies"]);';
+    }
+
+    // Domain tracking type.
+    $session_storage_options = \Drupal::getContainer()->getParameter('session.storage.options');
+    $cookie_domain = !empty($session_storage_options['cookie_domain']) ? $session_storage_options['cookie_domain'] : '';
+    $domain_mode = $config->get('domain_mode');
+
+    // Per RFC 2109, cookie domains must contain at least one dot other than the
+    // first. For hosts such as 'localhost' or IP Addresses we don't set a
+    // cookie domain.
+    if ($domain_mode == 1 && count(explode('.', $cookie_domain)) > 2 && !is_numeric(str_replace('.', '', $cookie_domain))) {
+      $script .= '_paq.push(["setCookieDomain", ' . Json::encode($cookie_domain) . ']);';
+    }
+
+    // Ordering $custom_variable before $codesnippet_before allows users to add
+    // custom code snippets that may use deleteCustomVariable() and/or
+    // getCustomVariable().
+    if (!empty($custom_variable)) {
+      $script .= $custom_variable;
+    }
+    if (!empty($codesnippet_before)) {
+      $script .= $codesnippet_before;
+    }
+
+    // Site search tracking support.
+    // NOTE: It's recommended not to call trackPageView() on the Site Search
+    // Result page.
+    $keys = ($request->query->has('keys') ? trim($request->get('keys')) : '');
+    if (
+      \Drupal::moduleHandler()->moduleExists('search') &&
+      $config->get('track.site_search') &&
+      (strpos(\Drupal::routeMatch()->getRouteName(), 'search.view') === 0) &&
+      $keys
+    ) {
+      // Parameters:
+      // 1. Search keyword searched for. Example: "Banana"
+      // 2. Search category selected in your search engine. If you do not need
+      //    this, set to false. Example: "Organic Food"
+      // 3. Number of results on the Search results page. Zero indicates a
+      //    'No Result Search Keyword'. Set to false if you don't know.
+      //
+      // hook_preprocess_search_results() is not executed if search result is
+      // empty. Make sure the counter is set to 0 if there are no results.
+      $script .= '_paq.push(["trackSiteSearch", ' . Json::encode($keys) . ', false, (window.matomo_search_results) ? window.matomo_search_results : 0]);';
+    }
+    else {
+      $script .= '_paq.push(["trackPageView"]);';
+    }
+
+    // Add link tracking.
+    if ($config->get('track.files')) {
+      // Disable tracking of links with ".no-tracking" and ".colorbox" classes.
+      $ignore_classes = [
+        'no-tracking',
+        'colorbox',
+      ];
+      // Disable the download & outlink tracking for specific CSS classes.
+      // Custom code snippets with 'setIgnoreClasses' will override the value.
+      // @see https://developer.matomo.org/api-reference/tracking-javascript#disable-the-download-amp-outlink-tracking-for-specific-css-classes
+      $script .= '_paq.push(["setIgnoreClasses", ' . Json::encode($ignore_classes) . ']);';
+
+      // Enable download & outlink link tracking.
+      $script .= '_paq.push(["enableLinkTracking"]);';
+    }
+
+    if (!empty($message_events)) {
+      $script .= $message_events;
+    }
+    if (!empty($codesnippet_after)) {
+      $script .= $codesnippet_after;
+    }
+
+    $script .= 'var d=document,';
+    $script .= 'g=d.createElement("script"),';
+    $script .= 's=d.getElementsByTagName("script")[0];';
+    $script .= 'g.type="text/javascript";';
+    $script .= 'g.defer=true;';
+    $script .= 'g.async=true;';
+
+    // Should a local cached copy of the tracking code be used?
+    if ($config->get('cache')) {
+      $url = _matomo_cache($url_http . 'matomo.js');
+      if ($url) {
+        // A dummy query-string is added to filenames, to gain control over
+        // browser-caching. The string changes on every update or full cache
+        // flush, forcing browsers to load a new copy of the files, as the
+        // URL changed.
+        $query_string = '?' . (\Drupal::state()->get('system.css_js_query_string') ?: '0');
+
+        $script .= 'g.src="' . $url . $query_string . '";';
+      }
+    }
+    else {
+      $script .= 'g.src=u+"matomo.js";';
+    }
+
+    $script .= 's.parentNode.insertBefore(g,s);';
+    $script .= '})();';
+
+    // Add tracker code.
+    $page['#attached']['html_head'][] = [
+      [
+        '#tag' => 'script',
+        '#value' => new MatomoJavaScriptSnippet($script),
+      ],
+      'matomo_tracking_script',
+    ];
+  }
+
+}
+
