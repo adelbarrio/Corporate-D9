@@ -345,23 +345,32 @@ function osha_copy_publication_translation_get_selected_languages($node) {
   return array_intersect_key($languages, osha_language_list_options());
 }
 
-function osha_copy_publication_translation_create_base_publication($title, $type, $source_node, $lang_code = 'en') {
+function osha_copy_publication_translation_create_base_publication($title, $type, $source_node, $lang_code = 'en', $prefix_title, $suffix_title) {
   $user = \Drupal::currentUser();
-  //$node = new stdClass();
   $node = \Drupal::entityTypeManager()->getStorage('node')->load($source_node->nid->value);
   $node = $node->createDuplicate();
   $node->language = $lang_code;
   $node->uid = $user->uid;
   $node->status = 0;
   $node->promote = $source_node->promote;
-
-  foreach ( ['field_file_media', 'field_related_publications'] as $field) {
+  $avoid_fields = ['field_related_publications']; // @todo field_file_media
+  foreach ( $avoid_fields as $field) {
       $node->set($field,[]);
   }
   $node->set('title',$title);
   $node->workbench_access = $source_node->workbench_access;
   $node->enforceIsNew(TRUE);
   $node->save();
+  foreach ( $node->getTranslationLanguages() as $klang => $vlang){
+    if ($klang=='en'){
+      continue;
+    }
+    $translation = $node->getTranslation($klang);
+    $title = $prefix_title . " " . $translation->getTitle() . " " . $suffix_title;
+    $title = trim($title);
+    $translation->set('title',$title);
+    $translation->save();
+  }
   return $node;
 }
 
@@ -407,7 +416,7 @@ function osha_copy_publication_translation_original($nid, &$form_state, $prefix_
 
   $rows = [];
   $new_title = osha_copy_publication_translation_get_title($prefix_title, $suffix_title, $source_title, $source_lang, $country);
-  $node = osha_copy_publication_translation_create_base_publication($new_title, $source_node->bundle(), $source_node, $source_lang);
+  $node = osha_copy_publication_translation_create_base_publication($new_title, $source_node->bundle(), $source_node, $source_lang,$prefix_title, $suffix_title);
   if (!$country) {
     $url = Url::fromUri('internal:/node/'. $source_node->nid->value);
     $url = $url->toString();
@@ -1030,18 +1039,6 @@ function osha_lingua_tools_copy_one_publication_for_each_country($form, &$form_s
   }
   $nid = $values['node'];
   $nid = substr(explode("]", $nid)[0],1);
-  $batch = array(
-    'operations' => array(
-      array('osha_lingua_tools_batch_operation_copy', array($nid, $values)),
-    ),
-    'finished' => 'osha_lingua_tools_batch_copy_finished',
-    'title' => t('Processing Copy Publication Translation Batch'),
-    'init_message' => t('Copy Publication Translation Batch is starting.'),
-    'progress_message' => t('Processed @current out of @total.'),
-    'error_message' => t('Copy Publication Translation Batch has encountered an error.'),
-  );
-  //batch_set($batch);
-  //batch_process();
   $country_options= [
     "AT" => "Austria",
     "BE" => "Belgium",
@@ -1075,8 +1072,6 @@ function osha_lingua_tools_copy_one_publication_for_each_country($form, &$form_s
     "NO" => "Norway",
     "CH" => "Switzerland",
   ];
-  $prefix_title = '';
-  $suffix_title = '';
 
   if ($form_state->getValue('select_all_countries')){
     $countries = $country_options;
@@ -1086,24 +1081,28 @@ function osha_lingua_tools_copy_one_publication_for_each_country($form, &$form_s
   $languages = array_intersect_key($country_options, $countries);
   $user = \Drupal::currentUser();
   $base_node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
-  foreach ( ['field_file_media', 'field_related_publications'] as $field) {
+  $avoid_fields = ['field_related_publications']; // @todo field_file_media
+  foreach ( $avoid_fields as $field) {
     $base_node->set($field,[]);
   }
   $base_title = $base_node->getTitle();
+  $base_languages = $base_node->getTranslationLanguages();
+  unset($base_languages['en']);
   foreach ($languages  as $lang_code => $lang_name){
-    //$node = new stdClass();
     $node = $base_node->createDuplicate();
     $node->language = strtolower($lang_code);
     $node->id = $user->id();
     $node->status = 0;
-    $node->promote = $base_node->promote;
     $node->set('title',"$lang_name: $base_title");
-    $node->workbench_access = $base_node->workbench_access;
     $node->enforceIsNew(TRUE);
     $node->save();
-
+    foreach ( $base_languages as $klang => $vlang){
+      $translation = $node->getTranslation($klang);
+      $title = $lang_name . ": " . $translation->getTitle();
+      $translation->set('title',$title);
+      $translation->save();
+    }
   }
-
   \Drupal::messenger()->addMessage('Created '. implode(", ", $languages));
 }
 
