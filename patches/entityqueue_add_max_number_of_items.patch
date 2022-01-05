@@ -1,0 +1,27 @@
+diff --git a/src/EntityQueueListBuilder.php b/src/EntityQueueListBuilder.php
+index fa7f744..3dfd890 100644
+--- a/src/EntityQueueListBuilder.php
++++ b/src/EntityQueueListBuilder.php
+@@ -83,8 +83,10 @@ class EntityQueueListBuilder extends ConfigEntityListBuilder {
+     $header['target_type'] = $this->t('Target type');
+     $header['handler'] = $this->t('Queue type');
+     $header['items'] = $this->t('Items');
++    $header['max'] = $this->t('Max items');
+
+-    return $header + parent::buildHeader();
++
++      return $header + parent::buildHeader();
+   }
+
+   /**
+@@ -98,7 +100,9 @@ class EntityQueueListBuilder extends ConfigEntityListBuilder {
+         'target_type' => $this->entityTypeManager->getDefinition($entity->getTargetEntityTypeId())->getLabel(),
+         'handler' => $entity->getHandlerPlugin()->getPluginDefinition()['title'],
+         'items' => $this->getQueueItemsStatus($entity),
+-      ] + parent::buildRow($entity),
++        'max' => $entity->getMaximumSize() == 0 ? 'Infinite': $entity->getMaximumSize()
++
++          ] + parent::buildRow($entity),
+       'title' => $this->t('Machine name: @name', ['@name' => $entity->id()]),
+     ];
+
