@@ -26,6 +26,29 @@ function osha_matomo_page_attachments(array &$page)
   $id = $config->get('site_id') ?? '';
   $request = \Drupal::request();
 
+  //Add metas for spanish in front page
+  if (\Drupal::service('path.matcher')->isFrontPage()){
+    if (\Drupal::languageManager()->getCurrentLanguage()->getId() == 'es'){
+      $meta_des_es = [
+        '#tag' => 'meta',
+        '#attributes' => [
+          'name' => 'description',
+          'content' => 'Información de la EU-OSHA sobre seguridad y salud ocupacional en los países de la UE. Encuentre encuestas, directivas y normas, herramientas de prevención de riesgos, riesgos frecuentes en el trabajo y más sobre seguridad y salud laboral. ',
+        ],
+      ];
+      $page['#attached']['html_head'][] = [$meta_des_es, 'description'];
+      $meta_title_es = [
+        '#tag' => 'meta',
+        '#attributes' => [
+          'name' => 'title',
+          'content' => 'Agencia Europea para la Seguridad y la Salud en el Trabajo - Información, estadísticas, legislación y herramientas de evaluación de riesgos. ',
+        ],
+      ];
+      $page['#attached']['html_head'][] = [$meta_title_es, 'title'];
+
+    }
+  }
+
   // Add module cache tags.
   //$page['#cache']['tags'] = Cache::mergeTags(isset($page['#cache']['tags']) ? $page['#cache']['tags'] : [], $config->getCacheTags());
 
@@ -114,6 +137,36 @@ function osha_matomo_page_attachments(array &$page)
     if (\Drupal::moduleHandler()->moduleExists('content_translation') && $config->get('translation_set')) {
       // Check if we have a node object, it has translation enabled, and its
       // language code does not match its source language code.
+      //Custom url for all searchs
+      if (\Drupal::routeMatch()->getRouteName() =='view.search.site') {
+        $searchstring = "search/site?search_api_fulltext=". $_REQUEST["search_api_fulltext"];
+        $set_custom_url = '"\/'.$searchstring.'"';
+      }
+
+      if (\Drupal::routeMatch()->getRouteName() =='view.thesaurus_front_indexed.thesaurus_search') {
+        $searchstring = "search/eu-osha-thesaurus?search_api_fulltext=". $_REQUEST["search_api_fulltext"];
+        $set_custom_url = '"\/'.$searchstring.'"';
+      }
+
+      if (\Drupal::routeMatch()->getRouteName() =='view.search_directives.search_directory_page') {
+        $searchstring = "search/directives?search_api_fulltext=". $_REQUEST["search_api_fulltext"];
+        $set_custom_url = '"\/'.$searchstring.'"';
+      }
+
+      if (\Drupal::routeMatch()->getRouteName() =='view.search_guidelines.page_1') {
+        $searchstring = "search/guidelines?search_api_fulltext=". $_REQUEST["search_api_fulltext"];
+        $set_custom_url = '"\/'.$searchstring.'"';
+      }
+      if (\Drupal::routeMatch()->getRouteName() =='view.musculoskeletal_disorders_list.page_1') {
+        $searchstring = "search/musculoskeletal-disorders?search_api_fulltext=". $_REQUEST["search_api_fulltext"];
+        $set_custom_url = '"\/'.$searchstring.'"';
+      }
+
+
+      if (\Drupal::routeMatch()->getRouteName() =='view.search_seminars.page_1') {
+        $searchstring = "search/seminars?search_api_fulltext=". $_REQUEST["search_api_fulltext"];
+        $set_custom_url = '"\/'.$searchstring.'"';
+      }
 
       if ($request->attributes->has('node')) {
         $node = $request->attributes->get('node');
@@ -124,10 +177,17 @@ function osha_matomo_page_attachments(array &$page)
 
         if ($set_custom_url == '"\/node\/28067"') {
           $set_custom_url = '"\/home"';
+
         }
       }else if (\Drupal::routeMatch()->getRouteName() == 'view.publications_index.page_1'){
         $set_custom_url = '"\/publications"';
       }
+      //Modify the custom url for all the views
+      if ($request->attributes->has('view_id')) {
+        $set_custom_url = '"\/' . $request->attributes->get('_route_object')->getpath() . '"';
+        $set_custom_url = str_replace('\//' ,'\/' , $set_custom_url);
+      }
+
     }
 
     // Track access denied (403) and file not found (404) pages.

@@ -546,7 +546,9 @@
             },
             "drupal/pathologic": {
                 "Internal URL handling (Aliases, language prefixes, base://, ...)": "https://www.drupal.org/files/issues/2021-03-23/internal_url_handling-2418369-29.patch"
-            }
+            },
+            "drupal/entityqueue": {
+                "Add the maximun number of items in EntityQueueListBuilder" : "patches/entityqueue_add_max_number_of_items.patch"}
         },
         "patchLevel": {
             "drupal/core": "-p2"
