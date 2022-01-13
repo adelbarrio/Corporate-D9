@@ -395,6 +395,7 @@
         "drupal/phpspreadsheet": "^2.0",
         "drupal/printfriendly": "^3.5",
         "drupal/purge": "^3.0",
+        "drupal/quick_node_clone": "^1.14",
         "drupal/quicktabs": "^3.0@alpha",
         "drupal/quiz": "^6.0@alpha",
         "drupal/r4032login": "^2.0",
