@@ -43,6 +43,7 @@ permissions:
   - 'osha tmgmt upload translation file'
   - 'preview layout validation'
   - 'set job item to translated state'
+  - 'submit translation jobs'
   - 'translate admin strings'
   - 'translate interface'
   - 'translate taxonomy_term entities'
