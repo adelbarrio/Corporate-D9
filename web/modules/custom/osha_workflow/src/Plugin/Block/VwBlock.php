@@ -104,4 +104,11 @@ class VwBlock extends BlockBase implements ContainerFactoryPluginInterface {
     return $output;
   }
 
+  // Ribbon cache fix?
+  /**
+   * @return int
+   */
+  public function getCacheMaxAge() {
+    return 0;
+  }
 }

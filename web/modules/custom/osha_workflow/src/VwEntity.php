@@ -236,6 +236,9 @@ class VwEntity implements ContainerInjectionInterface {
     $plugin_block = $this->blockManager->createInstance('osha_workflow_block', []);
     array_unshift($build, $plugin_block->build());
 
+    // Ribbon cache fix?
+    $build['#cache']['max-age'] = 0;
+    \Drupal::service('page_cache_kill_switch')->trigger();
   }
 
   /**
