@@ -12,7 +12,7 @@ jQuery(document).ready(function ($) {
   });
 
   // make paste from word button work
-  if (CKEDITOR) {
+  if (typeof(CKEDITOR)!='undefined'){
     CKEDITOR.on("instanceReady", function (event) {
       (function () {
 
