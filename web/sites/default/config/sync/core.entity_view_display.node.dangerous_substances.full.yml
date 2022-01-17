@@ -62,6 +62,7 @@ dependencies:
   module:
     - ds
     - entity_reference_revisions
+    - field_group
     - languagefield
     - link
     - options
@@ -86,13 +87,102 @@ third_party_settings:
           layout_class: {  }
     regions:
       ds_content:
-        - field_item_type
-        - field_title_original
+        - group_tag_wrapper
+        - group_description
+        - group_access_tool
+        - group_other_data
         - field_external_url
+        - field_exposure_route
+        - field_exposure_route_other
+        - field_substance_description
+        - field_cas_number
+        - field_ec_number
+        - field_sector_industry_covered
+        - field_measurement_method
+        - field_tasks_covered
+        - field_worker_groups_type
+        - field_tasks_other
+        - field_worker_groups_other
+        - field_biological_hazard
+        - field_prevention_measure_type
+        - field_prevention_measures_other
+        - field_biological_hazard_other
+        - field_material_purpose_type
+        - field_hazard_physical_state
+        - field_material_purpose_other
+        - field_hazard_physical_other
+        - field_target_group
+        - field_hazard_health_effects
+        - field_target_group_other
+        - field_hazard_health_other
+        - field_evaluation
+        - field_evaluation_other
+        - field_visualisation_material_typ
+        - field_visualisation_mat_other
+        - field_media_format
+        - field_intellectual_property_righ
+        - field_item_type
         - field_material_country
+        - field_rights_description
+        - field_advertising
         - field_country_other
+        - field_year
+        - field_contact_address
+        - field_disclaimer
         - field_available_in_languages
+        - field_ownership_information
         - field_languages_other
+        - body
+        - field_other_information
+        - field_body_original
+        - field_image_media
+        - field_priority_area
+        - field_selected_for_analysis
+        - field_fc_provider
+        - field_notes
+        - field_original_desc_language
+        - field_original_desc_lang_other
+        - field_non_applicable_url
+  field_group:
+    group_access_tool:
+      children:
+        - field_external_url
+      parent_name: ''
+      weight: 2
+      format_type: html_element
+      region: ds_content
+      format_settings:
+        id: ''
+        classes: access-tool-wrapper
+        element: div
+        show_label: true
+        label_element: h2
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'Access tool'
+    group_description:
+      children:
+        - body
+        - field_body_original
+      parent_name: ''
+      weight: 1
+      format_type: html_element
+      region: ds_content
+      format_settings:
+        id: ''
+        classes: description-wrapper
+        element: div
+        show_label: true
+        label_element: h2
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+      label: Description
+    group_other_data:
+      children:
         - field_sector_industry_covered
         - field_tasks_covered
         - field_tasks_other
@@ -102,57 +192,58 @@ third_party_settings:
         - field_hazard_physical_other
         - field_hazard_health_effects
         - field_hazard_health_other
-        - field_exposure_route
-        - field_exposure_route_other
-        - field_substance_description
-        - field_cas_number
-        - field_ec_number
-        - field_measurement_method
-        - field_worker_groups_type
-        - field_worker_groups_other
-        - field_prevention_measure_type
-        - field_prevention_measures_other
-        - field_material_purpose_type
-        - field_material_purpose_other
-        - body
-        - field_body_original
-        - field_target_group
-        - field_target_group_other
-        - field_evaluation
-        - field_evaluation_other
-        - field_visualisation_material_typ
-        - field_visualisation_mat_other
-        - field_media_format
-        - field_intellectual_property_righ
-        - field_rights_description
-        - field_advertising
-        - field_contact_address
-        - field_disclaimer
-        - field_ownership_information
-        - field_other_information
-        - field_image_media
-        - field_priority_area
-        - field_selected_for_analysis
+      parent_name: ''
+      weight: 3
+      format_type: html_element
+      region: ds_content
+      format_settings:
+        id: ''
+        classes: other-data-wrapper
+        element: div
+        show_label: true
+        label_element: h2
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'Other data'
+    group_tag_wrapper:
+      children:
+        - field_item_type
+        - field_material_country
+        - field_country_other
         - field_year
-        - field_fc_provider
-        - field_notes
-        - field_original_desc_language
-        - field_original_desc_lang_other
-        - field_non_applicable_url
+        - field_available_in_languages
+        - field_languages_other
+      parent_name: ''
+      weight: 0
+      format_type: html_element
+      region: ds_content
+      format_settings:
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        id: ''
+        classes: 'tags-wrapper row col'
+      label: 'Tag Wrapper'
 id: node.dangerous_substances.full
 targetEntityType: node
 bundle: dangerous_substances
 mode: full
 content:
   body:
-    label: above
+    label: hidden
     type: text_default
-    weight: 28
+    weight: 29
     settings: {  }
     third_party_settings: {  }
     region: ds_content
   field_advertising:
-    weight: 39
+    weight: 25
     label: above
     settings:
       format: default
@@ -162,8 +253,8 @@ content:
     type: boolean
     region: ds_content
   field_available_in_languages:
-    weight: 5
-    label: above
+    weight: 27
+    label: hidden
     settings:
       link_to_entity: false
       format:
@@ -172,7 +263,7 @@ content:
     type: languagefield_default
     region: ds_content
   field_biological_hazard:
-    weight: 10
+    weight: 12
     label: above
     settings:
       link: false
@@ -188,7 +279,7 @@ content:
     type: entity_reference_label
     region: ds_content
   field_biological_hazard_other:
-    weight: 11
+    weight: 13
     label: above
     settings:
       link_to_entity: false
@@ -196,14 +287,14 @@ content:
     type: string
     region: ds_content
   field_body_original:
-    weight: 29
-    label: above
+    weight: 30
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: ds_content
   field_cas_number:
-    weight: 19
+    weight: 7
     label: above
     settings:
       link_to_entity: false
@@ -211,29 +302,29 @@ content:
     type: string
     region: ds_content
   field_contact_address:
-    weight: 40
+    weight: 26
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: ds_content
   field_country_other:
-    weight: 4
-    label: above
+    weight: 25
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: ds_content
   field_disclaimer:
-    weight: 41
+    weight: 27
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: ds_content
   field_ec_number:
-    weight: 20
+    weight: 8
     label: above
     settings:
       link_to_entity: false
@@ -241,7 +332,7 @@ content:
     type: string
     region: ds_content
   field_evaluation:
-    weight: 32
+    weight: 18
     label: above
     settings:
       link: false
@@ -257,7 +348,7 @@ content:
     type: entity_reference_label
     region: ds_content
   field_evaluation_other:
-    weight: 33
+    weight: 19
     label: above
     settings:
       link_to_entity: false
@@ -265,7 +356,7 @@ content:
     type: string
     region: ds_content
   field_exposure_route:
-    weight: 16
+    weight: 4
     label: above
     settings:
       link: false
@@ -281,7 +372,7 @@ content:
     type: entity_reference_label
     region: ds_content
   field_exposure_route_other:
-    weight: 17
+    weight: 5
     label: above
     settings:
       link_to_entity: false
@@ -289,7 +380,7 @@ content:
     type: string
     region: ds_content
   field_external_url:
-    weight: 2
+    weight: 3
     label: above
     settings:
       trim_length: 80
@@ -310,7 +401,7 @@ content:
     region: ds_content
   field_fc_provider:
     type: entity_reference_revisions_entity_view
-    weight: 48
+    weight: 33
     label: above
     settings:
       view_mode: default
@@ -318,7 +409,7 @@ content:
     third_party_settings: {  }
     region: ds_content
   field_hazard_health_effects:
-    weight: 14
+    weight: 16
     label: above
     settings:
       link: false
@@ -334,7 +425,7 @@ content:
     type: entity_reference_label
     region: ds_content
   field_hazard_health_other:
-    weight: 15
+    weight: 17
     label: above
     settings:
       link_to_entity: false
@@ -342,7 +433,7 @@ content:
     type: string
     region: ds_content
   field_hazard_physical_other:
-    weight: 13
+    weight: 15
     label: above
     settings:
       link_to_entity: false
@@ -350,7 +441,7 @@ content:
     type: string
     region: ds_content
   field_hazard_physical_state:
-    weight: 12
+    weight: 14
     label: above
     settings:
       link: false
@@ -366,7 +457,7 @@ content:
     type: entity_reference_label
     region: ds_content
   field_image_media:
-    weight: 44
+    weight: 30
     label: above
     settings:
       link: false
@@ -381,30 +472,30 @@ content:
     type: entity_reference_label
     region: ds_content
   field_intellectual_property_righ:
-    weight: 37
+    weight: 23
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: ds_content
   field_item_type:
-    weight: 0
-    label: above
+    weight: 23
+    label: visually_hidden
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: ds_content
   field_languages_other:
-    weight: 6
-    label: above
+    weight: 28
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: ds_content
   field_material_country:
-    weight: 3
-    label: above
+    weight: 24
+    label: hidden
     settings:
       link: false
     third_party_settings:
@@ -419,7 +510,7 @@ content:
     type: entity_reference_label
     region: ds_content
   field_material_purpose_other:
-    weight: 27
+    weight: 15
     label: above
     settings:
       link_to_entity: false
@@ -427,7 +518,7 @@ content:
     type: string
     region: ds_content
   field_material_purpose_type:
-    weight: 26
+    weight: 14
     label: above
     settings:
       link: false
@@ -443,7 +534,7 @@ content:
     type: entity_reference_label
     region: ds_content
   field_measurement_method:
-    weight: 21
+    weight: 9
     label: above
     settings:
       link_to_entity: false
@@ -451,7 +542,7 @@ content:
     type: string
     region: ds_content
   field_media_format:
-    weight: 36
+    weight: 22
     label: above
     settings:
       link_to_entity: false
@@ -460,7 +551,7 @@ content:
     region: ds_content
   field_non_applicable_url:
     type: boolean
-    weight: 52
+    weight: 37
     region: ds_content
     label: above
     settings:
@@ -469,14 +560,14 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
   field_notes:
-    weight: 49
+    weight: 34
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: ds_content
   field_original_desc_lang_other:
-    weight: 51
+    weight: 36
     label: above
     settings:
       link_to_entity: false
@@ -484,7 +575,7 @@ content:
     type: string
     region: ds_content
   field_original_desc_language:
-    weight: 50
+    weight: 35
     label: above
     settings:
       link_to_entity: false
@@ -494,21 +585,21 @@ content:
     type: languagefield_default
     region: ds_content
   field_other_information:
-    weight: 43
+    weight: 29
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: ds_content
   field_ownership_information:
-    weight: 42
+    weight: 28
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: ds_content
   field_prevention_measure_type:
-    weight: 24
+    weight: 12
     label: above
     settings:
       link: false
@@ -524,7 +615,7 @@ content:
     type: entity_reference_label
     region: ds_content
   field_prevention_measures_other:
-    weight: 25
+    weight: 13
     label: above
     settings:
       link_to_entity: false
@@ -532,7 +623,7 @@ content:
     type: string
     region: ds_content
   field_priority_area:
-    weight: 45
+    weight: 31
     label: above
     settings:
       link: false
@@ -548,7 +639,7 @@ content:
     type: entity_reference_label
     region: ds_content
   field_rights_description:
-    weight: 38
+    weight: 24
     label: above
     settings:
       link_to_entity: false
@@ -556,7 +647,7 @@ content:
     type: string
     region: ds_content
   field_sector_industry_covered:
-    weight: 7
+    weight: 9
     label: above
     settings:
       link: false
@@ -572,7 +663,7 @@ content:
     type: entity_reference_label
     region: ds_content
   field_selected_for_analysis:
-    weight: 46
+    weight: 32
     label: above
     settings:
       format: default
@@ -582,7 +673,7 @@ content:
     type: boolean
     region: ds_content
   field_substance_description:
-    weight: 18
+    weight: 6
     label: above
     settings: {  }
     third_party_settings: {  }
@@ -596,7 +687,7 @@ content:
     type: basic_string
     region: content
   field_target_group:
-    weight: 30
+    weight: 16
     label: above
     settings:
       link: false
@@ -612,7 +703,7 @@ content:
     type: entity_reference_label
     region: ds_content
   field_target_group_other:
-    weight: 31
+    weight: 17
     label: above
     settings:
       link_to_entity: false
@@ -620,7 +711,7 @@ content:
     type: string
     region: ds_content
   field_tasks_covered:
-    weight: 8
+    weight: 10
     label: above
     settings:
       link: false
@@ -636,15 +727,7 @@ content:
     type: entity_reference_label
     region: ds_content
   field_tasks_other:
-    weight: 9
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: ds_content
-  field_title_original:
-    weight: 1
+    weight: 11
     label: above
     settings:
       link_to_entity: false
@@ -652,7 +735,7 @@ content:
     type: string
     region: ds_content
   field_visualisation_mat_other:
-    weight: 35
+    weight: 21
     label: above
     settings:
       link_to_entity: false
@@ -660,7 +743,7 @@ content:
     type: string
     region: ds_content
   field_visualisation_material_typ:
-    weight: 34
+    weight: 20
     label: above
     settings:
       link: false
@@ -676,7 +759,7 @@ content:
     type: entity_reference_label
     region: ds_content
   field_worker_groups_other:
-    weight: 23
+    weight: 11
     label: above
     settings:
       link_to_entity: false
@@ -684,7 +767,7 @@ content:
     type: string
     region: ds_content
   field_worker_groups_type:
-    weight: 22
+    weight: 10
     label: above
     settings:
       link: false
@@ -700,8 +783,8 @@ content:
     type: entity_reference_label
     region: ds_content
   field_year:
-    weight: 47
-    label: above
+    weight: 26
+    label: visually_hidden
     settings: {  }
     third_party_settings:
       ds:
@@ -717,6 +800,7 @@ hidden:
   addtoany: true
   breadcrumbs: true
   field_section: true
+  field_title_original: true
   langcode: true
   links: true
   search_api_excerpt: true

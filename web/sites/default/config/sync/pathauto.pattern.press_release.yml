@@ -3,20 +3,31 @@ langcode: en
 status: true
 dependencies:
   module:
+    - language
     - node
 id: press_release
 label: 'Press release'
 type: 'canonical_entities:node'
 pattern: 'about-eu-osha/press-room/[node:title]'
 selection_criteria:
-  c9fadbb7-4911-4d62-aaf7-a1d3f67219fc:
+  2fa95dad-9eca-4343-b35c-96626df45a2f:
     id: node_type
     bundles:
       press_release: press_release
     negate: false
     context_mapping:
       node: node
-    uuid: c9fadbb7-4911-4d62-aaf7-a1d3f67219fc
+    uuid: 2fa95dad-9eca-4343-b35c-96626df45a2f
+  3067468e-fb65-4636-8af9-dc9c1bc1c8df:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 3067468e-fb65-4636-8af9-dc9c1bc1c8df
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'node:langcode:language':
+    label: Language

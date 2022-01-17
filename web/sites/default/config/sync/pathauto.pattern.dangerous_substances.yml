@@ -3,20 +3,31 @@ langcode: en
 status: true
 dependencies:
   module:
+    - language
     - node
 id: dangerous_substances
 label: 'Dangerous substances'
 type: 'canonical_entities:node'
 pattern: 'themes/dangerous-substances/practical-tools-dangerous-substances/[node:title]'
 selection_criteria:
-  3bbd6401-2748-4fd6-b881-c1188677efe5:
+  6b5e1669-8e29-4d7f-a3e8-ddba6fbe505d:
     id: node_type
     bundles:
       dangerous_substances: dangerous_substances
     negate: false
     context_mapping:
       node: node
-    uuid: 3bbd6401-2748-4fd6-b881-c1188677efe5
+    uuid: 6b5e1669-8e29-4d7f-a3e8-ddba6fbe505d
+  796e4b77-b5d9-417a-91c9-553be004f46f:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 796e4b77-b5d9-417a-91c9-553be004f46f
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'node:langcode:language':
+    label: Language

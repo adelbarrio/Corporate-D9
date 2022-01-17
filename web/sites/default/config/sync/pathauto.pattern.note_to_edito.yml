@@ -3,20 +3,31 @@ langcode: en
 status: true
 dependencies:
   module:
+    - language
     - node
 id: note_to_edito
 label: 'Note to editor'
 type: 'canonical_entities:node'
 pattern: 'about-eu-osha/press-room/note-to-editor/[node:title]'
 selection_criteria:
-  522cf03a-b345-481c-992d-0bc6fc2280c0:
+  1066b88f-5daa-4309-99f4-b53f5222effb:
     id: node_type
     bundles:
       note_to_editor: note_to_editor
     negate: false
     context_mapping:
       node: node
-    uuid: 522cf03a-b345-481c-992d-0bc6fc2280c0
+    uuid: 1066b88f-5daa-4309-99f4-b53f5222effb
+  0f4c42e7-4bc9-4420-aead-8e855993cc7e:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 0f4c42e7-4bc9-4420-aead-8e855993cc7e
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'node:langcode:language':
+    label: Language

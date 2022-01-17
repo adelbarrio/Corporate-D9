@@ -3,20 +3,31 @@ langcode: en
 status: true
 dependencies:
   module:
+    - language
     - node
 id: youtube
 label: Youtube
 type: 'canonical_entities:node'
 pattern: 'additional-resources/youtube/[node:title]'
 selection_criteria:
-  c1138c3b-e304-4a74-8d26-4e54aa1f0962:
+  08397cba-84c6-42fb-8492-bbf49658b0ea:
     id: node_type
     bundles:
       youtube: youtube
     negate: false
     context_mapping:
       node: node
-    uuid: c1138c3b-e304-4a74-8d26-4e54aa1f0962
+    uuid: 08397cba-84c6-42fb-8492-bbf49658b0ea
+  2e5049e8-a1b5-4738-9bb4-5f04d8417a49:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 2e5049e8-a1b5-4738-9bb4-5f04d8417a49
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'node:langcode:language':
+    label: Language

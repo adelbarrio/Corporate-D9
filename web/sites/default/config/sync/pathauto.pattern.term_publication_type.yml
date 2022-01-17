@@ -4,20 +4,31 @@ status: true
 dependencies:
   module:
     - ctools
+    - language
     - taxonomy
 id: term_publication_type
 label: 'Term: Publication type'
 type: 'canonical_entities:taxonomy_term'
 pattern: 'publication-types/[term:field_publication_type_code]'
 selection_criteria:
-  8c7dc12c-deb5-499d-9316-bf9aa520db6a:
+  4ca70ebf-3ad7-400d-a9ed-3d6e1f4b03fc:
     id: 'entity_bundle:taxonomy_term'
     bundles:
       publication_types: publication_types
     negate: false
     context_mapping:
       taxonomy_term: taxonomy_term
-    uuid: 8c7dc12c-deb5-499d-9316-bf9aa520db6a
+    uuid: 4ca70ebf-3ad7-400d-a9ed-3d6e1f4b03fc
+  4445cc14-f159-4708-8ced-35dc88a3e001:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'taxonomy_term:langcode:language'
+    uuid: 4445cc14-f159-4708-8ced-35dc88a3e001
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'taxonomy_term:langcode:language':
+    label: Language
