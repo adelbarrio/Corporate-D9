@@ -8,6 +8,7 @@ weight: -2
 is_admin: null
 permissions:
   - 'abort job item'
+  - 'accept translation jobs'
   - 'access dashboard'
   - 'access toolbar'
   - 'access workbench'
