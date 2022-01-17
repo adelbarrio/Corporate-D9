@@ -52,6 +52,7 @@ settings:
       - tr
       - nol
       - other
+      - Me
     authenticated:
       - ga
       - sq
@@ -63,6 +64,7 @@ settings:
       - tr
       - nol
       - other
+      - Me
     administrator:
       - ga
       - sq
@@ -74,6 +76,7 @@ settings:
       - tr
       - nol
       - other
+      - Me
     editor:
       - ga
       - sq
@@ -85,6 +88,7 @@ settings:
       - tr
       - nol
       - other
+      - Me
     review_manager:
       - ga
       - sq
@@ -96,6 +100,7 @@ settings:
       - tr
       - nol
       - other
+      - Me
     project_manager:
       - ga
       - sq
@@ -107,6 +112,7 @@ settings:
       - tr
       - nol
       - other
+      - Me
     approver:
       - ga
       - sq
@@ -118,6 +124,7 @@ settings:
       - tr
       - nol
       - other
+      - Me
     translation_manager:
       - ga
       - sq
@@ -129,6 +136,7 @@ settings:
       - tr
       - nol
       - other
+      - Me
     translation_liaison:
       - ga
       - sq
@@ -140,6 +148,7 @@ settings:
       - tr
       - nol
       - other
+      - Me
     layout_validator:
       - ga
       - sq
@@ -151,6 +160,7 @@ settings:
       - tr
       - nol
       - other
+      - Me
     content_validator:
       - ga
       - sq
@@ -162,17 +172,7 @@ settings:
       - tr
       - nol
       - other
-    events_coordinator:
-      - ga
-      - sq
-      - bs
-      - mk
-      - ru
-      - sr
-      - sh
-      - tr
-      - nol
-      - other
+      - Me
     events_editor:
       - ga
       - sq
@@ -184,6 +184,31 @@ settings:
       - tr
       - nol
       - other
+      - Me
+    events_coordinator:
+      - ga
+      - sq
+      - bs
+      - mk
+      - ru
+      - sr
+      - sh
+      - tr
+      - nol
+      - other
+      - Me
+    eventpm:
+      - ga
+      - sq
+      - bs
+      - mk
+      - ru
+      - sr
+      - sh
+      - tr
+      - nol
+      - other
+      - Me
     osh_collaborator:
       - ga
       - sq
@@ -195,6 +220,7 @@ settings:
       - tr
       - nol
       - other
+      - Me
     news_editor:
       - ga
       - sq
@@ -206,6 +232,7 @@ settings:
       - tr
       - nol
       - other
+      - Me
     read_only:
       - ga
       - sq
@@ -217,4 +244,57 @@ settings:
       - tr
       - nol
       - other
+      - Me
+    procur_pm:
+      - ga
+      - sq
+      - bs
+      - mk
+      - ru
+      - sr
+      - sh
+      - tr
+      - nol
+      - other
+      - Me
+    procur_edt:
+      - ga
+      - sq
+      - bs
+      - mk
+      - ru
+      - sr
+      - sh
+      - tr
+      - nol
+      - other
+      - Me
+    career_pm:
+      - ga
+      - sq
+      - bs
+      - mk
+      - ru
+      - sr
+      - sh
+      - tr
+      - nol
+      - other
+      - Me
+    career_edt:
+      - ga
+      - sq
+      - bs
+      - mk
+      - ru
+      - sr
+      - sh
+      - tr
+      - nol
+      - other
+      - Me
+  cache:
+    esi: 0
+    ttl: '0'
+    cachemode: '2'
 visibility: {  }
