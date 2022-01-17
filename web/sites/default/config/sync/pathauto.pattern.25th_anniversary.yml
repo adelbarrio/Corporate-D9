@@ -3,20 +3,31 @@ langcode: en
 status: true
 dependencies:
   module:
+    - language
     - node
 id: 25th_anniversary
 label: '25th anniversary'
 type: 'canonical_entities:node'
 pattern: 'about-eu-osha/eu-osha-1994-2019/our-story/[node:title]'
 selection_criteria:
-  248b5a57-7329-4931-8637-4afb7a5ae696:
+  16b2f995-561e-4d94-9c16-5beb4ed04731:
     id: node_type
     bundles:
       25th_anniversary: 25th_anniversary
     negate: false
     context_mapping:
       node: node
-    uuid: 248b5a57-7329-4931-8637-4afb7a5ae696
+    uuid: 16b2f995-561e-4d94-9c16-5beb4ed04731
+  c4d1db8f-ee5e-4e6f-95e6-f0d3af151f7d:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: c4d1db8f-ee5e-4e6f-95e6-f0d3af151f7d
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'node:langcode:language':
+    label: Language

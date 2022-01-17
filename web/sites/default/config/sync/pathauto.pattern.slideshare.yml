@@ -3,20 +3,31 @@ langcode: en
 status: true
 dependencies:
   module:
+    - language
     - node
 id: slideshare
 label: Slideshare
 type: 'canonical_entities:node'
 pattern: 'additional-resources/slideshare/[node:title]'
 selection_criteria:
-  6e2e4065-c829-4e64-8d56-7165e35dd302:
+  b15653a3-4211-4a4d-9b3c-c6780ac5ecae:
     id: node_type
     bundles:
       slideshare: slideshare
     negate: false
     context_mapping:
       node: node
-    uuid: 6e2e4065-c829-4e64-8d56-7165e35dd302
+    uuid: b15653a3-4211-4a4d-9b3c-c6780ac5ecae
+  0fb1f8e7-b85d-49c3-a486-fc223d25c44c:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 0fb1f8e7-b85d-49c3-a486-fc223d25c44c
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'node:langcode:language':
+    label: Language

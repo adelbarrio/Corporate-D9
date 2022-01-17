@@ -3,20 +3,31 @@ langcode: en
 status: true
 dependencies:
   module:
+    - language
     - node
 id: infographic
 label: Infographic
 type: 'canonical_entities:node'
 pattern: 'tools-and-publications/infographics/[node:title]'
 selection_criteria:
-  1ed757b3-3a4d-4da6-beef-5fd4c84fe591:
+  97a8adec-a8c2-40ca-b3a1-883361e96412:
     id: node_type
     bundles:
       infographic: infographic
     negate: false
     context_mapping:
       node: node
-    uuid: 1ed757b3-3a4d-4da6-beef-5fd4c84fe591
+    uuid: 97a8adec-a8c2-40ca-b3a1-883361e96412
+  a2e689f1-d83a-49b7-9c5d-80b7f83bdce8:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: a2e689f1-d83a-49b7-9c5d-80b7f83bdce8
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'node:langcode:language':
+    label: Language

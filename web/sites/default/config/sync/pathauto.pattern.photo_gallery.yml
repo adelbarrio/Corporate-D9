@@ -3,20 +3,31 @@ langcode: en
 status: true
 dependencies:
   module:
+    - language
     - node
 id: photo_gallery
 label: 'photo gallerynode'
 type: 'canonical_entities:node'
 pattern: 'photo-gallery/[node:title]'
 selection_criteria:
-  ffdce8fa-eee6-4d9c-a95e-be1599b403f2:
+  5b634462-caad-4d35-84ff-cf74b4b1c778:
     id: node_type
     bundles:
       gallery: gallery
     negate: false
     context_mapping:
       node: node
-    uuid: ffdce8fa-eee6-4d9c-a95e-be1599b403f2
+    uuid: 5b634462-caad-4d35-84ff-cf74b4b1c778
+  713031f2-60f7-4183-8800-778d452d70d7:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 713031f2-60f7-4183-8800-778d452d70d7
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'node:langcode:language':
+    label: Language

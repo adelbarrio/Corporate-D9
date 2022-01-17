@@ -3,20 +3,31 @@ langcode: en
 status: true
 dependencies:
   module:
+    - language
     - node
 id: contact
 label: Contact
 type: 'canonical_entities:node'
 pattern: 'contact/[node:title]'
 selection_criteria:
-  05c72ed6-5081-458d-9c49-1273fab925b9:
+  38412a69-a0e4-4384-8071-d9325772918f:
     id: node_type
     bundles:
       press_contact: press_contact
     negate: false
     context_mapping:
       node: node
-    uuid: 05c72ed6-5081-458d-9c49-1273fab925b9
+    uuid: 38412a69-a0e4-4384-8071-d9325772918f
+  14278f98-70b1-4dd5-97bd-de9996701ada:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 14278f98-70b1-4dd5-97bd-de9996701ada
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'node:langcode:language':
+    label: Language
