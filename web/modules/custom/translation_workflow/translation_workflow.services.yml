@@ -24,3 +24,6 @@ services:
 
   translation_workflow.users_to_notify:
     class: Drupal\translation_workflow\UsersToNotify
+
+  translation_workflow.manage_tmgmt_elements:
+    class: Drupal\translation_workflow\TmgmtElementsUtils

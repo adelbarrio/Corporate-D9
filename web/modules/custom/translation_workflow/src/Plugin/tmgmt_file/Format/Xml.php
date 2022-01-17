@@ -2,6 +2,7 @@
 
 namespace Drupal\translation_workflow\Plugin\tmgmt_file\Format;
 
+use Drupal\filter\Entity\FilterFormat;
 use Drupal\Core\Messenger\MessengerTrait;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\tmgmt\JobInterface;
@@ -469,6 +470,13 @@ class Xml extends \XMLWriter implements FormatInterface {
           if (!empty($newTextContent)) {
             $textContent = implode('', $newTextContent);
           }
+        }
+      }
+      $formats = array_keys(FilterFormat::loadMultiple());
+      if (isset($field['#format']) && in_array($field['#format'], $formats)) {
+        if (strpos($field['#text'], 'tmgmt-') === FALSE) {
+          $textContent = \Drupal::service('translation_workflow.manage_tmgmt_elements')
+            ->addTmgmtElements($textContent);
         }
       }
       $this->writeCdata($textContent);
