@@ -24,9 +24,6 @@ function translation_workflow_node_block_entity_view_alter(array &$build, Drupal
  * Implements hook_pathauto_alias_alter().
  */
 function translation_workflow_node_block_pathauto_alias_alter(&$alias, array &$context) {
-  // Add a suffix so that all aliases get saved as 'content/my-title.html'.
-  $alias .= '.html';
-
   // Force all aliases to be saved with default language.
   $context['language'] = Language::LANGCODE_DEFAULT;
 }
