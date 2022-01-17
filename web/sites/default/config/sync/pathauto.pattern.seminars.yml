@@ -3,20 +3,31 @@ langcode: en
 status: true
 dependencies:
   module:
+    - language
     - node
 id: seminars
 label: seminars
 type: 'canonical_entities:node'
 pattern: 'tools-and-resources/seminars/[node:title]'
 selection_criteria:
-  fe15cf05-580f-48ea-a970-f573fa0b342e:
+  b2800607-2742-480f-a39f-09d6c605da95:
     id: node_type
     bundles:
       seminar: seminar
     negate: false
     context_mapping:
       node: node
-    uuid: fe15cf05-580f-48ea-a970-f573fa0b342e
+    uuid: b2800607-2742-480f-a39f-09d6c605da95
+  201bdd66-2bb2-4e2d-b04b-37d654ab99f2:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 201bdd66-2bb2-4e2d-b04b-37d654ab99f2
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'node:langcode:language':
+    label: Language

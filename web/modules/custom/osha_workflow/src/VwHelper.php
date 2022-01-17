@@ -158,7 +158,7 @@ class VwHelper {
         ->condition('node_id', $this->getLastRevisionNode()->id(), '=')
         ->fields('v', ['id', 'node_id', 'user_id', 'status', 'weight']);
       $query->orderBy('v.weight');
-      //reorder to make Andrew first appprover by default
+
       return $query->execute()->fetchAll();
     } catch (\Exception $e) {
     }
@@ -243,14 +243,52 @@ class VwHelper {
         }
       }
     }
+
     try {
-      $query = $this->database
-        ->insert('osha_workflow_'.$table)
-        ->fields(['node_id', 'user_id', 'status', 'weight']);
-      foreach ($sectionUserTargetIds as $record){
-        $query->values($record);
+      if($userRole == 'approver') {
+        // MDR-4761 - William only approver for articles and press releases
+        if ($entity->bundle() == 'article' || $entity->bundle() == 'press_release') {
+          $query = $this->database
+            ->insert('osha_workflow_' . $table)
+            ->fields(['node_id', 'user_id', 'status', 'weight']);
+          $query->values([
+            $entity->id(),
+            312,
+            $this->t('Waiting to approve'),
+            0
+          ]);
+          $query->values([
+            $entity->id(),
+            313,
+            $this->t('Waiting to approve'),
+            1
+          ]);
+          $query->execute();
+        }
+        else {
+          $query = $this->database
+            ->insert('osha_workflow_' . $table)
+            ->fields(['node_id', 'user_id', 'status', 'weight']);
+            $query->values([
+              $entity->id(),
+              312,
+              $this->t('Waiting to approve'),
+              0
+            ]);
+          $query->execute();
+        }
       }
-      $query->execute();
+      else{
+        // Normal flow
+        $query = $this->database
+          ->insert('osha_workflow_'.$table)
+          ->fields(['node_id', 'user_id', 'status', 'weight']);
+        foreach ($sectionUserTargetIds as $record){
+          $query->values($record);
+        }
+        $query->execute();
+      }
+
     }catch (\Exception $e){
 
     }

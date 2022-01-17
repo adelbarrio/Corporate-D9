@@ -4,20 +4,31 @@ status: true
 dependencies:
   module:
     - ctools
+    - language
     - taxonomy
 id: term_nace_codes
 label: 'Term: Nace codes'
 type: 'canonical_entities:taxonomy_term'
 pattern: 'nace-codes/[term:field_nace_code]'
 selection_criteria:
-  3cdff525-aae1-4ec4-93f0-10ef2c46594f:
+  d076a6c1-c5c7-4f7a-a1af-38f8a315ebb2:
     id: 'entity_bundle:taxonomy_term'
     bundles:
       nace_codes: nace_codes
     negate: false
     context_mapping:
       taxonomy_term: taxonomy_term
-    uuid: 3cdff525-aae1-4ec4-93f0-10ef2c46594f
+    uuid: d076a6c1-c5c7-4f7a-a1af-38f8a315ebb2
+  17ff0b55-98b0-45ea-bb57-f87027cabb72:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'taxonomy_term:langcode:language'
+    uuid: 17ff0b55-98b0-45ea-bb57-f87027cabb72
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'taxonomy_term:langcode:language':
+    label: Language

@@ -3,20 +3,31 @@ langcode: en
 status: true
 dependencies:
   module:
+    - language
     - node
 id: focal_points
 label: 'focal points'
 type: 'canonical_entities:node'
 pattern: 'about-eu-osha/national-focal-points/[node:title]'
 selection_criteria:
-  c40aa426-090c-43d4-a94e-f38f98c0c820:
+  9fb8c17a-2601-49b9-999b-d23db95cddcc:
     id: node_type
     bundles:
       fop_page: fop_page
     negate: false
     context_mapping:
       node: node
-    uuid: c40aa426-090c-43d4-a94e-f38f98c0c820
+    uuid: 9fb8c17a-2601-49b9-999b-d23db95cddcc
+  710da906-e9bd-4130-a581-e02c399f4064:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 710da906-e9bd-4130-a581-e02c399f4064
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'node:langcode:language':
+    label: Language

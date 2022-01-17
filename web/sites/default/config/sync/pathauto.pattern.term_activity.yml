@@ -4,20 +4,31 @@ status: true
 dependencies:
   module:
     - ctools
+    - language
     - taxonomy
 id: term_activity
 label: 'Term: Activity'
 type: 'canonical_entities:taxonomy_term'
 pattern: 'activity/[term:field_activity_code]'
 selection_criteria:
-  591bf6fd-88cd-4949-af6a-d30dcf0f0a5f:
+  268dbc1b-19b7-4648-ac12-52e35a1bdb02:
     id: 'entity_bundle:taxonomy_term'
     bundles:
       activity: activity
     negate: false
     context_mapping:
       taxonomy_term: taxonomy_term
-    uuid: 591bf6fd-88cd-4949-af6a-d30dcf0f0a5f
+    uuid: 268dbc1b-19b7-4648-ac12-52e35a1bdb02
+  c608043b-476d-4e6e-8094-403e376bae9c:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'taxonomy_term:langcode:language'
+    uuid: c608043b-476d-4e6e-8094-403e376bae9c
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'taxonomy_term:langcode:language':
+    label: Language
