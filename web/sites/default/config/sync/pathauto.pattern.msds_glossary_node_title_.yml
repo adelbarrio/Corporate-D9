@@ -4,20 +4,31 @@ status: true
 dependencies:
   module:
     - ctools
+    - language
     - taxonomy
 id: msds_glossary_node_title_
 label: 'MSD Glossary'
 type: 'canonical_entities:taxonomy_term'
 pattern: '/msds-glossary/[term:name]'
 selection_criteria:
-  ed43cd78-273e-4c9e-ab82-889ff7f57e23:
+  ae4f7c08-dbda-4be8-ba06-26303b96bea6:
     id: 'entity_bundle:taxonomy_term'
     bundles:
       msds_glossary: msds_glossary
     negate: false
     context_mapping:
       taxonomy_term: taxonomy_term
-    uuid: ed43cd78-273e-4c9e-ab82-889ff7f57e23
+    uuid: ae4f7c08-dbda-4be8-ba06-26303b96bea6
+  60c1711a-53f0-4f21-aca0-4bc304706d0c:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'taxonomy_term:langcode:language'
+    uuid: 60c1711a-53f0-4f21-aca0-4bc304706d0c
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'taxonomy_term:langcode:language':
+    label: Language

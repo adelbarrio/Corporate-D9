@@ -3,20 +3,31 @@ langcode: en
 status: true
 dependencies:
   module:
+    - language
     - node
 id: musculoskeletal_disorders
 label: musculoskeletal-disorders
 type: 'canonical_entities:node'
 pattern: 'themes/musculoskeletal-disorders/practical-tools-musculoskeletal-disorders/[node:title]'
 selection_criteria:
-  8831f7d2-ce19-443a-978f-c175d2c4961e:
+  492a161a-c8a1-4ef7-8ba3-e74d662d2173:
     id: node_type
     bundles:
       musculoskeletal_disorders: musculoskeletal_disorders
     negate: false
     context_mapping:
       node: node
-    uuid: 8831f7d2-ce19-443a-978f-c175d2c4961e
+    uuid: 492a161a-c8a1-4ef7-8ba3-e74d662d2173
+  bc0e4999-5cc2-4390-9c1b-896441619e16:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: bc0e4999-5cc2-4390-9c1b-896441619e16
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'node:langcode:language':
+    label: Language

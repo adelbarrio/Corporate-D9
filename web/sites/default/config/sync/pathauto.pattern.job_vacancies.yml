@@ -3,20 +3,31 @@ langcode: en
 status: true
 dependencies:
   module:
+    - language
     - node
 id: job_vacancies
 label: 'Job vacancies'
 type: 'canonical_entities:node'
 pattern: 'about-eu-osha/careers/[node:title]'
 selection_criteria:
-  21e0c437-bb18-4f9b-b4c3-05fd8a6da4bb:
+  0b1d52ef-6a0b-4c97-89b9-b817be16d2a6:
     id: node_type
     bundles:
       job_vacancies: job_vacancies
     negate: false
     context_mapping:
       node: node
-    uuid: 21e0c437-bb18-4f9b-b4c3-05fd8a6da4bb
+    uuid: 0b1d52ef-6a0b-4c97-89b9-b817be16d2a6
+  9671b2da-be88-4da9-b2c0-7e064e399cda:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 9671b2da-be88-4da9-b2c0-7e064e399cda
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'node:langcode:language':
+    label: Language
