@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - language
     - node
 _core:
   default_config_hash: qTGsS0l6VgfMgGsjnlQXOeqdBMX-DdxYrVNpjU_mZH8
@@ -11,14 +12,24 @@ label: 'Url Newsletter Content'
 type: 'canonical_entities:node'
 pattern: '/newsletter/[node:title]'
 selection_criteria:
-  88e58b58-d814-4abf-aea4-2cd8eeababcd:
+  d32e75a1-50cf-4a3b-bdac-474f0a42cb5c:
     id: node_type
     bundles:
       newsletter_content: newsletter_content
     negate: false
     context_mapping:
       node: node
-    uuid: 88e58b58-d814-4abf-aea4-2cd8eeababcd
+    uuid: d32e75a1-50cf-4a3b-bdac-474f0a42cb5c
+  f33aeb8f-c71c-40ce-8558-9e957409eba7:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: f33aeb8f-c71c-40ce-8558-9e957409eba7
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'node:langcode:language':
+    label: Language

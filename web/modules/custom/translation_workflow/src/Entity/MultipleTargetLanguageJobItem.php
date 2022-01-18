@@ -9,6 +9,7 @@ use Drupal\Core\Entity\Exception\UndefinedLinkTemplateException;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Messenger\MessengerTrait;
 use Drupal\Core\Render\Element;
+use Drupal\node\Entity\Node;
 use Drupal\tmgmt\Entity\JobItem;
 use Drupal\tmgmt\JobItemInterface;
 use Drupal\translation_workflow\Event\TranslationEvent;
@@ -170,18 +171,28 @@ class MultipleTargetLanguageJobItem extends JobItem {
     }
 
     if ($this->hasRetranslationData()) {
+      $itemId = $this->getItemId();
+      $targetLanguage = $this->getTargetLangcode();
+      $entity_type_manager = \Drupal::entityTypeManager();
+      $entity = $entity_type_manager->getStorage($this->getItemType())->load($itemId);
+      if ($entity) {
+        if ($entity->hasTranslation($targetLanguage)) {
+          $entity = $entity->getTranslation($targetLanguage);
+        }
+      }
       $originalData = $this->getData();
       foreach (Element::children($translation) as $fieldName) {
         foreach (Element::children($translation[$fieldName]) as $fieldIndex) {
           foreach (Element::children($translation[$fieldName][$fieldIndex]) as $fieldValueName) {
             $fieldValue = &$translation[$fieldName][$fieldIndex][$fieldValueName]['#text'];
+            $fieldTranslatedValue = $entity->get($fieldName)->getString();
             if (isset($originalData[$fieldName]) && isset($originalData[$fieldName][$fieldIndex])
               && isset($originalData[$fieldName][$fieldIndex][$fieldValueName]) && isset($originalData[$fieldName][$fieldIndex][$fieldValueName]['#text'])
             ) {
               $crawler = new Crawler($originalData[$fieldName][$fieldIndex][$fieldValueName]['#text']);
               $newTranslatedValue = [];
               $crawler->filter('*[id*="tmgmt"]')->each(
-                function (Crawler $node, $i) use ($fieldValue, &$newTranslatedValue) {
+                function (Crawler $node, $i) use ($fieldValue, &$newTranslatedValue, $fieldTranslatedValue) {
                   $idAttr = $node->attr('id');
                   if (!is_null($idAttr) && (strpos($fieldValue, $idAttr) !== FALSE)) {
                     $subCrawler = new Crawler($fieldValue);
@@ -191,7 +202,11 @@ class MultipleTargetLanguageJobItem extends JobItem {
                     }
                   }
                   else {
-                    $newTranslatedValue[] = $node->outerHtml();
+                    $elementId = $node->attr('id');
+                    $domDocument = new \DOMDocument();
+                    $domDocument->loadHTML($fieldTranslatedValue);
+                    $domElement = $domDocument->getElementById($elementId);
+                    $newTranslatedValue[] = $domDocument->saveHTML($domElement);
                   }
                 }
               );

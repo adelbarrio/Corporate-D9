@@ -8,6 +8,7 @@
 use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
 use Drupal\Core\Render\Markup;
+use Drupal\node\NodeInterface;
 use Drupal\tmgmt\Entity\Translator;
 use Drupal\tmgmt\TMGMTException;
 use Drupal\Core\Entity\EntityInterface;
@@ -21,6 +22,7 @@ use Drupal\translation_workflow\MailType;
 use Drupal\translation_workflow\MultipleTargetLanguageConfigSourcePluginUi;
 use Drupal\translation_workflow\MultipleTargetLanguageLocaleSourcePluginUi;
 use Drupal\translation_workflow\MutipleTargetLanguageContentEntitySourcePluginUi;
+use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Gets a list of allowed languages for translation.
@@ -202,17 +204,27 @@ function tmgmt_content_translate_form_submit(array &$form, FormStateInterface $f
 }
 
 /**
- * Implements hook_entity_update().
+ * Implements hook_ENTITY_TYPE_presave().
  */
-function translation_workflow_entity_update(EntityInterface $entity) {
-  /*$contentModerationService = \Drupal::service('content_moderation_notifications.notification_information');
-  if ($contentModerationService->isModeratedEntity($entity)) {
-  $transition = $contentModerationService->getTransition($entity);
-  if ($transition->to()->id()) {
-  \Drupal::service('event_dispatcher')
-  ->dispatch(new TranslationEvent(NULL, $entity), TranslationEvent::TRANSLATION_CONTENT_READY_TO_PUBLISH);
+function translation_workflow_node_presave(NodeInterface $entity) {
+  foreach ($entity->getFields() as $field) {
+    $finalValue = '';
+    $fieldDefinition = $field->getFieldDefinition();
+    if (in_array($fieldDefinition->getType(), ['text_with_summary', 'text_long'])) {
+      if (!$field->isEmpty()) {
+        foreach ($field as $fieldElem) {
+          $fieldProperties = array_keys($fieldElem->getProperties());
+          if (in_array('value', $fieldProperties)) {
+            $finalValue = $fieldElem->getValue();
+            $finalValue['value'] = Drupal::service('translation_workflow.manage_tmgmt_elements')->addTmgmtElements($fieldElem->value);
+          }
+        }
+      }
+    }
+    if (!empty($finalValue)) {
+      $entity->set($field->getName(), $finalValue);
+    }
   }
-  }*/
 }
 
 /**

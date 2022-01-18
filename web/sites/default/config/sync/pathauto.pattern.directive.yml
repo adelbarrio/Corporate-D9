@@ -3,20 +3,31 @@ langcode: en
 status: true
 dependencies:
   module:
+    - language
     - node
 id: directive
 label: Directive
 type: 'canonical_entities:node'
 pattern: 'legislation/directive/[node:title]'
 selection_criteria:
-  8dd1b700-3e0c-4514-81a5-47c218da356c:
+  49b985e8-275a-4ce5-8cff-7c71695bb51c:
     id: node_type
     bundles:
       directive: directive
     negate: false
     context_mapping:
       node: node
-    uuid: 8dd1b700-3e0c-4514-81a5-47c218da356c
+    uuid: 49b985e8-275a-4ce5-8cff-7c71695bb51c
+  848c7574-a89a-4965-9c44-2d0778690ee8:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 848c7574-a89a-4965-9c44-2d0778690ee8
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'node:langcode:language':
+    label: Language
