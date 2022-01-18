@@ -3,20 +3,31 @@ langcode: en
 status: true
 dependencies:
   module:
+    - language
     - node
 id: guideline
 label: Guideline
 type: 'canonical_entities:node'
 pattern: 'legislation/guidelines/[node:title]'
 selection_criteria:
-  5f9f35f9-1ba8-4eda-ba44-9b37b6f8f328:
+  68d548f0-bae1-4d8e-80d1-bcb4f1372d25:
     id: node_type
     bundles:
       guideline: guideline
     negate: false
     context_mapping:
       node: node
-    uuid: 5f9f35f9-1ba8-4eda-ba44-9b37b6f8f328
+    uuid: 68d548f0-bae1-4d8e-80d1-bcb4f1372d25
+  189eda4c-087b-4f29-9da6-721cae0b3b53:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 189eda4c-087b-4f29-9da6-721cae0b3b53
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'node:langcode:language':
+    label: Language

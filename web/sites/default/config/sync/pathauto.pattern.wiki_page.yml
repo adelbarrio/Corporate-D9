@@ -3,20 +3,31 @@ langcode: en
 status: true
 dependencies:
   module:
+    - language
     - node
 id: wiki_page
 label: 'Wiki page'
 type: 'canonical_entities:node'
 pattern: '/oshwiki/[node:title]'
 selection_criteria:
-  bd8cbd7c-cc78-43e3-ab47-02e5a4df3121:
+  f925f7c5-319d-451f-b4ae-0a50e17178f5:
     id: node_type
     bundles:
       wiki_page: wiki_page
     negate: false
     context_mapping:
       node: node
-    uuid: bd8cbd7c-cc78-43e3-ab47-02e5a4df3121
+    uuid: f925f7c5-319d-451f-b4ae-0a50e17178f5
+  a5589c7b-d154-4a3c-9c7d-8183bc7c8fc0:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: a5589c7b-d154-4a3c-9c7d-8183bc7c8fc0
 selection_logic: and
 weight: -5
-relationships: {  }
+relationships:
+  'node:langcode:language':
+    label: Language

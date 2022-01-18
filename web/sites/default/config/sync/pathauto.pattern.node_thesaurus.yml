@@ -3,19 +3,31 @@ langcode: en
 status: true
 dependencies:
   module:
+    - language
     - node
 id: node_thesaurus
 label: 'Content - Thesaurus'
 type: 'canonical_entities:node'
 pattern: 'tools-and-resources/eu-osha-thesaurus/term/[node:field_term_id]'
 selection_criteria:
-  -
+  e4a49536-6782-422d-ab48-14b14a70522e:
     id: node_type
     bundles:
       thesaurus: thesaurus
     negate: false
     context_mapping:
       node: node
+    uuid: e4a49536-6782-422d-ab48-14b14a70522e
+  9b0ca9be-7a8a-45cc-aeec-c520f0d8f792:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 9b0ca9be-7a8a-45cc-aeec-c520f0d8f792
 selection_logic: and
 weight: 0
-relationships: {  }
+relationships:
+  'node:langcode:language':
+    label: Language
