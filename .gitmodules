@@ -10,3 +10,6 @@
 [submodule "web/sites/allages"]
 	path = web/sites/allages
 	url = git@github.com:EU-OSHA/allages-D9.git
+[submodule "web/sites/hwc"]
+	path = web/sites/hwc
+	url = git@github.com:EU-OSHA/HWCD9.git

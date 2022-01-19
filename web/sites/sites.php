@@ -68,10 +68,12 @@ $sites = [
   'vesafe.bilbomatica.es' => 'vesafe',
   'oira.bilbomatica.es' => 'oira',
   'allages.bilbomatica.es' => 'allages',
+  'hwc.bilbomatica.es' => 'hwc',
   // Local sites.
   'vesafe.ddev.site' => 'vesafe',
   'napo.ddev.site' => 'napo',
   'oira.ddev.site' => 'oira',
   'allages.ddev.site' => 'allages',
   'osha.ddev.site' => 'default',
+  'hwc.local' => 'hwc',
 ];
