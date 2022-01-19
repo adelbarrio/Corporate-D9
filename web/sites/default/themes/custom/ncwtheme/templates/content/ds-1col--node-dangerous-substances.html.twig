@@ -13,60 +13,106 @@
 
 {% if logged_in %}
   <{{ ds_content_wrapper }}{{ attributes.addClass('ds-1col', 'clearfix') }}>
-
   {{ title_suffix.contextual_links }}
   <div class="h1-back-wrapper">
     <h2>{{ 'Dangerous substances' | trans }}</h2>
-    <a href="/themes/dangerous-substances/search" class="pull-right-flex back-to-link">{{ 'Back to dangerous substances and filter' | trans }}</a>
+    <a href="/themes/dangerous-substances/search"
+       class="pull-right-flex back-to-link">{{ 'Back to dangerous substances and filter' | trans }}</a>
   </div>
   <div class="dangerous-wrapper">
-    {{ ds_content }}
+    {{ ds_content.group_tag_wrapper.field_item_type }}
+    {{ ds_content.group_tag_wrapper.field_material_country }}
+    <div class="field field--name-field-available-in-languages field--type-language-field field--label-above">
+      <label class="field__label">{{ 'Available in languages' | trans }}</label>
+      {{ ds_content.group_tag_wrapper.field_available_in_languages }}
+    </div>
+    <div class="wrapper-dangerous-wrapper wrapper-ds-content-description">
+      <h2>{{ 'Description' | trans }}</h2>
+      {{ ds_content.group_description.body }}
+    </div>
+    <div class="wrapper-dangerous-wrapper wrapper-ds-content-access">
+      <div class="access-tool-wrapper">
+        {{ ds_content.group_access_tool }}
+      </div>
+    </div>
+    <div class="wrapper-dangerous-wrapper wrapper-ds-content-other">
+      <h2>{{ 'Other data' | trans }}</h2>
+      {{ ds_content.group_other_data.field_sector_industry_covered }}
+      {{ ds_content.group_other_data.field_tasks_covered }}
+      {{ ds_content.group_other_data.field_biological_hazard }}
+      {{ ds_content.group_other_data.field_hazard_physical_state }}
+      {{ ds_content.group_other_data.field_hazard_health_effects }}
+      {{ ds_content.group_other_data.field_hazard_health_other }}
+      {{ ds_content.group_other_data.field_exposure_route }}
+      {{ ds_content.group_other_data.field_exposure_route_other }}
+      {{ ds_content.group_other_data.field_substance_description }}
+      {{ ds_content.group_other_data.field_cas_number }}
+      {{ ds_content.group_other_data.field_ec_number }}
+      {{ ds_content.group_other_data.field_worker_groups_type }}
+      {{ ds_content.group_other_data.field_worker_groups_other }}
+      {{ ds_content.group_other_data.field_prevention_measure_type }}
+      {{ ds_content.group_other_data.field_material_purpose_type }}
+      {{ ds_content.group_other_data.field_target_group }}
+      {{ ds_content.group_other_data.field_evaluation }}
+      {{ ds_content.group_other_data.field_intellectual_property_righ }}
+      {{ ds_content.group_other_data.field_advertising }}
+      {{ ds_content.group_other_data.field_priority_area }}
+      {{ ds_content.group_other_data.field_selected_for_analysis }}
+      <div class="field__label">{{ 'Year of publication' | trans }}</div>
+      <small><strong> {{ ds_content.group_tag_wrapper.field_year }}</strong></small>
+      {{ ds_content.group_other_data.field_fc_provider }}
+
+
+    </div>
+
   </div>
   </{{ ds_content_wrapper }}>
 {% else %}
+  <{{ ds_content_wrapper }}{{ attributes.addClass('ds-1col', 'clearfix') }}>
   <div class="back-before-title">
-    <a href="/themes/dangerous-substances/practical-tools-dangerous-substances" class="pull-right-flex back-to-link not-logged-MSD">{{ 'Back to Practical tools and guidance on dangerous substances' | trans }}</a>
+    <a href="/themes/dangerous-substances/practical-tools-dangerous-substances"
+       class="pull-right-flex back-to-link not-logged-MSD">{{ 'Back to Practical tools and guidance on dangerous substances' | trans }}</a>
   </div>
   <div class="dangerous-wrapper">
-      <div class="wrapper-tags">
-        <div class="tag">
-          {{ ds_content.field_item_type }}
-        </div>
-        <div class="tag">
-          {{ ds_content.field_material_country}}
-        </div>
-        <div class="tag">
-          {{ ds_content.field_available_in_languages }}
-        </div>
-        <div class="tag">
-          {{ ds_content.field_year }}
-        </div>
+    <div class="wrapper-tags">
+      <div class="tag">
+        {{ ds_content.group_tag_wrapper.field_item_type }}
       </div>
-      <div class="wrapper-dangerous-wrapper wrapper-ds-content-description">
-        <h2>{{ 'Description' | trans }}</h2>
-        {{ ds_content.body }}
+      <div class="tag">
+        {{ ds_content.group_tag_wrapper.field_material_country }}
       </div>
-      <div class="wrapper-dangerous-wrapper wrapper-ds-content-other">
-        <h2>{{ 'Other data' | trans }}</h2>
-        {{ ds_content.field_sector_industry_covered }}
-        {{ ds_content.field_fc_provider }}
-        {{ ds_content.field_tasks_covered }}
-        {{ ds_content.field_biological_hazard }}
-        {{ ds_content.field_hazard_physical_state }}
-        {{ ds_content.field_hazard_health_effects }}
-        {{ ds_content.field_exposure_route }}
-        {{ ds_content.field_substance_description }}
-        {{ ds_content.field_cas_number }}
-        {{ ds_content.field_ec_number }}
-        {{ ds_content.field_prevention_measure_type }}
-        {{ ds_content.field_material_purpose_type }}
-        {{ ds_content.field_target_group }}
+      <div class="tag">
+        <small> <strong>{{ ds_content.group_tag_wrapper.field_year }}</strong></small>
       </div>
-    <div class="wrapper-dangerous-wrapper wrapper-ds-content-access">
-      <h2>{{ 'Access tool' | trans }}</h2>
-      {{ ds_content.field_external_url }}
     </div>
-
+    <div class="tag">
+      {{ ds_content.group_tag_wrapper.field_available_in_languages }}
+    </div>
+    <div class="wrapper-dangerous-wrapper wrapper-ds-content-description">
+      <h2>{{ 'Description' | trans }}</h2>
+      {{ ds_content.group_description.body }}
+    </div>
+    <div class="wrapper-dangerous-wrapper wrapper-ds-content-access">
+      <div class="access-tool-wrapper">
+        {{ ds_content.group_access_tool }}
+      </div>
+    </div>
+    <div class="wrapper-dangerous-wrapper wrapper-ds-content-other">
+      <h2>{{ 'Other data' | trans }}</h2>
+      {{ ds_content.group_other_data.field_sector_industry_covered }}
+      {{ ds_content.group_other_data.field_fc_provider }}
+      {{ ds_content.group_other_data.field_tasks_covered }}
+      {{ ds_content.group_other_data.field_biological_hazard }}
+      {{ ds_content.group_other_data.field_hazard_physical_state }}
+      {{ ds_content.group_other_data.field_hazard_health_effects }}
+      {{ ds_content.group_other_data.field_exposure_route }}
+      {{ ds_content.group_other_data.field_substance_description }}
+      {{ ds_content.group_other_data.field_cas_number }}
+      {{ ds_content.group_other_data.field_ec_number }}
+      {{ ds_content.group_other_data.field_prevention_measure_type }}
+      {{ ds_content.group_other_data.field_material_purpose_type }}
+      {{ ds_content.group_other_data.field_target_group }}
+    </div>
   </div>
   </{{ ds_content_wrapper }}>
 {% endif %}

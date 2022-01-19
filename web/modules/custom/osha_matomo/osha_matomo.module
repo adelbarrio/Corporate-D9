@@ -158,7 +158,7 @@ function osha_matomo_page_attachments(array &$page)
         $set_custom_url = '"\/'.$searchstring.'"';
       }
       if (\Drupal::routeMatch()->getRouteName() =='view.musculoskeletal_disorders_list.page_1') {
-        $searchstring = "search/musculoskeletal-disorders?search_api_fulltext=". $_REQUEST["search_api_fulltext"];
+        $searchstring = "search/musculoskeletal-disorders?search_api_fulltext=";
         $set_custom_url = '"\/'.$searchstring.'"';
       }
 
