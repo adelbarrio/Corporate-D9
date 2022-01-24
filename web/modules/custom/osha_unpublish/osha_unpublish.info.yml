@@ -1,0 +1,8 @@
+type: module
+name: Osha Unpublish
+description: 'Unpublish nodes 1 year after they are created.'
+package: Development
+core_version_requirement: ^8.8 || ^9
+dependencies:
+  - content_moderation
+  - content_moderation_notifications
