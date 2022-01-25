@@ -2668,8 +2668,8 @@ body.node--type-infographic .field--name-body {
 #approve-form {
   padding-bottom: 1rem; }
 
-.node--unpublished div.node__content div.field{
-  background-color: #fff4f4;}
+.node--unpublished div {
+  background-color: #fff4f4; }
 
 .unpublished {
   height: 0;
