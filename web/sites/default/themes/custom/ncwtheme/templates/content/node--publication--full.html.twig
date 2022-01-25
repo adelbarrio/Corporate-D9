@@ -81,6 +81,10 @@
 <div class="h1-back-wrapper">
   <a href="/publications" class="pull-right-flex back-to-link">{{ 'Back to publications and filter' | trans }}</a>
 </div>
+{% if not node.isPublished() %}
+  <mark class="unpublished">Unpublished</mark>
+{% endif %}
+
 <article{{ attributes.addClass(classes) }}>
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
     <div class="publications-row">

@@ -21,7 +21,13 @@
   <h1>{{'Press releases' | trans}}</h1>
   <a href="/about-eu-osha/press-room" class="pull-right-flex back-to-link">{{ 'Back to press releases' | trans }}</a>
 </div>
-<div class="date-status">
+{% if not node.isPublished() %}
+  <mark class="unpublished">Unpublished</mark>
+  <{{ ds_content_wrapper }}{{ attributes.addClass('node--unpublished') }}>
+{% endif %}
+<div{{ content_attributes.addClass('node__content', 'clearfix') }}>
+
+  <div class="date-status">
     {% if(embargo_date != null and date(embargo_date) >= date(publication_date))%}
       <span>{{ "Hold on for press release until" | trans }} {{ embargo_date | date("d/m/Y - H:i")}}</span>
     {% endif %}
@@ -30,5 +36,5 @@
     {% endif %}
   </div>
 {{ ds_content }}
-
+</div>
 </{{ ds_content_wrapper }}>
