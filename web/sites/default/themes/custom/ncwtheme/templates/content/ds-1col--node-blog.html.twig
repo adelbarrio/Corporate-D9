@@ -11,11 +11,16 @@
 #}
 <{{ ds_content_wrapper }}{{ attributes.addClass('ds-1col', 'clearfix') }}>
 
-  {{ title_suffix.contextual_links }}
-  <div class="h1-back-wrapper">
-    <h1>{{ 'EU-OSHA Blog' | trans }}</h1>
-    <a href="/tools-and-resources/blog" class="pull-right-flex back-to-link">{{ 'Back to latest posts' | trans }}</a>
-  </div>
+{{ title_suffix.contextual_links }}
+<div class="h1-back-wrapper">
+  <h1>{{ 'EU-OSHA Blog' | trans }}</h1>
+  <a href="/tools-and-resources/blog" class="pull-right-flex back-to-link">{{ 'Back to latest posts' | trans }}</a>
+</div>
+{% if not node.isPublished() %}
+  <mark class="unpublished">Unpublished</mark>
+  <{{ ds_content_wrapper }}{{ attributes.addClass('node--unpublished') }}>
+{% endif %}
+<div{{ content_attributes.addClass('node__content', 'clearfix') }}>
   {{ ds_content }}
-
+</div>
 </{{ ds_content_wrapper }}>
