@@ -313,6 +313,7 @@
         "drupal/editor_advanced_link": "^1.8",
         "drupal/entity": "^1.2",
         "drupal/entity_browser": "^2.6",
+        "drupal/entity_collector": "^2.0",
         "drupal/entity_print": "^2.2",
         "drupal/entity_reference_revisions": "^1.8",
         "drupal/entity_reference_tree": "^2.0",
