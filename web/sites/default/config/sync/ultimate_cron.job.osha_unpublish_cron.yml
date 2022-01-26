@@ -1,0 +1,17 @@
+uuid: 5ac0cfa3-4c5b-4504-a07f-2c37447bc9e0
+langcode: en
+status: true
+dependencies:
+  module:
+    - osha_unpublish
+title: 'Default cron handler'
+id: osha_unpublish_cron
+weight: 0
+module: osha_unpublish
+callback: osha_unpublish_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

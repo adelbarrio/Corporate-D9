@@ -64,7 +64,9 @@
       {% set count_publication = 0 %}
       {% set count_slideshare = 0 %}
       {% set count_infographic = 0 %}
+
       {% for item in items %}
+
         {% if  item.content['#node'].type.0.target_id == 'file' %}
           {% set count_file = count_file + 1 %}
           {% if count_file == 1 %}
@@ -72,6 +74,7 @@
           {% endif %}
           <div class="field-item file-field">{{ item.content }}</div>
         {% endif %}
+
         {% if  item.content['#node'].type.0.target_id ==  'youtube' %}
           {% set count_youtube = count_youtube + 1 %}
           {% if count_youtube == 1 %}
@@ -79,6 +82,7 @@
           {% endif %}
           <div class="field-item youtube-field">{{ item.content }}</div>
         {% endif %}
+
         {% if  item.content['#node'].type.0.target_id ==  'publication' %}
           {% set count_publication = count_publication + 1 %}
           {% if count_publication == 1 %}
@@ -86,6 +90,7 @@
           {% endif %}
           <div class="field-item publication-field">{{ item.content }}</div>
         {% endif %}
+
         {% if  item.content['#node'].type.0.target_id ==  'slideshare' %}
           {% set count_slideshare = count_slideshare + 1 %}
           {% if count_slideshare == 1 %}
@@ -93,6 +98,7 @@
           {% endif %}
           <div class="field-item slideshare-field">{{ item.content }}</div>
         {% endif %}
+
         {% if  item.content['#node'].type.0.target_id ==  'infographic' %}
           {% set count_infographic = count_infographic + 1 %}
           {% if count_infographic == 1 %}
@@ -121,3 +127,6 @@
     {% endif %}
   </div>
 {% endif %}
+
+
+
