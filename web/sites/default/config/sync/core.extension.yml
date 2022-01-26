@@ -131,6 +131,7 @@ module:
   options: 0
   osha_lingua_tools: 0
   osha_matomo: 0
+  osha_unpublish: 0
   osha_workflow: 0
   oshwiki_import: 0
   page_cache: 0

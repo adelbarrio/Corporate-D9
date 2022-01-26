@@ -13,6 +13,9 @@
 <{{ ds_content_wrapper }}{{ attributes.addClass('ds-1col', 'clearfix') }}>
 
   {{ title_suffix.contextual_links }}
+{% if not node.isPublished() %}
+    <mark class="unpublished">Unpublished</mark>
+{% endif %}
   <div class="h1-back-wrapper">
     <h1>{{ 'EU-OSHA thesaurus' | trans }}</h1>
     <a href="/oshevents" class="pull-right-flex back-to-link">{{ 'Back to list of terms' | trans }}</a>

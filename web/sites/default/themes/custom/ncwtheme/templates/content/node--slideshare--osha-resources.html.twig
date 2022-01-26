@@ -78,15 +78,19 @@
       <div class="rr-item-content">
         {{ content }}
       </div>
-      <h2 class="rr-item-title">
-        {{ label }}
-      </h2>
-      <span class="see-more-arrow">
-        <a href="{{ url }}">{{ 'View' | trans }}</a>
-      </span>
-      <span class="see-more-arrow">
-         <a href="{{ url }}">{{ 'Download' | trans }}</a>
-      </span>
+      <div class="rr-group">
+        <h2 class="rr-item-title">
+          {{ label }}
+        </h2>
+        <div class="see-more-links">
+          <span class="see-more-arrow">
+            <a href="{{ url }}">{{ 'View' | trans }}</a>
+          </span>
+          <span class="see-more-arrow">
+             <a href="{{ url }}">{{ 'Download' | trans }}</a>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </article>

@@ -18,16 +18,15 @@
   <h1>{{ 'OSH events' | trans }}</h1>
   <a href="/oshevents" class="pull-right-flex back-to-link">{{ 'Back to events' | trans }}</a>
 </div>
-<div>
-  {% if not node.isPublished() %}
-    <mark class="unpublished">Unpublished</mark>
-  {% endif %}
-</div>
 {% if not node.isPublished() %}
+  <mark class="unpublished">Unpublished</mark>
   <{{ ds_content_wrapper }}{{ attributes.addClass('node--unpublished') }}>
 {% endif %}
+
+<div{{ content_attributes.addClass('node__content', 'clearfix') }}>
 <h2>{{ ds_content.node_title }}</h2>
-<div class="group-events-event-details field-group-div">
+
+<div class="group-events-event-details field field-group-div">
   <h3 class="events-title">{{ 'Event Details' | trans }}</h3>
   {% if ds_content.group_events_event_details.field_location.0 %}
   <div class="field--label-inline">
@@ -69,24 +68,24 @@
 </div>
 
 {% if ds_content.group_events_description.body.0 %}
-  <div class="group-events-event-details field-group-div">
+  <div class="group-events-event-details field field-group-div">
     <h3 class="events-title">{{ 'Description' | trans }}</h3>
     {{ ds_content.group_events_description.body.0 }}
   </div>
 {% endif %}
 
 {% if ds_content.group_events_link.field_website_of_event %}
-  <div class="group-events-event-details field-group-div">
+  <div class="group-events-event-details field field-group-div">
     <h3 class="events-title">{{ 'Link' | trans }}</h3>
     {{ ds_content.group_events_link.field_website_of_event }}
   </div>
 {% endif %}
 
 {% if ds_content.group_events_related_documents.field_related_documents %}
-<div class="group-events-event-details field-group-div">
+<div class="group-events-event-details field field-group-div">
   <h3 class="events-title">{{ 'Related resources' | trans }}</h3>
   {{ ds_content.group_events_related_documents.field_related_documents }}
 </div>
 {% endif %}
-
+</div>
 </{{ ds_content_wrapper }}>

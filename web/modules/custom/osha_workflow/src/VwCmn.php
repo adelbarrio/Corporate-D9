@@ -173,6 +173,21 @@ class VwCmn implements ContainerInjectionInterface {
         ];
       }
     }
+
+    if($notification->getOriginalId()== 'any_state_to_ready_to_publish'){
+      $users = $this->helper->getModerationList('reviewers');
+      $users = (array) $users;
+      /** @var \Drupal\user\Entity\User $user */
+      unset($data['to']);
+      $data['to'] = [];
+      for ($i=0; $i< count($users); $i++ ) {
+        $user = $this->entityTypeManager->getStorage('user')->load($users[$i]->user_id);
+        if($user->isActive() && $user->hasRole('review_manager')){
+          array_push($data['to'], $user->getEmail());
+        }
+      }
+      $this->helper->resetUsersStatus('reviewers');
+    }
   }
 
   public function filterUsers(EntityInterface $entity, array &$data){
