@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * Implements hook_cron().
+ */
+function osha_unpublish_cron() {
+  $storage = Drupal::entityTypeManager()->getStorage('node');
+  $oldNodes = Drupal::service('osha_unpublish.old_nodes')->load();
+  foreach ($oldNodes as $oldNode) {
+    $oldNode->setUnpublished();
+    $oldNode->set('moderation_state', 'unpublished');
+    $storage->createRevision($oldNode, $oldNode->isDefaultRevision());
+    $oldNode->isNewRevision(TRUE);
+    $oldNode->save();
+  }
+
+
+}
+

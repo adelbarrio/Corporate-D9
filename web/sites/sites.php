@@ -69,6 +69,7 @@ $sites = [
   'oira.bilbomatica.es' => 'oira',
   'allages.bilbomatica.es' => 'allages',
   'hwc.bilbomatica.es' => 'hwc',
+  'hwc.osha.auladrupal.com' => 'hwc',
   // Local sites.
   'vesafe.ddev.site' => 'vesafe',
   'napo.ddev.site' => 'napo',

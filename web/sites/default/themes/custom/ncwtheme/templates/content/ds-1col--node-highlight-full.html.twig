@@ -18,6 +18,12 @@
   <h1>{{ 'Highlights' | trans }}</h1>
   <a href="/highlights" class="pull-right-flex back-to-link">{{ 'Back to highlights' | trans }}</a>
 </div>
+{% if not node.isPublished() %}
+  <div>
+    <mark class="unpublished">Unpublished</mark>
+  </div>
+  <{{ ds_content_wrapper }}{{ attributes.addClass('node--unpublished') }}>
+{% endif %}
 {{ ds_content }}
 
 </{{ ds_content_wrapper }}>

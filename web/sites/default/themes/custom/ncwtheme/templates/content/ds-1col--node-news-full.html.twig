@@ -18,7 +18,13 @@
   <h1>{{ 'OSH News' | trans }}</h1>
   <a href="/oshnews" class="pull-right-flex back-to-link">{{ 'Back to OSH news' | trans }}</a>
 </div>
-{{ ds_content }}
+{% if not node.isPublished() %}
+  <mark class="unpublished">Unpublished</mark>
+  <{{ ds_content_wrapper }}{{ attributes.addClass('node--unpublished') }}>
+{% endif %}
+<div{{ content_attributes.addClass('node__content', 'clearfix') }}>
+  {{ ds_content }}
+</div>
 
 </{{ ds_content_wrapper }}>
 

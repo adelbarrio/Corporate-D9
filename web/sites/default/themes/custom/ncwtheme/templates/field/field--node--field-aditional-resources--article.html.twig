@@ -52,72 +52,77 @@
   ]
 %}
 
-<div class="content-headings-related h2-related-articles">
-  <h2>{{ 'Related resources' | trans }}</h2>
-</div>
-
-{% if label_hidden %}
-  {% if multiple %}
-    <div{{ attributes.addClass(classes, 'field__items') }}>
-      {% set count_file = 0 %}
-      {% set count_youtube = 0 %}
-      {% set count_publication = 0 %}
-      {% set count_slideshare = 0 %}
-      {% set count_infographic = 0 %}
-      {% for item in items %}
-        {% if  item.content['#node'].type.0.target_id == 'file' %}
-          {% set count_file = count_file + 1 %}
-          {% if count_file == 1 %}
-            <h3 class="custom-border h3-files-resources h3-related-articles"><span>{{ 'Files' | trans }}</span></h3>
-          {% endif %}
-          <div class="field-item file-field">{{ item.content }}</div>
-        {% endif %}
-        {% if  item.content['#node'].type.0.target_id ==  'youtube' %}
-          {% set count_youtube = count_youtube + 1 %}
-          {% if count_youtube == 1 %}
-            <h3 class="custom-border h3-files-resources h3-related-articles"><span>{{ 'Videos' | trans }}</span></h3>
-          {% endif %}
-          <div class="field-item youtube-field field-{{ count_youtube }}">{{ item.content }}</div>
-        {% endif %}
-        {% if  item.content['#node'].type.0.target_id ==  'publication' %}
-          {% set count_publication = count_publication + 1 %}
-          {% if count_publication == 1 %}
-            <h3 class="custom-border h3-files-resources h3-related-articles"><span>{{ 'Related publications' | trans }}</span></h3>
-          {% endif %}
-          <div class="field-item publication-field related-publications-in-articles">{{ item.content }}</div>
-        {% endif %}
-        {% if  item.content['#node'].type.0.target_id ==  'slideshare' %}
-          {% set count_slideshare = count_slideshare + 1 %}
-          {% if count_slideshare == 1 %}
-            <h3 class="custom-border h3-files-resources h3-related-articles"><span>{{ 'Presentations' | trans }}</span></h3>
-          {% endif %}
-          <div class="field-item slideshare-field">{{ item.content }}</div>
-        {% endif %}
-        {% if  item.content['#node'].type.0.target_id ==  'infographic' %}
-          {% set count_infographic = count_infographic + 1 %}
-          {% if count_infographic == 1 %}
-            <h3 class="custom-border h3-files-resources h3-related-articles"><span>{{ 'Infographics' | trans }}</span></h3>
-          {% endif %}
-          <div class="field-item infographic-field field-{{ count_infographic }}">{{ item.content }}</div>
-        {% endif %}
-      {% endfor %}
-    </div>
-  {% else %}
-    {% for item in items %}
-      <div{{ attributes.addClass(classes, 'field__item') }}>{{ item.content }}</div>
-    {% endfor %}
-  {% endif %}
-{% else %}
-  <div{{ attributes.addClass(classes) }}>
-    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
-    {% if multiple %}
-      <div class='field__items'>
-    {% endif %}
-    {% for item in items %}
-      <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
-    {% endfor %}
-    {% if multiple %}
-      </div>
-    {% endif %}
+<section class="related-resources-wrapper">
+  <div class="content-headings-related h2-related-articles">
+    <h2>{{ 'Related resources' | trans }}</h2>
   </div>
-{% endif %}
+
+  {% if label_hidden %}
+    {% if multiple %}
+      <div{{ attributes.addClass(classes, 'field__items') }}>
+        {% set count_file = 0 %}
+        {% set count_youtube = 0 %}
+        {% set count_publication = 0 %}
+        {% set count_slideshare = 0 %}
+        {% set count_infographic = 0 %}
+        {% for item in items %}
+          {% if  item.content['#node'].type.0.target_id == 'file' %}
+            {% set count_file = count_file + 1 %}
+            {% if count_file == 1 %}
+              <h3 class="custom-border h3-files-resources h3-related-articles"><span>{{ 'Files' | trans }}</span></h3>
+            {% endif %}
+            <div class="field-item file-field">{{ item.content }}</div>
+          {% endif %}
+          {% if  item.content['#node'].type.0.target_id ==  'youtube' %}
+            {% set count_youtube = count_youtube + 1 %}
+            {% if count_youtube == 1 %}
+              <h3 class="custom-border h3-files-resources h3-related-articles"><span>{{ 'Videos' | trans }}</span></h3>
+            {% endif %}
+            <div class="field-item youtube-field field-{{ count_youtube }}">{{ item.content }}</div>
+          {% endif %}
+          {% if  item.content['#node'].type.0.target_id ==  'publication' %}
+            {% set count_publication = count_publication + 1 %}
+            {% if count_publication == 1 %}
+              <h3 class="custom-border h3-files-resources h3-related-articles"><span>{{ 'Related publications' | trans }}</span></h3>
+            {% endif %}
+            <div class="field-item publication-field related-publications-in-articles">{{ item.content }}</div>
+          {% endif %}
+          {% if  item.content['#node'].type.0.target_id ==  'slideshare' %}
+            {% set count_slideshare = count_slideshare + 1 %}
+            {% if count_slideshare == 1 %}
+              <h3 class="custom-border h3-files-resources h3-related-articles"><span>{{ 'Presentations' | trans }}</span></h3>
+            {% endif %}
+            <div class="field-item slideshare-field">{{ item.content }}</div>
+          {% endif %}
+
+          {% if  item.content['#node'].type.0.target_id ==  'infographic' %}
+
+            {% set count_infographic = count_infographic + 1 %}
+            {% if count_infographic == 1 %}
+              <h3 class="custom-border h3-files-resources h3-related-articles"><span>{{ 'Infographics' | trans }}</span></h3>
+            {% endif %}
+            <div class="field-item infographic-field field-{{ count_infographic }}">{{ item.content }}</div>
+          {% endif %}
+
+        {% endfor %}
+      </div>
+    {% else %}
+      {% for item in items %}
+        <div{{ attributes.addClass(classes, 'field__item') }}>{{ item.content }}</div>
+      {% endfor %}
+    {% endif %}
+  {% else %}
+    <div{{ attributes.addClass(classes) }}>
+      <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+      {% if multiple %}
+        <div class='field__items'>
+      {% endif %}
+      {% for item in items %}
+        <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
+      {% endfor %}
+      {% if multiple %}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+</section>
