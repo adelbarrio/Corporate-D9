@@ -311,6 +311,7 @@ body.node--type-publication{
     background: url(../images/back-tit-blue.png) repeat-x scroll 0 100% transparent;
     margin-bottom: 1.3rem;
     padding-bottom: 1.3rem;
+    float: left;
     article{
       background: none !important;
       margin-bottom: 0;
@@ -519,7 +520,7 @@ body.node--type-publication{
   margin-right: 0;
 }
 
-/* Related publications - Infographics */
+/* Related publications - Infographics
 .field-item.infographic-field{
   float: left;
   width: 264px;
@@ -533,6 +534,128 @@ body.node--type-publication{
     height: auto;
   }
 }
+*/
+
+/* Related resources - infographics */
+
+.infographic-field{
+  &.field-item{
+    float: left;
+    margin-right: 3%;
+    margin-bottom: 3%;
+    .rr-item-wrapper{
+      display: flex;
+      float: none;
+      flex-direction: column;
+      .rr-item-content{
+
+      }
+      .rr-item-title{
+        font-size: 1.125rem;
+        font-weight: normal;
+        line-height: initial;
+        padding-top: 0.5rem;
+        padding-bottom: 1rem;
+      }
+      .see-more-arrow{
+
+      }
+    }
+  }
+}
+
+.slideshare-field{
+  &.field-item{
+    float: left;
+    margin-right: 3%;
+    margin-bottom: 3%;
+    .rr-item-wrapper{
+      display: flex;
+      float: none;
+      flex-direction: column;
+      .rr-item-content{
+
+      }
+      .rr-item-title{
+        font-size: 1.125rem;
+        font-weight: normal;
+        line-height: initial;
+        padding-top: 0.5rem;
+        padding-bottom: 1rem;
+      }
+      .see-more-arrow{
+
+      }
+    }
+  }
+}
+
+
+.one-column{
+  .infographic-field,
+  .slideshare-field{
+    &.field-item{
+      width: 22%;
+      .rr-item-wrapper{
+        width: 100%;
+        .rr-item-content{
+          width: 100%;
+          height: 200px;
+          overflow: hidden;
+          img{
+            width: 100%;
+            height: auto;
+          }
+        }
+        .rr-item-title{
+        }
+      }
+    }
+  }
+}
+
+.two-column{
+  .infographic-field,
+  .slideshare-field{
+    &.field-item{
+      width: 31%;
+      .rr-item-wrapper{
+        .rr-item-content{
+          img{
+            width: 100%;
+            height: auto;
+          }
+        }
+        .rr-item-title{
+        }
+      }
+    }
+  }
+}
+
+.three-column{
+  .infographic-field,
+  .slideshare-field{
+    &.field-item{
+      float: left;
+      width: 264px;
+      margin-right: 1rem;
+      .rr-item-wrapper{
+        .rr-item-content{
+          img{
+            width: 264px;
+            height: auto;
+          }
+        }
+        .rr-item-title{
+          font-size: 1.1rem;
+          line-height: initial;
+        }
+      }
+    }
+  }
+}
+
 
 .field-item.infographic-field.field-3, .field-item.infographic-field.field-6{
   margin-right: 0;

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f40d1af8c8e8c727f5f7d8dd1534e6d8",
+    "content-hash": "0d2c9b9c70b571a7178511309f22bccd",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5875,17 +5875,17 @@
         },
         {
             "name": "drupal/entity_collector",
-            "version": "1.0.0-alpha19",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/entity_collector.git",
-                "reference": "8.x-1.0-alpha19"
+                "reference": "2.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/entity_collector-8.x-1.0-alpha19.zip",
-                "reference": "8.x-1.0-alpha19",
-                "shasum": "4b1c6a31f66e7bfb0b2f510347f9681b6ae2921e"
+                "url": "https://ftp.drupal.org/files/projects/entity_collector-2.0.0.zip",
+                "reference": "2.0.0",
+                "shasum": "314a2bec2d0827e772e84d85c27a1506d8c22801"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9",
@@ -5894,11 +5894,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-alpha19",
-                    "datestamp": "1592481590",
+                    "version": "2.0.0",
+                    "datestamp": "1636122579",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Alpha releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -5918,6 +5918,10 @@
                     "homepage": "https://www.drupal.org/u/jbertoen",
                     "email": "jbertoen@gmail.com",
                     "role": "Maintainer"
+                },
+                {
+                    "name": "Steven Buteneers",
+                    "homepage": "https://www.drupal.org/user/3301055"
                 },
                 {
                     "name": "jefuri",
@@ -9262,17 +9266,17 @@
         },
         {
             "name": "drupal/linkchecker",
-            "version": "1.0.0-alpha1",
+            "version": "1.0.0-beta1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/linkchecker.git",
-                "reference": "8.x-1.0-alpha1"
+                "reference": "8.x-1.0-beta1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/linkchecker-8.x-1.0-alpha1.zip",
-                "reference": "8.x-1.0-alpha1",
-                "shasum": "ac87dadfd7d9ba27f36257b88d0f4d19085de630"
+                "url": "https://ftp.drupal.org/files/projects/linkchecker-8.x-1.0-beta1.zip",
+                "reference": "8.x-1.0-beta1",
+                "shasum": "adae83fe5e8bea8e68cdf1992bf6ed32ca099cd7"
             },
             "require": {
                 "drupal/core": "^8.8.0 || ^9",
@@ -9284,11 +9288,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-alpha1",
-                    "datestamp": "1608102789",
+                    "version": "8.x-1.0-beta1",
+                    "datestamp": "1629357686",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Alpha releases are not covered by Drupal security advisories."
+                        "message": "Beta releases are not covered by Drupal security advisories."
                     }
                 },
                 "drush": {
@@ -22868,7 +22872,6 @@
         "drupal/custom_breadcrumbs": 15,
         "drupal/custom_formatters": 10,
         "drupal/dynamic_entity_reference": 15,
-        "drupal/entity_collector": 15,
         "drupal/entity_reference_views": 10,
         "drupal/feeds": 15,
         "drupal/feeds_ex": 15,
@@ -22881,7 +22884,7 @@
         "drupal/layoutcomponents": 10,
         "drupal/libraries": 10,
         "drupal/like_and_dislike": 10,
-        "drupal/linkchecker": 15,
+        "drupal/linkchecker": 10,
         "drupal/linkit": 10,
         "drupal/masquerade": 10,
         "drupal/media_thumbnails_pdf": 15,

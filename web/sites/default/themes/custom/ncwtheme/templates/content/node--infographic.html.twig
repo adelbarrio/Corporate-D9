@@ -77,6 +77,9 @@
     <a href="/tools-and-resources/infographics" class="pull-right-flex back-to-link">{{ 'Back to Infographics' | trans }}</a>
   </div>
   <h1>{{ label }}</h1>
+  {% if not node.isPublished() %}
+    <mark class="unpublished">Unpublished</mark>
+  {% endif %}
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
     {{ content }}
   </div>
