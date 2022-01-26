@@ -207,7 +207,7 @@ function tmgmt_content_translate_form_submit(array &$form, FormStateInterface $f
  * Implements hook_ENTITY_TYPE_presave().
  */
 function translation_workflow_node_presave(NodeInterface $entity) {
-  /*foreach ($entity->getFields() as $field) {
+  foreach ($entity->getFields() as $field) {
     $finalValue = '';
     $fieldDefinition = $field->getFieldDefinition();
     if (in_array($fieldDefinition->getType(), ['text_with_summary', 'text_long'])) {
@@ -224,7 +224,7 @@ function translation_workflow_node_presave(NodeInterface $entity) {
     if (!empty($finalValue)) {
       $entity->set($field->getName(), $finalValue);
     }
-  }*/
+  }
 }
 
 /**
