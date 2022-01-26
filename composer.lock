@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6df078c6912af92e7fff4833a4ae4a7a",
+    "content-hash": "0d2c9b9c70b571a7178511309f22bccd",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9190,17 +9190,17 @@
         },
         {
             "name": "drupal/linkchecker",
-            "version": "1.0.0-alpha1",
+            "version": "1.0.0-beta1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/linkchecker.git",
-                "reference": "8.x-1.0-alpha1"
+                "reference": "8.x-1.0-beta1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/linkchecker-8.x-1.0-alpha1.zip",
-                "reference": "8.x-1.0-alpha1",
-                "shasum": "ac87dadfd7d9ba27f36257b88d0f4d19085de630"
+                "url": "https://ftp.drupal.org/files/projects/linkchecker-8.x-1.0-beta1.zip",
+                "reference": "8.x-1.0-beta1",
+                "shasum": "adae83fe5e8bea8e68cdf1992bf6ed32ca099cd7"
             },
             "require": {
                 "drupal/core": "^8.8.0 || ^9",
@@ -9212,11 +9212,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-alpha1",
-                    "datestamp": "1608102789",
+                    "version": "8.x-1.0-beta1",
+                    "datestamp": "1629357686",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Alpha releases are not covered by Drupal security advisories."
+                        "message": "Beta releases are not covered by Drupal security advisories."
                     }
                 },
                 "drush": {
@@ -22808,7 +22808,7 @@
         "drupal/layoutcomponents": 10,
         "drupal/libraries": 10,
         "drupal/like_and_dislike": 10,
-        "drupal/linkchecker": 15,
+        "drupal/linkchecker": 10,
         "drupal/linkit": 10,
         "drupal/masquerade": 10,
         "drupal/media_thumbnails_pdf": 15,
@@ -22842,5 +22842,5 @@
         "ext-xmlwriter": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "1.1.0"
 }
