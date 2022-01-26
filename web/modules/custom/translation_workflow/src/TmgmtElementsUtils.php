@@ -29,14 +29,16 @@ class TmgmtElementsUtils {
     $tmgmtCounter = 1;
     $crawler->filter('body > *')->each(function (Crawler $node, $i) use ($valueDocument, &$tmgmtCounter, &$finalValue) {
       $oldDomNode = $node->getNode(0);
-      $domNode = $valueDocument->createElement($oldDomNode->tagName);
-      $domNode->textContent = $oldDomNode->textContent;
+      $domNode = $oldDomNode->cloneNode(TRUE);
+      /*$domNode = $valueDocument->createElement($oldDomNode->tagName);
+      $domNode->textContent = $oldDomNode->textContent;*/
       if ($domNode->hasAttribute('id')) {
         $domNode->removeAttribute('id');
       }
       $domNode->setAttribute('id', 'tmgmt-' . $tmgmtCounter);
       $tmgmtCounter++;
-      $finalValue .= $valueDocument->saveHTML($domNode);
+      $importedNode = $valueDocument->importNode($domNode, TRUE);
+      $finalValue .= $valueDocument->saveHTML($importedNode);
     });
     return $finalValue;
   }
