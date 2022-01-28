@@ -154,7 +154,8 @@ body.node--type-publication{
   }
   .aditional-publications{
     display: flex;
-    padding-top: 1rem;
+    //padding-top: 1rem;
+    background: #FFF;
   }
   .publications-row.custom-add-margin{
     padding-bottom: 2rem;
@@ -486,6 +487,7 @@ body.node--type-publication{
   }
 }
 
+
 .node--type-article {
   .field--name-field-aditional-resources {
     .node--type-youtube {
@@ -538,32 +540,8 @@ body.node--type-publication{
 
 /* Related resources - infographics */
 
-.infographic-field{
-  &.field-item{
-    float: left;
-    margin-right: 3%;
-    margin-bottom: 3%;
-    .rr-item-wrapper{
-      display: flex;
-      float: none;
-      flex-direction: column;
-      .rr-item-content{
-
-      }
-      .rr-item-title{
-        font-size: 1.125rem;
-        font-weight: normal;
-        line-height: initial;
-        padding-top: 0.5rem;
-        padding-bottom: 1rem;
-      }
-      .see-more-arrow{
-
-      }
-    }
-  }
-}
-
+.infographic-field,
+.youtube-field,
 .slideshare-field{
   &.field-item{
     float: left;
@@ -593,6 +571,7 @@ body.node--type-publication{
 
 .one-column{
   .infographic-field,
+  .youtube-field,
   .slideshare-field{
     &.field-item{
       width: 22%;
@@ -616,12 +595,17 @@ body.node--type-publication{
 
 .two-column{
   .infographic-field,
+  .youtube-field,
   .slideshare-field{
     &.field-item{
-      width: 31%;
+      width: 30%;
       .rr-item-wrapper{
         .rr-item-content{
           img{
+            width: 100%;
+            height: auto;
+          }
+          iframe{
             width: 100%;
             height: auto;
           }
@@ -635,6 +619,7 @@ body.node--type-publication{
 
 .three-column{
   .infographic-field,
+  .youtube-field,
   .slideshare-field{
     &.field-item{
       float: left;
@@ -643,6 +628,10 @@ body.node--type-publication{
       .rr-item-wrapper{
         .rr-item-content{
           img{
+            width: 264px;
+            height: auto;
+          }
+          iframe{
             width: 264px;
             height: auto;
           }
