@@ -76,7 +76,7 @@
   <div{{ content_attributes.addClass('node__content custom-file-twig', 'clearfix') }}>
     <div class="rr-item-wrapper">
       <div class="rr-item-content">
-        {{ content }}
+        {{ content.field_thumbnail }}
       </div>
       <div class="rr-group">
         <h2 class="rr-item-title">
@@ -87,7 +87,7 @@
             <a href="{{ url }}">{{ 'View' | trans }}</a>
           </span>
           <span class="see-more-arrow">
-             <a href="{{ url }}">{{ 'Download' | trans }}</a>
+              <a href="{{ content.field_slideshare_url[0]['#url_title'] }}" target="_blank">{{ 'Download' | trans }}</a>
           </span>
         </div>
       </div>

@@ -154,7 +154,8 @@ body.node--type-publication{
   }
   .aditional-publications{
     display: flex;
-    padding-top: 1rem;
+    //padding-top: 1rem;
+    background: #FFF;
   }
   .publications-row.custom-add-margin{
     padding-bottom: 2rem;
@@ -486,6 +487,7 @@ body.node--type-publication{
   }
 }
 
+
 .node--type-article {
   .field--name-field-aditional-resources {
     .node--type-youtube {
@@ -536,153 +538,9 @@ body.node--type-publication{
 }
 */
 
-/* Related resources - infographics */
-
-.infographic-field{
-  &.field-item{
-    float: left;
-    margin-right: 3%;
-    margin-bottom: 3%;
-    .rr-item-wrapper{
-      display: flex;
-      float: none;
-      flex-direction: column;
-      .rr-item-content{
-
-      }
-      .rr-item-title{
-        font-size: 1.125rem;
-        font-weight: normal;
-        line-height: initial;
-        padding-top: 0.5rem;
-        padding-bottom: 1rem;
-      }
-      .see-more-arrow{
-
-      }
-    }
-  }
-}
-
-.slideshare-field{
-  &.field-item{
-    float: left;
-    margin-right: 3%;
-    margin-bottom: 3%;
-    .rr-item-wrapper{
-      display: flex;
-      float: none;
-      flex-direction: column;
-      .rr-item-content{
-
-      }
-      .rr-item-title{
-        font-size: 1.125rem;
-        font-weight: normal;
-        line-height: initial;
-        padding-top: 0.5rem;
-        padding-bottom: 1rem;
-      }
-      .see-more-arrow{
-
-      }
-    }
-  }
-}
-
-
-.one-column{
-  .infographic-field,
-  .slideshare-field{
-    &.field-item{
-      width: 22%;
-      .rr-item-wrapper{
-        width: 100%;
-        .rr-item-content{
-          width: 100%;
-          height: 200px;
-          overflow: hidden;
-          img{
-            width: 100%;
-            height: auto;
-          }
-        }
-        .rr-item-title{
-        }
-      }
-    }
-  }
-}
-
-.two-column{
-  .infographic-field,
-  .slideshare-field{
-    &.field-item{
-      width: 31%;
-      .rr-item-wrapper{
-        .rr-item-content{
-          img{
-            width: 100%;
-            height: auto;
-          }
-        }
-        .rr-item-title{
-        }
-      }
-    }
-  }
-}
-
-.three-column{
-  .infographic-field,
-  .slideshare-field{
-    &.field-item{
-      float: left;
-      width: 264px;
-      margin-right: 1rem;
-      .rr-item-wrapper{
-        .rr-item-content{
-          img{
-            width: 264px;
-            height: auto;
-          }
-        }
-        .rr-item-title{
-          font-size: 1.1rem;
-          line-height: initial;
-        }
-      }
-    }
-  }
-}
-
 
 .field-item.infographic-field.field-3, .field-item.infographic-field.field-6{
   margin-right: 0;
-}
-
-/* Related publications in articles */
-.related-publications-in-articles{
-  .node--type-publication{
-    .rr-wrapper-related-resources{
-      .rr-right-column{
-        padding: 0.5rem 0 0 1rem;
-        .rr-wrapper-fields{
-          flex-direction: column;
-        }
-        .field--name-node-link{
-          a{
-            font-size: 0.75rem;
-            background: url(../images/arrow.png) no-repeat calc(100% - 5px) 9px;
-            padding: 5px 30px 5px 5px;
-            &:hover {
-              background: url(../images/arrow.png) no-repeat $bg-color-blue calc(100% - 5px) 9px;
-            }
-          }
-        }
-      }
-    }
-  }
 }
 
 .wrapper-view-aditional-publications{
@@ -796,18 +654,7 @@ body.node--type-publication{
 }
 
 @media only screen and (max-width : 768px) {
-  .rr-left-column{
-    display: none;
-  }
-  .related-publications-in-articles {
-    .node--type-publication {
-      .rr-wrapper-related-resources {
-        .rr-right-column {
-          padding: 0;
-        }
-      }
-    }
-  }
+
   .publications {
     .view-filters {
       .views-exposed-form{
