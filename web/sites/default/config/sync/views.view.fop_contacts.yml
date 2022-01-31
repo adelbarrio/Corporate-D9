@@ -21,6 +21,7 @@ dependencies:
   module:
     - link
     - node
+    - spamspan
     - taxonomy
     - user
 id: fop_contacts
@@ -702,8 +703,17 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: email_mailto
-          settings: {  }
+          type: email_spamspan
+          settings:
+            spamspan_at: ' [at] '
+            spamspan_use_graphic: 0
+            spamspan_dot_enable: 0
+            spamspan_dot: ' [dot] '
+            use_form:
+              spamspan_use_form: 0
+              spamspan_form_pattern: '<a href="%url?goto=%email">%displaytext</a>'
+              spamspan_form_default_url: contact
+              spamspan_form_default_displaytext: 'contact form'
           group_column: value
           group_columns: {  }
           group_rows: true
