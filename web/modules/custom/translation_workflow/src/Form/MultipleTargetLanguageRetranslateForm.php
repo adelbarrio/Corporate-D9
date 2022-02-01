@@ -70,7 +70,7 @@ class MultipleTargetLanguageRetranslateForm extends FormBase {
 
           case 'text_with_summary':
             if (strpos($value, 'tmgmt')) {
-              $domDocument = new \DOMDocument('1.0', 'utf-8');
+              $domDocument = new \DOMDocument();
               $domDocument->loadHTML(mb_convert_encoding($value, 'HTML-ENTITIES', 'UTF-8'));
               $paragraphs = $domDocument->getElementsByTagName('*');
               $options = [];

@@ -186,33 +186,51 @@ class MultipleTargetLanguageJobItem extends JobItem {
           foreach (Element::children($translation[$fieldName][$fieldIndex]) as $fieldValueName) {
             $fieldValue = &$translation[$fieldName][$fieldIndex][$fieldValueName]['#text'];
             $fieldTranslatedValue = $entity->get($fieldName)->getString();
+            $domModified = FALSE;
             if (isset($originalData[$fieldName]) && isset($originalData[$fieldName][$fieldIndex])
               && isset($originalData[$fieldName][$fieldIndex][$fieldValueName]) && isset($originalData[$fieldName][$fieldIndex][$fieldValueName]['#text'])
             ) {
               $crawler = new Crawler($originalData[$fieldName][$fieldIndex][$fieldValueName]['#text']);
               $newTranslatedValue = [];
               $crawler->filter('*[id*="tmgmt"]')->each(
-                function (Crawler $node, $i) use ($fieldValue, &$newTranslatedValue, $fieldTranslatedValue) {
+                function (Crawler $node, $i) use (&$domModified, $fieldValue, &$newTranslatedValue, $fieldTranslatedValue) {
                   $idAttr = $node->attr('id');
-                  if (!is_null($idAttr) && (strpos($fieldValue, $idAttr) !== FALSE)) {
+                  if (!is_null($idAttr) && (strpos($fieldValue, '"' . $idAttr . '"') !== FALSE)) {
                     $subCrawler = new Crawler($fieldValue);
                     $subCrawler = $subCrawler->filter('#' . $idAttr);
                     if ($subCrawler->count()) {
-                      $newTranslatedValue[] = $subCrawler->outerHtml();
+                      $domModified = TRUE;
+                      $translatedNode = $subCrawler->getNode(0);
+                      $crawlerNode = $node->getNode(0);
+                      $crawlerNode->textContent = $translatedNode->textContent;
+                      foreach ($crawlerNode->attributes as $attribute) {
+                        $crawlerNode->removeAttribute($attribute->name);
+                      }
+                      foreach ($translatedNode->attributes as $attribute) {
+                        $crawlerNode->setAttribute($attribute->name, $attribute->value);
+                      }
                     }
                   }
                   else {
+                    $domModified = TRUE;
                     $elementId = $node->attr('id');
                     $domDocument = new \DOMDocument();
-                    $domDocument->loadHTML($fieldTranslatedValue);
+                    $domDocument->loadHTML(mb_convert_encoding($fieldTranslatedValue, 'HTML-ENTITIES', 'UTF-8'));
                     $domElement = $domDocument->getElementById($elementId);
-                    $newTranslatedValue[] = $domDocument->saveHTML($domElement);
+                    $crawlerNode = $node->getNode(0);
+                    $crawlerNode->textContent = $domElement->textContent;
+                    foreach ($crawlerNode->attributes as $attribute) {
+                      $crawlerNode->removeAttribute($attribute->name);
+                    }
+                    foreach ($domElement->attributes as $attribute) {
+                      $crawlerNode->setAttribute($attribute->name, $attribute->value);
+                    }
                   }
                 }
               );
-              if (!empty($newTranslatedValue)) {
-                $fieldValue = implode('', $newTranslatedValue);
-              }
+            }
+            if ($domModified) {
+              $fieldValue = $crawler->filter('body')->html();
             }
           }
         }
