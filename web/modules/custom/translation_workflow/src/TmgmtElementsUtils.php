@@ -23,7 +23,8 @@ class TmgmtElementsUtils {
   public function addTmgmtElements(string $fieldValue) {
     $finalValue = '';
     $valueDocument = new \DOMDocument();
-    $text = mb_convert_encoding('<body>' . $fieldValue . '</body>', 'HTML-ENTITIES', 'UTF-8');
+    //$text = mb_convert_encoding('<body>' . $fieldValue . '</body>', 'HTML-ENTITIES', 'UTF-8');
+    $text = '<body>' . $fieldValue . '</body>';
     $valueDocument->loadHTML($text);
     $crawler = new Crawler($fieldValue);
     $tmgmtCounter = 1;

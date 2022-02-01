@@ -111,31 +111,37 @@ class MultipleTargetLanguageJobItemForm extends JobItemForm {
               else {
                 $formStateValues[$fieldInsideValue]['source'] = $defaultValue;
               }
+              $domModified = FALSE;
 
               // Change translation value to include the rest of the text.
               $crawler = new Crawler($defaultValue);
-              $newDefaultValue = [];
               $newValue = is_array($formStateValues[$fieldInsideValue]["translation"]) ? $formStateValues[$fieldInsideValue]["translation"]["value"] : $formStateValues[$fieldInsideValue]["translation"];
               $subCrawler = new Crawler($newValue);
               $crawler->filter('*[id*="tmgmt"]')
-                ->each(function (Crawler $node, $i) use (&$newDefaultValue, $retranslationData, $field, $subCrawler) {
+                ->each(function (Crawler $node, $i) use (&$domModified, $retranslationData, $field, $subCrawler) {
                   $idAttr = $node->attr('id');
                   if (!is_null($idAttr) && in_array($idAttr, $retranslationData[$field])) {
                     $filteredCrawler = $subCrawler->filter('#' . $idAttr);
                     if ($filteredCrawler->count()) {
-                      $newDefaultValue[] = $filteredCrawler->outerHtml();
+                      $domModified = TRUE;
+                      $translatedNode = $filteredCrawler->getNode(0);
+                      $crawlerNode = $node->getNode(0);
+                      $crawlerNode->textContent = $translatedNode->textContent;
+                      foreach ($crawlerNode->attributes as $attribute) {
+                        $crawlerNode->removeAttribute($attribute->name);
+                      }
+                      foreach ($translatedNode->attributes as $attribute) {
+                        $crawlerNode->setAttribute($attribute->name, $attribute->value);
+                      }
                     }
                   }
-                  else {
-                    $newDefaultValue[] = $node->outerHtml();
-                  }
                 });
-              if (!empty($newDefaultValue)) {
+              if ($domModified) {
                 if (is_array($formStateValues[$fieldInsideValue]["translation"])) {
-                  $formStateValues[$fieldInsideValue]["translation"]["value"] = implode('', $newDefaultValue);
+                  $formStateValues[$fieldInsideValue]["translation"]["value"] = $crawler->filter('body')->html();
                 }
                 else {
-                  $formStateValues[$fieldInsideValue]["translation"] = implode('', $newDefaultValue);
+                  $formStateValues[$fieldInsideValue]["translation"] = $crawler->filter('body')->html();
                 }
                 $form_state->setValues($formStateValues);
               }
