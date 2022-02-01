@@ -3,11 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - node.type.events
-    - node.type.external_url
     - node.type.file
     - node.type.infographic
-    - node.type.news
     - node.type.publication
     - node.type.slideshare
     - node.type.youtube
@@ -304,11 +301,8 @@ display:
           admin_label: ''
           operator: in
           value:
-            events: events
-            external_url: external_url
             file: file
             infographic: infographic
-            news: news
             publication: publication
             slideshare: slideshare
             youtube: youtube
@@ -338,12 +332,17 @@ display:
               translation_liaison: '0'
               layout_validator: '0'
               content_validator: '0'
-              events_coordinator: '0'
               events_editor: '0'
+              events_coordinator: '0'
+              eventpm: '0'
               osh_collaborator: '0'
               news_editor: '0'
               read_only: '0'
-            reduce: true
+              procur_pm: '0'
+              procur_edt: '0'
+              career_pm: '0'
+              career_edt: '0'
+            reduce: false
           is_grouped: false
           group_info:
             label: ''

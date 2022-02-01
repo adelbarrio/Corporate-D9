@@ -38,6 +38,7 @@ blacklist:
   - migrate_plus.migration.import_crm_advisorygroups_wesag
 graylist:
   - ncw_backend.settings
+  - reroute_email.settings
   - search_api.server.solr
   - xmlsitemap.settings
   - xmlsitemap.xmlsitemap.g3XYqcXbSKPVBDODwnT6pq7oqhCFkPryj4vVqrl_Kfc

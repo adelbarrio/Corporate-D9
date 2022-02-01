@@ -564,10 +564,10 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          operator: '<='
+          operator: between
           value:
-            min: ''
-            max: ''
+            min: '-1 year'
+            max: now
             value: now
             type: offset
           group: 1
