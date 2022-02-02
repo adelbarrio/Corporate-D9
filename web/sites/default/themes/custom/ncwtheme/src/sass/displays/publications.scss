@@ -154,8 +154,7 @@ body.node--type-publication{
   }
   .aditional-publications{
     display: flex;
-    //padding-top: 1rem;
-    background: #FFF;
+    padding-top: 1rem;
   }
   .publications-row.custom-add-margin{
     padding-bottom: 2rem;
@@ -312,7 +311,6 @@ body.node--type-publication{
     background: url(../images/back-tit-blue.png) repeat-x scroll 0 100% transparent;
     margin-bottom: 1.3rem;
     padding-bottom: 1.3rem;
-    float: left;
     article{
       background: none !important;
       margin-bottom: 0;
@@ -487,7 +485,6 @@ body.node--type-publication{
   }
 }
 
-
 .node--type-article {
   .field--name-field-aditional-resources {
     .node--type-youtube {
@@ -522,7 +519,7 @@ body.node--type-publication{
   margin-right: 0;
 }
 
-/* Related publications - Infographics
+/* Related publications - Infographics */
 .field-item.infographic-field{
   float: left;
   width: 264px;
@@ -536,11 +533,33 @@ body.node--type-publication{
     height: auto;
   }
 }
-*/
-
 
 .field-item.infographic-field.field-3, .field-item.infographic-field.field-6{
   margin-right: 0;
+}
+
+/* Related publications in articles */
+.related-publications-in-articles{
+  .node--type-publication{
+    .rr-wrapper-related-resources{
+      .rr-right-column{
+        padding: 0.5rem 0 0 1rem;
+        .rr-wrapper-fields{
+          flex-direction: column;
+        }
+        .field--name-node-link{
+          a{
+            font-size: 0.75rem;
+            background: url(../images/arrow.png) no-repeat calc(100% - 5px) 9px;
+            padding: 5px 30px 5px 5px;
+            &:hover {
+              background: url(../images/arrow.png) no-repeat $bg-color-blue calc(100% - 5px) 9px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .wrapper-view-aditional-publications{
@@ -654,7 +673,18 @@ body.node--type-publication{
 }
 
 @media only screen and (max-width : 768px) {
-
+  .rr-left-column{
+    display: none;
+  }
+  .related-publications-in-articles {
+    .node--type-publication {
+      .rr-wrapper-related-resources {
+        .rr-right-column {
+          padding: 0;
+        }
+      }
+    }
+  }
   .publications {
     .view-filters {
       .views-exposed-form{

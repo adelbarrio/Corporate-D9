@@ -76,21 +76,17 @@
   <div{{ content_attributes.addClass('node__content custom-file-twig', 'clearfix') }}>
     <div class="rr-item-wrapper">
       <div class="rr-item-content">
-        {{ content.field_thumbnail }}
+        {{ content }}
       </div>
-      <div class="rr-group">
-        <h2 class="rr-item-title">
-          {{ label }}
-        </h2>
-        <div class="see-more-links">
-          <span class="see-more-arrow">
-            <a href="{{ url }}">{{ 'View' | trans }}</a>
-          </span>
-          <span class="see-more-arrow">
-              <a href="{{ content.field_slideshare_url[0]['#url_title'] }}" target="_blank">{{ 'Download' | trans }}</a>
-          </span>
-        </div>
-      </div>
+      <h2 class="rr-item-title">
+        {{ label }}
+      </h2>
+      <span class="see-more-arrow">
+        <a href="{{ url }}">{{ 'View' | trans }}</a>
+      </span>
+      <span class="see-more-arrow">
+         <a href="{{ url }}">{{ 'Download' | trans }}</a>
+      </span>
     </div>
   </div>
 </article>
