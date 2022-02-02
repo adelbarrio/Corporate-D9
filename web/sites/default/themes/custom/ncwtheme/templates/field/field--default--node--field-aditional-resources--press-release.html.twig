@@ -51,104 +51,33 @@
     label_display == 'visually_hidden' ? 'visually-hidden',
   ]
 %}
+<div{{ attributes.addClass(classes) }}>
+  <div class="field__label">{{ 'Related resources' | trans }}</div>
 
-
-<section class="related-resources-wrapper">
-  {% if multiple %}
-  <div{{ attributes.addClass(classes, 'field__items') }}>
-    <div class="content-headings-related h2-related-articles">
-      <h2>{{ 'Related resources' | trans }}</h2>
-    </div>
-
-    {% set  file_array = [] %}
-    {% set  youtube_array = [] %}
-    {% set  publication_array = [] %}
-    {% set  slideshare_array = [] %}
-    {% set  infographic_array = [] %}
-
-    {% for item in items %}
-
-      {% if  item.content['#node'].type.0.target_id == 'file' %}
-        {% set file_array = file_array|merge([{ item }]) %}
-      {% endif %}
-
-      {% if  item.content['#node'].type.0.target_id == 'youtube' %}
-        {% set youtube_array = youtube_array|merge([{ item }]) %}
-      {% endif %}
-
-      {% if  item.content['#node'].type.0.target_id == 'publication' %}
-        {% set publication_array = publication_array|merge([{ item }]) %}
-      {% endif %}
-
-      {% if  item.content['#node'].type.0.target_id == 'slideshare' %}
-        {% set slideshare_array = slideshare_array|merge([{ item }]) %}
-      {% endif %}
-
-      {% if  item.content['#node'].type.0.target_id == 'infographic' %}
-        {% set infographic_array = infographic_array|merge([{ item }]) %}
-      {% endif %}
-
-    {% endfor %}
-
-    {% if  infographic_array|length > 0 %}
-      <h3 class="custom-border h3-files-resources h3-related-articles"><span>{{ 'Infographics' | trans }}</span></h3>
-      <section class="infographic-wrapper">
-        {% for infographic in infographic_array %}
-          <div class="field-item infographic-field">
-            {{ infographic.item.content }}
-          </div>
+  {% if label_hidden %}
+    {% if multiple %}
+      <div{{ attributes.addClass('field__items') }}>
+        {% for item in items %}
+          <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
         {% endfor %}
-      </section>
-    {% endif %}
-
-    {% if  file_array|length > 0 %}
-      <h3 class="custom-border h3-files-resources h3-related-articles"><span>{{ 'Files' | trans }}</span></h3>
-      <section class="file-wrapper">
-        {% for file in file_array %}
-          <div class="field-item file-field">
-            {{ file.item.content }}
-          </div>
-        {% endfor %}
-      </section>
-    {% endif %}
-
-    {% if  youtube_array|length > 0 %}
-      <h3 class="custom-border h3-files-resources h3-related-articles"><span>{{ 'Videos' | trans }}</span></h3>
-      <section class="youtube-wrapper">
-        {% for youtube in youtube_array %}
-          <div class="field-item youtube-field">
-            {{ youtube.item.content }}
-          </div>
-        {% endfor %}
-      </section>
-    {% endif %}
-
-    {% if  slideshare_array|length > 0 %}
-      <h3 class="custom-border h3-files-resources h3-related-articles"><span>{{ 'Presentations' | trans }}</span></h3>
-      <section class="slideshare-wrapper">
-        {% for slideshare in slideshare_array %}
-          <div class="field-item infographic-field">
-            {{ slideshare.item.content }}
-          </div>
-        {% endfor %}
-      </section>
-    {% endif %}
-
-    {% if  publication_array|length > 0 %}
-      <h3 class="custom-border h3-files-resources h3-related-articles"><span>{{ 'Related publications' | trans }}</span></h3>
-      <section class="publication-wrapper">
-        {% for publication in publication_array %}
-          <div class="field-item publication-field">
-            {{ publication.item.content }}
-          </div>
-        {% endfor %}
-      </section>
-    {% endif %}
-
+      </div>
     {% else %}
       {% for item in items %}
-        <div{{ attributes.addClass(classes, 'field__item') }}>{{ item.content }}</div>
+        <div{{ attributes.addClass('field__item') }}>{{ item.content }}</div>
       {% endfor %}
     {% endif %}
+  {% else %}
 
-</section>
+      <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+      {% if multiple %}
+        <div class='field__items'>
+      {% endif %}
+      {% for item in items %}
+        <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
+      {% endfor %}
+      {% if multiple %}
+        </div>
+      {% endif %}
+
+  {% endif %}
+</div>
