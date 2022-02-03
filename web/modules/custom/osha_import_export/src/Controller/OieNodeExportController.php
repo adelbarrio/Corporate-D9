@@ -52,6 +52,8 @@ class OieNodeExportController extends ControllerBase implements ContainerInjecti
     }
 
 //Get providers fields for msds content type
+    $provname="";
+    $provoriginal= "";
     if ($node->bundle()=="musculoskeletal_disorders") {
       $paragraph = $node->field_msd_provider->getValue();
 
