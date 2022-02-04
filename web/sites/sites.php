@@ -77,4 +77,13 @@ $sites = [
   'allages.ddev.site' => 'allages',
   'osha.ddev.site' => 'default',
   'hwc.local' => 'hwc',
+  // Production
+  'prodd9.osha.europa.eu' => 'default',
+  'osha.europa.eu' => 'default',
+  'www.napofilm.net' => 'napo',
+  'oiraproject.eu' => 'oira',
+  'eguides.osha.europa.eu.vehicle-safety' => 'vesafe',
+  'eguides.osha.europa.eu.all-ages' => 'allages',
+  'eguides.osha.europa.eu.allages' => 'allages',
+
 ];
