@@ -102,9 +102,9 @@ class VwEntity implements ContainerInjectionInterface {
   public function formAlter(&$form, FormStateInterface $form_state, $form_id) {
 
     // When creating a node allow only to save it as Draft
-//    if($this->routeMatch->getRouteName()== "node.add" && isset($form['moderation_state'])){
-//      $form['moderation_state']['widget'][0]['state']['#options'] = ['draft' => 'Draft'];
-//    }
+    //if($this->routeMatch->getRouteName()== "node.add" && isset($form['moderation_state'])){
+      //$form['moderation_state']['widget'][0]['state']['#options'] = ['draft' => 'Draft'];
+    //}
 
     if ($form_id == 'content_moderation_entity_moderation_form') {
       $state = $this->helper->getNodeModerationState();
