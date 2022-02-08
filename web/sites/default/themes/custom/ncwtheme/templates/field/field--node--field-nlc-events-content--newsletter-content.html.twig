@@ -51,8 +51,7 @@
     label_display == 'visually_hidden' ? 'visually-hidden',
   ]
 %}
-{% set piwik_url_value = 'oshmail_2022_01' %}
-{% set piwik_url = '?pk_campaign=' ~ piwik_url_value %}
+{% set piwik_url = '?pk_campaign=' ~ piwik_id %}
 
 {% if label_hidden %}
   {% if multiple %}

@@ -14,8 +14,7 @@
 {% set date = ds_content.group_events_event_details.field_date.0['#text'] %}
 {% set event_title = ds_content.node_title.0.0.0['#context'] %}
 {% set event_url = event_title.entity_url %}
-{% set piwik_url_value = 'oshmail_2022_01' %}
-{% set piwik_url = '?pk_campaign=' ~ piwik_url_value %}
+{% set piwik_url = '?pk_campaign=' ~ piwik_id %}
 
 <tr class="twig-template-for-events">
   <td colspan="2" style="padding-top: 0">

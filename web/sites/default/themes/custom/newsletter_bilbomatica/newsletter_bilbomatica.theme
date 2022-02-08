@@ -11,3 +11,31 @@ function newsletter_bilbomatica_preprocess_simplenews_newsletter_body(&$variable
     ->getViewBuilder('block')
     ->view($block);
 }
+
+function newsletter_bilbomatica_preprocess_node(&$variables){
+  // Get piwik_id (youtube field) twigs
+  newsletter_bilbomatica_piwik_id($variables);
+}
+
+function newsletter_bilbomatica_preprocess_ds_1col(&$variables, $hook) {
+  // Get piwik_id (content) twigs
+  newsletter_bilbomatica_piwik_id($variables);
+}
+
+function newsletter_bilbomatica_preprocess_field(&$variables, $hook){
+  // Get piwik_id (events field) twigs
+  newsletter_bilbomatica_piwik_id($variables);
+}
+
+/**
+ * Get newsletter piwik id
+ */
+function newsletter_bilbomatica_piwik_id(&$variables){
+  $newsletter_node = \Drupal::request()->attributes->get('node');
+  if ($newsletter_node && $newsletter_node instanceof Drupal\node\Entity\Node) {
+    if ($newsletter_node->bundle() == 'newsletter_content' && isset($newsletter_node->get('nlc_id_in_piwik')->getValue()[0]['value']) ) {
+      $piwik_id = $newsletter_node->get('nlc_id_in_piwik')->getValue()[0]['value'];
+      $variables['piwik_id'] = $piwik_id;
+    }
+  }
+}
