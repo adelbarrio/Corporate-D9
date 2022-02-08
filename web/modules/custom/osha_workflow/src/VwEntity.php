@@ -100,6 +100,12 @@ class VwEntity implements ContainerInjectionInterface {
    * @see \hook_form_alter()
    */
   public function formAlter(&$form, FormStateInterface $form_state, $form_id) {
+
+    // When creating a node allow only to save it as Draft
+//    if($this->routeMatch->getRouteName()== "node.add" && isset($form['moderation_state'])){
+//      $form['moderation_state']['widget'][0]['state']['#options'] = ['draft' => 'Draft'];
+//    }
+
     if ($form_id == 'content_moderation_entity_moderation_form') {
       $state = $this->helper->getNodeModerationState();
 
@@ -153,35 +159,23 @@ class VwEntity implements ContainerInjectionInterface {
     // Get the new moderation state.
     $moderation_state = ($form_state->hasValue('moderation_state')) ? $form_state->getValue('moderation_state')[0]['value'] : $form_state->getValue('new_state');
 
+
+    // MDR-5055 revise the workflow steps of the corporate website (start).
     // From draft to final draft.
     if ($moderation_state == 'final_draft') {
       // Get the list of reviewers.
       $list = $this->helper->getModerationList('reviewers');
+      $list = $this->helper->getModerationList('project_managers');
+      $list = $this->helper->getModerationList('approvers');
+
       if (empty($list)) {
         // Return default reviewers.
         $list = $this->helper->getDefaultList('reviewers');
-      }
-    }
-
-    // From final draft to be reviewed.
-    if ($moderation_state == 'to_be_reviewed') {
-      // Get the list of reviewers.
-      $list = $this->helper->getModerationList('project_managers');
-      if (empty($list)) {
-        // Return default approvers.
         $list = $this->helper->getDefaultList('project_managers');
-      }
-    }
-
-    // From to be reviewd to to be approved
-    if ($moderation_state == 'to_be_approved') {
-      // Get the list of approvers.
-      $list = $this->helper->getModerationList('approvers');
-      if (empty($list)) {
-        // Return default approvers.
         $list = $this->helper->getDefaultList('approvers');
       }
     }
+    // MDR-5055 revise the workflow steps of the corporate website (end).
 
   }
 
