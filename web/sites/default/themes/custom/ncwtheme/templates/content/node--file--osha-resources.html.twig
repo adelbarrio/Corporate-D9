@@ -63,18 +63,21 @@
 
 {%
   set classes = [
-    'node',
-    'node--type-' ~ node.bundle|clean_class,
-    node.isPromoted() ? 'node--promoted',
-    node.isSticky() ? 'node--sticky',
-    not node.isPublished() ? 'node--unpublished',
-    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-    'clearfix',
-  ]
+  'node',
+  'node--type-' ~ node.bundle|clean_class,
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  'clearfix',
+]
 %}
-
-<article{{ attributes.addClass(classes) }}>
-  <div{{ content_attributes.addClass('node__content custom-file-twig', 'clearfix') }}>
-    {{ content }}
+<!--<article{{ attributes.addClass(classes) }}>-->
+<!-- <div{{ content_attributes.addClass('node__content custom-file-twig', 'clearfix') }}>-->
+<div class="rr-item-wrapper">
+  <div class="rr-item-content">
+    {{ content  }}
   </div>
-</article>
+</div>
+<!--</div>-->
+<!--</article>-->

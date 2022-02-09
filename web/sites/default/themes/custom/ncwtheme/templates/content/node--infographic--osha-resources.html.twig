@@ -63,27 +63,29 @@
 
 {%
   set classes = [
-    'node',
-    'node--type-' ~ node.bundle|clean_class,
-    node.isPromoted() ? 'node--promoted',
-    node.isSticky() ? 'node--sticky',
-    not node.isPublished() ? 'node--unpublished',
-    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-    'clearfix',
-  ]
+  'node',
+  'node--type-' ~ node.bundle|clean_class,
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  'clearfix',
+]
 %}
-<article{{ attributes.addClass(classes) }}>
-  <div{{ content_attributes.addClass('node__content custom-file-twig', 'clearfix') }}>
-    <div class="rr-item-wrapper">
-      <div class="rr-item-content">
-        {{ content }}
-      </div>
-      <h2 class="rr-item-title">
-        {{ label }}
-      </h2>
-      <span class="see-more-arrow">
-        <a href="{{ url }}">{{ 'View' | trans }}</a>
-      </span>
-    </div>
+<!--<article{{ attributes.addClass(classes) }}>-->
+<!-- <div{{ content_attributes.addClass('node__content custom-file-twig', 'clearfix') }}>-->
+<div class="rr-item-wrapper">
+  <div class="rr-item-content">
+    <a href="{{ url }}">{{ content }}</a>
   </div>
-</article>
+  <div class="rr-group">
+    <h2 class="rr-item-title">
+      <a href="{{ url }}">{{ label }}</a>
+    </h2>
+    <span class="see-more-arrow">
+          <a href="{{ url }}">{{ 'View' | trans }}</a>
+        </span>
+  </div>
+</div>
+<!--</div>-->
+<!--</article>-->

@@ -52,7 +52,6 @@
 ]
 %}
 
-
 <section class="related-resources-wrapper">
   {% if multiple %}
   <div{{ attributes.addClass(classes, 'field__items') }}>
@@ -65,6 +64,7 @@
     {% set  publication_array = [] %}
     {% set  slideshare_array = [] %}
     {% set  infographic_array = [] %}
+
 
     {% for item in items %}
 
@@ -127,7 +127,7 @@
       <h3 class="custom-border h3-files-resources h3-related-articles"><span>{{ 'Presentations' | trans }}</span></h3>
       <section class="slideshare-wrapper">
         {% for slideshare in slideshare_array %}
-          <div class="field-item infographic-field">
+          <div class="field-item slideshare-field">
             {{ slideshare.item.content }}
           </div>
         {% endfor %}

@@ -11,12 +11,32 @@ dependencies:
   module:
     - ds
     - image
+    - link
     - user
 id: node.slideshare.osha_resources
 targetEntityType: node
 bundle: slideshare
 mode: osha_resources
 content:
+  field_slideshare_url:
+    type: link_separate
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      trim_length: 250
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
   field_thumbnail:
     weight: 1
     label: hidden
@@ -42,6 +62,5 @@ hidden:
   addtoany: true
   breadcrumbs: true
   field_slideshare_id: true
-  field_slideshare_url: true
   langcode: true
   search_api_excerpt: true
