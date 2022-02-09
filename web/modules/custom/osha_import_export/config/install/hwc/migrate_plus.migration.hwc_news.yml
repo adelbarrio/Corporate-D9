@@ -13,6 +13,7 @@ dependencies:
       - ncw_migration
 source:
   plugin: url
+  node_type: news
   data_fetcher_plugin: http
   data_parser_plugin: oie_json
   include_raw_data: true
@@ -68,8 +69,8 @@ source:
       label: 'Shows'
       selector: item/field_show_on/und/0
     -
-      name: file_d7
-      label: 'File d7'
+      name: field_image
+      label: 'Image d7'
       selector: item/field_image/en/0
     -
       name: status
@@ -90,7 +91,10 @@ source:
 
 
 process:
-  nid: nid
+  nid:
+    - plugin: get
+      source: nid
+
   langcode: constants/lang
   title: title
   status: status
@@ -100,8 +104,12 @@ process:
   created: created
   changed: changed
   sticky: sticky
-  field_summary_html/0/value: summary/value
-  field_summary_html/0/format: 'full_html'
+  field_summary_html:
+    - plugin: get
+      source: summary
+  'field_summary_html/0/format':
+    - plugin: default_value
+      default_value: full_html
   field_publication_date:
     -
       plugin: sub_process
@@ -114,8 +122,12 @@ process:
           from_timezone: 'Europe/Madrid'
           to_timezone: 'Europe/Madrid'
           source: value
-  body/0/value: body/value
-  body/0/format: 'full_html'
+  body:
+    - plugin: get
+      source: body
+  'body/0/format':
+    - plugin: default_value
+      default_value: full_html
   field_tags:
     -
       plugin: oie_taxonomy_term
@@ -130,23 +142,23 @@ process:
   file_source:
     -
       plugin: skip_on_empty
-      source: file_d7/uri
+      source: field_image/uri
       method: process
     -
       plugin: oie_url_transform
-      source: file_d7/uri
+      source: field_image/uri
     -
       plugin: urlencode
   file_dest:
     -
       plugin: skip_on_empty
-      source: file_d7/filename
+      source: field_image/filename
       method: process
     - plugin: concat
       delimiter: /
       source:
         - constants/file_dest
-        - file_d7/filename
+        - field_image/filename
   file:
     -
       plugin: skip_on_empty
@@ -156,7 +168,8 @@ process:
       plugin: skip_on_empty
       source: '@file_dest'
       method: process
-    - plugin: file_copy
+    -
+      plugin: file_copy
       source:
         - '@file_source'
         - '@file_dest'
@@ -164,8 +177,7 @@ process:
       value_key: uri
       entity_type: file
   media:
-    -
-      plugin: skip_on_empty
+    - plugin: skip_on_empty
       source: '@file'
       method: process
     - plugin: entity_generate
@@ -181,10 +193,8 @@ process:
       values:
         field_media_image: '@file'
   field_image_media/target_id:
-    -
-      plugin: skip_on_empty
+    - plugin: skip_on_empty
       source: '@media'
       method: process
-    -
-      plugin: default_value
+    - plugin: default_value
       default_value: '@media'

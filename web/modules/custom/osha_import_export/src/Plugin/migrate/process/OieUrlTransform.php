@@ -47,8 +47,9 @@ class OieUrlTransform extends ProcessPluginBase implements ContainerFactoryPlugi
     $config = $this->configFactory->get('osha_import_export.config');
     $urls_site = (isset($row->getSource()['urls'])) ? $row->getSource()['urls'][0] : 'default';
     $base = $config->get($urls_site . '_endpoint');
-
-    return $base . "/sites/$urls_site/files/" . $nn;
+    $base = $base . "/sites/$urls_site/files/" . $nn;
+    $base = str_replace ("sites/hwc/files",'sites/default/files',$base);
+    return $base;
   }
 
 }
