@@ -7,12 +7,16 @@ dependencies:
     - node.type.events
   module:
     - options
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
 id: node.events.field_show_on
 field_name: field_show_on
 entity_type: node
 bundle: events
-label: 'Show on'
-description: ''
+label: 'Show on HWC website'
+description: 'The event can also be made visible on different sections of the campaign website, by choosing the corresponding section(s) in the drop-down menu.'
 required: false
 translatable: false
 default_value: {  }
