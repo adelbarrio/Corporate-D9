@@ -99,6 +99,7 @@ function ncwtheme_preprocess_node(&$variables)
     ksort($img);
     $variables['relatedImg'] = $img;
     $variables['coverImg'] = $fileFieldImg;
+
   }
   /**
    * Get parameter in URL to External Inforgrphic en/tools-and-publications/infographics/how-to-manage-dangerous-substances/how-to-manage-dangerous-substances-infographic
@@ -109,6 +110,10 @@ function ncwtheme_preprocess_node(&$variables)
       $variables['lan'] = $request->query->get('lan') ;
     }
   }
+
+  // Get piwik_id (youtube field) twigs
+  ncwtheme_piwik_id($variables);
+
 }
 
 /**
@@ -161,6 +166,8 @@ function ncwtheme_preprocess_ds_1col(&$variables){
       $variables['coverImg'] = $fileFieldImg;
     }
   }
+  // Get piwik_id (content) twigs
+  ncwtheme_piwik_id($variables);
 }
 
 function ncwtheme_preprocess_menu(&$variables, $hook) {
@@ -209,6 +216,25 @@ function ncwtheme_preprocess_menu(&$variables, $hook) {
   }
 }
 
+/**
+ * Get newsletter piwik id
+ */
+function ncwtheme_preprocess_field(&$variables, $hook){
+  // Get piwik_id (events field) twigs
+  ncwtheme_piwik_id($variables);
 
+}
 
+/**
+ * Get newsletter piwik id
+ */
+function ncwtheme_piwik_id(&$variables){
+  $newsletter_node = \Drupal::request()->attributes->get('node');
+  if ($newsletter_node && $newsletter_node instanceof Drupal\node\Entity\Node) {
+    if ($newsletter_node->bundle() == 'newsletter_content' && isset($newsletter_node->get('nlc_id_in_piwik')->getValue()[0]['value']) ) {
+      $piwik_id = $newsletter_node->get('nlc_id_in_piwik')->getValue()[0]['value'];
+      $variables['piwik_id'] = $piwik_id;
+    }
+  }
+}
 
