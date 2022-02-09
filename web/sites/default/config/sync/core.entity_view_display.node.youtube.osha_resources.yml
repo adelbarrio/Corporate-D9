@@ -1,0 +1,63 @@
+uuid: 604bc173-e55e-4626-b490-9a6b1adf9fc5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.osha_resources
+    - field.field.node.youtube.body
+    - field.field.node.youtube.field_image_for_oshmail
+    - field.field.node.youtube.field_publication_date
+    - field.field.node.youtube.field_youtube
+    - field.field.node.youtube.simplenews_issue
+    - node.type.youtube
+  module:
+    - datetime
+    - ds
+    - user
+    - youtube
+id: node.youtube.osha_resources
+targetEntityType: node
+bundle: youtube
+mode: osha_resources
+content:
+  field_publication_date:
+    type: datetime_default
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: only_day
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+  field_youtube:
+    weight: 0
+    label: hidden
+    settings:
+      youtube_size: 450x315
+      youtube_width: ''
+      youtube_height: ''
+      youtube_autoplay: false
+      youtube_mute: false
+      youtube_loop: false
+      youtube_controls: false
+      youtube_autohide: false
+      youtube_iv_load_policy: false
+    third_party_settings: {  }
+    type: youtube_video
+    region: content
+hidden:
+  addtoany: true
+  body: true
+  breadcrumbs: true
+  field_image_for_oshmail: true
+  langcode: true
+  links: true
+  search_api_excerpt: true
+  simplenews_issue: true

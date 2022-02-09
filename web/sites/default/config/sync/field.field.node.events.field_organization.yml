@@ -5,12 +5,17 @@ dependencies:
   config:
     - field.storage.node.field_organization
     - node.type.events
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
 id: node.events.field_organization
 field_name: field_organization
 entity_type: node
 bundle: events
 label: Organisation
-description: 'Please indicate here the organisation responsible for the organisation of the event. If an acronym exists for the organisation, please include “acronym (UPPERCASE) ‘-‘complete name (sentence case)”: (i.e.. HSE – Health and Safety Executive).'
+description: 'Please indicate here the organisation responsible for the organisation of the event. If an acronym exists for the organisation, please include “acronym (UPPERCASE) ‘-‘complete name (sentence case)”: (i.e. HSA – Health and Safety Authority).'
 required: false
 translatable: false
 default_value: {  }

@@ -16,6 +16,10 @@ class NCWForm extends FormBase {
    * @param $form_id
    */
   public function formAlter(&$form, FormStateInterface $form_state, $form_id) {
+    if($form_id == "tmgmt_content_translate_form"){
+      unset($form['actions']['request']);
+    }
+
     // Check if user is logged
     if (\Drupal::currentUser()->isAuthenticated()) {
       // Get the id of the current node

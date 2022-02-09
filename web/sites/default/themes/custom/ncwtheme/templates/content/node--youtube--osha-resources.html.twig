@@ -63,24 +63,33 @@
 
 {%
   set classes = [
-    'node',
-    'node--type-' ~ node.bundle|clean_class,
-    node.isPromoted() ? 'node--promoted',
-    node.isSticky() ? 'node--sticky',
-    not node.isPublished() ? 'node--unpublished',
-    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-    'clearfix',
-  ]
+  'node',
+  'node--type-' ~ node.bundle|clean_class,
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  'clearfix',
+]
 %}
+<!--
 <article{{ attributes.addClass(classes) }}>
   <div{{ content_attributes.addClass('node__content custom-video-twig', 'clearfix') }}>
-    <div class="rr-item-wrapper">
-      <div class="rr-item-content hide-description">
-        {{ content }}
-      </div>
-      <h2 class="rr-item-title">
-        {{ label }}
-      </h2>
-    </div>
+  -->
+<div class="rr-item-wrapper">
+  <div class="rr-item-content hide-description">
+    {{ content }}
+  </div>
+  <div class="rr-group">
+    <h2 class="rr-item-title">
+      <a href="{{ url }}">{{ label }}</a>
+    </h2>
+    <span class="see-more-arrow">
+          <a href="{{ url }}">{{ 'View' | trans }}</a>
+        </span>
+  </div>
+</div>
+<!--
   </div>
 </article>
+-->

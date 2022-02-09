@@ -1456,7 +1456,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Ares / Adonis'
+          label: Ares
           exclude: false
           alter:
             alter_text: false
@@ -4849,7 +4849,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Ares / Adonis'
+          label: Ares
           exclude: false
           alter:
             alter_text: false

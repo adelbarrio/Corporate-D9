@@ -91,7 +91,7 @@ content:
     region: ds_content
     label: above
     settings:
-      view_mode: teaser
+      view_mode: osha_resources
       link: false
     third_party_settings:
       ds:
