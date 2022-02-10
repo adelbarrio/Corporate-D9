@@ -2329,7 +2329,7 @@ display:
           exposed: true
           expose:
             operator_id: field_adonis_value_op
-            label: Ares/Adonis
+            label: Ares
             description: ''
             use_operator: false
             operator: field_adonis_value_op
@@ -2351,7 +2351,6 @@ display:
               translation_liaison: '0'
               layout_validator: '0'
               content_validator: '0'
-              events_coordinator: '0'
               events_editor: '0'
               osh_collaborator: '0'
               news_editor: '0'
@@ -3009,7 +3008,7 @@ display:
           empty: true
           tokenize: false
           content:
-            value: "<p>\r\n<a href=\"/en/node/add/events\">Add event</a>\r\n</p>"
+            value: "<p>\r\n<a href=\"/en/node/add/events\"><span style=\"font-size: 15px\">Add event</span></a>\r\n</p>"
             format: full_html
           plugin_id: text
         result:
