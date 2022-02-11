@@ -16,8 +16,14 @@ class NCWForm extends FormBase {
    * @param $form_id
    */
   public function formAlter(&$form, FormStateInterface $form_state, $form_id) {
+    // Hide 'Request translation' button in a translation of node
     if($form_id == "tmgmt_content_translate_form"){
       unset($form['actions']['request']);
+    }
+
+    // Hide in the 'Show on HWC website' drop-down menu 'GP Awards' in events
+    if($form_id == 'node_events_edit_form' && isset($form['field_show_on']) ) {
+      unset($form['field_show_on']['widget']['#options']['GP Awards']);
     }
 
     // Check if user is logged
