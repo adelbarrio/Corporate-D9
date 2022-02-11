@@ -88,6 +88,14 @@ th.views-field-field-color, td.views-field-field-color {
   background-image: url(../images/xls.png) !important;
 }
 
+.xlsx-feed .feed-icon {
+  background-image: url(../images/xlsx.png) !important;
+  width: 43px;
+  background-size: cover;
+  height: 7px;
+  padding: 11px;
+}
+
 .view-additional-resources .form--inline .form-actions {
   clear: initial;
   padding-top: 29px;

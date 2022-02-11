@@ -342,7 +342,7 @@ display:
               procur_edt: '0'
               career_pm: '0'
               career_edt: '0'
-            reduce: false
+            reduce: true
           is_grouped: false
           group_info:
             label: ''

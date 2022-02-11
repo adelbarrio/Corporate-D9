@@ -12,7 +12,7 @@ bundle: fop_link
 label: Title
 description: 'The link title is limited to 128 characters maximum.'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }
