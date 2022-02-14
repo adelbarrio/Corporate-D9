@@ -1,0 +1,291 @@
+# This migration demonstrates a simple import from a JSON file.
+id: import_crm_mp_partners
+label: 'Node: MP Partners'
+migration_group: hwc_crm_partners_migration
+migration_tags:
+  - partner mp
+
+destination:
+  default_bundle: partner
+  plugin: 'entity:node'
+
+migration_dependencies: {  }
+
+dependencies:
+  enforced:
+    module:
+      - hwc_crm_partners_migration
+source:
+  plugin: url
+  data_parser_plugin: xml
+  urls:
+   - modules/custom/hwc_crm_partners_migration/data/PublicProfile-MP.xml
+  content_type: partner
+  ids:
+    field_guid_organisation:
+      type: string
+  item_selector: /Report/Table0/Table0_Group0_Collection/Table0_Group0_Header0/Detail_Collection/Details
+  fields:
+    -
+      name: field_guid_organisation
+      label: 'field_guid_organisation'
+      selector: '@Table0_Details1'
+    -
+      name: title
+      label: 'Title'
+      selector: '@Textbox1'
+    -
+      name: field_general_email
+      label: 'field_general_email'
+      selector: '@Textbox2'
+    -
+      name: field_general_phone
+      label: 'field_general_phone'
+      selector: '@Textbox3'
+    -
+      name: field_website
+      label: 'field_website'
+      selector: '@Textbox4'
+    -
+      name: field_mission_statement
+      label: 'field_mission_statement'
+      selector: '@Textbox7'
+    -
+      name: field_campaign_website
+      label: 'field_campaign_website'
+      selector: '@Textbox10'
+    -
+      name: field_facebook_profile
+      label: 'field_facebook_profile'
+      selector: '@Textbox11'
+    -
+      name: field_twitter_profile
+      label: 'field_twitter_profile'
+      selector: '@Textbox12'
+    -
+      name: field_youtube_profile
+      label: 'field_youtube_profile'
+      selector: '@Textbox13'
+    -
+      name: field_slideshare_profile
+      label: 'field_slideshare_profile'
+      selector: '@Textbox14'
+    -
+      name: field_linkedin_profile
+      label: 'field_linkedin_profile'
+      selector: '@Textbox15'
+    -
+      name: field_ph_address
+      label: 'field_ph_address'
+      selector: '@Textbox16'
+    -
+      name: field_ph_cp
+      label: 'field_ph_cp'
+      selector: '@Textbox17'
+    -
+      name: field_ph_town
+      label: 'field_ph_town'
+      selector: '@Textbox19'
+    -
+      name: field_guid_main_contact
+      label: 'field_guid_main_contact'
+      selector: '@Textbox20'
+    -
+      name: field_main_contact
+      label: 'field_main_contact'
+      selector: '@Textbox21'
+    -
+      name: field_main_contact_1
+      label: 'field_main_contact_1'
+      selector: '@Textbox22'
+    -
+      name: field_main_contact_email
+      label: 'field_main_contact_email'
+      selector: '@Textbox23'
+    -
+      name: field_ceo
+      label: 'field_ceo'
+      selector: '@Textbox24'
+    -
+      name: field_ceo_1
+      label: 'field_ceo_1'
+      selector: '@Textbox25'
+    -
+      name: field_quote
+      label: 'field_quote'
+      selector: '@Textbox30'
+    -
+      name: field_pledge
+      label: 'field_pledge'
+      selector: '@Textbox31'
+    -
+      name: field_organisation_rep
+      label: 'field_organisation_rep'
+      selector: '@Textbox32'
+    -
+      name: field_organisation_rep_1
+      label: 'field_organisation_rep_1'
+      selector: '@Textbox33'
+    -
+      name: field_position_identifier
+      label: 'field_position_identifier'
+      selector: '@Textbox34'
+    -
+      name: field_appform_status
+      label: 'field_appform_status'
+      selector: '@Textbox35'
+    -
+      name: field_pinterest_profile
+      label: 'field_pinterest_profile'
+      selector: '@Textbox36'
+    -
+      name: field_google_plus_profile
+      label: 'field_google_plus_profile'
+      selector: '@Textbox37'
+    -
+      name: field_abbreviation_name
+      label: 'field_abbreviation_name'
+      selector: '@Textbox38'
+    -
+      name: field_website_email
+      label: 'field_website_email'
+      selector: '@Textbox40'
+    -
+      name: field_position_main_contact
+      label: 'field_position_main_contact'
+      selector: '@Textbox41'
+    -
+      name: field_orgtype
+      label: 'field_orgtype'
+      selector: '@Textbox5'
+    -
+      name: field_bussines_sector
+      label: 'field_bussines_sector'
+      selector: '@Textbox6'
+    -
+      name: field_partner_type
+      label: 'field_partner_type'
+      selector: '@Textbox28'
+    -
+      name: field_country
+      label: 'field_country'
+      selector: '@Textbox18'
+    -
+      name: field_workbench_access
+      label: 'field_workbench_access'
+      selector: '@Table0_Details1'
+    -
+      name: field_social_dialog_partner
+      label: 'field_social_dialog_partner'
+      selector: '@Textbox29'
+    -
+      name: field_logo
+      label: 'field_logo'
+      selector: '@Textbox8'
+    -
+      name: field_logo_1
+      label: 'field_logo_1'
+      selector: '@Textbox9'
+    -
+      name: field_ceo_photo
+      label: 'field_ceo_photo'
+      selector: '@Textbox26'
+    -
+      name: field_ceo_photo_1
+      label: 'field_ceo_photo_1'
+      selector: '@Textbox27'
+
+
+process:
+  field_guid_organisation: field_guid_organisation
+  title: title
+  field_general_email: field_general_email
+  field_general_phone: field_general_phone
+  field_website: field_website
+  field_mission_statement: field_mission_statement
+  field_campaign_website: field_campaign_website
+  field_facebook_profile: field_facebook_profile
+  field_twitter_profile: field_twitter_profile
+  field_youtube_profile: field_youtube_profile
+  field_slideshare_profile: field_slideshare_profile
+  field_linkedin_profile: field_linkedin_profile
+  field_ph_address: field_ph_address
+  field_ph_cp: field_ph_cp
+  field_ph_town: field_ph_town
+  field_guid_main_contact: field_guid_main_contact
+  field_main_contact:
+    plugin: concat
+    delimiter: ' '
+    source:
+      - field_main_contact
+      - field_main_contact_1
+  field_main_contact_email: field_main_contact_email
+  field_ceo:
+    plugin: concat
+    delimiter: ' '
+    source:
+      - field_ceo
+      - field_ceo_1
+  field_quote: field_quote
+  field_pledge: field_pledge
+  field_organisation_rep:
+    plugin: concat
+    delimiter: ' '
+    source:
+      - field_organisation_rep
+      - field_organisation_rep_1
+  field_position_identifier: field_position_identifier
+  field_appform_status: field_appform_status
+  field_pinterest_profile: field_pinterest_profile
+  field_google_plus_profile: field_google_plus_profile
+  field_abbreviation_name: field_abbreviation_name
+  field_website_email: field_website_email
+  field_position_main_contact: field_position_main_contact
+  field_orgtype:
+    -
+      plugin: oie_taxonomy_term_name
+      source: field_orgtype
+      vocabulary: organisation_type
+      create: true
+  field_bussines_sector:
+    -
+      plugin: oie_taxonomy_term_name
+      source: field_bussines_sector
+      vocabulary: business_sector
+      create: true
+  field_partner_type:
+    -
+      plugin: oie_taxonomy_term_name
+      source: field_partner_type
+      vocabulary: partner_types
+      create: true
+  field_country:
+    -
+      plugin: oie_taxonomy_term_name
+      source: field_country
+      vocabulary: country
+      create: true
+  field_workbench_access:
+    -
+      plugin: oie_taxonomy_term_name
+      source: field_workbench_access
+      vocabulary: section
+      create: true
+  field_social_dialog_partner:
+    -
+      plugin: hwc_boolean
+      source: field_social_dialog_partner
+  field_logo/target_id:
+    -
+      plugin: hwc_image_from_blob
+      source:
+        - field_logo
+        - field_logo_1
+        - title
+  field_ceo_photo/target_id:
+    -
+      plugin: hwc_image_from_blob
+      source:
+        - field_ceo_photo
+        - field_ceo_photo_1
+        - title

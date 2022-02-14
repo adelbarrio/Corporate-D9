@@ -1,0 +1,54 @@
+<?php
+
+use Drupal\Core\Cache\RefinableCacheableDependencyInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\hwc_crm_partners_migration\CrmPartnersCron;
+
+
+/**
+ * Implements hook_cron().
+ */
+function hwc_crm_partners_migration_callback_ocp(){
+  Drupal::classResolver()
+    ->getInstanceFromDefinition(CrmPartnersCron::class)
+    ->cron('import_crm_ocp_partners');
+}
+
+function hwc_crm_partners_migration_callback_mp(){
+  Drupal::classResolver()
+    ->getInstanceFromDefinition(CrmPartnersCron::class)
+    ->cron('import_crm_mp_partners');
+}
+
+function hwc_crm_partners_migration_callback_fop(){
+  Drupal::classResolver()
+    ->getInstanceFromDefinition(CrmPartnersCron::class)
+    ->cron('import_crm_fop_partners');
+}
+
+function hwc_crm_partners_migration_callback_amb(){
+  Drupal::classResolver()
+    ->getInstanceFromDefinition(CrmPartnersCron::class)
+    ->cron('import_crm_amb_partners');
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function hwc_crm_partners_migration_menu_local_tasks_alter(&$data, $route_name, RefinableCacheableDependencyInterface &$cacheability) {
+  if($route_name == 'system.admin_content'){
+    $url = Drupal\Core\Url::fromRoute('entity.migration.list',['migration_group' => 'hwc_crm_partners_migration']);
+    $data['tabs'][0]['entity.migration.list'] = [
+      '#theme' => 'menu_local_task',
+      '#link' => [
+        'title' => t('Migrate'),
+        'url' => $url,
+        'localized_options' => [
+          'attributes' => [
+            'title' => t('Add content'),
+          ],
+        ],
+      ],
+    ];
+  }
+}
