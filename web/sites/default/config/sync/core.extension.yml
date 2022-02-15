@@ -196,6 +196,7 @@ module:
   twitter_block: 0
   typed_data: 0
   ultimate_cron: 0
+  unique_content_field_validation: 0
   update: 0
   user: 0
   variationcache: 0
