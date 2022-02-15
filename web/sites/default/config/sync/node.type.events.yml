@@ -6,6 +6,7 @@ dependencies:
     - menu_ui
     - node_revision_delete
     - node_title_help_text
+    - unique_content_field_validation
 third_party_settings:
   menu_ui:
     available_menus: {  }
@@ -16,6 +17,9 @@ third_party_settings:
     minimum_revisions_to_keep: 5
     minimum_age_to_delete: 0
     when_to_delete: 0
+  unique_content_field_validation:
+    unique: true
+    unique_text: ''
 name: Events
 type: events
 description: Events
