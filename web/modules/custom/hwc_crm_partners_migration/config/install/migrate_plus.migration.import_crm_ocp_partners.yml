@@ -194,7 +194,21 @@ source:
       name: field_ceo_photo_1
       label: 'field_ceo_photo_1'
       selector: '@Textbox27'
+    -
+      name: status
+      label: "Status"
 
+    -
+      name: created
+      label: "Created"
+
+    -
+      name: changed
+      label: "Changed"
+
+    -
+      name: sticky
+      label: "Sticky"
 
 process:
   field_guid_organisation: field_guid_organisation
@@ -289,3 +303,6 @@ process:
         - field_ceo_photo
         - field_ceo_photo_1
         - title
+  status:
+    - plugin: hwc_status
+      source: field_appform_status

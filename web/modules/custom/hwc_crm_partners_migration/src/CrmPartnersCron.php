@@ -66,10 +66,9 @@ class CrmPartnersCron implements ContainerInjectionInterface
       $requirements = $migration->checkRequirements();
 
       $executable = new MigrateExecutable($migration, new MigrateMessage());
-      $executable->message->display('Antes linea 68', MigrationInterface::MESSAGE_NOTICE);
+
       try {
         $executable->import();
-        $executable->saveMessage('XXX');
       }catch (\Exception $e){
         $migration->setStatus(MigrationInterface::STATUS_IDLE);
         $executable->saveMessage($e->getMessage());
