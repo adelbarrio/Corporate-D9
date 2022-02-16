@@ -1,5 +1,11 @@
 .node--type-musculoskeletal-disorders {
   #main{
+    .node__content{
+      .field--name-node-title,
+      .field--name-field-title-original{
+        display: none;
+      }
+    }
     .field--name-field-type-of-item,
     .field--name-field-material-country,
     .field--name-field-available-in-languages,
@@ -94,7 +100,7 @@
       flex-direction: row;
       flex-wrap: nowrap;
       align-items: flex-start;
-      margin: 0 0 20px 0;
+      margin: 10px 0 10px 0;
       .field {
         margin: 0 1rem 0.2rem 0;
       }
