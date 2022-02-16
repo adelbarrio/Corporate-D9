@@ -105,19 +105,11 @@ class HwcConfigurationForm extends ConfigFormBase {
       '#required' => TRUE,
     ];
 
-    $form['ncw_taxonomy_activity'] = [
+    $form['ncw_press_release'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Tax activity endpoint URI'),
+      '#title' => $this->t('Press releases endpoint URI'),
       '#description' => $this->t('Uri that will be appended to the Root endpoint URL defined'),
-      '#default_value' => $config->get('ncw_taxonomy_activity'),
-      '#required' => TRUE,
-    ];
-
-    $form['ncw_taxonomy_country_status'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Tax country status endpoint URI'),
-      '#description' => $this->t('Uri that will be appended to the Root endpoint URL defined'),
-      '#default_value' => $config->get('ncw_taxonomy_country_status'),
+      '#default_value' => $config->get('ncw_press_release'),
       '#required' => TRUE,
     ];
 
@@ -149,8 +141,7 @@ class HwcConfigurationForm extends ConfigFormBase {
       ->set('ncw_pa_highlights', $values['ncw_pa_highlights'])
       ->set('ncw_add_infographic', $values['ncw_add_infographic'])
       ->set('ncw_infographic', $values['ncw_infographic'])
-      ->set('ncw_taxonomy_activity', $values['ncw_taxonomy_activity'])
-      ->set('ncw_taxonomy_country_status', $values['ncw_taxonomy_country_status'])
+      ->set('ncw_press_release', $values['ncw_press_release'])
       ->set('ncw_endpoint', $values['ncw_endpoint'])
       ->save();
 
