@@ -17,15 +17,6 @@
 {{ title_suffix.contextual_links }}
 {% if content.1 %} {{ content.1 }}{% endif %}
 <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
-
-  <div class="date-status">
-    {% if(embargo_date != null and date(embargo_date) >= date(publication_date))%}
-      <span>{{ "Hold on for press release until" | trans }} {{ embargo_date | date("d/m/Y - H:i")}}</span>
-    {% endif %}
-    {% if(embargo_date is empty or embargo_date is null or date(embargo_date) <= date(publication_date))%}
-      <span>   {{ "For immediate release" | trans}} - {{ publication_date | date("d/m/Y - H:i") }}</span>
-    {% endif %}
-  </div>
-{{ ds_content }}
+  {{ ds_content }}
 </div>
 </{{ ds_content_wrapper }}>
