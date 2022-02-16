@@ -12,6 +12,12 @@ type: list_string
 settings:
   allowed_values:
     -
+      value: EUROPA
+      label: Europe
+    -
+      value: EU
+      label: EU
+    -
       value: AL
       label: Albania
     -

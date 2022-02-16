@@ -189,8 +189,12 @@ process:
   field_publications_exhibition_su/value: publications_support/value
   field_media_promotion/value: media_promotion/value
   field_comments_summary_after_eve/value: agency_contact/value
-  body/0/value: body/value
-  body/0/format: 'full_html'
+  body:
+    - plugin: get
+      source: body
+  'body/0/format':
+    - plugin: default_value
+      default_value: full_html
   file_source:
     -
       plugin: skip_on_empty
