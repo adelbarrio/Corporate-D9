@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Install file for cleanly removing the module.
+ */
+
+/**
+ * Updates services and settings configuration.
+ */
+function hwc_import_export_uninstall()
+{
+  \Drupal::database()->schema()->dropTable('migrate_map_import_crm_advisorygroups_agcp');
+  \Drupal::database()->schema()->dropTable('migrate_map_import_crm_advisorygroups_prag');
+  \Drupal::database()->schema()->dropTable('migrate_map_import_crm_advisorygroups_wesag');
+  \Drupal::database()->schema()->dropTable('migrate_map_import_crm_board');
+  \Drupal::database()->schema()->dropTable('migrate_map_import_crm_bureauforweb');
+  \Drupal::database()->schema()->dropTable('migrate_map_import_crm_focalpoints');
+}

@@ -1,0 +1,63 @@
+# This migration demonstrates a simple import from a JSON file.
+id: hwc_highlights_fi
+label: 'Highlights fi'
+migration_group: ncw_import_node_highlights
+destination:
+  default_bundle: pa_highlights
+  plugin: 'entity:node'
+  translations: true
+  destination_module: content_translation
+migration_dependencies: {  }
+
+dependencies:
+  enforced:
+    module:
+      - hwc_import_export
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: hwc_json
+  include_raw_data: true
+  urls: ncw
+  content_type: pa_highlights
+  ids:
+    nid:
+      type: integer
+  item_selector: 'items/'
+  constants:
+    lang: fi
+    file_source: https://osha.europa.eu/sites/default/files
+    file_dest: public://hwc/pa_highlights
+  fields:
+    -
+      name: nid
+      label: 'Nid'
+      selector: item/nid
+    -
+      name: title
+      label: 'Title'
+      selector: item/title_field/fi
+    -
+      name: body
+      label: 'Description'
+      selector: item/body/fi/0
+
+process:
+  nid: nid
+  title:
+    -
+      plugin: skip_on_empty
+      source: title
+      method: process
+  body/0/value:
+    - plugin: hwc_body
+      source: body/value
+  body/0/format:
+    - plugin: default_value
+      default_value: full_html
+  langcode:
+    -
+      plugin: default_value
+      default_value: 'fi'
+  content_translation_source: source
+  content_translation_outdated: translate
