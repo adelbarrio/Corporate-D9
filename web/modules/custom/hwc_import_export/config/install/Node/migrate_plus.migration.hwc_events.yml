@@ -1,0 +1,274 @@
+# This migration demonstrates a simple import from a JSON file.
+id: hwc_events
+label: 'Events'
+migration_group: ncw_import_node_events
+destination:
+  default_bundle: events
+  plugin: 'entity:node'
+migration_dependencies: {  }
+
+dependencies:
+  enforced:
+    module:
+      - hwc_import_export
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: hwc_json
+  include_raw_data: true
+  urls: ncw
+  content_type: events
+  ids:
+    nid:
+      type: integer
+  item_selector: 'items/'
+  constants:
+    lang: en
+    file_source: https://healthy-workplaces.eu/sites/default/files
+    file_dest: public://hwc/events/images
+  fields:
+    -
+      name: nid
+      label: 'Nid'
+      selector: item/nid
+    -
+      name: title
+      label: 'Title'
+      selector: item/title_field/en
+    -
+      name: body
+      label: 'Description'
+      selector: item/body/en/0
+    -
+      name: type
+      label: 'Type'
+      selector: item/field_event_type/en
+    -
+      name: organisation
+      label: 'Organisation'
+      selector: item/field_organization/en/0
+    -
+      name: location
+      label: 'Location'
+      selector: item/field_location/en/0
+    -
+      name: city
+      label: 'City'
+      selector: item/field_city/en/0
+    -
+      name: country
+      label: 'Country'
+      selector: item/field_country_code/en/0
+    -
+      name: website
+      label: 'Website'
+      selector: item/field_website_of_event/en/0
+    -
+      name: tags
+      label: 'Tags'
+      selector: item/field_tags
+    -
+      name: performance
+      label: 'Performance'
+      selector: item/field_key_performance/en/0
+    -
+      name: adonis
+      label: 'Adonis'
+      selector: item/field_adonis/en/0
+    -
+      name: unit_ref
+      label: 'Unit Ref'
+      selector: item/field_unit_ref/en/0
+    -
+      name: agency_roles
+      label: 'Agency Roles'
+      selector: item/field_agency_role/en
+    -
+      name: agenda
+      label: 'Agenda'
+      selector: item/field_agenda/en/0
+    -
+      name: agency_rep
+      label: 'Agency Rep'
+      selector: item/field_agency_rep_confirmed/en/0
+    -
+      name: publications_support
+      label: 'Publications support'
+      selector: item/field_publications_exhibition_su/en/0
+    -
+      name: media_promotion
+      label: 'Media Promotion'
+      selector: item/field_media_promotion/en/0
+    -
+      name: comments_summary
+      label: 'Comment Sumary'
+      selector: item/field_comments_summary_after_eve/en/0
+    -
+      name: date
+      label: 'Date'
+      selector: item/field_date/en/0
+    -
+      name: color
+      label: 'Color'
+      selector: item/field_color/en/0
+    -
+      name: eu_flag
+      label: 'EU Flag'
+      selector: item/field_show_eu_flag/en/0
+    -
+      name: satisfaction_rate
+      label: 'Satisfaction Rate'
+      selector: item/field_satisfaction_rate/en/0
+    -
+      name: in_amp
+      label: 'Attendees'
+      selector: item/field_event_in_amp/en/0
+    -
+      name: attendees
+      label: 'Attendees'
+      selector: item/field_number_of_attendees/en/0
+    -
+      name: show_on
+      label: 'Show ON'
+      selector: item/field_show_on/en/0
+
+
+
+
+    -
+      name: activity
+      label: 'Activity'
+      selector: item/field_activity
+    -
+      name: agency_contact
+      label: 'Agency Contact'
+      selector: item/field_agency_contact_reply/und/0
+    -
+      name: documents
+      label: 'Related documents'
+      selector: item/field_related_documents/en/0
+
+    -
+      name: status
+      label: "Status"
+      selector: item/translations/data/en/status
+    -
+      name: created
+      label: "Created"
+      selector: item/translations/data/en/created
+    -
+      name: changed
+      label: "Changed"
+      selector: item/translations/data/en/changed
+    -
+      name: sticky
+      label: "Sticky"
+      selector: item/sticky
+
+
+process:
+  nid: nid
+  langcode: constants/lang
+  title: title
+  body/0/value:
+    - plugin: hwc_body
+      source: body/value
+  body/0/format:
+    - plugin: default_value
+      default_value: full_html
+  field_type_event: type
+  field_organizer: organisation
+  start_date:
+    -
+      plugin: hwc_start_date
+      source: date
+  field_start_date:
+    -
+      plugin: sub_process
+      source: '@start_date'
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d'
+          to_format: 'Y-m-d\TH:i:s'
+          source: value
+
+  field_location: location
+  field_city: city/value
+  field_country_code: country/value
+  field_activity:
+    -
+      plugin: hwc_taxonomy_term
+      source: activity
+
+  website_value:
+    -
+      plugin: hwc_website
+      source: website
+
+  field_website_of_event:
+    -
+      plugin: sub_process
+      source: '@website_value'
+      process:
+        uri: url
+        title: title
+        options: attributes
+
+  field_tags:
+    -
+      plugin: hwc_taxonomy_term
+      source: tags
+  field_key_performance/value: performance/value
+  field_adonis: adonis
+  field_unit_ref/value: unit_ref/value
+  field_agency_role: agency_roles
+  field_agenda/value: agenda/value
+  field_agency_rep_confirmed/value: agency_rep/value
+  field_publications_exhibition_su/value: publications_support/value
+  field_media_promotion/value: media_promotion/value
+  field_agency_contact_reply/value: comments_summary/value
+  field_color/value: color/value
+  field_satisfaction_rate/value: satisfaction_rate
+  field_show_eu_flag/value: eu_flag/value
+  field_number_of_attendees/value: attendees/value
+  field_event_in_amp/value: in_amp/value
+  field_show_on/value: show_on/value
+
+
+  file_source:
+    -
+      plugin: skip_on_empty
+      source: documents/uri
+      method: process
+    - plugin: hwc_url_transform
+      source: documents/uri
+    - plugin: urlencode
+  file_dest:
+    -
+      plugin: skip_on_empty
+      source: documents/filename
+      method: process
+    - plugin: concat
+      delimiter: /
+      source:
+        - constants/file_dest
+        - documents/filename
+  file:
+    -
+      plugin: skip_on_empty
+      source: '@file_source'
+      method: process
+    - plugin: file_copy
+      source:
+        - '@file_source'
+        - '@file_dest'
+    - plugin: entity_generate
+      value_key: uri
+      entity_type: file
+  field_related_documents/target_id:
+    - plugin: skip_on_empty
+      source: '@file'
+      method: process
+    - plugin: default_value
+      default_value: '@file'

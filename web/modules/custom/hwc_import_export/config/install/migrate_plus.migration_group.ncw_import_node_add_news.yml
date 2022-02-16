@@ -1,0 +1,12 @@
+id: ncw_import_node_add_news
+label: 'NCW Import Add News'
+description: 'Migration of content from HWC and Oira'
+source_type: 'JSON'
+shared_configuration:
+  source:
+    key:
+      migrate
+dependencies:
+  enforced:
+    module:
+      - hwc_import_export

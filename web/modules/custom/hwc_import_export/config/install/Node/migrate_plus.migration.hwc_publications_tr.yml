@@ -1,0 +1,126 @@
+# This migration demonstrates a simple import from a JSON file.
+id: hwc_publications_tr
+label: 'Publications tr'
+migration_group: ncw_import_node
+destination:
+  default_bundle: publication
+  plugin: 'entity:node'
+  translations: true
+  destination_module: content_translation
+migration_dependencies: {  }
+
+dependencies:
+  enforced:
+    module:
+      - hwc_import_export
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: hwc_json
+  include_raw_data: true
+  urls: ncw
+  content_type: publication
+  ids:
+    nid:
+      type: integer
+  item_selector: 'items/'
+  constants:
+    lang: tr
+    file_source: https://osha.europa.eu/sites/default/files
+    file_dest: public://hwc/publication
+  fields:
+    -
+      name: nid
+      label: 'Nid'
+      selector: item/nid
+    -
+      name: title
+      label: 'Title'
+      selector: item/title_field/tr
+    -
+      name: body
+      label: 'Description'
+      selector: item/body/tr/0
+    -
+      name: field_file
+      label: 'field_file'
+      selector: item/field_file/tr/0
+    -
+      name: author
+      label: 'Author'
+      selector: item/field_author/tr/0
+
+process:
+  nid: nid
+  title:
+    -
+      plugin: skip_on_empty
+      source: title
+      method: process
+  body/0/value:
+    - plugin: hwc_body
+      source: body/value
+  body/0/format:
+    - plugin: default_value
+      default_value: full_html
+  langcode:
+    -
+      plugin: default_value
+      default_value: 'tr'
+  content_translation_source: source
+  content_translation_outdated: translate
+  document_source:
+    - plugin: skip_on_empty
+      source: field_file/uri
+      method: process
+    - plugin: hwc_url_transform
+      source: field_file/uri
+    - plugin: urlencode
+  document_dest:
+    - plugin: skip_on_empty
+      source: field_file/filename
+      method: process
+    - plugin: concat
+      delimiter: /
+      source:
+        - constants/file_dest
+        - field_file/filename
+  document_file:
+    - plugin: skip_on_empty
+      source: '@document_source'
+      method: process
+    - plugin: skip_on_empty
+      source: '@document_dest'
+      method: process
+    - plugin: file_copy
+      source:
+        - '@document_source'
+        - '@document_dest'
+    - plugin: entity_generate
+      value_key: uri
+      entity_type: file
+
+  document_media:
+    - plugin: skip_on_empty
+      source: '@document_file'
+      method: process
+    - plugin: entity_generate
+      value_key: mid
+      bundle_key: vid
+      entity_type: media
+      bundle: document
+      source: '@document_file'
+      default_values:
+        bundle: document
+        mid: null
+        vid: null
+      values:
+        field_media_document: '@document_file'
+  field_file/target_id:
+    - plugin: skip_on_empty
+      source: '@document_media'
+      method: process
+    - plugin: default_value
+      default_value: '@document_media'
+
+  field_author/value: author/value

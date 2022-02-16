@@ -1,0 +1,12 @@
+<?php
+
+use Drupal\hwc_import_export\HwcCron;
+
+/**
+ * Implements hook_cron().
+ */
+function hwc_import_export_cron() {
+  Drupal::classResolver()
+    ->getInstanceFromDefinition(HwcCron::class)
+    ->cron();
+}

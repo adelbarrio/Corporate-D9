@@ -1,0 +1,5 @@
+type: module
+name: HWC Import Export
+description: 'HWC Import Export Data'
+package: Hwc
+core_version_requirement: ^8.8 || ^9

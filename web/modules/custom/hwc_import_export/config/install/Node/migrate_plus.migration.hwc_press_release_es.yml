@@ -1,0 +1,129 @@
+# This migration demonstrates a simple import from a JSON file.
+id: hwc_press_release_es
+label: 'Press Release es'
+migration_group: ncw_import_node_press_release
+destination:
+  default_bundle: press_release
+  plugin: 'entity:node'
+  translations: true
+  destination_module: content_translation
+migration_dependencies: {  }
+
+dependencies:
+  enforced:
+    module:
+      - hwc_import_export
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: hwc_json
+  include_raw_data: true
+  urls: ncw
+  content_type: press_release
+  ids:
+    nid:
+      type: integer
+  item_selector: 'items/'
+  constants:
+    lang: es
+    file_source: https://osha.europa.eu/sites/default/files
+    file_dest: public://hwc/pa_highlights
+  fields:
+    -
+      name: nid
+      label: 'Nid'
+      selector: item/nid
+    -
+      name: title
+      label: 'Title'
+      selector: item/title_field/es
+    -
+      name: body
+      label: 'Description'
+      selector: item/body/es/0
+    -
+      name: summary
+      label: 'Summary'
+      selector: item/field_summary/es/0
+    -
+      name: field_image
+      label: 'field_image'
+      selector: item/field_image/es/0
+process:
+  nid: nid
+  title:
+    -
+      plugin: skip_on_empty
+      source: title
+      method: process
+  langcode:
+    -
+      plugin: default_value
+      default_value: 'es'
+  body/0/value:
+    - plugin: hwc_body
+      source: body/value
+  body/0/format:
+    - plugin: default_value
+      default_value: full_html
+  field_summary/0/value:
+    - plugin: hwc_body
+      source: summary/value
+  field_summary/0/format:
+    - plugin: default_value
+      default_value: full_html
+  field_quote: quote
+  file_source:
+    - plugin: skip_on_empty
+      source: field_image/uri
+      method: process
+    - plugin: hwc_news_url_transform
+      source: field_image/uri
+    - plugin: urlencode
+  file_dest:
+    - plugin: skip_on_empty
+      source: field_image/filename
+      method: process
+    - plugin: concat
+      delimiter: /
+      source:
+        - constants/file_dest
+        - field_image/filename
+  file:
+    - plugin: skip_on_empty
+      source: '@file_source'
+      method: process
+    - plugin: skip_on_empty
+      source: '@file_dest'
+      method: process
+    - plugin: file_copy
+      source:
+        - '@file_source'
+        - '@file_dest'
+    - plugin: entity_generate
+      value_key: uri
+      entity_type: file
+  media:
+    - plugin: skip_on_empty
+      source: '@file'
+      method: process
+    - plugin: entity_generate
+      value_key: mid
+      bundle_key: vid
+      entity_type: media
+      bundle: image
+      source: '@file'
+      default_values:
+        bundle: image
+        mid: null
+        vid: null
+      values:
+        field_media_image: '@file'
+  field_image/target_id:
+    - plugin: skip_on_empty
+      source: '@media'
+      method: process
+    - plugin: default_value
+      default_value: '@media'
+  content_translation_source: source
+  content_translation_outdated: translate

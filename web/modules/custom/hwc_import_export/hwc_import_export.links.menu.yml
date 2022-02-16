@@ -1,0 +1,5 @@
+hwc_import_export:
+  title: 'HWC sites migration configuration'
+  parent: system.admin_config_system
+  description: 'HWC sites migration configuration'
+  route_name: hwc_import_export.config
