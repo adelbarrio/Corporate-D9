@@ -1,0 +1,31 @@
+hwc_import_export.node:
+  path: '/hwc/export/node/{node}'
+  defaults:
+    _controller: '\Drupal\hwc_import_export\Controller\HwcNodeExportController::export'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      node:
+        type: entity:node
+
+hwc_import_export.taxonomy:
+  path: '/hwc/export/taxonomy_term/{term}'
+  defaults:
+    _controller: '\Drupal\hwc_import_export\Controller\HwcTaxonomyExportController::export'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      term:
+        type: entity:taxonomy_term
+
+hwc_import_export.config:
+  path: '/admin/config/system/hwc-sites-migration'
+  defaults:
+    _form: '\Drupal\hwc_import_export\Form\HwcConfigurationForm'
+    _title: 'HWC sites migration configuration'
+  requirements:
+    _access: 'TRUE'
+  options:
+    _admin_route: TRUE

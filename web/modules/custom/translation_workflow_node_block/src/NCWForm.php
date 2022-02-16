@@ -22,8 +22,10 @@ class NCWForm extends FormBase {
     }
 
     // Hide in the 'Show on HWC website' drop-down menu 'GP Awards' in events
-    if($form_id == 'node_events_edit_form' && isset($form['field_show_on']) ) {
-      unset($form['field_show_on']['widget']['#options']['GP Awards']);
+    if($form_id == 'node_events_edit_form' || $form_id == 'node_events_form') {
+      if (isset($form['field_show_on'])) {
+        unset($form['field_show_on']['widget']['#options']['GP Awards']);
+      }
     }
 
     // Check if user is logged

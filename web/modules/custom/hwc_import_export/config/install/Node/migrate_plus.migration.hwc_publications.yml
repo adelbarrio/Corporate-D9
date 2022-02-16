@@ -1,0 +1,295 @@
+# This migration demonstrates a simple import from a JSON file.
+id: hwc_publications
+label: 'Publications'
+migration_group: ncw_import_node
+destination:
+  default_bundle: publication
+  plugin: 'entity:node'
+migration_dependencies: {  }
+
+dependencies:
+  enforced:
+    module:
+      - hwc_import_export
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: hwc_json
+  include_raw_data: true
+  urls: ncw
+  content_type: publication
+  ids:
+    nid:
+      type: integer
+  item_selector: 'items/'
+  constants:
+    lang: en
+    file_source: https://osha.europa.eu/sites/default/files
+    file_dest: public://hwc/publication
+  fields:
+    -
+      name: nid
+      label: 'Nid'
+      selector: item/nid
+    -
+      name: title
+      label: 'Title'
+      selector: item/title_field/en
+    -
+      name: body
+      label: 'Description'
+      selector: item/body/en/0
+    -
+      name: publication_type
+      label: 'Publication Type'
+      selector: item/field_publication_type
+    -
+      name: publication_date
+      label: 'Publication Date'
+      selector: item/field_publication_date
+    -
+      name: tags
+      label: 'Tags'
+      selector: item/field_tags
+    -
+      name: priority_area
+      label: 'Priority Area'
+      selector: item/field_msd_priority_area
+    -
+      name: author
+      label: 'Author'
+      selector: item/field_author/en/0
+    -
+      name: page_count
+      label: 'page_count'
+      selector: item/field_page_count/en/0
+    -
+      name: bookshop_id
+      label: 'Bookshop id'
+      selector: item/field_publication_bookshop_id/en/0
+    -
+      name: pages_count
+      label: 'Pages Count'
+      selector: item/field_pages_count/en/0
+    -
+      name: show_on
+      label: 'Show ON'
+      selector: item/field_show_on/en
+    -
+      name: thesaurus_2020
+      label: 'Thesaurus_2020'
+      selector: item/field_thesaurus_2020/en
+    -
+      name: nace_codes
+      label: 'nace_codes'
+      selector: item/field_nace_codes
+    -
+      name: activity
+      label: 'activity'
+      selector: item/field_activity
+    -
+      name: field_image
+      label: 'field_image'
+      selector: item/field_image/en/0
+    -
+      name: field_file
+      label: 'field_file'
+      selector: item/field_file/en/0
+    -
+      name: status
+      label: "Status"
+      selector: item/status
+    -
+      name: created
+      label: "Created"
+      selector: item/created
+    -
+      name: changed
+      label: "Changed"
+      selector: item/changed
+    -
+      name: sticky
+      label: "Sticky"
+      selector: item/sticky
+    -
+      name: alias
+      label: "Alias"
+      selector: item/pathalias
+process:
+  nid: nid
+  langcode: constants/lang
+  title: title
+  body/0/value:
+    - plugin: hwc_body
+      source: body/value
+  body/0/format:
+    - plugin: default_value
+      default_value: full_html
+
+  field_publication_type:
+    -
+      plugin: hwc_taxonomy_term
+      source: publication_type
+
+  start_date:
+    -
+      plugin: hwc_start_date
+      source: publication_date
+  field_publication_date:
+    -
+      plugin: sub_process
+      source: '@start_date'
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d H:i:s'
+          to_format: 'Y-m-d\TH:i:s'
+          source: value
+
+  field_tags:
+    -
+      plugin: hwc_taxonomy_term
+      source: tags
+  field_msd_priority_area:
+  -
+    plugin: hwc_taxonomy_term
+    source: priority_area
+  field_author/value: author/value
+  field_page_count/value: page_count/value
+  field_publication_bookshop_id/value: bookshop_id/value
+  field_pages_count/value: pages_count/value
+  field_show_on: show_on
+
+  field_nace_codes:
+    - plugin: hwc_taxonomy_term
+      source: nace_codes
+  field_activity:
+    - plugin: hwc_taxonomy_term
+      source: activity
+
+  file_source:
+    -
+      plugin: skip_on_empty
+      source: field_image/uri
+      method: process
+    -
+      plugin: hwc_url_transform
+      source: field_image/uri
+    -
+      plugin: urlencode
+  file_dest:
+    -
+      plugin: skip_on_empty
+      source: field_image/filename
+      method: process
+    - plugin: concat
+      delimiter: /
+      source:
+        - constants/file_dest
+        - field_image/filename
+  file:
+    -
+      plugin: skip_on_empty
+      source: '@file_source'
+      method: process
+    -
+      plugin: skip_on_empty
+      source: '@file_dest'
+      method: process
+    -
+      plugin: file_copy
+      source:
+        - '@file_source'
+        - '@file_dest'
+    - plugin: entity_generate
+      value_key: uri
+      entity_type: file
+  media:
+    - plugin: skip_on_empty
+      source: '@file'
+      method: process
+    - plugin: entity_generate
+      value_key: mid
+      bundle_key: vid
+      entity_type: media
+      bundle: image
+      source: '@file'
+      default_values:
+        bundle: image
+        mid: null
+        vid: null
+      values:
+        field_media_image: '@file'
+  field_cover_image/target_id:
+    - plugin: skip_on_empty
+      source: '@media'
+      method: process
+    - plugin: default_value
+      default_value: '@media'
+
+  document_source:
+    -
+      plugin: skip_on_empty
+      source: field_file/uri
+      method: process
+    -
+      plugin: hwc_url_transform
+      source: field_file/uri
+    -
+      plugin: urlencode
+  document_dest:
+    -
+      plugin: skip_on_empty
+      source: field_file/filename
+      method: process
+    - plugin: concat
+      delimiter: /
+      source:
+        - constants/file_dest
+        - field_file/filename
+  document_file:
+    -
+      plugin: skip_on_empty
+      source: '@document_source'
+      method: process
+    -
+      plugin: skip_on_empty
+      source: '@document_dest'
+      method: process
+    -
+      plugin: file_copy
+      source:
+        - '@document_source'
+        - '@document_dest'
+    - plugin: entity_generate
+      value_key: uri
+      entity_type: file
+
+  document_media:
+    - plugin: skip_on_empty
+      source: '@document_file'
+      method: process
+    - plugin: entity_generate
+      value_key: mid
+      bundle_key: vid
+      entity_type: media
+      bundle: document
+      source: '@document_file'
+      default_values:
+        bundle: document
+        mid: null
+        vid: null
+      values:
+        field_media_document: '@document_file'
+  field_file/target_id:
+    - plugin: skip_on_empty
+      source: '@document_media'
+      method: process
+    - plugin: default_value
+      default_value: '@document_media'
+
+  status: status
+  created: created
+  changed: changed
+  sticky: sticky
+  path/alias: alias
