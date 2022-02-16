@@ -3,6 +3,9 @@
 use Drupal\Core\Cache\RefinableCacheableDependencyInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\hwc_crm_partners_migration\CrmPartnersCron;
+use Drupal\migrate\Plugin\MigrateSourceInterface;
+use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\Row;
 
 
 /**
@@ -52,3 +55,4 @@ function hwc_crm_partners_migration_menu_local_tasks_alter(&$data, $route_name, 
     ];
   }
 }
+

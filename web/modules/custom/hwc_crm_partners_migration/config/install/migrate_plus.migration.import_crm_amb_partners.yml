@@ -309,6 +309,9 @@ process:
         - field_ceo_photo
         - field_ceo_photo_1
         - title
-  status: constants/status
+  status:
+    -
+      plugin: hwc_status
+      source: field_appform_status
 
 

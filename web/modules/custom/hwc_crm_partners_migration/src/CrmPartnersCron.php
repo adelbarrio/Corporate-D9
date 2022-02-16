@@ -4,10 +4,12 @@ namespace Drupal\hwc_crm_partners_migration;
 
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\migrate\MigrateMessageInterface;
 use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Plugin\MigrationPluginManager;
 use Drupal\migrate\MigrateExecutable;
 use Drupal\migrate\MigrateMessage;
+use Drupal\migrate_drupal_ui\Batch\MigrateMessageCapture;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 
@@ -55,22 +57,22 @@ class CrmPartnersCron implements ContainerInjectionInterface
    */
   public function cron($migration_id) {
 
-
-
-    // Start every migration.
-
       /** @var \Drupal\migrate\Plugin\Migration  $migration */
       $migration = $this->migrationManager->createInstance($migration_id);
       $migration->setStatus(0);
-
       $migration->getIdMap()->prepareUpdate();
       $migration->setStatus(MigrationInterface::STATUS_IDLE);
-      $executable = new MigrateExecutable($migration, new MigrateMessage());
-      try {
 
+      $requirements = $migration->checkRequirements();
+
+      $executable = new MigrateExecutable($migration, new MigrateMessage());
+      $executable->message->display('Antes linea 68', MigrationInterface::MESSAGE_NOTICE);
+      try {
         $executable->import();
+        $executable->saveMessage('XXX');
       }catch (\Exception $e){
         $migration->setStatus(MigrationInterface::STATUS_IDLE);
+        $executable->saveMessage($e->getMessage());
       }
 
       // Check the nodes that thay have been deleted from source.

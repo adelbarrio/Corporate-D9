@@ -27,26 +27,12 @@ class OieTaxonomyTermName extends OieTaxonomyTermType {
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
 
-
     $orgtype = $row->getSourceProperty('field_orgtype');
     $business_sector = $row->getSourceProperty('field_bussines_sector');
-//    if (!empty($partner_type)) {
-//      if ($partner_type == 'Sectoral social partners') {
-//        return [
-//          'target_id' => 256,
-//        ];
-//      }
-//    }
     $partner_type = $row->getSourceProperty('field_partner_type');
     $country = $row->getSourceProperty('field_country');
     $section = $row->getSourceProperty('field_workbench_access');
-    //    if (!empty($partner_type)) {
-    //      if ($partner_type == 'Sectoral social partners') {
-    //        return [
-    //          'target_id' => 256,
-    //        ];
-    //      }
-    //    }
+
     return parent::transform($value, $migrate_executable, $row, $destination_property);
   }
 

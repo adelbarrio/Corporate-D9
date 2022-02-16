@@ -2,6 +2,7 @@
 
 namespace Drupal\hwc_crm_partners_migration\Plugin\migrate\process;
 
+use Drupal;
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\migrate\MigrateExecutableInterface;
@@ -82,16 +83,29 @@ class OieTaxonomyTermType extends ProcessPluginBase implements ContainerFactoryP
     /** @var \Drupal\taxonomy\Entity\Term $term */
     $term = reset($term);
     if (!empty($term)) {
-      $value = [
-        'target_id' => $term->id(),
-      ];
-    }
+      if("section" == $term->get('vid')->getValue()[0]['target_id']){
+        $value = [
+          'target_id' => $term->id(),
+          ];
+
+
+
+        $term->setName(ucwords(strtolower($row->getSourceProperty('title'))));
+        $term->save();
+      }else{
+        $value = [
+          'target_id' => $term->id(),
+        ];
+      }
+      }
+
     else {
       if ($this->configuration['create']) {
+        $name = ucwords(strtolower($row->getSourceProperty('title')));
         $term = Term::create(
           [
             'parent' => [],
-            'name' =>   ucwords(strtolower($value)),
+            'name' =>   ("field_workbench_access"== $destination_property) ? $name : ucwords(strtolower($value)),
             'field_crm_code' => $value,
             'field_ldap_section_code' => $value,
             'vid' => $this->configuration['vocabulary'],

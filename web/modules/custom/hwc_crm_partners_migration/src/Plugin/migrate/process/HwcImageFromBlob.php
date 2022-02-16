@@ -4,6 +4,9 @@ namespace Drupal\hwc_crm_partners_migration\Plugin\migrate\process;
 
 
 use Drupal\media\Entity\Media;
+use Drupal\migrate\MigrateExecutable;
+use Drupal\migrate\MigrateMessage;
+use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\Row;
@@ -35,6 +38,7 @@ class HwcImageFromBlob extends ProcessPluginBase {
 
     if (empty($value)) {
       throw new MigrateSkipProcessException();
+
     }
 
     $title = preg_replace('![^0-9A-Za-z_.-]!', '', $row->getSourceProperty('title'));
@@ -50,6 +54,11 @@ class HwcImageFromBlob extends ProcessPluginBase {
 
     $image = base64_decode($logo);
     $file = file_save_data($image, 'public://partners/' . $name, FileSystemInterface::EXISTS_REPLACE);
+    if($image== ""){
+      $migrate_executable->message->display('Image not found', MigrationInterface::MESSAGE_NOTICE);
+
+      $migrate_executable->saveMessage('No image found', MigrationInterface::MESSAGE_NOTICE);
+    }
 
     // Delete media if exists.
     $storageHandler = \Drupal::entityTypeManager()->getStorage('media');
@@ -59,7 +68,6 @@ class HwcImageFromBlob extends ProcessPluginBase {
         $previous_media[0]->delete();
       }
     }
-
 
     // Create media.
     $media = Media::create(
