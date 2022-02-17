@@ -17,8 +17,6 @@ dependencies:
       - hwc_crm_partners_migration
 
 source:
-  constants:
-    status: '1'
   plugin: url
   data_parser_plugin: xml
   urls:
@@ -138,6 +136,10 @@ source:
       label: 'field_appform_status'
       selector: '@Textbox35'
     -
+      name: status
+      label: 'Status'
+      selector: '@Textbox35'
+    -
       name: field_pinterest_profile
       label: 'field_pinterest_profile'
       selector: '@Textbox36'
@@ -198,23 +200,14 @@ source:
       label: 'field_ceo_photo_1'
       selector: '@Textbox27'
     -
-      name: status
-      label: "Status"
-
-    -
       name: created
       label: "Created"
-
     -
       name: changed
       label: "Changed"
-
     -
       name: sticky
       label: "Sticky"
-
-
-
 
 process:
   field_guid_organisation: field_guid_organisation
@@ -311,7 +304,7 @@ process:
         - title
   status:
     -
-      plugin: hwc_status
+      plugin: hwc_boolean
       source: field_appform_status
 
 

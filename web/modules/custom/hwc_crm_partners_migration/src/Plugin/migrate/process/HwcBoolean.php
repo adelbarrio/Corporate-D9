@@ -23,9 +23,13 @@ use Drupal\migrate\Row;
  */
 class HwcBoolean extends ProcessPluginBase{
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
-    if ($value=="True"){
-      return 1;
+
+    switch($destination_property){
+      case "field_social_dialog_partner":
+        return ($value=="True") ? 1 : 0;
+      case "status":
+        return ($value != "863680005") ? 0 : 1;
     }
-    return 0;
+
   }
 }

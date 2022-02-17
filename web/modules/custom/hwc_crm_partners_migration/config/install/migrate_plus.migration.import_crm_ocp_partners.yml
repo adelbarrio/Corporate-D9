@@ -135,6 +135,10 @@ source:
       label: 'field_appform_status'
       selector: '@Textbox35'
     -
+      name: status
+      label: 'Status'
+      selector: '@Textbox35'
+    -
       name: field_pinterest_profile
       label: 'field_pinterest_profile'
       selector: '@Textbox36'
@@ -304,5 +308,6 @@ process:
         - field_ceo_photo_1
         - title
   status:
-    - plugin: hwc_status
+    -
+      plugin: hwc_boolean
       source: field_appform_status
