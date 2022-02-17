@@ -38,10 +38,9 @@ class HwcImageFromBlob extends ProcessPluginBase {
 
     if (empty($value)) {
       throw new MigrateSkipProcessException();
-
     }
-    $originalTitle = $row->getSourceProperty('title');
 
+    $originalTitle = $row->getSourceProperty('title');
     $title = preg_replace('![^0-9A-Za-z_.-]!', '', $row->getSourceProperty('title'));
 
     if ($destination_property == 'field_logo/target_id') {
@@ -54,39 +53,41 @@ class HwcImageFromBlob extends ProcessPluginBase {
     }
 
     $image = base64_decode($logo);
-    $file = file_save_data($image, 'public://partners/' . $name, FileSystemInterface::EXISTS_REPLACE);
     if ($image == "") {
       if ($destination_property == 'field_logo/target_id') {
-        $migrate_executable->message->display("Logo not found for ". $originalTitle . "\n", MigrationInterface::MESSAGE_NOTICE);
+        $migrate_executable->message->display("Logo missing or malformed for " . $originalTitle . "\n", MigrationInterface::MESSAGE_NOTICE);
       }
       else {
-        $migrate_executable->message->display("CEO photo not found for ".$originalTitle . "\n", MigrationInterface::MESSAGE_NOTICE);
+        $migrate_executable->message->display("CEO photo missing or malformed for " . $originalTitle . "\n", MigrationInterface::MESSAGE_NOTICE);
       }
-
-      // Delete media if exists.
-      $storageHandler = \Drupal::entityTypeManager()->getStorage('media');
-      if ($file != FALSE) {
-        $previous_media = array_values($storageHandler->loadByProperties(['field_media_image' => $file->id()]));
-        if ($previous_media != NULL) {
-          $previous_media[0]->delete();
-        }
-      }
-
-      // Create media.
-      $media = Media::create(
-        [
-          'bundle' => 'image',
-          'uid' => \Drupal::currentUser()->id(),
-          'field_media_image' => [
-            'target_id' => $file->id(),
-          ],
-        ]
-      );
-      $media->setName($name)->setPublished()->save();
-      return $media->id();
-
-
+      return NULL;
     }
 
+    $file = file_save_data($image, 'public://partners/' . $name, FileSystemInterface::EXISTS_REPLACE);
 
-  }}
+    // Delete media if exists.
+    $storageHandler = \Drupal::entityTypeManager()->getStorage('media');
+    if ($file != FALSE) {
+      $previous_media = array_values($storageHandler->loadByProperties(['field_media_image' => $file->id()]));
+      if ($previous_media != NULL) {
+        $previous_media[0]->delete();
+      }
+    }
+
+    // Create media.
+    $media = Media::create(
+      [
+        'bundle' => 'image',
+        'uid' => \Drupal::currentUser()->id(),
+        'field_media_image' => [
+          'target_id' => $file->id(),
+        ],
+      ]
+    );
+    $media->setName($name)->setPublished()->save();
+
+    return $media->id();
+  }
+
+
+}
