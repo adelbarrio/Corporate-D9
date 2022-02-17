@@ -14,7 +14,7 @@
 {{ title_suffix.contextual_links }}
 
 <div class="h1-back-wrapper">
-  {% if language == ds_content.group_tags_wrapper.field_available_in_languages.0['#context'].value %}
+  {% if language == ds_content.group_tags_wrapper.field_available_in_languages.0['#context'].value and language != 'en' %}
     <h1 class="view-description-original-language">{{ ds_content.field_title_original }}</h1>
   {% else %}
     <h1>{{ ds_content.node_title }}</h1>
