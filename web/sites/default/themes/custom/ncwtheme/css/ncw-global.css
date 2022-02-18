@@ -6441,6 +6441,7 @@ body.node--type-publication {
 /* Related publications and Twing publicattions */
 .node--type-publication .field--name-field-related-publications .field__item {
   margin-top: 0;
+  margin-bottom: 1rem;
 }
 .node--type-publication .field--name-field-related-publications > div:nth-child(1) {
   margin-top: 0;
