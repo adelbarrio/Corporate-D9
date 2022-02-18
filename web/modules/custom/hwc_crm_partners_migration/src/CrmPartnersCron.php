@@ -59,7 +59,6 @@ class CrmPartnersCron implements ContainerInjectionInterface {
     /** @var \Drupal\migrate\Plugin\Migration $migration */
 
     $migration = $this->migrationManager->createInstance($migration_id);
-    $migration->getDestinationIds();
     $migration->setStatus(0);
     $migration->getIdMap()->prepareUpdate();
     $migration->setStatus(MigrationInterface::STATUS_IDLE);
