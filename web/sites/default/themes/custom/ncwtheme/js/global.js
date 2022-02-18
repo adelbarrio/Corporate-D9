@@ -177,6 +177,11 @@ jQuery(document).ready(function($) {
     $('.related-resources-fluid  .content-headings-related').hide();
   }
 
+  //Hide Related publications title if exist 2 titles
+  if ($(".content-headings-related h2")[0] && $(".content-headings-related.h2-related-articles h2")[0] ) {
+    $('.content-headings-related.h2-related-articles h2').hide();
+  }
+
   //Fix display pages footer view if we haven't pagination
   if ($(".pagerer-container")[0]) {
     $('.pager-total').addClass('with-pager');
