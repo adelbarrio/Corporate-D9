@@ -202,7 +202,18 @@ class MultipleTargetLanguageJobItem extends JobItem {
                       $domModified = TRUE;
                       $translatedNode = $subCrawler->getNode(0);
                       $crawlerNode = $node->getNode(0);
-                      $crawlerNode->textContent = $translatedNode->textContent;
+                      $crawlerNode->nodeValue = NULL;
+                      foreach ($crawlerNode->childNodes as $childNode) {
+                        $crawlerNode->removeChild($childNode);
+                      }
+                      /**
+                       * @var \DOMDocument $crawlerDocument
+                       */
+                      $crawlerDocument = $crawlerNode->ownerDocument;
+                      foreach ($translatedNode->childNodes as $childNode) {
+                        $copyNode = $crawlerDocument->importNode($childNode, TRUE);
+                        $crawlerNode->appendChild($copyNode);
+                      }
                       foreach ($crawlerNode->attributes as $attribute) {
                         $crawlerNode->removeAttribute($attribute->name);
                       }
@@ -214,16 +225,29 @@ class MultipleTargetLanguageJobItem extends JobItem {
                   else {
                     $domModified = TRUE;
                     $elementId = $node->attr('id');
-                    $domDocument = new \DOMDocument();
-                    $domDocument->loadHTML(mb_convert_encoding($fieldTranslatedValue, 'HTML-ENTITIES', 'UTF-8'));
-                    $domElement = $domDocument->getElementById($elementId);
-                    $crawlerNode = $node->getNode(0);
-                    $crawlerNode->textContent = $domElement->textContent;
-                    foreach ($crawlerNode->attributes as $attribute) {
-                      $crawlerNode->removeAttribute($attribute->name);
-                    }
-                    foreach ($domElement->attributes as $attribute) {
-                      $crawlerNode->setAttribute($attribute->name, $attribute->value);
+                    $domCrawlerDocument = new Crawler($fieldTranslatedValue);
+                    $domElementCrawler = $domCrawlerDocument->filter('#' . $elementId);
+                    if ($domElementCrawler->count() > 0) {
+                      $domElement = $domElementCrawler->getNode(0);
+                      $crawlerNode = $node->getNode(0);
+                      $crawlerNode->nodeValue = NULL;
+                      foreach ($crawlerNode->childNodes as $childNode) {
+                        $crawlerNode->removeChild($childNode);
+                      }
+                      /**
+                       * @var \DOMDocument $crawlerDocument
+                       */
+                      $crawlerDocument = $crawlerNode->ownerDocument;
+                      foreach ($domElement->childNodes as $childNode) {
+                        $copyNode = $crawlerDocument->importNode($childNode, TRUE);
+                        $crawlerNode->appendChild($copyNode);
+                      }
+                      foreach ($crawlerNode->attributes as $attribute) {
+                        $crawlerNode->removeAttribute($attribute->name);
+                      }
+                      foreach ($domElement->attributes as $attribute) {
+                        $crawlerNode->setAttribute($attribute->name, $attribute->value);
+                      }
                     }
                   }
                 }

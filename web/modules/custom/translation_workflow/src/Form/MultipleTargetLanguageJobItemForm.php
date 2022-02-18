@@ -126,7 +126,18 @@ class MultipleTargetLanguageJobItemForm extends JobItemForm {
                       $domModified = TRUE;
                       $translatedNode = $filteredCrawler->getNode(0);
                       $crawlerNode = $node->getNode(0);
-                      $crawlerNode->textContent = $translatedNode->textContent;
+                      $crawlerNode->nodeValue = NULL;
+                      foreach ($crawlerNode->childNodes as $childNode) {
+                        $crawlerNode->removeChild($childNode);
+                      }
+                      /**
+                       * @var \DOMDocument $crawlerDocument
+                       */
+                      $crawlerDocument = $crawlerNode->ownerDocument;
+                      foreach ($translatedNode->childNodes as $childNode) {
+                        $copyNode = $crawlerDocument->importNode($childNode, TRUE);
+                        $crawlerNode->appendChild($copyNode);
+                      }
                       foreach ($crawlerNode->attributes as $attribute) {
                         $crawlerNode->removeAttribute($attribute->name);
                       }

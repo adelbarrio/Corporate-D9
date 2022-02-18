@@ -8,6 +8,7 @@ use Drupal\Core\Routing\TrustedRedirectResponse;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\translation_workflow\Entity\MultipleTargetLanguageJobItem;
+use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Class to implement retranslate functionality.
@@ -70,16 +71,14 @@ class MultipleTargetLanguageRetranslateForm extends FormBase {
 
           case 'text_with_summary':
             if (strpos($value, 'tmgmt')) {
-              $domDocument = new \DOMDocument();
-              $domDocument->loadHTML(mb_convert_encoding($value, 'HTML-ENTITIES', 'UTF-8'));
-              $paragraphs = $domDocument->getElementsByTagName('*');
               $options = [];
-              foreach ($paragraphs as $paragraph) {
-                $elemId = $paragraph->getAttribute('id');
-                if (preg_match('/tmgmt-\d/', $elemId)) {
-                  $options[$elemId] = $domDocument->saveHTML($paragraph);
+              $domCrawler = new Crawler($value);
+              $domCrawler->filter('*')->each(function (Crawler $node, int $i) use (&$options) {
+                $id = $node->attr('id');
+                if (preg_match('/tmgmt-\d/', $id)) {
+                  $options[$id] = $node->outerHtml();
                 }
-              }
+              });
               $form['fields'][$fieldName] = [
                 '#type' => 'checkboxes',
                 '#title' => $fieldsDefinition->getLabel(),
