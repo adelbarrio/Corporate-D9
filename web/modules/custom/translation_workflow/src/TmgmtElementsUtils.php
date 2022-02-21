@@ -21,27 +21,14 @@ class TmgmtElementsUtils {
    * @throws \DOMException
    */
   public function addTmgmtElements(string $fieldValue) {
-    $finalValue = '';
-    $valueDocument = new \DOMDocument();
-    //$text = mb_convert_encoding('<body>' . $fieldValue . '</body>', 'HTML-ENTITIES', 'UTF-8');
-    $text = '<body>' . $fieldValue . '</body>';
-    $valueDocument->loadHTML($text);
     $crawler = new Crawler($fieldValue);
     $tmgmtCounter = 1;
-    $crawler->filter('body > *')->each(function (Crawler $node, $i) use ($valueDocument, &$tmgmtCounter, &$finalValue) {
-      $oldDomNode = $node->getNode(0);
-      $domNode = $oldDomNode->cloneNode(TRUE);
-      /*$domNode = $valueDocument->createElement($oldDomNode->tagName);
-      $domNode->textContent = $oldDomNode->textContent;*/
-      if ($domNode->hasAttribute('id')) {
-        $domNode->removeAttribute('id');
-      }
+    $crawler->filter('body > *')->each(function (Crawler $node, $i) use (&$tmgmtCounter, &$finalValue) {
+      $domNode = $node->getNode(0);
       $domNode->setAttribute('id', 'tmgmt-' . $tmgmtCounter);
       $tmgmtCounter++;
-      $importedNode = $valueDocument->importNode($domNode, TRUE);
-      $finalValue .= $valueDocument->saveHTML($importedNode);
     });
-    return $finalValue;
+    return $crawler->filter('body')->html();
   }
 
 }
