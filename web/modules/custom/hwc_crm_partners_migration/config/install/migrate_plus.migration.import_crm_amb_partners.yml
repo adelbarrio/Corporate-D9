@@ -306,5 +306,6 @@ process:
     -
       plugin: hwc_boolean
       source: field_appform_status
-
-
+  user:
+    - plugin: hwc_user
+      source: field_main_contact_email
