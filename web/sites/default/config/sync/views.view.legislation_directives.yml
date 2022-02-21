@@ -439,7 +439,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"content-directive\">\r\n  <div class=\"directive-title\">\r\n     {{ title }}\r\n  </div>\r\n  <div class=\"directive-summary\">\r\n     {{ field_summary }}\r\n  </div>\r\n</div>"
+            text: "<div class=\"content-directive\">\r\n  <div class=\"directive-title\">\r\n     {{ title }}\r\n  </div>\r\n  <div class=\"directive-summary\">\r\n    {% set summary_slice = field_summary | slice(0, 251) %}\r\n    {% set summary_split = summary_slice | split('.') %}\r\n    {% if summary_split[1] %}\r\n        {{ summary_split[0] ~ \".\"}}\r\n    {% elseif field_summary | slice(250, 251) == null %}\r\n        {{ summary_slice }}\r\n    {% else %}\r\n        {{ summary_slice  ~ \"...\"  }}\r\n    {% endif %}\r\n  </div>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
@@ -626,20 +626,6 @@ display:
           table: taxonomy_term_field_data
           field: weight
           relationship: field_directive_type
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          entity_type: taxonomy_term
-          entity_field: weight
-          plugin_id: standard
-        weight_1:
-          id: weight_1
-          table: taxonomy_term_field_data
-          field: weight
-          relationship: field_legislation_category
           group_type: group
           admin_label: ''
           order: ASC
