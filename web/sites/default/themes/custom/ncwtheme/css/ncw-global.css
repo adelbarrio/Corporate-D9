@@ -1611,6 +1611,11 @@ h3.home a:hover {
   color: #FFF;
 }
 
+.page-view-legislation-guidelines .sidebar-first .form-item-search-api-fulltext-title,
+.page-view-legislation-guidelines .sidebar-first #block-dateofdirective {
+  display: none;
+}
+
 /* Sidebar second */
 .sidebar-second .block-block-content, .sidebar-second .block-aggregator {
   clear: both;
@@ -3283,8 +3288,31 @@ body.node--type-infographic .field--name-body {
 }
 
 /* Guideline Detail */
-.node--type-guideline .field--name-field-available-in-languages .field__item p {
+.node--type-guideline .field--name-field-available-in-languages .field__item p,
+.node--type-directive .field--name-field-available-in-languages .field__item p {
   margin-bottom: 0;
+}
+.node--type-guideline .field--name-field-summary,
+.node--type-directive .field--name-field-summary {
+  color: #003399;
+  padding-bottom: 1rem;
+}
+.node--type-guideline .latest-revision-date.moved-by-js,
+.node--type-directive .latest-revision-date.moved-by-js {
+  padding-bottom: 1rem;
+}
+.node--type-guideline blockquote,
+.node--type-directive blockquote {
+  border-top: 5px solid #536e91;
+  border-bottom: 5px solid #536e91;
+  color: #536e91;
+  padding: 2em;
+  background-image: url(../images/quotefirst.png), url(../images/quotesecond.png);
+  background-position: left 10px, right 93%;
+  background-repeat: no-repeat;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  clear: both;
 }
 
 #block-copyrigth > div.content > div > div > p > a {
@@ -7414,36 +7442,65 @@ html[lang=de] #block-thesaurus ul .nav-item, html[lang=el] #block-thesaurus ul .
   width: 100%;
 }
 
-.view-legislation-directives .table-responsive {
+.view-legislation-directives .table-responsive,
+.view-legislation-guidelines .table-responsive {
   flex-basis: initial;
 }
-.view-legislation-directives .table-responsive .table-striped tbody tr {
+.view-legislation-directives .table-responsive .table-striped tbody tr,
+.view-legislation-guidelines .table-responsive .table-striped tbody tr {
   background: url("../images/separator_home.jpg") repeat-x scroll 0% 100% rgba(0, 0, 0, 0);
   border: none;
 }
-.view-legislation-directives .table-responsive .table-striped tbody tr:nth-of-type(odd), .view-legislation-directives .table-responsive .table-striped tbody tr:nth-of-type(even) {
+.view-legislation-directives .table-responsive .table-striped tbody tr:nth-of-type(odd), .view-legislation-directives .table-responsive .table-striped tbody tr:nth-of-type(even),
+.view-legislation-guidelines .table-responsive .table-striped tbody tr:nth-of-type(odd),
+.view-legislation-guidelines .table-responsive .table-striped tbody tr:nth-of-type(even) {
   background-color: transparent;
 }
-.view-legislation-directives .table-responsive .table-striped tbody tr td {
-  padding: 0.875rem;
+.view-legislation-directives .table-responsive .table-striped tbody tr td,
+.view-legislation-guidelines .table-responsive .table-striped tbody tr td {
+  padding: 0;
   border-top: none;
+  padding-top: 1rem;
   padding-bottom: 2rem;
 }
-.view-legislation-directives .table-responsive .table-striped tbody tr td a {
+.view-legislation-directives .table-responsive .table-striped tbody tr td a,
+.view-legislation-guidelines .table-responsive .table-striped tbody tr td a {
+  display: inline-block;
   color: #003399;
   border-bottom: 0px;
   font-size: 1.35rem;
   font-weight: 400;
-  letter-spacing: -0.75px;
-  padding-bottom: 0.625rem;
+  padding-bottom: 1rem;
+  line-height: 30px;
 }
-.view-legislation-directives .table-responsive .table-striped tbody tr td .directive-title {
+.view-legislation-directives .table-responsive .table-striped tbody tr td .see-more-arrow.minor-size, .view-legislation-directives .table-responsive .table-striped tbody tr td .node--type-publication .rr-right-column .minor-size.field--name-node-link, .node--type-publication .rr-right-column .view-legislation-directives .table-responsive .table-striped tbody tr td .minor-size.field--name-node-link,
+.view-legislation-guidelines .table-responsive .table-striped tbody tr td .see-more-arrow.minor-size,
+.view-legislation-guidelines .table-responsive .table-striped tbody tr td .node--type-publication .rr-right-column .minor-size.field--name-node-link,
+.node--type-publication .rr-right-column .view-legislation-guidelines .table-responsive .table-striped tbody tr td .minor-size.field--name-node-link {
+  text-align: right;
+}
+.view-legislation-directives .table-responsive .table-striped tbody tr td .see-more-arrow.minor-size a, .view-legislation-directives .table-responsive .table-striped tbody tr td .node--type-publication .rr-right-column .minor-size.field--name-node-link a, .node--type-publication .rr-right-column .view-legislation-directives .table-responsive .table-striped tbody tr td .minor-size.field--name-node-link a,
+.view-legislation-guidelines .table-responsive .table-striped tbody tr td .see-more-arrow.minor-size a,
+.view-legislation-guidelines .table-responsive .table-striped tbody tr td .node--type-publication .rr-right-column .minor-size.field--name-node-link a,
+.node--type-publication .rr-right-column .view-legislation-guidelines .table-responsive .table-striped tbody tr td .minor-size.field--name-node-link a {
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 5px 30px 5px 5px;
+  line-height: inherit;
+}
+.view-legislation-directives .table-responsive .table-striped tbody tr td .directive-title,
+.view-legislation-guidelines .table-responsive .table-striped tbody tr td .directive-title {
   margin-bottom: 0.5rem;
 }
-.view-legislation-directives .table-responsive .table-striped tbody tr td .directive-summary {
+.view-legislation-directives .table-responsive .table-striped tbody tr td .directive-summary,
+.view-legislation-directives .table-responsive .table-striped tbody tr td .guidelines-summary,
+.view-legislation-guidelines .table-responsive .table-striped tbody tr td .directive-summary,
+.view-legislation-guidelines .table-responsive .table-striped tbody tr td .guidelines-summary {
   font-size: 0.9rem;
+  padding-bottom: 1rem;
 }
-.view-legislation-directives .table-responsive .table-striped caption {
+.view-legislation-directives .table-responsive .table-striped caption,
+.view-legislation-guidelines .table-responsive .table-striped caption {
   caption-side: top;
   color: #003399;
   font-size: 1.25rem;
@@ -7456,7 +7513,8 @@ html[lang=de] #block-thesaurus ul .nav-item, html[lang=el] #block-thesaurus ul .
   text-align: left;
   margin-bottom: 1.25rem;
 }
-.view-legislation-directives .table-responsive .table-striped caption a:hover {
+.view-legislation-directives .table-responsive .table-striped caption a:hover,
+.view-legislation-guidelines .table-responsive .table-striped caption a:hover {
   text-decoration: none;
   cursor: default;
   poiner-events: none;

@@ -132,6 +132,11 @@ jQuery(document).ready(function($) {
     $('.block-views-exposed-filter-blocksearch-blog-page-1').appendTo('.move-block-search-blog');
   }
 
+  //Move Last update Directives and Guidelines
+  if ($(".latest-revision-date.moved-by-js")[0]) {
+    $(".latest-revision-date.moved-by-js").insertAfter("h1");
+  }
+
   //Move infographic filter
   if ($(".views-row.moved-by-jquery")[0]) {
     $('.views-row.moved-by-jquery').prependTo('.page-view-infographic .view-infographic.view-display-id-block_3 .view-content.row');
