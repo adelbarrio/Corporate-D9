@@ -414,7 +414,8 @@
   }
 }
 
-.view-legislation-directives{
+.view-legislation-directives,
+.view-legislation-guidelines{
   .table-responsive{
     flex-basis:initial;
     .table-striped{
@@ -427,22 +428,35 @@
             background-color: transparent;
           }
           td{
-            padding:0.875rem;
+            padding: 0;
             border-top:none;
-            padding-bottom:2rem;
+            padding-top: 1rem;
+            padding-bottom: 2rem;
             a{
+              display: inline-block;
               color: $text-color-blue;
               border-bottom: 0px;
               font-size: 1.35rem;
               font-weight: 400;
-              letter-spacing: -0.75px;
-              padding-bottom: 0.625rem;
+              padding-bottom: 1rem;
+              line-height: 30px;
+            }
+            .see-more-arrow.minor-size {
+              text-align: right;
+              a {
+                font-weight: 700;
+                font-size: 0.75rem;
+                padding: 5px 30px 5px 5px;
+                line-height: inherit;
+              }
             }
             .directive-title{
               margin-bottom:0.5rem;
             }
-            .directive-summary{
+            .directive-summary,
+            .guidelines-summary{
               font-size:0.9rem;
+              padding-bottom: 1rem;
             }
           }
         }
