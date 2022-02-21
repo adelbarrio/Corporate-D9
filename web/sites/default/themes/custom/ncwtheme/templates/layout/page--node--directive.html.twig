@@ -15,6 +15,9 @@
     <div id="main" class="col-12 col-lg-6 three-column mx-auto">
       <section class="section">
         <a id="main-content" tabindex="-1"></a>
+        <div class="latest-revision-date moved-by-js">
+          {{ 'Latest update: ' ~ node.revision_timestamp.value|date('d/m/Y') }}
+        </div>
         {{ page.content }}
       </section>
     </div>
