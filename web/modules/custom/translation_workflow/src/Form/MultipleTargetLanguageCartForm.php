@@ -4,6 +4,7 @@ namespace Drupal\translation_workflow\Form;
 
 use Drupal\Core\Entity\EntityStorageException;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Link;
 use Drupal\tmgmt\Entity\JobItem;
 use Drupal\tmgmt\Entity\Translator;
 use Drupal\tmgmt\Form\CartForm;
@@ -20,7 +21,75 @@ class MultipleTargetLanguageCartForm extends CartForm {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state, $plugin = NULL, $item_type = NULL) {
+    $options = array();
+    $selected = [];
     $form = parent::buildForm($form, $form_state, $plugin, $item_type);
+    $characterCount = 0;
+    $pageCount = "0,00";
+
+    foreach (tmgmt_cart_get()->getJobItemsFromCart() as $item) {
+      $characterItem = 0;
+      $url = $item->getSourceUrl();
+      $selected[$item->id()] = TRUE;
+      $itemId = $item->id();
+      $itemType = \Drupal\translation_workflow\Entity\MultipleTargetLanguageJobItem::load($itemId)->getItemType();
+
+      if ($itemType=='node'){
+        $nodeId = $item->getItemId();
+        $node = \Drupal\node\Entity\Node::load($nodeId);
+        $fields = \Drupal::entityTypeManager()->getStorage($itemType)->load($nodeId)->getFields();
+        foreach ($fields as $fieldName => $fieldsDefinition) {
+          if ($fieldName!= 'moderation_state' && $fieldsDefinition->getFieldDefinition()->isTranslatable() && in_array($fieldsDefinition->getFieldDefinition()->getType(), [
+              'string',
+              'text_with_summary',
+              'text_long',
+            ])) {
+            $value = $node->get($fieldName)->value;
+            $text = strip_tags(html_entity_decode($value));
+            // C2A0 is unicode nbsp.
+            $text = preg_replace("/\x{00A0}|&nbsp;|\s/", '', $text);
+            $characterItem += mb_strlen($text, 'utf-8');
+
+          }
+        }
+      }
+      else{
+        $characterItem  = mb_strlen($item->label(), 'utf-8');
+
+      }
+      $characterCount += $characterItem;
+      $pageItem = number_format(($characterItem / MultipleTargetLanguageJob::CHARACTERS_PER_PAGE), 2, ',', '');
+      $pageCount = number_format(($characterCount / MultipleTargetLanguageJob::CHARACTERS_PER_PAGE), 2, ',', '');
+
+
+
+
+      $options[$item->id()] = array(
+        $item->getSourceType(),
+        $url ? Link::fromTextAndUrl($item->label(), $url)->toString() : $item->label(),
+        isset($languages[$item->getSourceLangCode()]) ? $languages[$item->getSourceLangCode()] : t('Unknown'),
+        $characterItem ,  $pageItem ,
+      );
+    }
+
+
+    $form['items'] = array(
+      '#type' => 'tableselect',
+      '#header' => array(t('Type'), t('Content'), t('Language'),t('Character count').' ('.$characterCount.')',t('Page count') .' ('. $pageCount .')'),
+      '#empty' => t('There are no items in your cart.'),
+      '#options' => $options,
+      '#default_value' => $selected,
+    );
+
+
+    $options[$item->id()] = array(
+      $item->getSourceType(),
+      $url ? Link::fromTextAndUrl($item->label(), $url)->toString() : $item->label(),
+      isset($languages[$item->getSourceLangCode()]) ? $languages[$item->getSourceLangCode()] : t('Unknown'),
+      '4' , '2',
+    );
+
+
     if (isset($form['request_translation'])) {
       $form['request_translation']['#validate'][] = '::validateNewItems';
     }
