@@ -1,9 +1,9 @@
 # This migration demonstrates a simple import from a JSON file.
-id: hwc_highlights
-label: 'PA Highlights'
-migration_group: ncw_import_node_highlights
+id: hwc_slideshare
+label: 'SlideShare'
+migration_group: ncw_import_node_slideshare
 destination:
-  default_bundle: news
+  default_bundle: slideshare
   plugin: 'entity:node'
 migration_dependencies: {  }
 
@@ -17,7 +17,7 @@ source:
   data_parser_plugin: hwc_json
   include_raw_data: true
   urls: ncw
-  content_type: pa_highlights
+  content_type: add_slideshare
   ids:
     nid:
       type: integer
@@ -25,7 +25,7 @@ source:
   constants:
     lang: en
     file_source: https://osha.europa.eu/sites/default/files
-    file_dest: public://hwc/pa_highlights
+    file_dest: public://hwc/slideshare
   fields:
     -
       name: nid
@@ -34,15 +34,7 @@ source:
     -
       name: title
       label: 'Title'
-      selector: item/title_field/en
-    -
-      name: body
-      label: 'Description'
-      selector: item/body/en/0
-    -
-      name: field_image
-      label: 'field_image'
-      selector: item/field_image/en/0
+      selector: item/title_field/en/0
     -
       name: status
       label: "Status"
@@ -63,37 +55,42 @@ source:
       name: alias
       label: "Alias"
       selector: item/pathalias
+    -
+      name: field_thumbnail
+      label: 'field_thumbnail'
+      selector: item/field_thumbnail/0
+    -
+      name: field_slideshare_url
+      label: 'field_slideshare_url'
+      selector: item/field_slideshare_url/en/0/value
+    -
+      name: field_slideshare_id
+      label: 'field_slideshare_id'
+      selector: item/field_slideshare_id/en/0/value
 process:
   nid: nid
   langcode: constants/lang
   title: title
-  body/0/value:
-    - plugin: hwc_body
-      source: body/value
-  body/0/format:
-    - plugin: default_value
-      default_value: full_html
-  status: status
-  created: created
-  changed: changed
-  sticky: sticky
-  path/alias: alias
+  field_slideshare/uri:
+    - plugin: hwc_slide_url_transform
+      source: field_slideshare_url
+  field_slideshare/title: field_slideshare_id
   file_source:
     - plugin: skip_on_empty
-      source: field_image/uri
+      source: field_thumbnail/uri
       method: process
     - plugin: hwc_news_url_transform
-      source: field_image/uri
+      source: field_thumbnail/uri
     - plugin: urlencode
   file_dest:
     - plugin: skip_on_empty
-      source: field_image/filename
+      source: field_thumbnail/filename
       method: process
     - plugin: concat
       delimiter: /
       source:
         - constants/file_dest
-        - field_image/filename
+        - field_thumbnail/filename
   file:
     - plugin: skip_on_empty
       source: '@file_source'
@@ -124,13 +121,7 @@ process:
         vid: null
       values:
         field_media_image: '@file'
-  field_image/target_id:
-    - plugin: skip_on_empty
-      source: '@media'
-      method: process
-    - plugin: default_value
-      default_value: '@media'
-  field_image_mail/target_id:
+  field_slideshare_thumbnail/target_id:
     - plugin: skip_on_empty
       source: '@media'
       method: process

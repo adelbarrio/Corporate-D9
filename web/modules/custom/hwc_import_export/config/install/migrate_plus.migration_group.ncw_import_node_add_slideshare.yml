@@ -1,5 +1,5 @@
-id: ncw_import_node
-label: 'NCW Import Publications'
+id: ncw_import_node_add_slideshare
+label: 'NCW Import Add SlideShare'
 description: 'Migration of content from HWC and Oira'
 source_type: 'JSON'
 shared_configuration:

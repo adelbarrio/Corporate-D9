@@ -1,59 +1,24 @@
 <?php
 
-namespace Drupal\hwc_import_export;
+namespace Drupal\hwc_import_export\Access;
 
-use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
-use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Drupal\migrate\Plugin\MigrationPluginManager;
+use Drupal\Core\Routing\Access\AccessInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Access\AccessResult;
 use Drupal\migrate\MigrateExecutable;
 use Drupal\migrate\MigrateMessage;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 
 /**
- * General class for Cron hooks.
+ * General class for custom access check for approvers.
  */
-class HwcCron implements ContainerInjectionInterface {
-
-  use StringTranslationTrait;
-
-  /**
-   * The migration plugin manager.
-   *
-   * @var \Drupal\migrate\Plugin\MigrationPluginManager
-   */
-  protected MigrationPluginManager $migrationManager;
-
-  /**
-   * The entity type manager.
-   *
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
-   */
-  protected EntityTypeManagerInterface $entityTypeManager;
+class HieAccessCheck implements AccessInterface {
 
   /**
    * {@inheritdoc}
    */
-  public function __construct(MigrationPluginManager $migration_manager, EntityTypeManagerInterface $entity_type_manager) {
-    $this->migrationManager = $migration_manager;
-    $this->entityTypeManager = $entity_type_manager;
-  }
+  public function access(AccountInterface $account) {
+    $node = \Drupal::routeMatch()->getParameter('node');
 
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('plugin.manager.migration'),
-      $container->get('entity_type.manager')
-    );
-  }
-
-
-  /**
-   * Implements hook_cron().
-   */
-  public function cron() {
     $migrations = [
       'hwc_publications',
       'hwc_publications_bg',
@@ -145,24 +110,25 @@ class HwcCron implements ContainerInjectionInterface {
       'hwc_slideshare',
     ];
 
-    // Start every migration.
-    foreach ($migrations as $migration_id) {
-      /** @var \Drupal\migrate\Plugin\Migration  $migration */
-      $migration = $this->migrationManager->createInstance($migration_id);
-      $migration->getIdMap()->prepareUpdate();
-      $executable = new MigrateExecutable($migration, new MigrateMessage());
-      $executable->import();
+    $database = \Drupal::database();
 
-      // Check the nodes that thay have been deleted from source.
-      $dels = $migration->getIdMap()->getRowsNeedingUpdate(1000);
-      foreach ($dels as $key => $del) {
-        $del = (array) $del;
-        // Remove it from migration table.
-        $migration->getIdMap()->deleteDestination(['nid' => $del['destid1']]);
-        // Remove the node.
-        $node = $this->entityTypeManager->getStorage('node')->load($del['destid1']);
-        $node->delete();
+    if ($node instanceof \Drupal\node\Entity\Node) {
+      foreach ($migrations as $migration_id) {
+        try {
+          $database->queryRange("SELECT 1 FROM {" . 'migrate_map_' . $migration_id . "}", 0, 1);
+          $query = $database->select('migrate_map_' . $migration_id, 'ptc');
+          $query->condition('ptc.destid1', $node->id());
+          $query->fields('ptc', ['destid1']);
+          $result = $query->execute()->fetchAll();
+          if ($result) {
+            return AccessResult::forbidden();
+          }
+        }
+        catch (\Exception $e) {
+          continue;
+        }
       }
     }
+    return AccessResult::allowed();
   }
 }

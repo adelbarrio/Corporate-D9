@@ -170,6 +170,7 @@ process:
   nid: nid
   langcode: constants/lang
   title: title
+  status: status
   body/0/value:
     - plugin: hwc_body
       source: body/value

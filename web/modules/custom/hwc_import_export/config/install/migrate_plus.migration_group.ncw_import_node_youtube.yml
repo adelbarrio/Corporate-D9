@@ -1,5 +1,5 @@
-id: ncw_import_node
-label: 'NCW Import Publications'
+id: ncw_import_node_youtube
+label: 'NCW Import Youtube'
 description: 'Migration of content from HWC and Oira'
 source_type: 'JSON'
 shared_configuration:

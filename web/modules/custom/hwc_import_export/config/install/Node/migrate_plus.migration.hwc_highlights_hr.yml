@@ -3,7 +3,7 @@ id: hwc_highlights_hr
 label: 'Highlights hr'
 migration_group: ncw_import_node_highlights
 destination:
-  default_bundle: pa_highlights
+  default_bundle: news
   plugin: 'entity:node'
   translations: true
   destination_module: content_translation

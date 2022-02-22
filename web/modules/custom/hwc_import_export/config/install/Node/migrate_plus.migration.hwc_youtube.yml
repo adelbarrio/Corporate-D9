@@ -1,0 +1,88 @@
+# This migration demonstrates a simple import from a JSON file.
+id: hwc_youtube
+label: 'Youtube'
+migration_group: ncw_import_node_youtube
+destination:
+  default_bundle: youtube
+  plugin: 'entity:node'
+migration_dependencies: {  }
+
+dependencies:
+  enforced:
+    module:
+      - hwc_import_export
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: hwc_json
+  include_raw_data: true
+  urls: ncw
+  content_type: add_youtube
+  ids:
+    nid:
+      type: integer
+  item_selector: 'items/'
+  constants:
+    lang: en
+    file_source: https://osha.europa.eu/sites/default/files
+    file_dest: public://hwc/youtube
+  fields:
+    -
+      name: nid
+      label: 'Nid'
+      selector: item/nid
+    -
+      name: title
+      label: 'Title'
+      selector: item/title_field/en/0
+    -
+      name: body
+      label: 'Description'
+      selector: item/body/en/0
+    -
+      name: status
+      label: "Status"
+      selector: item/status
+    -
+      name: created
+      label: "Created"
+      selector: item/created
+    -
+      name: changed
+      label: "Changed"
+      selector: item/changed
+    -
+      name: sticky
+      label: "Sticky"
+      selector: item/sticky
+    -
+      name: alias
+      label: "Alias"
+      selector: item/pathalias
+    -
+      name: field_youtube
+      label: 'field_youtube'
+      selector: item/field_youtube/en/0/value
+process:
+  nid: nid
+  langcode: constants/lang
+  title: title
+  media:
+    - plugin: entity_generate
+      value_key: mid
+      bundle_key: vid
+      entity_type: media
+      bundle: remote_video
+      source: field_youtube
+      default_values:
+        bundle: remote_video
+        mid: null
+        vid: null
+      values:
+        field_media_oembed_video: field_youtube
+  field_youtube/target_id:
+    - plugin: skip_on_empty
+      source: '@media'
+      method: process
+    - plugin: default_value
+      default_value: '@media'

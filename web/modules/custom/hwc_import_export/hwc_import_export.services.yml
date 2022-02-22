@@ -1,0 +1,10 @@
+services:
+  hwc_import_export.route_subscriber:
+    class: Drupal\hwc_import_export\Routing\HieRouteSubscriber
+    tags:
+      - { name: event_subscriber }
+  hwc_import_export.access_checker:
+    class: Drupal\hwc_import_export\Access\HieAccessCheck
+    arguments: [ '@current_user' ]
+    tags:
+      - { name: access_check, applies_to: _hwc_import_export_access_check }
