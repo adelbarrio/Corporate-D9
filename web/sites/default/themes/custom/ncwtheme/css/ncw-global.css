@@ -1612,8 +1612,14 @@ h3.home a:hover {
 }
 
 .page-view-legislation-guidelines .sidebar-first .form-item-search-api-fulltext-title,
-.page-view-legislation-guidelines .sidebar-first #block-dateofdirective {
+.page-view-legislation-guidelines .sidebar-first #block-dateofdirective,
+.node--type-guideline .sidebar-first .form-item-search-api-fulltext-title,
+.node--type-guideline .sidebar-first #block-dateofdirective {
   display: none;
+}
+.page-view-legislation-guidelines .sidebar-first .views-exposed-form .btn-primary,
+.node--type-guideline .sidebar-first .views-exposed-form .btn-primary {
+  margin-left: 5px;
 }
 
 /* Sidebar second */

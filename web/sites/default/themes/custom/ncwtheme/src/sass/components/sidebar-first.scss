@@ -247,11 +247,17 @@
   }
 }
 
-.page-view-legislation-guidelines {
+.page-view-legislation-guidelines,
+.node--type-guideline{
   .sidebar-first{
     .form-item-search-api-fulltext-title,
     #block-dateofdirective{
       display: none;
+    }
+    .views-exposed-form{
+      .btn-primary{
+        margin-left: 5px;
+      }
     }
   }
 }
