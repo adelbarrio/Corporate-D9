@@ -1,0 +1,6 @@
+display:
+  page_1:
+    display_options:
+      fields:
+        view_node:
+          text: Részletek
