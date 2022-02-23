@@ -377,8 +377,11 @@
         font-size: 1rem;
         line-height:1.375rem;
         margin-top:1.375rem;
-        margin-bottom: 1.375rem;
+        margin-bottom: 3px;
         font-weight: bold;
+        p{
+          margin-bottom: 0;
+        }
       }
       .views-row{
         font-size:0.9rem;
@@ -485,7 +488,6 @@
     }
   }
 }
-
 
 /* Responsive View List */
 @media only screen and (max-width : 768px) {

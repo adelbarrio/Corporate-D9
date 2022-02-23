@@ -401,7 +401,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '<strong>{{ field_personal_title }} {{ title }}</strong> ({{ field_wg_category }}){{ field_wg_role_2 }}'
+            text: '<strong>{{ title }}</strong> ({{ field_wg_category }}){{ field_wg_role_2 }}'
             make_link: false
             path: ''
             absolute: false
