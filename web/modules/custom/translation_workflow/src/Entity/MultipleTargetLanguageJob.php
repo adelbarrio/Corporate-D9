@@ -774,8 +774,9 @@ class MultipleTargetLanguageJob extends ContentEntityBase implements EntityOwner
         $data = array_filter($dataService->flatten($item->getData()), function ($value) {
           return !(empty($value['#text']) || (isset($value['#translate']) && $value['#translate'] === FALSE));
         });
+
         foreach ($data as $key => $field) {
-          if (isset($field['#text'])) {
+          if (isset($field['#text']) and $field['#parent_label'][0]!='Language') {
             $text = $field['#text'];
             $text = strip_tags(html_entity_decode($text));
             // C2A0 is unicode nbsp.

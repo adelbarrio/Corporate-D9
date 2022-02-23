@@ -38,6 +38,7 @@ class MultipleTargetLanguageCartForm extends CartForm {
         $nodeId = $item->getItemId();
         $node = \Drupal\node\Entity\Node::load($nodeId);
         $fields = \Drupal::entityTypeManager()->getStorage($itemType)->load($nodeId)->getFields();
+
         foreach ($fields as $fieldName => $fieldsDefinition) {
           if ($fieldName!= 'moderation_state' && $fieldsDefinition->getFieldDefinition()->isTranslatable() && in_array($fieldsDefinition->getFieldDefinition()->getType(), [
               'string',
@@ -62,13 +63,10 @@ class MultipleTargetLanguageCartForm extends CartForm {
       $pageCount = number_format(($characterCount / MultipleTargetLanguageJob::CHARACTERS_PER_PAGE), 2, ',', '');
 
 
-
-
       $options[$item->id()] = array(
         $item->getSourceType(),
         $url ? Link::fromTextAndUrl($item->label(), $url)->toString() : $item->label(),
-        isset($languages[$item->getSourceLangCode()]) ? $languages[$item->getSourceLangCode()] : t('Unknown'),
-        $characterItem ,  $pageItem ,
+         'English',  $characterItem ,  $pageItem ,
       );
     }
 
@@ -80,15 +78,6 @@ class MultipleTargetLanguageCartForm extends CartForm {
       '#options' => $options,
       '#default_value' => $selected,
     );
-
-
-    $options[$item->id()] = array(
-      $item->getSourceType(),
-      $url ? Link::fromTextAndUrl($item->label(), $url)->toString() : $item->label(),
-      isset($languages[$item->getSourceLangCode()]) ? $languages[$item->getSourceLangCode()] : t('Unknown'),
-      '4' , '2',
-    );
-
 
     if (isset($form['request_translation'])) {
       $form['request_translation']['#validate'][] = '::validateNewItems';
