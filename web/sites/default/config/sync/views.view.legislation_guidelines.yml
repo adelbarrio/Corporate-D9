@@ -647,7 +647,7 @@ display:
             label: ''
           granularity: minute
           plugin_id: datetime
-      rendering_language: '***LANGUAGE_language_content***'
+      rendering_language: '***LANGUAGE_language_interface***'
       style:
         type: table
         options:
@@ -789,7 +789,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          text: 'Read more'
+          text: 'Show details'
           output_url_as_text: false
           absolute: false
           entity_type: node
@@ -843,9 +843,8 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: text_trimmed
-          settings:
-            trim_length: 315
+          type: text_default
+          settings: {  }
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -930,7 +929,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"content-guidelines\">\r\n  <div class=\"guidelines-title\">\r\n     {{ title }}\r\n  </div>\r\n  <div class=\"guidelines-summary\">\r\n    {% set summary_slice = field_summary | striptags | slice(0, 310) %}\r\n    {% set summary_split = summary_slice | split('.') %}\r\n    {% if summary_split[1] %}\r\n        {{ summary_split[0] ~ \".\"}}\r\n    {% elseif field_summary | striptags | slice(309, 310) == \".\" %}\r\n        {{ summary_slice }}\r\n    {% else %}\r\n        {{ summary_slice  ~ \"...\"  }}\r\n    {% endif %}\r\n  </div>\r\n<div class=\"see-more-arrow minor-size\">\r\n{{ view_node }}\r\n</div>\r\n</div>"
+            text: "<div class=\"content-guidelines\">\r\n  <div class=\"guidelines-title\">\r\n     {{ title }}\r\n  </div>\r\n  <div class=\"guidelines-summary\">\r\n    {% set summary_slice = field_summary | striptags | truncate(301, true) %}\r\n    {% set summary_split = summary_slice | split('.') %}\r\n    {% if summary_split[1] %}\r\n        {{ summary_split[0] ~ \".\"}}\r\n    {% elseif field_summary | striptags | last == '.'  %}\r\n        {{ summary_slice }}\r\n    {% else %}\r\n        {{ summary_slice  ~ \"...\"  }}\r\n    {% endif %}\r\n  </div>\r\n<div class=\"see-more-arrow minor-size\">\r\n{{ view_node }}\r\n</div>\r\n</div>"
             make_link: false
             path: ''
             absolute: false

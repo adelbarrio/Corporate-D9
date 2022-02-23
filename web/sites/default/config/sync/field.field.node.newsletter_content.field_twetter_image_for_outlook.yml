@@ -32,11 +32,11 @@ settings:
   title_field: false
   title_field_required: false
   default_image:
-    uuid: 4b436e02-8bbe-4328-94a2-01cdd6a41c7a
+    uuid: 78f787d8-589f-4110-a383-51fdbc3138f8
     alt: 'EU-OSHA tweets'
     title: ''
-    width: 256
-    height: 215
+    width: 100
+    height: 84
     caption: ''
   caption_field: 0
   caption_field_required: 0
