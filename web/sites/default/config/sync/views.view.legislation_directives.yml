@@ -235,7 +235,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          text: ''
+          text: 'Show details'
           output_url_as_text: false
           absolute: false
           entity_type: node
@@ -438,7 +438,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"content-directive\">\r\n  <div class=\"directive-title\">\r\n     {{ title }}\r\n  </div>\r\n  <div class=\"directive-summary\">\r\n    {% set summary_slice = field_summary | striptags | truncate(301, true) %}\r\n    {% set summary_split = summary_slice | split('.') %}\r\n    {% if summary_split[1] %}\r\n        {{ summary_split[0] ~ \".\"}}\r\n    {% elseif field_summary | striptags | last == '.'  %}\r\n        {{ summary_slice }}\r\n    {% else %}\r\n        {{ summary_slice  ~ \"...\"  }}\r\n    {% endif %}\r\n  </div>\r\n</div>"
+            text: "<div class=\"content-directive\">\r\n  <div class=\"directive-title\">\r\n     {{ title }}\r\n  </div>\r\n  <div class=\"directive-summary\">\r\n    {% set summary_slice = field_summary | striptags | truncate(301, true) %}\r\n    {% set summary_split = summary_slice | split('.') %}\r\n    {% if summary_split[1] %}\r\n        {{ summary_split[0] ~ \".\"}}\r\n    {% elseif field_summary | striptags | last == '.'  %}\r\n        {{ summary_slice }}\r\n    {% else %}\r\n        {{ summary_slice  ~ \"...\"  }}\r\n    {% endif %}\r\n  </div>\r\n<div class=\"see-more-arrow minor-size\">\r\n{{ view_node }}\r\n</div>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
@@ -577,48 +577,6 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        langcode:
-          id: langcode
-          table: node_field_data
-          field: langcode
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: in
-          value:
-            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: node
-          entity_field: langcode
-          plugin_id: language
       sorts:
         weight:
           id: weight
