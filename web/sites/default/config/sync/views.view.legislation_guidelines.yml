@@ -647,7 +647,7 @@ display:
             label: ''
           granularity: minute
           plugin_id: datetime
-      rendering_language: '***LANGUAGE_language_content***'
+      rendering_language: '***LANGUAGE_language_interface***'
       style:
         type: table
         options:
