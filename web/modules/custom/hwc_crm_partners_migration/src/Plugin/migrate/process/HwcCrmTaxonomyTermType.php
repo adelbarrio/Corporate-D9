@@ -2,7 +2,6 @@
 
 namespace Drupal\hwc_crm_partners_migration\Plugin\migrate\process;
 
-use Drupal;
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\migrate\MigrateExecutableInterface;
@@ -11,21 +10,23 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\migrate\MigrateSkipProcessException;
 use Drupal\taxonomy\Entity\Term;
 
+
 /**
  * This plugin find the term by name and vocabulary.
+ *
  * @code
  * process:
  *   destination_field:
- *     plugin: oie_taxonomy_term_type
+ *     plugin: hwc_crm_taxonomy_term_type
  *     source: source_field
  *     vocabulary: vocabulary_name
  *     create: false
  * @endcode
  * @MigrateProcessPlugin(
- *   id = "oie_taxonomy_term_type",
+ *   id = "hwc_crm_taxonomy_term_type",
  * )
  */
-class OieTaxonomyTermType extends ProcessPluginBase implements ContainerFactoryPluginInterface {
+class HwcCrmTaxonomyTermType extends ProcessPluginBase implements ContainerFactoryPluginInterface {
 
   /**
    * The entity type manager.
@@ -56,26 +57,29 @@ class OieTaxonomyTermType extends ProcessPluginBase implements ContainerFactoryP
     if (empty($value) || empty($this->configuration['vocabulary'])) {
       throw new MigrateSkipProcessException();
     }
-    switch ($destination_property){
+    switch ($destination_property) {
       case 'field_orgtype':
       case 'field_bussines_sector':
-        $term = $this->entityTypeManager->getStorage('taxonomy_term')->loadByProperties([
-          'field_crm_code' => $value,
-          'vid' => $this->configuration['vocabulary'],
-        ]);
+        $term = $this->entityTypeManager->getStorage('taxonomy_term')
+          ->loadByProperties([
+            'field_crm_code' => $value,
+            'vid' => $this->configuration['vocabulary'],
+          ]);
         break;
       case 'field_partner_type':
       case 'field_country':
-        $term = $this->entityTypeManager->getStorage('taxonomy_term')->loadByProperties([
-          'name' =>   ucwords(strtolower($value)),
-          'vid' => $this->configuration['vocabulary'],
-        ]);
+        $term = $this->entityTypeManager->getStorage('taxonomy_term')
+          ->loadByProperties([
+            'name' => ucwords(strtolower($value)),
+            'vid' => $this->configuration['vocabulary'],
+          ]);
         break;
       case 'field_workbench_access':
-        $term = $this->entityTypeManager->getStorage('taxonomy_term')->loadByProperties([
-          'field_ldap_section_code' =>   $value,
-          'vid' => $this->configuration['vocabulary'],
-        ]);
+        $term = $this->entityTypeManager->getStorage('taxonomy_term')
+          ->loadByProperties([
+            'field_ldap_section_code' => $value,
+            'vid' => $this->configuration['vocabulary'],
+          ]);
         break;
     }
 
@@ -83,29 +87,26 @@ class OieTaxonomyTermType extends ProcessPluginBase implements ContainerFactoryP
     /** @var \Drupal\taxonomy\Entity\Term $term */
     $term = reset($term);
     if (!empty($term)) {
-      if("section" == $term->get('vid')->getValue()[0]['target_id']){
+      if ("section" == $term->get('vid')->getValue()[0]['target_id']) {
         $value = [
           'target_id' => $term->id(),
-          ];
-
-
-
+        ];
         $term->setName(ucwords(strtolower($row->getSourceProperty('title'))));
         $term->save();
-      }else{
+      }
+      else {
         $value = [
           'target_id' => $term->id(),
         ];
       }
-      }
-
+    }
     else {
       if ($this->configuration['create']) {
         $name = ucwords(strtolower($row->getSourceProperty('title')));
         $term = Term::create(
           [
             'parent' => [],
-            'name' =>   ("field_workbench_access"== $destination_property) ? $name : ucwords(strtolower($value)),
+            'name' => ("field_workbench_access" == $destination_property) ? $name : ucwords(strtolower($value)),
             'field_crm_code' => $value,
             'field_ldap_section_code' => $value,
             'vid' => $this->configuration['vocabulary'],
