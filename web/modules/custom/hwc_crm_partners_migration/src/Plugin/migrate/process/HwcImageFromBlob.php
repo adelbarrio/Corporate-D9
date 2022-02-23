@@ -55,10 +55,10 @@ class HwcImageFromBlob extends ProcessPluginBase {
     $image = base64_decode($logo);
     if ($image == "") {
       if ($destination_property == 'field_logo/target_id') {
-        $migrate_executable->message->display("Logo missing or malformed for " . $originalTitle . "\n", MigrationInterface::MESSAGE_NOTICE);
+        $migrate_executable->message->display("Logo missing or malformed for " . $originalTitle . ".\n", MigrationInterface::MESSAGE_NOTICE);
       }
       else {
-        $migrate_executable->message->display("CEO photo missing or malformed for " . $originalTitle . "\n", MigrationInterface::MESSAGE_NOTICE);
+        $migrate_executable->message->display("CEO photo missing or malformed for " . $originalTitle . ".\n", MigrationInterface::MESSAGE_NOTICE);
       }
       return NULL;
     }
