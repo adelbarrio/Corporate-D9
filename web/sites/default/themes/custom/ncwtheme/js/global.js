@@ -16,7 +16,6 @@
 })(jQuery, Drupal);
 
 jQuery(document).ready(function($) {
-
   //Facet accordions, this should be usefull for all blocks with .block-facets-accordion-class
   $(".sidebar-first").on("click", ".block-facets-accordion h2", function(e){
     e.preventDefault();
@@ -29,6 +28,14 @@ jQuery(document).ready(function($) {
     $(this).parent().children('div').children('ul').slideToggle();
     $(this).toggleClass('active');
   });
+
+  //Add Matomo event when click on banners
+  if (typeof _paq != 'undefined') {
+    $('.view-display-id-home_page_banner_top .view-content a').click(function(e) {
+      var path = jQuery(this).attr('href');
+      _paq.push(['trackEvent', 'Banner', 'Click', path]);
+    });
+  }
 
   // Accordions
   if (!$('body').hasClass("node--type-thesaurus")) {
