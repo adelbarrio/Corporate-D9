@@ -43,7 +43,10 @@ source:
       selector: item/body/bg/0
 
 process:
-  nid: nid
+  nid:
+    - plugin: migration_lookup
+      source: nid
+      migration: hwc_highlights
   title:
     -
       plugin: skip_on_empty

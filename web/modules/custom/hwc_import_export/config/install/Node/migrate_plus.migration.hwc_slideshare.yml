@@ -68,7 +68,6 @@ source:
       label: 'field_slideshare_id'
       selector: item/field_slideshare_id/en/0/value
 process:
-  nid: nid
   langcode: constants/lang
   title: title
   field_slideshare/uri:

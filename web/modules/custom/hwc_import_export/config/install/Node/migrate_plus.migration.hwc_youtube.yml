@@ -64,7 +64,6 @@ source:
       label: 'field_youtube'
       selector: item/field_youtube/en/0/value
 process:
-  nid: nid
   langcode: constants/lang
   title: title
   media:

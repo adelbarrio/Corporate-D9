@@ -80,7 +80,7 @@ source:
       label: "Alias"
       selector: item/pathalias
 process:
-  nid: nid
+  #nid: nid
   langcode: constants/lang
   title: title
   body/0/value:
