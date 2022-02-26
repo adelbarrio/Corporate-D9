@@ -161,6 +161,7 @@ class HwcCron implements ContainerInjectionInterface {
         $migration->getIdMap()->deleteDestination(['nid' => $del['destid1']]);
         // Remove the node.
         $node = $this->entityTypeManager->getStorage('node')->load($del['destid1']);
+        $node->setUnpublished();
         $node->delete();
       }
     }
