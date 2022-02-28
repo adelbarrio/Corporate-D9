@@ -16,3 +16,6 @@
 [submodule "web/sites/oshwiki"]
 	path = web/sites/oshwiki
 	url = git@github.com:EU-OSHA/oshwiki.git
+[submodule "web/sites/vesafe_revamp"]
+	path = web/sites/vesafe_revamp
+	url = git@github.com:EU-OSHA/VeSafe.git
