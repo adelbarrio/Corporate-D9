@@ -18,7 +18,7 @@ third_party_settings:
     minimum_age_to_delete: 0
     when_to_delete: 0
   unique_content_field_validation:
-    unique: true
+    unique: false
     unique_text: ''
 name: Events
 type: events

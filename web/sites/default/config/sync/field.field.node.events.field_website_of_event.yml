@@ -16,7 +16,7 @@ field_name: field_website_of_event
 entity_type: node
 bundle: events
 label: 'Website of event'
-description: 'Please insert here the URL of the website, where the event is promoted by its organiser and more information about the event can be found. If the URL is very long, please invent short title (e.g. event website)'
+description: 'Please insert in the URL box the URL of the website, where the event is promoted by its organiser and more information about the event can be found. If the URL is very long, please invent short title (e.g. event website) in the Link text box.'
 required: false
 translatable: false
 default_value: {  }
