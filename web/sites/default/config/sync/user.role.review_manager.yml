@@ -35,6 +35,7 @@ permissions:
   - 'administer nodes'
   - 'administer project_managers'
   - 'administer reviewers'
+  - 'administer scanner settings'
   - 'administer search and replace settings'
   - 'administer taxonomy'
   - administer_mailsystem
@@ -366,6 +367,7 @@ permissions:
   - 'moderate publication state from ready_to_publish to published'
   - 'moderate seminar state from ready_to_publish to published'
   - 'osha access administration pages'
+  - 'perform search and replace'
   - 'reorder terms in activity'
   - 'reorder terms in agency'
   - 'reorder terms in article_types'
