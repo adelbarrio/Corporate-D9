@@ -1,0 +1,45 @@
+# This migration demonstrates a simple import from a JSON file.
+id: hwc_add_slideshare
+label: 'Add SlideShare'
+migration_group: ncw_import_node_add_slideshare
+destination:
+  default_bundle: news
+  plugin: 'entity:node'
+migration_dependencies: {  }
+
+dependencies:
+  enforced:
+    module:
+      - hwc_import_export
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: hwc_additional_json
+  include_raw_data: true
+  urls: ncw
+  content_type: add_slideshare
+  ids:
+    nid:
+      type: integer
+  item_selector: 'items/'
+  constants:
+    lang: en
+    file_source: https://osha.europa.eu/sites/default/files
+    file_dest: public://hwc/news
+  fields:
+    -
+      name: nid
+      label: 'Nid'
+      selector: item/nid
+    -
+      name: resources
+      label: 'Resources'
+      selector: item/resources
+
+process:
+  nid:
+    - plugin: migration_lookup
+      source: nid
+      migration: hwc_news
+  langcode: constants/lang
+  field_aditional_resources: resources

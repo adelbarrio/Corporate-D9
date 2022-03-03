@@ -1,0 +1,13 @@
+id: hwc_crm_partners_migration
+label: 'CRM Partners Migration'
+description: 'Migration of partners from CRM'
+source_type: 'XML'
+shared_configuration:
+  source:
+    key:
+      migrate
+dependencies:
+  enforced:
+    module:
+      - hwc_crm_partners_migration
+

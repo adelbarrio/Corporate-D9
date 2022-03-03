@@ -1,0 +1,128 @@
+# This migration demonstrates a simple import from a JSON file.
+id: hwc_slideshare
+label: 'SlideShare'
+migration_group: ncw_import_node_slideshare
+destination:
+  default_bundle: slideshare
+  plugin: 'entity:node'
+migration_dependencies: {  }
+
+dependencies:
+  enforced:
+    module:
+      - hwc_import_export
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: hwc_json
+  include_raw_data: true
+  urls: ncw
+  content_type: add_slideshare
+  ids:
+    nid:
+      type: integer
+  item_selector: 'items/'
+  constants:
+    lang: en
+    file_source: https://osha.europa.eu/sites/default/files
+    file_dest: public://hwc/slideshare
+  fields:
+    -
+      name: nid
+      label: 'Nid'
+      selector: item/nid
+    -
+      name: title
+      label: 'Title'
+      selector: item/title_field/en/0
+    -
+      name: status
+      label: "Status"
+      selector: item/status
+    -
+      name: created
+      label: "Created"
+      selector: item/created
+    -
+      name: changed
+      label: "Changed"
+      selector: item/changed
+    -
+      name: sticky
+      label: "Sticky"
+      selector: item/sticky
+    -
+      name: alias
+      label: "Alias"
+      selector: item/pathalias
+    -
+      name: field_thumbnail
+      label: 'field_thumbnail'
+      selector: item/field_thumbnail/0
+    -
+      name: field_slideshare_url
+      label: 'field_slideshare_url'
+      selector: item/field_slideshare_url/en/0/value
+    -
+      name: field_slideshare_id
+      label: 'field_slideshare_id'
+      selector: item/field_slideshare_id/en/0/value
+process:
+  langcode: constants/lang
+  title: title
+  field_slideshare/uri:
+    - plugin: hwc_slide_url_transform
+      source: field_slideshare_url
+  field_slideshare/title: field_slideshare_id
+  file_source:
+    - plugin: skip_on_empty
+      source: field_thumbnail/uri
+      method: process
+    - plugin: hwc_news_url_transform
+      source: field_thumbnail/uri
+    - plugin: urlencode
+  file_dest:
+    - plugin: skip_on_empty
+      source: field_thumbnail/filename
+      method: process
+    - plugin: concat
+      delimiter: /
+      source:
+        - constants/file_dest
+        - field_thumbnail/filename
+  file:
+    - plugin: skip_on_empty
+      source: '@file_source'
+      method: process
+    - plugin: skip_on_empty
+      source: '@file_dest'
+      method: process
+    - plugin: file_copy
+      source:
+        - '@file_source'
+        - '@file_dest'
+    - plugin: entity_generate
+      value_key: uri
+      entity_type: file
+  media:
+    - plugin: skip_on_empty
+      source: '@file'
+      method: process
+    - plugin: entity_generate
+      value_key: mid
+      bundle_key: vid
+      entity_type: media
+      bundle: image
+      source: '@file'
+      default_values:
+        bundle: image
+        mid: null
+        vid: null
+      values:
+        field_media_image: '@file'
+  field_slideshare_thumbnail/target_id:
+    - plugin: skip_on_empty
+      source: '@media'
+      method: process
+    - plugin: default_value
+      default_value: '@media'

@@ -1,0 +1,5 @@
+type: module
+name: HWC Custom Migrations
+description: 'HWC Custom Migrations'
+package: HWC
+core_version_requirement: ^8.8 || ^9

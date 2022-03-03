@@ -37,6 +37,9 @@ source:
       selector: item/resources
 
 process:
-  nid: nid
+  nid:
+    - plugin: migration_lookup
+      source: nid
+      migration: hwc_publications
   langcode: constants/lang
   field_aditional_resources: resources

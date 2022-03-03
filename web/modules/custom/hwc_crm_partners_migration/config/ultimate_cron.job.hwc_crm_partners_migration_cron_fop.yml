@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - hwc_crm_partners_migration
+title: 'Import FOP Partners'
+id: hwc_crm_partners_migration_cron_fop
+weight: 0
+module: hwc_crm_partners_migration
+callback: hwc_crm_partners_migration_callback_fop
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '0+@ 0 * * *'
+launcher:
+  id: serial
+  configuration:
+    timeouts:
+      lock_timeout: 3600
+    launcher:
+      thread: 0
+logger:
+  id: database
+  configuration:
+    method: '3'
+    expire: 1209600
+    retain: 1000

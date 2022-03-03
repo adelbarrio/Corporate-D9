@@ -1,6 +1,6 @@
 # This migration demonstrates a simple import from a JSON file.
 id: hwc_infographic
-label: 'News'
+label: 'Infographic'
 migration_group: ncw_import_node_infographic
 destination:
   default_bundle: infographic

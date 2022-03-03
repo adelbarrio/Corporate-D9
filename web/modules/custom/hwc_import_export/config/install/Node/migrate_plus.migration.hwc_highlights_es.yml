@@ -3,7 +3,7 @@ id: hwc_highlights_es
 label: 'Highlights es'
 migration_group: ncw_import_node_highlights
 destination:
-  default_bundle: pa_highlights
+  default_bundle: news
   plugin: 'entity:node'
   translations: true
   destination_module: content_translation
@@ -43,7 +43,10 @@ source:
       selector: item/body/es/0
 
 process:
-  nid: nid
+  nid:
+    - plugin: migration_lookup
+      source: nid
+      migration: hwc_highlights
   title:
     -
       plugin: skip_on_empty

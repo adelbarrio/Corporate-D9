@@ -1,0 +1,111 @@
+# Migration file for creating "publication" nodes from BBDD.
+#
+# This file contains much of the information which we
+# used to specify in the "Migration" class in Drupal 7.
+# But why write code if you can write YAML?
+# This is how we declare a Migration the Drupal 8 way.
+
+##################### BASIC INFORMATION ###################
+
+id: hwc_toolkit_article_i18n
+label: 'Node: Toolkit Article i18n'
+audit: true
+migration_group: hwc_toolkit_article
+deriver: Drupal\node\Plugin\migrate\D7NodeDeriver
+source:
+  plugin: d7_node_entity_translation
+  node_type: tk_article
+destination:
+  plugin: entity:node
+  translations: true
+  destination_module: content_translation
+dependencies:
+  enforced:
+    module:
+      - hwc_custom_migrations
+migration_dependencies:
+  required:
+    - hwc_toolkit_topic
+
+########################## SOURCE #########################
+
+
+
+########################## PROCESS #########################
+
+process:
+  # If you are using this file to build a custom migration consider removing
+  # the nid field to allow incremental migrations.
+  nid:
+    plugin: migration_lookup
+    migration: hwc_toolkit_article
+    source: entity_id
+  type:
+    -
+      plugin: default_value
+      default_value: tk_article
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  field_tk_article: field_tk_article
+  field_tk_topics:
+    plugin: sub_process
+    source: field_tk_topics
+    process:
+      target_id:
+        plugin: migration_lookup
+        migration:
+          - hwc_toolkit_topic
+        source: target_id
+  field_tools_examples:
+    -
+      plugin: sub_process
+      source: field_tools_examples
+      process:
+        target_id: tid
+  body:
+    -
+      plugin: get
+      source: body
+  'body/0/format':
+    -
+      plugin: default_value
+      default_value: full_html
+  field_publication_date:
+    -
+      plugin: sub_process
+      source: field_publication_date
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d H:i:s'
+          to_format: 'Y-m-d'
+          source: value
+  field_image:
+    -
+      plugin: file_id_lookup
+      source: field_image
+      migration:
+        - hwc_node_toolkit_article_media_images_1
+      no_stub: true
+  langcode:
+    plugin: static_map
+    bypass: true
+    source: language
+    map:
+      'pt': 'pt-pt'
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  content_translation_source: source
+  content_translation_outdated: translate
