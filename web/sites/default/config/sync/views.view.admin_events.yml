@@ -3045,6 +3045,16 @@ display:
           empty: false
           content: '<div class="pager-total"><span>@start - @end / @total</span></div>'
           plugin_id: result
+        result_1:
+          id: result_1
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          content: '<div class="xml-text">The filtered data can be downloaded in excel format</div>'
+          plugin_id: result
       empty: {  }
       relationships:
         uid:
