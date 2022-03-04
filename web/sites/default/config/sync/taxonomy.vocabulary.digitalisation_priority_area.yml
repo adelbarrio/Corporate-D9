@@ -1,0 +1,14 @@
+uuid: a9b6d783-1a0c-4e0f-b03e-dc0e4fc0de87
+langcode: en
+status: true
+dependencies:
+  module:
+    - unique_content_field_validation
+third_party_settings:
+  unique_content_field_validation:
+    unique: false
+    unique_text: ''
+name: 'Digitalisation priority area'
+vid: digitalisation_priority_area
+description: ''
+weight: 0

@@ -1,0 +1,11 @@
+uuid: 399bba26-ea4c-4a4f-b578-5986b7066dde
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.digitalisation_priority_area
+id: taxonomy_term.digitalisation_priority_area
+target_entity_type_id: taxonomy_term
+target_bundle: digitalisation_priority_area
+default_langcode: site_default
+language_alterable: false
