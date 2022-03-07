@@ -16,8 +16,8 @@ plugin: twitter_block
 settings:
   id: twitter_block
   label: 'Twitter block for Newsletter'
-  provider: twitter_block
   label_display: '0'
+  provider: twitter_block
   username: EU_OSHA
   theme: ''
   link_color: ''
@@ -37,5 +37,5 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: '/newsletter/*'
     negate: false
+    pages: '/newsletter/*'

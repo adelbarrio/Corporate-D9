@@ -82,80 +82,80 @@ third_party_settings:
     group_highlights_block:
       children:
         - group_highlights_content
+      label: 'Highlights Block'
+      region: content
       parent_name: ''
       weight: 4
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        effect: bounceslide
+        id: ''
         description: ''
         required_fields: true
-      label: 'Highlights Block'
+        effect: bounceslide
     group_highlights_content:
       children:
         - nlc_hlight_title
         - nlc_hlight_content
         - nlc_hlight_bg
         - nlc_hlight_view_all
+      label: 'Highlights content'
+      region: content
       parent_name: group_highlights_block
       weight: 1
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        formatter: closed
-        required_fields: true
-        description: ''
+        id: ''
         open: false
-      label: 'Highlights content'
+        description: ''
+        required_fields: true
+        formatter: closed
     group_videos_block:
       children:
         - group_videos_content
+      label: 'Videos block'
+      region: content
       parent_name: ''
       weight: 11
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        effect: bounceslide
+        id: ''
         description: ''
         required_fields: true
-      label: 'Videos block'
+        effect: bounceslide
     group_videos_content:
       children:
         - nlc_videos_title
         - nlc_videos_content
         - nlc_videos_bg
+      label: 'Videos content'
+      region: content
       parent_name: group_videos_block
       weight: 25
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        formatter: closed
-        required_fields: true
-        description: ''
+        id: ''
         open: false
-      label: 'Videos content'
+        description: ''
+        required_fields: true
+        formatter: closed
     group_healthy_workplaces_block:
       children:
         - group_healthy_workplaces_content
+      label: 'Healthy Workplaces Block'
+      region: content
       parent_name: ''
       weight: 5
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        effect: bounceslide
+        id: ''
         description: ''
         required_fields: true
-      label: 'Healthy Workplaces Block'
+        effect: bounceslide
     group_healthy_workplaces_content:
       children:
         - nlc_healthy_title
@@ -163,32 +163,32 @@ third_party_settings:
         - field_healthy_contents_hideintro
         - nlc_healthy_img
         - nlc_healthy_bg
+      label: 'Healthy Workplaces content'
+      region: content
       parent_name: group_healthy_workplaces_block
       weight: 4
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        formatter: closed
-        required_fields: true
-        description: ''
+        id: ''
         open: false
-      label: 'Healthy Workplaces content'
+        description: ''
+        required_fields: true
+        formatter: closed
     group_national_focal_points_bloc:
       children:
         - group_national_focal_points_cont
+      label: 'National Focal Points Block'
+      region: content
       parent_name: ''
       weight: 6
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        effect: bounceslide
+        id: ''
         description: ''
         required_fields: true
-      label: 'National Focal Points Block'
+        effect: bounceslide
     group_national_focal_points_cont:
       children:
         - nlc_national_title
@@ -196,32 +196,32 @@ third_party_settings:
         - field_national_content_hideintro
         - nlc_national_img
         - nlc_national_bg_color
+      label: 'National Focal Points Contens'
+      region: content
       parent_name: group_national_focal_points_bloc
       weight: 19
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        formatter: closed
-        required_fields: true
-        description: ''
+        id: ''
         open: false
-      label: 'National Focal Points Contens'
+        description: ''
+        required_fields: true
+        formatter: closed
     group_oira_block:
       children:
         - group_oira_contents
+      label: 'Oira Block'
+      region: content
       parent_name: ''
       weight: 7
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        effect: bounceslide
+        id: ''
         description: ''
         required_fields: true
-      label: 'Oira Block'
+        effect: bounceslide
     group_oira_contents:
       children:
         - nlc_oira_title
@@ -229,32 +229,32 @@ third_party_settings:
         - field_oira_contents_hideintro
         - nlc_oira_img
         - nlc_oira_bg_color
+      label: 'Oira contents'
+      region: content
       parent_name: group_oira_block
       weight: 19
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        formatter: closed
-        required_fields: true
-        description: ''
+        id: ''
         open: false
-      label: 'Oira contents'
+        description: ''
+        required_fields: true
+        formatter: closed
     group_covid_19_block:
       children:
         - group_covid_19_contents
+      label: 'Covid 19 Block'
+      region: content
       parent_name: ''
       weight: 8
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        effect: bounceslide
+        id: ''
         description: ''
         required_fields: true
-      label: 'Covid 19 Block'
+        effect: bounceslide
     group_covid_19_contents:
       children:
         - nlc_covid_title
@@ -262,32 +262,32 @@ third_party_settings:
         - field_covid_contents_hideintro
         - nlc_covid_img
         - nlc_covid_bg
+      label: 'Covid 19 Contents'
+      region: content
       parent_name: group_covid_19_block
       weight: 46
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        formatter: closed
-        required_fields: true
-        description: ''
+        id: ''
         open: false
-      label: 'Covid 19 Contents'
+        description: ''
+        required_fields: true
+        formatter: closed
     group_eunews_bites_block:
       children:
         - group__eu_news_contents
+      label: ' EU news bites Block'
+      region: content
       parent_name: ''
       weight: 9
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        effect: bounceslide
+        id: ''
         description: ''
         required_fields: true
-      label: ' EU news bites Block'
+        effect: bounceslide
     group__eu_news_contents:
       children:
         - nlc_eunews_title
@@ -295,32 +295,32 @@ third_party_settings:
         - field_newbite_contents_hideintro
         - nlc_eunews_img
         - nlc_eunews_bgcolor
+      label: ' EU news Contents'
+      region: content
       parent_name: group_eunews_bites_block
       weight: 23
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        formatter: closed
-        required_fields: true
-        description: ''
+        id: ''
         open: false
-      label: ' EU news Contents'
+        description: ''
+        required_fields: true
+        formatter: closed
     group_wiki_block:
       children:
         - group_wiki_contents
+      label: 'Wiki Block'
+      region: content
       parent_name: ''
       weight: 10
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        effect: bounceslide
+        id: ''
         description: ''
         required_fields: true
-      label: 'Wiki Block'
+        effect: bounceslide
     group_wiki_contents:
       children:
         - nlc_wiki_title
@@ -328,30 +328,30 @@ third_party_settings:
         - field_wiki_contents_hideintro
         - nlc_wiki_img
         - nlc_wiki_bgcolor
+      label: 'Wiki Contents'
+      region: content
       parent_name: group_wiki_block
       weight: 26
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        formatter: closed
-        required_fields: true
-        description: ''
+        id: ''
         open: false
-      label: 'Wiki Contents'
+        description: ''
+        required_fields: true
+        formatter: closed
     group_more_new_tweets:
       children:
         - group_more_tweets_contents
+      label: 'More New & Tweets'
+      region: content
       parent_name: ''
       weight: 12
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         effect: bounceslide
-      label: 'More New & Tweets'
     group_more_tweets_contents:
       children:
         - nlc_tweets_title
@@ -361,45 +361,45 @@ third_party_settings:
         - nlc_motweets_bgcolor
         - field_view_twetter_block
         - field_twetter_image_for_outlook
+      label: 'More & Tweets contents'
+      region: content
       parent_name: group_more_new_tweets
       weight: 27
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        formatter: closed
-        required_fields: true
+        id: ''
         description: ''
-      label: 'More & Tweets contents'
+        required_fields: true
+        formatter: closed
     group_events_block:
       children:
         - group_events_content
+      label: 'Events Block'
+      region: content
       parent_name: ''
       weight: 13
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         description: ''
         required_fields: true
-      label: 'Events Block'
     group_events_content:
       children:
         - field_events_section_title
         - field_nlc_events_content
+      label: 'Events content'
+      region: content
       parent_name: group_events_block
       weight: 20
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         open: false
+        description: ''
         required_fields: true
-      label: 'Events content'
 _core:
   default_config_hash: kaaE4d0nk6rRfJEvrVCdeuYpYTtwGDYsdWLWa1RaS20
 id: node.newsletter_content.default
@@ -414,117 +414,117 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_covid_contents_hideintro:
+    type: boolean_checkbox
     weight: 26
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_date_to_publish:
+    type: datetime_default
     weight: 25
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: datetime_default
-    region: content
   field_events_section_title:
+    type: string_textfield
     weight: 42
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_healthy_contents_hideintro:
+    type: boolean_checkbox
     weight: 22
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_hide_more_news_intro_text:
+    type: boolean_checkbox
     weight: 29
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_month_year:
+    type: string_textfield
     weight: 2
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_national_content_hideintro:
+    type: boolean_checkbox
     weight: 23
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_newbite_contents_hideintro:
+    type: boolean_checkbox
     weight: 14
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_nlc_events_content:
+    type: entity_reference_autocomplete
     weight: 43
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   field_oira_contents_hideintro:
+    type: boolean_checkbox
     weight: 34
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_oshmail_title:
+    type: string_textfield
     weight: 1
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_twetter_image_for_outlook:
+    type: image_image
     weight: 32
+    region: content
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-    type: image_image
-    region: content
   field_url_alias:
+    type: string_textfield
     weight: 3
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_view_twetter_block:
+    type: boolean_checkbox
     weight: 31
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_wiki_contents_hideintro:
+    type: boolean_checkbox
     weight: 47
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   langcode:
     type: language_select
     weight: 16
@@ -535,270 +535,270 @@ content:
   moderation_state:
     type: moderation_state_default
     weight: 15
-    settings: {  }
     region: content
+    settings: {  }
     third_party_settings: {  }
   nlc_covid_bg:
+    type: color_field_widget_spectrum
     weight: 28
+    region: content
     settings:
       show_input: '1'
+      show_palette: '0'
       palette: ''
+      show_palette_only: '0'
       show_buttons: '1'
       allow_empty: '1'
-      show_palette: '0'
-      show_palette_only: '0'
     third_party_settings: {  }
-    type: color_field_widget_spectrum
-    region: content
   nlc_covid_contents:
+    type: entity_reference_autocomplete
     weight: 25
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: 'Covid 19 Content'
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   nlc_covid_img:
     type: media_library_widget
     weight: 27
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
   nlc_covid_title:
+    type: string_textfield
     weight: 24
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   nlc_eunews_bgcolor:
+    type: color_field_widget_spectrum
     weight: 16
+    region: content
     settings:
       show_input: '1'
+      show_palette: '0'
       palette: ''
+      show_palette_only: '0'
       show_buttons: '1'
       allow_empty: '1'
-      show_palette: '0'
-      show_palette_only: '0'
     third_party_settings: {  }
-    type: color_field_widget_spectrum
-    region: content
   nlc_eunews_contents:
+    type: entity_reference_autocomplete
     weight: 13
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   nlc_eunews_img:
     type: media_library_widget
     weight: 15
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
   nlc_eunews_title:
+    type: string_textfield
     weight: 12
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   nlc_healthy_bg:
+    type: color_field_widget_spectrum
     weight: 24
+    region: content
     settings:
       show_input: '1'
+      show_palette: '0'
       palette: ''
+      show_palette_only: '0'
       show_buttons: '1'
       allow_empty: '1'
-      show_palette: '0'
-      show_palette_only: '0'
     third_party_settings: {  }
-    type: color_field_widget_spectrum
-    region: content
   nlc_healthy_contents:
+    type: entity_reference_autocomplete
     weight: 21
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: 'Healthy content'
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   nlc_healthy_img:
     type: media_library_widget
     weight: 23
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
   nlc_healthy_title:
+    type: string_textfield
     weight: 20
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   nlc_hlight_bg:
+    type: color_field_widget_spectrum
     weight: 11
+    region: content
     settings:
       show_input: '1'
+      show_palette: '0'
       palette: ''
+      show_palette_only: '0'
       show_buttons: '1'
       allow_empty: '1'
-      show_palette: '0'
-      show_palette_only: '0'
     third_party_settings: {  }
-    type: color_field_widget_spectrum
-    region: content
   nlc_hlight_content:
+    type: entity_reference_autocomplete
     weight: 9
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: 'Hightligh content'
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   nlc_hlight_title:
+    type: string_textfield
     weight: 8
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   nlc_hlight_view_all:
+    type: link_default
     weight: 12
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   nlc_id_in_piwik:
+    type: string_textfield
     weight: 14
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   nlc_monews_contents:
+    type: entity_reference_autocomplete
     weight: 28
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   nlc_monews_title:
+    type: string_textfield
     weight: 27
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   nlc_motweets_bgcolor:
+    type: color_field_widget_spectrum
     weight: 30
+    region: content
     settings:
       show_input: '1'
+      show_palette: '0'
       palette: ''
+      show_palette_only: '0'
       show_buttons: '1'
       allow_empty: '1'
-      show_palette: '0'
-      show_palette_only: '0'
     third_party_settings: {  }
-    type: color_field_widget_spectrum
-    region: content
   nlc_national_bg_color:
+    type: color_field_widget_spectrum
     weight: 25
+    region: content
     settings:
       show_input: '1'
+      show_palette: '0'
       palette: ''
+      show_palette_only: '0'
       show_buttons: '1'
       allow_empty: '1'
-      show_palette: '0'
-      show_palette_only: '0'
     third_party_settings: {  }
-    type: color_field_widget_spectrum
-    region: content
   nlc_national_contents:
+    type: entity_reference_autocomplete
     weight: 22
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   nlc_national_img:
     type: media_library_widget
     weight: 24
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
   nlc_national_title:
+    type: string_textfield
     weight: 21
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   nlc_oira_bg_color:
+    type: color_field_widget_spectrum
     weight: 36
+    region: content
     settings:
       show_input: '1'
+      show_palette: '0'
       palette: ''
+      show_palette_only: '0'
       show_buttons: '1'
       allow_empty: '1'
-      show_palette: '0'
-      show_palette_only: '0'
     third_party_settings: {  }
-    type: color_field_widget_spectrum
-    region: content
   nlc_oira_contents:
+    type: entity_reference_autocomplete
     weight: 33
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: 'Oira Contents'
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   nlc_oira_img:
     type: media_library_widget
     weight: 35
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
   nlc_oira_title:
+    type: string_textfield
     weight: 32
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   nlc_publication_date:
     type: datetime_default
     weight: 24
@@ -806,80 +806,80 @@ content:
     settings: {  }
     third_party_settings: {  }
   nlc_tweets_title:
+    type: string_textfield
     weight: 26
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   nlc_videos_bg:
+    type: color_field_widget_spectrum
     weight: 17
+    region: content
     settings:
       show_input: '1'
+      show_palette: '0'
       palette: ''
+      show_palette_only: '0'
       show_buttons: '1'
       allow_empty: '1'
-      show_palette: '0'
-      show_palette_only: '0'
     third_party_settings: {  }
-    type: color_field_widget_spectrum
-    region: content
   nlc_videos_content:
+    type: entity_reference_autocomplete
     weight: 16
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: 'Video content'
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   nlc_videos_title:
+    type: string_textfield
     weight: 15
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   nlc_wiki_bgcolor:
+    type: color_field_widget_spectrum
     weight: 49
+    region: content
     settings:
       show_input: '1'
+      show_palette: '0'
       palette: ''
+      show_palette_only: '0'
       show_buttons: '1'
       allow_empty: '1'
-      show_palette: '0'
-      show_palette_only: '0'
     third_party_settings: {  }
-    type: color_field_widget_spectrum
-    region: content
   nlc_wiki_contents:
+    type: entity_reference_autocomplete
     weight: 46
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   nlc_wiki_img:
     type: media_library_widget
     weight: 48
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
   nlc_wiki_title:
+    type: string_textfield
     weight: 45
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   path:
     type: path
     weight: 21
@@ -888,30 +888,30 @@ content:
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 19
     region: content
-    third_party_settings: {  }
-  simplenews_issue:
-    weight: 26
-    settings: {  }
-    third_party_settings: {  }
-    type: simplenews_issue
-    region: content
-  status:
-    type: boolean_checkbox
     settings:
       display_label: true
+    third_party_settings: {  }
+  simplenews_issue:
+    type: simplenews_issue
+    weight: 26
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
     weight: 23
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 20
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -929,12 +929,12 @@ content:
   uid:
     type: entity_reference_autocomplete
     weight: 17
+    region: content
     settings:
       match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
-      match_limit: 10
-    region: content
     third_party_settings: {  }
   url_redirects:
     weight: 22

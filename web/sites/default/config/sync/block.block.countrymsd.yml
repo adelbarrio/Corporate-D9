@@ -22,11 +22,11 @@ plugin: 'facet_block:country'
 settings:
   id: 'facet_block:country'
   label: Country
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: countrymsd
 visibility:
   request_path:
     id: request_path
-    pages: /themes/musculoskeletal-disorders/search
     negate: false
+    pages: /themes/musculoskeletal-disorders/search

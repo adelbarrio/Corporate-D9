@@ -22,13 +22,13 @@ plugin: 'block_content:5716b291-5d32-4cb8-bedd-63d3be325bda'
 settings:
   id: 'block_content:5716b291-5d32-4cb8-bedd-63d3be325bda'
   label: 'OSHmail newsletter (Sidebar)'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full
 visibility:
   request_path:
     id: request_path
-    pages: '<front>'
     negate: false
+    pages: '<front>'

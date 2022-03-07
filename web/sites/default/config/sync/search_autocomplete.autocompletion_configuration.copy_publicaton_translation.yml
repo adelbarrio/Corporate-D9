@@ -1,10 +1,9 @@
-uuid: 083a44b9-b570-4c37-8b6b-dad16d023c4f
 langcode: en
-status: true
-dependencies: {  }
 id: copy_publicaton_translation
+uuid: 083a44b9-b570-4c37-8b6b-dad16d023c4f
 label: 'osha lingua tools copy publicaton translation'
 selector: '.osha-lingua-tools-form #edit-node'
+status: true
 minChar: 1
 autoSubmit: false
 autoRedirect: false
@@ -19,3 +18,4 @@ source: 'osha_lingua_tools_autocomplete::nodes_autocompletion_callback'
 theme: basic-blue.css
 editable: true
 deletable: true
+dependencies: {  }

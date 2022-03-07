@@ -1,7 +1,15 @@
 uuid: f83a0eef-2b82-4e1f-8001-6983b74b0cfb
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - node.type.calls
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - node
+    - workbench
+    - workbench_access
 id: procur_pm
 label: 'PROCUR PM'
 weight: 6

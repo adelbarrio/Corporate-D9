@@ -14,6 +14,7 @@ content:
   items:
     type: entityqueue_dragtable
     weight: 5
+    region: content
     settings:
       match_operator: CONTAINS
       size: '60'
@@ -21,7 +22,6 @@ content:
       link_to_entity: false
       link_to_edit_form: true
       match_limit: 10
-    region: content
     third_party_settings: {  }
   langcode:
     type: language_select

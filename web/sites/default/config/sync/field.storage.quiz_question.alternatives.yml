@@ -2,13 +2,13 @@ uuid: ec43e511-b892-4895-b421-27f5dc204ae1
 langcode: en
 status: true
 dependencies:
-  enforced:
-    module:
-      - quiz_multichoice
   module:
     - entity_reference_revisions
     - paragraphs
     - quiz
+  enforced:
+    module:
+      - quiz_multichoice
 _core:
   default_config_hash: 7Uxl6huGBQvrkXCsAEE6YMD2RSXjG08mdPAUWPZndRA
 id: quiz_question.alternatives

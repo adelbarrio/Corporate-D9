@@ -22,19 +22,19 @@ plugin: 'menu_block:main'
 settings:
   id: 'menu_block:main'
   label: 'Tool and Resources'
-  provider: menu_block
   label_display: visible
+  provider: menu_block
   follow: false
   follow_parent: child
+  label_link: false
+  label_type: block
   level: 2
   depth: 1
   expand_all_items: false
   parent: 'main:menu_link_content:df9d2c8b-6f80-4bb4-95eb-f5a76c32f02a'
   suggestion: main
-  label_type: block
-  label_link: false
 visibility:
   request_path:
     id: request_path
-    pages: '/tools-and-resources/eu-osha-thesaurus/term/*'
     negate: false
+    pages: '/tools-and-resources/eu-osha-thesaurus/term/*'

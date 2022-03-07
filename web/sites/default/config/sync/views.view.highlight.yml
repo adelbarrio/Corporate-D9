@@ -26,86 +26,34 @@ base_table: node_field_data
 base_field: nid
 display:
   default:
-    display_plugin: default
     id: default
     display_title: Master
+    display_plugin: default
     position: 0
     display_options:
-      access:
-        type: perm
-        options:
-          perm: 'access content'
-      cache:
-        type: tag
-        options: {  }
-      query:
-        type: views_query
-        options:
-          disable_sql_rewrite: false
-          distinct: true
-          replica: false
-          query_comment: ''
-          query_tags: {  }
-      exposed_form:
-        type: basic
-        options:
-          submit_button: Apply
-          reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-      pager:
-        type: mini
-        options:
-          items_per_page: 10
-          offset: 0
-          id: 0
-          total_pages: null
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
-          tags:
-            previous: ‹‹
-            next: ››
-      style:
-        type: default
-      row:
-        type: 'entity:node'
-        options:
-          view_mode: teaser
+      title: Highlights
       fields:
         title:
           id: title
           table: node_field_data
           field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
           entity_type: node
           entity_field: title
+          plugin_id: field
           label: ''
+          exclude: false
           alter:
             alter_text: false
             make_link: false
             absolute: false
-            trim: false
             word_boundary: false
             ellipsis: false
             strip_tags: false
+            trim: false
             html: false
-          hide_empty: false
-          empty_zero: false
-          settings:
-            link_to_entity: true
-          plugin_id: field
-          relationship: none
-          group_type: group
-          admin_label: ''
-          exclude: false
           element_type: ''
           element_class: ''
           element_label_type: ''
@@ -115,9 +63,13 @@ display:
           element_wrapper_class: ''
           element_default_classes: true
           empty: ''
+          hide_empty: false
+          empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
           type: string
+          settings:
+            link_to_entity: true
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -133,29 +85,83 @@ display:
           table: node__field_image_media
           field: field_image_media
           plugin_id: field
+      pager:
+        type: mini
+        options:
+          offset: 0
+          items_per_page: 10
+          total_pages: null
+          id: 0
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: created
+          exposed: false
+          granularity: second
+      arguments: {  }
       filters:
         status:
-          value: '1'
+          id: status
           table: node_field_data
           field: status
-          plugin_id: boolean
           entity_type: node
           entity_field: status
-          id: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
           expose:
             operator: ''
             operator_limit_selection: false
             operator_list: {  }
-          group: 1
         type:
           id: type
           table: node_field_data
           field: type
-          value:
-            highlight: highlight
           entity_type: node
           entity_field: type
           plugin_id: bundle
+          value:
+            highlight: highlight
           expose:
             operator_limit_selection: false
             operator_list: {  }
@@ -166,6 +172,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: datetime
           operator: between
           value:
             min: '-1 year'
@@ -188,9 +195,9 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            placeholder: ''
             min_placeholder: ''
             max_placeholder: ''
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -203,24 +210,21 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: datetime
-      sorts:
-        created:
-          id: created
-          table: node_field_data
-          field: created
-          order: DESC
-          entity_type: node
-          entity_field: created
-          plugin_id: date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          exposed: false
-          expose:
-            label: ''
-          granularity: second
-      title: Highlights
+      style:
+        type: default
+      row:
+        type: 'entity:node'
+        options:
+          view_mode: teaser
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: true
+          replica: false
+          query_tags: {  }
+      relationships: {  }
       header: {  }
       footer:
         display_link:
@@ -228,9 +232,6 @@ display:
           table: views
           field: display_link
           plugin_id: display_link
-      empty: {  }
-      relationships: {  }
-      arguments: {  }
       display_extenders: {  }
     cache_metadata:
       max-age: -1
@@ -243,36 +244,11 @@ display:
       tags:
         - 'config:field.storage.node.field_image_media'
   block_2:
-    display_plugin: block
     id: block_2
     display_title: 'Latest Highlights'
+    display_plugin: block
     position: 2
     display_options:
-      display_extenders:
-        metatag_display_extender: {  }
-      style:
-        type: default
-      defaults:
-        style: false
-        row: false
-        pager: false
-        fields: false
-        footer: false
-        use_more: false
-        use_more_always: false
-        use_more_text: false
-        link_display: false
-        link_url: false
-        sorts: false
-      row:
-        type: fields
-      pager:
-        type: some
-        options:
-          items_per_page: 3
-          offset: 0
-      display_description: ''
-      rendering_language: '***LANGUAGE_language_content***'
       fields:
         field_image_media:
           id: field_image_media
@@ -281,6 +257,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -325,8 +302,8 @@ display:
           click_sort_column: target_id
           type: media_thumbnail
           settings:
-            image_style: home_news
             image_link: content
+            image_style: home_news
           group_column: target_id
           group_columns: {  }
           group_rows: true
@@ -337,7 +314,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_publication_date:
           id: field_publication_date
           table: node__field_publication_date
@@ -345,6 +321,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -401,7 +378,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         title:
           id: title
           table: node_field_data
@@ -409,6 +385,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -464,9 +443,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: node
-          entity_field: title
-          plugin_id: field
         body:
           id: body
           table: node__body
@@ -474,6 +450,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -524,8 +501,8 @@ display:
             wrap_output: false
             wrap_class: trimmed
             more_link: false
-            more_text: 'See more'
             more_class: more-link
+            more_text: 'See more'
             summary_handler: full
             trim_options:
               text: true
@@ -540,7 +517,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         view_node:
           id: view_node
           table: node
@@ -548,6 +524,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: entity_link
           label: ''
           exclude: false
           alter:
@@ -592,27 +570,11 @@ display:
           text: 'See more'
           output_url_as_text: false
           absolute: false
-          entity_type: node
-          plugin_id: entity_link
-      footer:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: false
-          tokenize: false
-          content:
-            value: "<div class=\"more-link revamp events\">\r\n  <a href=\"/highlights\">View all highlights</a>\r\n</div>"
-            format: full_html
-          plugin_id: text
-      use_more: false
-      use_more_always: true
-      use_more_text: 'View all highlights'
-      link_display: page
-      link_url: ''
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 3
       sorts:
         field_publication_date_value:
           id: field_publication_date_value
@@ -621,12 +583,52 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: datetime
           order: DESC
-          exposed: false
           expose:
             label: ''
+            field_identifier: field_publication_date_value
+          exposed: false
           granularity: minute
-          plugin_id: datetime
+      style:
+        type: default
+      row:
+        type: fields
+      defaults:
+        pager: false
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+        link_display: false
+        link_url: false
+        style: false
+        row: false
+        fields: false
+        sorts: false
+        footer: false
+      display_description: ''
+      use_more: false
+      use_more_always: true
+      use_more_text: 'View all highlights'
+      link_display: page
+      link_url: ''
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: "<div class=\"more-link revamp events\">\r\n  <a href=\"/highlights\">View all highlights</a>\r\n</div>"
+            format: full_html
+          tokenize: false
+      rendering_language: '***LANGUAGE_language_content***'
+      display_extenders:
+        metatag_display_extender: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -638,38 +640,17 @@ display:
         - 'config:field.storage.node.field_image_media'
         - 'config:field.storage.node.field_publication_date'
   page:
-    display_plugin: page
     id: page
     display_title: 'Highlights - all'
+    display_plugin: page
     position: 1
     display_options:
-      display_extenders:
-        metatag_display_extender: {  }
-      path: highlights
-      display_description: ''
-      footer:
-        result:
-          id: result
-          table: views
-          field: result
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: false
-          content: '<div class="pager-total"><span>@start - @end / @total</span></div>'
-          plugin_id: result
-      defaults:
-        footer: false
-        pager: false
-        sorts: false
-        style: false
-        row: false
       pager:
         type: pagerer
         options:
-          preset: pagination
-          items_per_page: 10
           offset: 0
+          items_per_page: 10
+          preset: pagination
           id: '0'
           total_pages: ''
           expose:
@@ -680,7 +661,6 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: 0
             offset_label: Offset
-      rendering_language: '***LANGUAGE_language_content***'
       sorts:
         field_publication_date_value:
           id: field_publication_date_value
@@ -689,12 +669,13 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: datetime
           order: DESC
-          exposed: false
           expose:
             label: ''
+            field_identifier: field_publication_date_value
+          exposed: false
           granularity: minute
-          plugin_id: datetime
       style:
         type: grid
         options:
@@ -702,15 +683,37 @@ display:
           columns: 12
           automatic_width: false
           alignment: vertical
-          col_class_default: false
-          col_class_custom: ''
-          row_class_default: false
           row_class_custom: revamp-row
+          row_class_default: false
+          col_class_custom: ''
+          col_class_default: false
       row:
         type: 'entity:node'
         options:
           relationship: none
           view_mode: view
+      defaults:
+        pager: false
+        style: false
+        row: false
+        sorts: false
+        footer: false
+      display_description: ''
+      footer:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: result
+          empty: false
+          content: '<div class="pager-total"><span>@start - @end / @total</span></div>'
+      rendering_language: '***LANGUAGE_language_content***'
+      display_extenders:
+        metatag_display_extender: {  }
+      path: highlights
     cache_metadata:
       max-age: -1
       contexts:

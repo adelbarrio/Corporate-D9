@@ -29,15 +29,15 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        label: ''
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        classes:
-          layout_class: {  }
+        label: ''
     regions:
       ds_content:
         - node_title
@@ -82,17 +82,17 @@ bundle: directive
 mode: view
 content:
   content_moderation_control:
-    weight: -20
     settings: {  }
     third_party_settings: {  }
+    weight: -20
     region: content
   field_summary:
     type: basic_string
-    weight: 2
-    region: ds_content
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 2
+    region: ds_content
 hidden:
   addtoany: true
   body: true

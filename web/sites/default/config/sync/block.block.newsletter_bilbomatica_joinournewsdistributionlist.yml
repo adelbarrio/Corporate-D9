@@ -18,13 +18,13 @@ plugin: 'block_content:cbdfa9b1-c35a-4f18-a981-7fd071ba4521'
 settings:
   id: 'block_content:cbdfa9b1-c35a-4f18-a981-7fd071ba4521'
   label: 'Join our news distribution list'
-  provider: block_content
   label_display: visible
+  provider: block_content
   status: true
   info: ''
   view_mode: full
 visibility:
   request_path:
     id: request_path
-    pages: /about-eu-osha/press-room
     negate: false
+    pages: /about-eu-osha/press-room

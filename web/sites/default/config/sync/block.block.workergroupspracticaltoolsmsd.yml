@@ -22,11 +22,11 @@ plugin: 'facet_block:worker_groups_practical_tools_msd_'
 settings:
   id: 'facet_block:worker_groups_practical_tools_msd_'
   label: 'Worker groups'
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: workergroupspracticaltoolsmsd
 visibility:
   request_path:
     id: request_path
-    pages: /themes/musculoskeletal-disorders/practical-tools-musculoskeletal-disorders
     negate: false
+    pages: /themes/musculoskeletal-disorders/practical-tools-musculoskeletal-disorders

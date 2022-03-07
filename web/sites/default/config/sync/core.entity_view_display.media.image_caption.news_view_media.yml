@@ -21,15 +21,15 @@ bundle: image_caption
 mode: news_view_media
 content:
   field_caption_copyrigth_:
-    weight: 1
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 1
     region: content
   field_media_image:
+    type: image_caption
     label: visually_hidden
-    weight: 0
     settings:
       image_style: news
       image_link: ''
@@ -41,7 +41,7 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: image_caption
+    weight: 0
     region: content
 hidden:
   addtoany: true

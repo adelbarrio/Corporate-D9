@@ -18,12 +18,12 @@ default_value_callback: ''
 settings:
   handler: 'default:node'
   handler_settings:
-    behaviors:
-      views-select-list:
-        status: 1
+    target_bundles:
+      thesaurus: thesaurus
     sort:
       field: _none
       direction: ASC
-    target_bundles:
-      thesaurus: thesaurus
+    behaviors:
+      views-select-list:
+        status: 1
 field_type: entity_reference

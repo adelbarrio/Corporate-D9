@@ -12,20 +12,20 @@ pattern: 'about-eu-osha/press-room/note-to-editor/[node:title]'
 selection_criteria:
   1066b88f-5daa-4309-99f4-b53f5222effb:
     id: node_type
-    bundles:
-      note_to_editor: note_to_editor
     negate: false
+    uuid: 1066b88f-5daa-4309-99f4-b53f5222effb
     context_mapping:
       node: node
-    uuid: 1066b88f-5daa-4309-99f4-b53f5222effb
+    bundles:
+      note_to_editor: note_to_editor
   0f4c42e7-4bc9-4420-aead-8e855993cc7e:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: 0f4c42e7-4bc9-4420-aead-8e855993cc7e
     context_mapping:
       language: 'node:langcode:language'
-    uuid: 0f4c42e7-4bc9-4420-aead-8e855993cc7e
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

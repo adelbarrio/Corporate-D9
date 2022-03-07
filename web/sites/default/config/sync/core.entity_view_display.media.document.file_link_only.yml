@@ -20,6 +20,7 @@ bundle: document
 mode: file_link_only
 content:
   field_media_document:
+    type: file_download_link
     label: visually_hidden
     settings:
       access_message: 'You don''t have access to download this file.'
@@ -32,7 +33,6 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: file_download_link
     weight: 0
     region: content
 hidden:

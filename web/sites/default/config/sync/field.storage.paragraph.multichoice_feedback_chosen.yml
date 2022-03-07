@@ -2,12 +2,12 @@ uuid: db711ea7-dea8-44a6-88e8-b8acc09922fd
 langcode: en
 status: true
 dependencies:
-  enforced:
-    module:
-      - quiz_multichoice
   module:
     - paragraphs
     - text
+  enforced:
+    module:
+      - quiz_multichoice
 _core:
   default_config_hash: zKxg2lt745to0d2dKFJWLZk11fyUrxMpAZrKRWjNjv8
 id: paragraph.multichoice_feedback_chosen

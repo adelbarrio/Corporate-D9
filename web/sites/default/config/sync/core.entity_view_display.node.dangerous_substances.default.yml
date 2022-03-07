@@ -74,15 +74,15 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        label: ''
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        classes:
-          layout_class: {  }
+        label: ''
     regions:
       ds_content:
         - field_item_type
@@ -144,34 +144,34 @@ bundle: dangerous_substances
 mode: default
 content:
   body:
-    label: above
     type: text_default
-    weight: 28
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 28
     region: ds_content
   field_advertising:
-    weight: 39
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 39
     region: ds_content
   field_available_in_languages:
-    weight: 5
+    type: languagefield_default
     label: above
     settings:
       link_to_entity: false
       format:
         name: name
     third_party_settings: {  }
-    type: languagefield_default
+    weight: 5
     region: ds_content
   field_biological_hazard:
-    weight: 10
+    type: entity_reference_label
     label: above
     settings:
       link: false
@@ -184,63 +184,63 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: entity_reference_label
+    weight: 10
     region: ds_content
   field_biological_hazard_other:
-    weight: 11
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 11
     region: ds_content
   field_body_original:
-    weight: 29
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 29
     region: ds_content
   field_cas_number:
-    weight: 19
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 19
     region: ds_content
   field_contact_address:
-    weight: 40
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 40
     region: ds_content
   field_country_other:
-    weight: 4
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 4
     region: ds_content
   field_disclaimer:
-    weight: 41
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 41
     region: ds_content
   field_ec_number:
-    weight: 20
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 20
     region: ds_content
   field_evaluation:
-    weight: 32
+    type: entity_reference_label
     label: above
     settings:
       link: false
@@ -253,18 +253,18 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: entity_reference_label
+    weight: 32
     region: ds_content
   field_evaluation_other:
-    weight: 33
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 33
     region: ds_content
   field_exposure_route:
-    weight: 16
+    type: entity_reference_label
     label: above
     settings:
       link: false
@@ -277,25 +277,25 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: entity_reference_label
+    weight: 16
     region: ds_content
   field_exposure_route_other:
-    weight: 17
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 17
     region: ds_content
   field_external_url:
-    weight: 2
+    type: link
     label: above
     settings:
       trim_length: 80
-      target: _blank
       url_only: false
       url_plain: false
       rel: '0'
+      target: _blank
     third_party_settings:
       ds:
         ds_limit: ''
@@ -305,19 +305,19 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: link
+    weight: 2
     region: ds_content
   field_fc_provider:
     type: entity_reference_revisions_entity_view
-    weight: 48
     label: above
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    weight: 48
     region: ds_content
   field_hazard_health_effects:
-    weight: 14
+    type: entity_reference_label
     label: above
     settings:
       link: false
@@ -330,26 +330,26 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: entity_reference_label
+    weight: 14
     region: ds_content
   field_hazard_health_other:
-    weight: 15
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 15
     region: ds_content
   field_hazard_physical_other:
-    weight: 13
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 13
     region: ds_content
   field_hazard_physical_state:
-    weight: 12
+    type: entity_reference_label
     label: above
     settings:
       link: false
@@ -362,10 +362,10 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: entity_reference_label
+    weight: 12
     region: ds_content
   field_image_media:
-    weight: 44
+    type: entity_reference_label
     label: above
     settings:
       link: false
@@ -377,32 +377,32 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: entity_reference_label
+    weight: 44
     region: ds_content
   field_intellectual_property_righ:
-    weight: 37
+    type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 37
     region: ds_content
   field_item_type:
-    weight: 0
+    type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 0
     region: ds_content
   field_languages_other:
-    weight: 6
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 6
     region: ds_content
   field_material_country:
-    weight: 3
+    type: entity_reference_label
     label: above
     settings:
       link: false
@@ -415,18 +415,18 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: entity_reference_label
+    weight: 3
     region: ds_content
   field_material_purpose_other:
-    weight: 27
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 27
     region: ds_content
   field_material_purpose_type:
-    weight: 26
+    type: entity_reference_label
     label: above
     settings:
       link: false
@@ -439,75 +439,75 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: entity_reference_label
+    weight: 26
     region: ds_content
   field_measurement_method:
-    weight: 21
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 21
     region: ds_content
   field_media_format:
-    weight: 36
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 36
     region: ds_content
   field_non_applicable_url:
     type: boolean
-    weight: 52
-    region: ds_content
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
+    weight: 52
+    region: ds_content
   field_notes:
-    weight: 49
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 49
     region: ds_content
   field_original_desc_lang_other:
-    weight: 51
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 51
     region: ds_content
   field_original_desc_language:
-    weight: 50
+    type: languagefield_default
     label: above
     settings:
       link_to_entity: false
       format:
         name: name
     third_party_settings: {  }
-    type: languagefield_default
+    weight: 50
     region: ds_content
   field_other_information:
-    weight: 43
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 43
     region: ds_content
   field_ownership_information:
-    weight: 42
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 42
     region: ds_content
   field_prevention_measure_type:
-    weight: 24
+    type: entity_reference_label
     label: above
     settings:
       link: false
@@ -520,18 +520,18 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: entity_reference_label
+    weight: 24
     region: ds_content
   field_prevention_measures_other:
-    weight: 25
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 25
     region: ds_content
   field_priority_area:
-    weight: 45
+    type: entity_reference_label
     label: above
     settings:
       link: false
@@ -544,18 +544,18 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: entity_reference_label
+    weight: 45
     region: ds_content
   field_rights_description:
-    weight: 38
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 38
     region: ds_content
   field_sector_industry_covered:
-    weight: 7
+    type: entity_reference_label
     label: above
     settings:
       link: false
@@ -568,34 +568,34 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: entity_reference_label
+    weight: 7
     region: ds_content
   field_selected_for_analysis:
-    weight: 46
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 46
     region: ds_content
   field_substance_description:
-    weight: 18
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 18
     region: ds_content
   field_summary:
-    weight: 19
+    type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    weight: 19
     region: content
   field_target_group:
-    weight: 30
+    type: entity_reference_label
     label: above
     settings:
       link: false
@@ -608,18 +608,18 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: entity_reference_label
+    weight: 30
     region: ds_content
   field_target_group_other:
-    weight: 31
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 31
     region: ds_content
   field_tasks_covered:
-    weight: 8
+    type: entity_reference_label
     label: above
     settings:
       link: false
@@ -632,34 +632,34 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: entity_reference_label
+    weight: 8
     region: ds_content
   field_tasks_other:
-    weight: 9
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 9
     region: ds_content
   field_title_original:
-    weight: 1
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 1
     region: ds_content
   field_visualisation_mat_other:
-    weight: 35
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 35
     region: ds_content
   field_visualisation_material_typ:
-    weight: 34
+    type: entity_reference_label
     label: above
     settings:
       link: false
@@ -672,18 +672,18 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: entity_reference_label
+    weight: 34
     region: ds_content
   field_worker_groups_other:
-    weight: 23
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 23
     region: ds_content
   field_worker_groups_type:
-    weight: 22
+    type: entity_reference_label
     label: above
     settings:
       link: false
@@ -696,10 +696,10 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: entity_reference_label
+    weight: 22
     region: ds_content
   field_year:
-    weight: 47
+    type: list_default
     label: above
     settings: {  }
     third_party_settings:
@@ -710,7 +710,7 @@ content:
             lb: 'Year of publication'
             lb-col: false
             classes: {  }
-    type: list_default
+    weight: 47
     region: ds_content
 hidden:
   addtoany: true

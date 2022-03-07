@@ -2,13 +2,13 @@ uuid: 594c8faf-2d66-4e2f-85d9-551b979f2a56
 langcode: en
 status: true
 dependencies:
+  module:
+    - paragraphs
+    - taxonomy
   enforced:
     module:
       - quiz
       - taxonomy
-  module:
-    - paragraphs
-    - taxonomy
 _core:
   default_config_hash: JCqDxGKprfi500s8jhu0FBuCkIkhFcZAH8-Q6ZrqytE
 id: paragraph.quiz_question_tid

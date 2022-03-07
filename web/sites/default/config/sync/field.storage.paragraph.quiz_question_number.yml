@@ -2,11 +2,11 @@ uuid: c451e754-4f0b-45c7-a660-655c31de4a42
 langcode: en
 status: true
 dependencies:
+  module:
+    - paragraphs
   enforced:
     module:
       - quiz
-  module:
-    - paragraphs
 _core:
   default_config_hash: jO_97zwUPYvyUetxPu8TkgyZDwvYDs4wHH1QZnVJkbE
 id: paragraph.quiz_question_number

@@ -34,8 +34,6 @@ mode: teaser
 content:
   field_press_contact_email:
     type: email_spamspan
-    weight: 2
-    region: content
     label: hidden
     settings:
       spamspan_at: ' [at] '
@@ -47,22 +45,24 @@ content:
       spamspan_form_default_url: contact
       spamspan_form_default_displaytext: 'contact form'
     third_party_settings: {  }
+    weight: 2
+    region: content
   field_press_contact_job_title:
     type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
     weight: 0
     region: content
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
   field_press_contact_phone:
     type: string
-    weight: 1
-    region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 1
+    region: content
 hidden:
   addtoany: true
   field_city: true

@@ -17,8 +17,8 @@ plugin: 'block_content:5a3b99ad-113b-45ed-9542-c308545fd7da'
 settings:
   id: 'block_content:5a3b99ad-113b-45ed-9542-c308545fd7da'
   label: Copyrigth
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full

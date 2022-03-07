@@ -26,8 +26,6 @@ mode: default
 content:
   field_nace_codes:
     type: entity_reference_label
-    weight: 4
-    region: content
     label: above
     settings:
       link: false
@@ -40,33 +38,34 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
+    weight: 4
+    region: content
   field_summary_html:
-    weight: 0
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 0
     region: content
   field_tags:
     type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
     weight: 2
     region: content
-    label: above
-    settings:
-      link: false
-    third_party_settings:
-      ds:
-        ds_limit: ''
-        ft:
-          id: default
-          settings:
-            lb: ''
-            lb-col: false
-            classes: {  }
   field_thesaurus_2020:
-    label: above
-    weight: 5
     type: entity_reference_label
+    label: above
     settings:
       link: false
     third_party_settings:
@@ -78,11 +77,10 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
+    weight: 5
     region: content
   field_wiki_categories:
     type: entity_reference_label
-    weight: 3
-    region: content
     label: above
     settings:
       link: false
@@ -94,10 +92,11 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
+    weight: 3
+    region: content
   field_wiki_page_url:
-    label: hidden
-    weight: 1
     type: link
+    label: hidden
     settings:
       trim_length: 80
       url_only: false
@@ -105,6 +104,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
+    weight: 1
     region: content
 hidden:
   addtoany: true

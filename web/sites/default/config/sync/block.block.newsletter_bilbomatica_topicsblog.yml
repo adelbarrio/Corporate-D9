@@ -18,11 +18,11 @@ plugin: 'facet_block:blog_topic'
 settings:
   id: 'facet_block:blog_topic'
   label: Topics
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: topicsblog
 visibility:
   request_path:
     id: request_path
-    pages: /search/blog
     negate: false
+    pages: /search/blog

@@ -13,20 +13,20 @@ pattern: 'tags/[term:name]'
 selection_criteria:
   b3d185bd-b9a3-4b4f-a60f-6cb6be606d61:
     id: 'entity_bundle:taxonomy_term'
-    bundles:
-      tags: tags
     negate: false
+    uuid: b3d185bd-b9a3-4b4f-a60f-6cb6be606d61
     context_mapping:
       taxonomy_term: taxonomy_term
-    uuid: b3d185bd-b9a3-4b4f-a60f-6cb6be606d61
+    bundles:
+      tags: tags
   9a40db70-7b62-499e-b443-4d4fec3be969:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: 9a40db70-7b62-499e-b443-4d4fec3be969
     context_mapping:
       language: 'taxonomy_term:langcode:language'
-    uuid: 9a40db70-7b62-499e-b443-4d4fec3be969
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

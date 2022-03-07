@@ -20,16 +20,16 @@ third_party_settings:
       children:
         - field_slideshare_url
         - field_slideshare_id
+      label: SLIDESHARE
+      region: content
       parent_name: ''
       weight: 1
       format_type: fieldset
-      region: content
       format_settings:
-        id: ''
         classes: ''
+        id: ''
         description: ''
         required_fields: true
-      label: SLIDESHARE
 id: node.slideshare.default
 targetEntityType: node
 bundle: slideshare
@@ -42,20 +42,20 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_slideshare_id:
+    type: number
     weight: 4
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: number
-    region: content
   field_slideshare_url:
+    type: link_default
     weight: 3
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   field_thumbnail:
     type: image_image
     weight: 2
@@ -67,8 +67,8 @@ content:
   moderation_state:
     type: moderation_state_default
     weight: 4
-    settings: {  }
     region: content
+    settings: {  }
     third_party_settings: {  }
   path:
     type: path

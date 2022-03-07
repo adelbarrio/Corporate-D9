@@ -22,13 +22,13 @@ plugin: 'block_content:5716b291-5d32-4cb8-bedd-63d3be325bda'
 settings:
   id: 'block_content:5716b291-5d32-4cb8-bedd-63d3be325bda'
   label: 'OSHmail newsletter (Sidebar)'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full
 visibility:
   request_path:
     id: request_path
-    pages: "<front>\r\n/oshmail-newsletter\r\n/oshnews\r\n/oshnews/*\r\n/highlights\r\n/highlights/*\r\n/tools-and-resources/seminars\r\n/tools-and-resources/seminars/*\r\n/tools-and-resources/osh-campaign-toolkit\r\n/tools-and-resources/e-guides/e-guide-managing-stress-and-psychosocial-risks\r\n/themes/safety-and-health-micro-and-small-enterprises\r\n/about-eu-osha/what-we-do\r\n/about-eu-osha/governance-eu-osha\r\n/about-eu-osha/national-focal-points\r\n/careers\r\n/about-eu-osha/procurement\r\n/about-eu-osha/procurement/*\r\n/about-eu-osha/data-protection\r\n/facts-and-figures/european-opinion-polls-safety-and-health-work\r\n/oshevents/*\r\n/tools-and-resources/napo-safety-smile\r\n/campaigns-and-awards/awards/hw-film-award"
     negate: false
+    pages: "<front>\r\n/oshmail-newsletter\r\n/oshnews\r\n/oshnews/*\r\n/highlights\r\n/highlights/*\r\n/tools-and-resources/seminars\r\n/tools-and-resources/seminars/*\r\n/tools-and-resources/osh-campaign-toolkit\r\n/tools-and-resources/e-guides/e-guide-managing-stress-and-psychosocial-risks\r\n/themes/safety-and-health-micro-and-small-enterprises\r\n/about-eu-osha/what-we-do\r\n/about-eu-osha/governance-eu-osha\r\n/about-eu-osha/national-focal-points\r\n/careers\r\n/about-eu-osha/procurement\r\n/about-eu-osha/procurement/*\r\n/about-eu-osha/data-protection\r\n/facts-and-figures/european-opinion-polls-safety-and-health-work\r\n/oshevents/*\r\n/tools-and-resources/napo-safety-smile\r\n/campaigns-and-awards/awards/hw-film-award"

@@ -22,11 +22,11 @@ plugin: 'facet_block:directive_topics'
 settings:
   id: 'facet_block:directive_topics'
   label: Topics
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: topicsdirectives
 visibility:
   request_path:
     id: request_path
-    pages: /search/directives
     negate: false
+    pages: /search/directives

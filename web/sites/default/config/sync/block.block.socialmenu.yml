@@ -17,15 +17,15 @@ plugin: 'menu_block:social-menu'
 settings:
   id: 'menu_block:social-menu'
   label: 'Social menu'
-  provider: menu_block
   label_display: '0'
+  provider: menu_block
   follow: false
   follow_parent: child
+  label_link: false
+  label_type: block
   level: 1
   depth: 0
   expand_all_items: false
   parent: 'social-menu:'
   suggestion: social_menu
-  label_type: block
-  label_link: false
 visibility: {  }

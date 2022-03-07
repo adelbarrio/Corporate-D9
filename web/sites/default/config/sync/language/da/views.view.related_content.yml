@@ -7,23 +7,7 @@ display:
       use_more_text: 'Se alt'
   block_5:
     display_options:
-      filters:
-        field_publication_date_value:
-          expose:
-            description: ''
-            placeholder: ''
-            min_placeholder: ''
-            max_placeholder: ''
       use_more_text: 'Se alt'
   block_7:
     display_options:
       use_more_text: 'Se alt'
-  page_2:
-    display_options:
-      filters:
-        field_publication_date_value:
-          expose:
-            description: ''
-            placeholder: ''
-            min_placeholder: ''
-            max_placeholder: ''

@@ -8,6 +8,12 @@ id: question
 label: 'After the question'
 description: 'Show feedback after the question'
 component:
+  context_definitions:
+    quiz_result:
+      type: 'entity:quiz_result'
+      label: 'Quiz result'
+      description: 'Quiz result to evaluate feedback'
+  provided_context_definitions: {  }
   expression:
     id: rules_and
     uuid: 937d1ccf-6e7c-46a6-92cc-c971263f8e4f
@@ -17,16 +23,10 @@ component:
         id: rules_condition
         uuid: 6174e801-1257-4f85-a560-aa3c43a381f4
         weight: 0
+        condition_id: rules_data_is_empty
+        negate: false
         context_values: {  }
         context_mapping:
           data: quiz_result.time_end
         context_processors: {  }
         provides_mapping: {  }
-        condition_id: rules_data_is_empty
-        negate: false
-  context_definitions:
-    quiz_result:
-      type: 'entity:quiz_result'
-      label: 'Quiz result'
-      description: 'Quiz result to evaluate feedback'
-  provided_context_definitions: {  }

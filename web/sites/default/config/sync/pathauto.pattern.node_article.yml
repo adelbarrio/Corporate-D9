@@ -12,20 +12,20 @@ pattern: '[node:title]'
 selection_criteria:
   e16379b9-ae54-4293-9727-62a8a02b23c5:
     id: node_type
-    bundles:
-      article: article
     negate: false
+    uuid: e16379b9-ae54-4293-9727-62a8a02b23c5
     context_mapping:
       node: node
-    uuid: e16379b9-ae54-4293-9727-62a8a02b23c5
+    bundles:
+      article: article
   0d489ef1-a5af-4d1b-b1d2-76eb257eb4ff:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: 0d489ef1-a5af-4d1b-b1d2-76eb257eb4ff
     context_mapping:
       language: 'node:langcode:language'
-    uuid: 0d489ef1-a5af-4d1b-b1d2-76eb257eb4ff
+    langcodes:
+      en: en
 selection_logic: and
 weight: 0
 relationships:

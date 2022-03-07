@@ -37,19 +37,19 @@ mode: newsletter_item
 content:
   body:
     type: text_default
-    weight: 1
-    region: content
     label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 1
+    region: content
   field_publication_date:
-    label: hidden
-    weight: 0
     type: datetime_default
+    label: hidden
     settings:
-      format_type: osha_day_only
       timezone_override: ''
+      format_type: osha_day_only
     third_party_settings: {  }
+    weight: 0
     region: content
 hidden:
   addtoany: true

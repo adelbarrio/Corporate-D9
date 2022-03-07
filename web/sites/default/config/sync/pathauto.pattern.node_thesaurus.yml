@@ -12,20 +12,20 @@ pattern: 'tools-and-resources/eu-osha-thesaurus/term/[node:field_term_id]'
 selection_criteria:
   e4a49536-6782-422d-ab48-14b14a70522e:
     id: node_type
-    bundles:
-      thesaurus: thesaurus
     negate: false
+    uuid: e4a49536-6782-422d-ab48-14b14a70522e
     context_mapping:
       node: node
-    uuid: e4a49536-6782-422d-ab48-14b14a70522e
+    bundles:
+      thesaurus: thesaurus
   9b0ca9be-7a8a-45cc-aeec-c520f0d8f792:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: 9b0ca9be-7a8a-45cc-aeec-c520f0d8f792
     context_mapping:
       language: 'node:langcode:language'
-    uuid: 9b0ca9be-7a8a-45cc-aeec-c520f0d8f792
+    langcodes:
+      en: en
 selection_logic: and
 weight: 0
 relationships:

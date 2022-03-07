@@ -13,20 +13,20 @@ pattern: 'nace-codes/[term:field_nace_code]'
 selection_criteria:
   d076a6c1-c5c7-4f7a-a1af-38f8a315ebb2:
     id: 'entity_bundle:taxonomy_term'
-    bundles:
-      nace_codes: nace_codes
     negate: false
+    uuid: d076a6c1-c5c7-4f7a-a1af-38f8a315ebb2
     context_mapping:
       taxonomy_term: taxonomy_term
-    uuid: d076a6c1-c5c7-4f7a-a1af-38f8a315ebb2
+    bundles:
+      nace_codes: nace_codes
   17ff0b55-98b0-45ea-bb57-f87027cabb72:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: 17ff0b55-98b0-45ea-bb57-f87027cabb72
     context_mapping:
       language: 'taxonomy_term:langcode:language'
-    uuid: 17ff0b55-98b0-45ea-bb57-f87027cabb72
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

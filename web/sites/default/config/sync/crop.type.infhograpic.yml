@@ -2,8 +2,8 @@ uuid: 3aa369d9-a69f-447e-80b4-a78f59a024c2
 langcode: en
 status: true
 dependencies: {  }
-id: infhograpic
 label: Infographic
+id: infhograpic
 description: 'Infographic thmbnail crop'
 aspect_ratio: '1:1'
 soft_limit_width: 350

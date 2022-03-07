@@ -12,20 +12,20 @@ pattern: 'additional-resources/slideshare/[node:title]'
 selection_criteria:
   b15653a3-4211-4a4d-9b3c-c6780ac5ecae:
     id: node_type
-    bundles:
-      slideshare: slideshare
     negate: false
+    uuid: b15653a3-4211-4a4d-9b3c-c6780ac5ecae
     context_mapping:
       node: node
-    uuid: b15653a3-4211-4a4d-9b3c-c6780ac5ecae
+    bundles:
+      slideshare: slideshare
   0fb1f8e7-b85d-49c3-a486-fc223d25c44c:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: 0fb1f8e7-b85d-49c3-a486-fc223d25c44c
     context_mapping:
       language: 'node:langcode:language'
-    uuid: 0fb1f8e7-b85d-49c3-a486-fc223d25c44c
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

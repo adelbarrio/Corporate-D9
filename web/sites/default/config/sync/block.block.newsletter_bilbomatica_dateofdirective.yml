@@ -18,11 +18,11 @@ plugin: 'facet_block:date_of_directive'
 settings:
   id: 'facet_block:date_of_directive'
   label: 'Date of directive'
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: dateofdirective
 visibility:
   request_path:
     id: request_path
-    pages: "/search/directives\r\n/safety-and-health-legislation/european-directives"
     negate: false
+    pages: "/search/directives\r\n/safety-and-health-legislation/european-directives"

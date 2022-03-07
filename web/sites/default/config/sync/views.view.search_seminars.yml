@@ -23,70 +23,12 @@ base_table: search_api_index_default_multilingual_node_index
 base_field: search_api_id
 display:
   default:
-    display_plugin: default
     id: default
     display_title: Master
+    display_plugin: default
     position: 0
     display_options:
-      access:
-        type: none
-        options: {  }
-      cache:
-        type: tag
-        options: {  }
-      query:
-        type: views_query
-        options:
-          bypass_access: false
-          skip_access: false
-          preserve_facet_query_args: false
-      exposed_form:
-        type: bef
-        options:
-          submit_button: Search
-          reset_button: true
-          reset_button_label: 'Clear filter'
-          exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-          text_input_required: 'Select any filter and click on Apply to see results'
-          text_input_required_format: basic_html
-          bef: {  }
-      pager:
-        type: pagerer
-        options:
-          preset: pagination
-          items_per_page: 10
-          offset: 0
-          id: '0'
-          total_pages: ''
-          expose:
-            items_per_page: 0
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: 0
-            items_per_page_options_all_label: '- All -'
-            offset: 0
-            offset_label: Offset
-      style:
-        type: grid
-        options:
-          grouping: {  }
-          columns: 12
-          automatic_width: false
-          alignment: vertical
-          col_class_default: false
-          col_class_custom: ''
-          row_class_default: false
-          row_class_custom: 'revamp-row no-flex'
-      row:
-        type: fields
-        options:
-          default_field_elements: false
-          inline: {  }
-          separator: ''
-          hide_empty: false
+      title: 'Search seminars'
       fields:
         field_seminar_start_date:
           id: field_seminar_start_date
@@ -95,6 +37,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -158,7 +101,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          plugin_id: search_api_field
         title:
           id: title
           table: search_api_index_default_multilingual_node_index
@@ -166,6 +108,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -228,7 +171,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          plugin_id: search_api_field
         field_location:
           id: field_location
           table: search_api_datasource_default_multilingual_node_index_entity_node
@@ -236,6 +178,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -298,8 +242,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         body:
           id: body
           table: search_api_datasource_default_multilingual_node_index_entity_node
@@ -307,6 +249,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -357,8 +301,8 @@ display:
             wrap_output: false
             wrap_class: trimmed
             more_link: true
-            more_text: 'Show details'
             more_class: 'see-more-arrow minor-size'
+            more_text: 'Show details'
             summary_handler: full
             trim_options:
               text: true
@@ -380,8 +324,68 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
+      pager:
+        type: pagerer
+        options:
+          offset: 0
+          items_per_page: 10
+          preset: pagination
+          id: '0'
+          total_pages: ''
+          expose:
+            items_per_page: 0
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: 0
+            items_per_page_options_all_label: '- All -'
+            offset: 0
+            offset_label: Offset
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Search
+          reset_button: true
+          reset_button_label: 'Clear filter'
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: basic_html
+          bef: {  }
+      access:
+        type: none
+        options: {  }
+      cache:
+        type: tag
+        options: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: true
+          content: 'No results'
+          tokenize: false
+      sorts:
+        field_seminar_start_date:
+          id: field_seminar_start_date
+          table: search_api_index_default_multilingual_node_index
+          field: field_seminar_start_date
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: field_seminar_start_date
+          exposed: false
+      arguments: {  }
       filters:
         status:
           id: status
@@ -390,6 +394,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_boolean
           operator: '='
           value: '1'
           group: 1
@@ -420,7 +425,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: search_api_boolean
         type:
           id: type
           table: search_api_index_default_multilingual_node_index
@@ -428,6 +432,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_options
           operator: or
           value:
             seminar: seminar
@@ -461,7 +466,6 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          plugin_id: search_api_options
         search_api_fulltext:
           id: search_api_fulltext
           table: search_api_index_default_multilingual_node_index
@@ -469,6 +473,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_fulltext
           operator: and
           value: ''
           group: 1
@@ -502,8 +507,8 @@ display:
               osh_collaborator: '0'
               news_editor: '0'
               read_only: '0'
-            placeholder: ''
             expose_fields: false
+            placeholder: ''
             searched_fields_id: search_api_fulltext_searched_fields
           is_grouped: false
           group_info:
@@ -521,7 +526,6 @@ display:
           min_length: null
           fields:
             - title
-          plugin_id: search_api_fulltext
         field_seminar_start_date:
           id: field_seminar_start_date
           table: search_api_index_default_multilingual_node_index
@@ -529,6 +533,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_date
           operator: '>='
           value:
             min: ''
@@ -566,9 +571,9 @@ display:
               osh_collaborator: '0'
               news_editor: '0'
               read_only: '0'
-            placeholder: ''
             min_placeholder: ''
             max_placeholder: ''
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -581,7 +586,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: search_api_date
         field_seminar_end_date:
           id: field_seminar_end_date
           table: search_api_index_default_multilingual_node_index
@@ -589,6 +593,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_date
           operator: '<='
           value:
             min: ''
@@ -626,9 +631,9 @@ display:
               osh_collaborator: '0'
               news_editor: '0'
               read_only: '0'
-            placeholder: ''
             min_placeholder: ''
             max_placeholder: ''
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -641,7 +646,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: search_api_date
         field_publication_date:
           id: field_publication_date
           table: search_api_index_default_multilingual_node_index
@@ -649,6 +653,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_date
           operator: '<='
           value:
             min: ''
@@ -686,9 +691,9 @@ display:
               osh_collaborator: '0'
               news_editor: '0'
               read_only: '0'
-            placeholder: ''
             min_placeholder: ''
             max_placeholder: ''
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -701,7 +706,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: search_api_date
         search_api_language:
           id: search_api_language
           table: search_api_index_default_multilingual_node_index
@@ -709,6 +713,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_language
           operator: in
           value:
             en: en
@@ -756,21 +761,31 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: search_api_language
-      sorts:
-        field_seminar_start_date:
-          id: field_seminar_start_date
-          table: search_api_index_default_multilingual_node_index
-          field: field_seminar_start_date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          order: DESC
-          exposed: false
-          expose:
-            label: ''
-          plugin_id: search_api
-      title: 'Search seminars'
+      style:
+        type: grid
+        options:
+          grouping: {  }
+          columns: 12
+          automatic_width: false
+          alignment: vertical
+          row_class_custom: 'revamp-row no-flex'
+          row_class_default: false
+          col_class_custom: ''
+          col_class_default: false
+      row:
+        type: fields
+        options:
+          default_field_elements: false
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      query:
+        type: views_query
+        options:
+          bypass_access: false
+          skip_access: false
+          preserve_facet_query_args: false
+      relationships: {  }
       header:
         area_text_custom:
           id: area_text_custom
@@ -779,10 +794,10 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          empty: false
-          tokenize: false
-          content: '<a class="seminar_back-to-seminars back-to-link" href="/tools-and-resources/seminars">Back to seminars</a>'
           plugin_id: text_custom
+          empty: false
+          content: '<a class="seminar_back-to-seminars back-to-link" href="/tools-and-resources/seminars">Back to seminars</a>'
+          tokenize: false
       footer:
         result:
           id: result
@@ -791,23 +806,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: result
           empty: false
           content: '<div class="pager-total"><span>@start - @end / @total</span></div>'
-          plugin_id: result
-      empty:
-        area_text_custom:
-          id: area_text_custom
-          table: views
-          field: area_text_custom
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          tokenize: false
-          content: 'No results'
-          plugin_id: text_custom
-      relationships: {  }
-      arguments: {  }
       display_extenders: {  }
     cache_metadata:
       max-age: -1
@@ -823,29 +824,29 @@ display:
         - 'config:field.storage.node.field_seminar_start_date'
         - 'config:search_api.index.default_multilingual_node_index'
   page_1:
-    display_plugin: page
     id: page_1
     display_title: Page
+    display_plugin: page
     position: 1
     display_options:
-      display_extenders:
-        metatag_display_extender: {  }
-      path: search/seminars
       cache:
         type: none
       defaults:
         cache: false
       exposed_block: true
+      display_extenders:
+        metatag_display_extender: {  }
+      path: search/seminars
       menu:
         type: normal
         title: 'search seminars'
         description: ''
-        expanded: false
-        parent: 'menu_link_content:c0a23e19-f924-43d5-a53e-7065d04543d6'
         weight: -45
-        context: '0'
-        menu_name: main
         enabled: false
+        expanded: false
+        menu_name: main
+        parent: 'menu_link_content:c0a23e19-f924-43d5-a53e-7065d04543d6'
+        context: '0'
     cache_metadata:
       max-age: -1
       contexts:

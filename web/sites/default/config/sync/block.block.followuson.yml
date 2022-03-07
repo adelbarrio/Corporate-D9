@@ -18,13 +18,13 @@ plugin: 'block_content:e862e73a-8df2-4e71-84ba-def834e1ff10'
 settings:
   id: 'block_content:e862e73a-8df2-4e71-84ba-def834e1ff10'
   label: 'Follow us on:'
-  provider: block_content
   label_display: visible
+  provider: block_content
   status: true
   info: ''
   view_mode: full
 visibility:
   request_path:
     id: request_path
-    pages: /about-eu-osha/press-room
     negate: false
+    pages: /about-eu-osha/press-room

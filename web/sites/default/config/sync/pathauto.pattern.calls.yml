@@ -12,20 +12,20 @@ pattern: 'about-eu-osha/procurement/[node:title]'
 selection_criteria:
   ffc8287c-8a59-4c41-9536-bc5ca85d25a6:
     id: node_type
-    bundles:
-      calls: calls
     negate: false
+    uuid: ffc8287c-8a59-4c41-9536-bc5ca85d25a6
     context_mapping:
       node: node
-    uuid: ffc8287c-8a59-4c41-9536-bc5ca85d25a6
+    bundles:
+      calls: calls
   dccf63b0-64ab-4ec7-a026-afb36b2424b7:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: dccf63b0-64ab-4ec7-a026-afb36b2424b7
     context_mapping:
       language: 'node:langcode:language'
-    uuid: dccf63b0-64ab-4ec7-a026-afb36b2424b7
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

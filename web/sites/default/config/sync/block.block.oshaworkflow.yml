@@ -17,11 +17,14 @@ plugin: osha_workflow_block
 settings:
   id: osha_workflow_block
   label: 'osha Workflow'
-  provider: osha_workflow
   label_display: '0'
+  provider: osha_workflow
 visibility:
   'entity_bundle:node':
     id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
     bundles:
       25th_anniversary: 25th_anniversary
       article: article
@@ -35,24 +38,3 @@ visibility:
       press_release: press_release
       publication: publication
       seminar: seminar
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
-  node_type:
-    id: node_type
-    bundles:
-      25th_anniversary: 25th_anniversary
-      article: article
-      calls: calls
-      directive: directive
-      guideline: guideline
-      highlight: highlight
-      infographic: infographic
-      job_vacancies: job_vacancies
-      news: news
-      press_release: press_release
-      publication: publication
-      seminar: seminar
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'

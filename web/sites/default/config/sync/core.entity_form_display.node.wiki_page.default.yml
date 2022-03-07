@@ -26,15 +26,15 @@ bundle: wiki_page
 mode: default
 content:
   body:
-    weight: 3
     type: text_textarea_with_summary
+    weight: 3
+    region: content
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
-    region: content
   created:
     type: datetime_timestamp
     weight: 16
@@ -52,19 +52,19 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_summary_html:
+    type: text_textarea
     weight: 2
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   field_tags:
-    weight: 5
     type: options_select
+    weight: 5
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_thesaurus_2020:
     type: entity_reference_autocomplete
     weight: 9
@@ -76,25 +76,25 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_updated:
-    weight: 7
     type: datetime_default
+    weight: 7
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_wiki_categories:
-    weight: 6
     type: options_select
+    weight: 6
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_wiki_page_url:
-    weight: 4
     type: link_default
+    weight: 4
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    region: content
   langcode:
     type: language_select
     weight: 1
@@ -105,8 +105,8 @@ content:
   moderation_state:
     type: moderation_state_default
     weight: 13
-    settings: {  }
     region: content
+    settings: {  }
     third_party_settings: {  }
   path:
     type: path
@@ -116,10 +116,10 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 14
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   title:
     type: string_textfield
