@@ -16,10 +16,10 @@ plugin: addtoany_block
 settings:
   id: addtoany_block
   label: 'AddToAny buttons'
-  provider: addtoany
   label_display: '0'
+  provider: addtoany
 visibility:
   request_path:
     id: request_path
-    pages: "/publications/*\r\n/tools-and-resources/seminars/*"
     negate: true
+    pages: "/publications/*\r\n/tools-and-resources/seminars/*"

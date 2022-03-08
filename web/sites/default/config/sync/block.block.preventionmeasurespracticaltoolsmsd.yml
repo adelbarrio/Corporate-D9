@@ -22,11 +22,11 @@ plugin: 'facet_block:prevention_measures_practical_tools_msd_'
 settings:
   id: 'facet_block:prevention_measures_practical_tools_msd_'
   label: 'Prevention measures'
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: preventionmeasurespracticaltoolsmsd
 visibility:
   request_path:
     id: request_path
-    pages: /themes/musculoskeletal-disorders/practical-tools-musculoskeletal-disorders
     negate: false
+    pages: /themes/musculoskeletal-disorders/practical-tools-musculoskeletal-disorders

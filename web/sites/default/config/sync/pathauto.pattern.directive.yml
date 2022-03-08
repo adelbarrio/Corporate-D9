@@ -12,20 +12,20 @@ pattern: 'legislation/directive/[node:title]'
 selection_criteria:
   49b985e8-275a-4ce5-8cff-7c71695bb51c:
     id: node_type
-    bundles:
-      directive: directive
     negate: false
+    uuid: 49b985e8-275a-4ce5-8cff-7c71695bb51c
     context_mapping:
       node: node
-    uuid: 49b985e8-275a-4ce5-8cff-7c71695bb51c
+    bundles:
+      directive: directive
   848c7574-a89a-4965-9c44-2d0778690ee8:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: 848c7574-a89a-4965-9c44-2d0778690ee8
     context_mapping:
       language: 'node:langcode:language'
-    uuid: 848c7574-a89a-4965-9c44-2d0778690ee8
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

@@ -18,12 +18,12 @@ plugin: 'views_block:our_story-block_look_back'
 settings:
   id: 'views_block:our_story-block_look_back'
   label: ''
-  provider: views
   label_display: visible
+  provider: views
   views_label: ''
   items_per_page: none
 visibility:
   request_path:
     id: request_path
-    pages: /about-eu-osha/eu-osha-1994-2019/our-story
     negate: false
+    pages: /about-eu-osha/eu-osha-1994-2019/our-story

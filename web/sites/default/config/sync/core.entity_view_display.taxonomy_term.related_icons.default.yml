@@ -17,25 +17,23 @@ bundle: related_icons
 mode: default
 content:
   description:
-    label: hidden
     type: text_default
-    weight: 1
-    region: content
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 1
+    region: content
   field_icon:
     type: image
-    weight: 3
-    region: content
     label: above
     settings:
-      image_style: ''
       image_link: ''
+      image_style: ''
     third_party_settings: {  }
+    weight: 3
+    region: content
   field_link:
     type: link
-    weight: 2
-    region: content
     label: above
     settings:
       trim_length: 80
@@ -44,15 +42,17 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
+    weight: 2
+    region: content
   langcode:
     type: language
-    weight: 0
-    region: content
     label: hidden
     settings:
       link_to_entity: false
       native_language: false
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   breadcrumbs: true
   field_meta_tags: true

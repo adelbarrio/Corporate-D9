@@ -17,13 +17,13 @@ bundle: slideshare
 mode: teaser
 content:
   field_thumbnail:
-    weight: 1
+    type: image
     label: hidden
     settings:
-      image_style: ''
       image_link: ''
+      image_style: ''
     third_party_settings: {  }
-    type: image
+    weight: 1
     region: content
 hidden:
   addtoany: true

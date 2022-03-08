@@ -37,15 +37,15 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        label: ''
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        classes:
-          layout_class: {  }
+        label: ''
     regions:
       ds_content:
         - field_publication_date
@@ -66,28 +66,28 @@ bundle: highlight
 mode: full
 content:
   body:
-    label: hidden
-    weight: 4
     type: text_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 4
     region: ds_content
   content_moderation_control:
-    weight: 1
-    region: ds_content
     settings: {  }
     third_party_settings: {  }
+    weight: 1
+    region: ds_content
   field_aditional_resources:
-    label: above
-    weight: 5
     type: entity_reference_entity_view
+    label: above
     settings:
       view_mode: osha_resources
       link: false
     third_party_settings: {  }
+    weight: 5
     region: ds_content
   field_image_media:
-    weight: 3
+    type: entity_reference_entity_view
     label: hidden
     settings:
       view_mode: default
@@ -100,16 +100,16 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: entity_reference_entity_view
+    weight: 3
     region: ds_content
   field_publication_date:
-    label: hidden
-    weight: 0
     type: datetime_default
+    label: hidden
     settings:
       timezone_override: ''
       format_type: only_day
     third_party_settings: {  }
+    weight: 0
     region: ds_content
 hidden:
   addtoany: true

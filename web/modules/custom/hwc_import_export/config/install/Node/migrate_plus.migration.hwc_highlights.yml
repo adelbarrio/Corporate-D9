@@ -3,7 +3,7 @@ id: hwc_highlights
 label: 'PA Highlights'
 migration_group: ncw_import_node_highlights
 destination:
-  default_bundle: pa_highlights
+  default_bundle: news
   plugin: 'entity:node'
 migration_dependencies: {  }
 
@@ -64,7 +64,6 @@ source:
       label: "Alias"
       selector: item/pathalias
 process:
-  nid: nid
   langcode: constants/lang
   title: title
   body/0/value:

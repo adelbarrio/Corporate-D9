@@ -37,21 +37,19 @@ bundle: highlight
 mode: teaser
 content:
   body:
-    label: hidden
-    weight: 3
     type: text_summary_or_trimmed
+    label: hidden
     settings:
       trim_length: 600
     third_party_settings: {  }
+    weight: 3
     region: content
   field_image_media:
     type: media_thumbnail
-    weight: 2
-    region: content
     label: hidden
     settings:
-      image_style: newsletter_highlight
       image_link: ''
+      image_style: newsletter_highlight
     third_party_settings:
       ds:
         ft:
@@ -60,14 +58,16 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
+    weight: 2
+    region: content
   field_publication_date:
-    label: hidden
-    weight: 0
     type: datetime_default
+    label: hidden
     settings:
       timezone_override: ''
       format_type: only_day
     third_party_settings: {  }
+    weight: 0
     region: content
 hidden:
   addtoany: true

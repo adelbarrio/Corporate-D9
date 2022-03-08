@@ -18,11 +18,11 @@ plugin: 'facet_block:selected_for_analysis_dangerous_substances_'
 settings:
   id: 'facet_block:selected_for_analysis_dangerous_substances_'
   label: 'Selected for analysis'
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: selectedforanalysisdangeroussubstances
 visibility:
   request_path:
     id: request_path
-    pages: /themes/dangerous-substances/search
     negate: false
+    pages: /themes/dangerous-substances/search

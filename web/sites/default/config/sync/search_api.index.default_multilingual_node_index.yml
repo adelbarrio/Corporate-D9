@@ -2,12 +2,6 @@ uuid: e2f5025b-deff-4be5-a307-8417ccd8dfb6
 langcode: en
 status: true
 dependencies:
-  module:
-    - search_api_solr
-    - node
-    - search_api
-    - file
-    - media
   config:
     - field.storage.node.body
     - field.storage.node.field_date
@@ -33,24 +27,27 @@ dependencies:
     - field.storage.node.field_updated
     - field.storage.node.field_wiki_categories
     - search_api.server.solr
+  module:
+    - search_api_solr
+    - node
+    - search_api
+    - file
+    - media
 third_party_settings:
   search_api_solr:
     finalize: false
     commit_before_finalize: false
     commit_after_finalize: false
-    multilingual:
-      limit_to_content_language: false
-      include_language_independent: true
     highlighter:
       maxAnalyzedChars: 51200
       fragmenter: gap
+      usePhraseHighlighter: true
+      highlightMultiTerm: true
+      preserveMulti: false
       regex:
         slop: 0.5
         pattern: blank
         maxAnalyzedChars: 10000
-      usePhraseHighlighter: true
-      highlightMultiTerm: true
-      preserveMulti: false
       highlight:
         mergeContiguous: false
         requireFieldMatch: false
@@ -74,6 +71,9 @@ third_party_settings:
       index_prefix: ''
       collection: ''
       timezone: ''
+    multilingual:
+      limit_to_content_language: false
+      include_language_independent: true
 id: default_multilingual_node_index
 name: 'Default multilingual node index'
 description: 'An automatically created search index for indexing multilingual node data. Might be configured to specific needs.'
@@ -375,22 +375,22 @@ processor_settings:
   add_url: {  }
   aggregated_field: {  }
   hierarchy:
-    fields:
-      field_tags: taxonomy_term-parent
     weights:
       preprocess_index: -45
+    fields:
+      field_tags: taxonomy_term-parent
   highlight:
-    highlight: always
-    highlight_partial: false
+    weights:
+      postprocess_query: 0
+    prefix: '<strong>'
+    suffix: '</strong>'
     excerpt: true
     excerpt_length: 256
     exclude_fields:
       - field_summary
       - title
-    prefix: '<strong>'
-    suffix: '</strong>'
-    weights:
-      postprocess_query: 0
+    highlight: always
+    highlight_partial: false
   language_with_fallback: {  }
   rendered_item: {  }
   solr_date_range:
@@ -400,6 +400,6 @@ tracker_settings:
   default:
     indexing_order: fifo
 options:
-  index_directly: true
   cron_limit: 50
+  index_directly: true
 server: solr

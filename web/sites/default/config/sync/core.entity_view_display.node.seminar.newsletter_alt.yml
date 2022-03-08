@@ -33,11 +33,14 @@ third_party_settings:
         - field_location
         - field_seminar_start_date
         - field_seminar_end_date
+      label: 'Event Details'
       parent_name: ''
+      region: content
       weight: 1
       format_type: html_element
-      region: content
       format_settings:
+        classes: 'group-seminar-event-details field-group-div'
+        id: ''
         element: div
         show_label: true
         label_element: h3
@@ -45,78 +48,75 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
-        id: ''
-        classes: 'group-seminar-event-details field-group-div'
-      label: 'Event Details'
 id: node.seminar.newsletter_alt
 targetEntityType: node
 bundle: seminar
 mode: newsletter_alt
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 0
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 0
     region: content
   content_moderation_control:
-    weight: -20
     settings: {  }
     third_party_settings: {  }
+    weight: -20
     region: content
   field_location:
-    weight: 16
+    type: string
     label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 16
     region: content
   field_pages_count:
-    weight: 3
+    type: number_integer
     label: hidden
     settings:
       thousand_separator: ''
       prefix_suffix: false
     third_party_settings: {  }
-    type: number_integer
+    weight: 3
     region: content
   field_related_resources_media:
     type: entity_reference_entity_view
-    weight: 4
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 4
     region: content
   field_report_media:
     type: entity_reference_entity_view
-    weight: 2
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 2
     region: content
   field_seminar_end_date:
-    weight: 18
+    type: datetime_default
     label: inline
     settings:
       timezone_override: ''
       format_type: short
     third_party_settings: {  }
-    type: datetime_default
+    weight: 18
     region: content
   field_seminar_start_date:
-    weight: 17
+    type: datetime_default
     label: inline
     settings:
       timezone_override: ''
       format_type: short
     third_party_settings: {  }
-    type: datetime_default
+    weight: 17
     region: content
 hidden:
   addtoany: true

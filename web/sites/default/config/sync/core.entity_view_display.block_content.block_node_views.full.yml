@@ -17,15 +17,15 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        label: ''
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        classes:
-          layout_class: {  }
+        label: ''
     regions:
       ds_content:
         - field_node_id
@@ -35,7 +35,7 @@ bundle: block_node_views
 mode: full
 content:
   field_node_id:
-    weight: 0
+    type: dynamic_entity_reference_entity_view
     label: hidden
     settings:
       node:
@@ -95,7 +95,7 @@ content:
         view_mode: default
         link: false
     third_party_settings: {  }
-    type: dynamic_entity_reference_entity_view
+    weight: 0
     region: ds_content
 hidden:
   breadcrumbs: true

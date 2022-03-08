@@ -34,15 +34,15 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        label: ''
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        classes:
-          layout_class: {  }
+        label: ''
     regions:
       ds_content:
         - field_publication_date
@@ -59,11 +59,11 @@ third_party_settings:
         label: hidden
         formatter: default
         settings:
+          link: false
           'link class': ''
           wrapper: h2
           class: ''
           exclude_node_title: '1'
-          link: false
         ft:
           id: default
           settings:
@@ -77,11 +77,14 @@ third_party_settings:
         - field_author
         - field_summary_html
         - body
+      label: 'Group Flex'
       parent_name: ''
+      region: ds_content
       weight: 2
       format_type: html_element
-      region: ds_content
       format_settings:
+        classes: group-flex-manage-display
+        id: ''
         element: div
         show_label: false
         label_element: h3
@@ -89,25 +92,20 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
-        id: ''
-        classes: group-flex-manage-display
-      label: 'Group Flex'
 id: node.blog.default
 targetEntityType: node
 bundle: blog
 mode: default
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 5
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 5
     region: ds_content
   field_author:
     type: smart_trim
-    weight: 3
-    region: ds_content
     label: hidden
     settings:
       trim_length: 600
@@ -121,30 +119,32 @@ content:
       summary_handler: full
       trim_options: {  }
     third_party_settings: {  }
+    weight: 3
+    region: ds_content
   field_image_caption:
-    weight: 2
+    type: media_thumbnail
     label: hidden
     settings:
-      image_style: medium
       image_link: ''
+      image_style: medium
     third_party_settings: {  }
-    type: media_thumbnail
+    weight: 2
     region: ds_content
   field_publication_date:
-    weight: 0
+    type: datetime_default
     label: hidden
     settings:
       timezone_override: ''
       format_type: only_day
     third_party_settings: {  }
-    type: datetime_default
+    weight: 0
     region: ds_content
   field_summary_html:
-    weight: 4
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 4
     region: ds_content
 hidden:
   addtoany: true

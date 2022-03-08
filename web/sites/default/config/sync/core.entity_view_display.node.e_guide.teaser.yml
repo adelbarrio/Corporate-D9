@@ -20,20 +20,18 @@ mode: teaser
 content:
   field_external_url:
     type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
     weight: 0
     region: content
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
   field_link:
     type: link
-    weight: 1
-    region: content
     label: above
     settings:
       trim_length: 80
@@ -42,6 +40,8 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
+    weight: 1
+    region: content
 hidden:
   addtoany: true
   field_country: true

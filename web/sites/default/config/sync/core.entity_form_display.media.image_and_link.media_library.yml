@@ -35,13 +35,13 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
   field_media_image_1:
+    type: image_image
     weight: 1
+    region: content
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-    type: image_image
-    region: content
   field_nace:
     type: entity_reference_autocomplete
     weight: 4
@@ -64,12 +64,12 @@ content:
     third_party_settings: {  }
   name:
     type: string_textfield
+    weight: 0
+    region: content
     settings:
       size: 60
       placeholder: ''
-    weight: 0
     third_party_settings: {  }
-    region: content
 hidden:
   created: true
   langcode: true

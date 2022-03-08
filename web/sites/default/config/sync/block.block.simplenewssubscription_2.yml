@@ -16,8 +16,8 @@ plugin: simplenews_subscription_block
 settings:
   id: simplenews_subscription_block
   label: 'Simplenews subscription'
-  provider: simplenews
   label_display: '0'
+  provider: simplenews
   newsletters:
     default: default
   message: ''
@@ -25,5 +25,5 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "/tools-and-resources/blog\r\n/tools-and-resources/blog/*\r\n/blog/*"
     negate: false
+    pages: "/tools-and-resources/blog\r\n/tools-and-resources/blog/*\r\n/blog/*"

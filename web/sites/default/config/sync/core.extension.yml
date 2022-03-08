@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
 module:
   webform_clientside_validation: -1
   action: 0
@@ -141,7 +143,6 @@ module:
   path_redirect_import: 0
   pathologic: 0
   pdfpreview: 0
-  phpexcel: 0
   phpspreadsheet: 0
   quick_node_clone: 0
   quickedit: 0
@@ -235,5 +236,3 @@ theme:
   ncwtheme: 0
   newsletter_bilbomatica: 0
 profile: standard
-_core:
-  default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc

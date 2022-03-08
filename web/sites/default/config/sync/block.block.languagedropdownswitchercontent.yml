@@ -15,8 +15,8 @@ plugin: 'language_dropdown_block:language_content'
 settings:
   id: 'language_dropdown_block:language_content'
   label: 'Language dropdown switcher (Content)'
-  provider: lang_dropdown
   label_display: '0'
+  provider: lang_dropdown
   showall: false
   tohome: false
   width: 140

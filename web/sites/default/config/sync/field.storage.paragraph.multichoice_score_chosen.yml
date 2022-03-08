@@ -2,11 +2,11 @@ uuid: 60d52c76-5232-481b-ae8f-df22232d6fa4
 langcode: en
 status: true
 dependencies:
+  module:
+    - paragraphs
   enforced:
     module:
       - quiz_multichoice
-  module:
-    - paragraphs
 _core:
   default_config_hash: WfxrOSrRlPonNJpu6YJZKPZ5i_dxvX-72kOLa-Ymuu0
 id: paragraph.multichoice_score_chosen

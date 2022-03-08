@@ -51,7 +51,10 @@ source:
       selector: item/field_author/bg/0
 
 process:
-  nid: nid
+  nid:
+    - plugin: migration_lookup
+      source: nid
+      migration: hwc_publications
   title:
     -
       plugin: skip_on_empty

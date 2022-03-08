@@ -1,7 +1,16 @@
 uuid: 7737ab9a-c5c8-4771-aa43-9b404c71d708
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - node.type.job_vacancies
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - media
+    - node
+    - workbench
+    - workbench_access
 id: career_edt
 label: 'CAREER EDT'
 weight: 9

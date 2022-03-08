@@ -12,20 +12,20 @@ pattern: 'oshnews/[node:title]'
 selection_criteria:
   61628d6e-03da-4517-a717-e3506ce1cb9e:
     id: node_type
-    bundles:
-      news: news
     negate: false
+    uuid: 61628d6e-03da-4517-a717-e3506ce1cb9e
     context_mapping:
       node: node
-    uuid: 61628d6e-03da-4517-a717-e3506ce1cb9e
+    bundles:
+      news: news
   a8395e9a-35f5-4c61-a6fe-520ec28e8c34:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: a8395e9a-35f5-4c61-a6fe-520ec28e8c34
     context_mapping:
       language: 'node:langcode:language'
-    uuid: a8395e9a-35f5-4c61-a6fe-520ec28e8c34
+    langcodes:
+      en: en
 selection_logic: and
 weight: 0
 relationships:

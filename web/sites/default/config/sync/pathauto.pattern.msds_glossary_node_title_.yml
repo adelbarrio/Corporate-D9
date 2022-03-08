@@ -13,20 +13,20 @@ pattern: '/msds-glossary/[term:name]'
 selection_criteria:
   ae4f7c08-dbda-4be8-ba06-26303b96bea6:
     id: 'entity_bundle:taxonomy_term'
-    bundles:
-      msds_glossary: msds_glossary
     negate: false
+    uuid: ae4f7c08-dbda-4be8-ba06-26303b96bea6
     context_mapping:
       taxonomy_term: taxonomy_term
-    uuid: ae4f7c08-dbda-4be8-ba06-26303b96bea6
+    bundles:
+      msds_glossary: msds_glossary
   60c1711a-53f0-4f21-aca0-4bc304706d0c:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: 60c1711a-53f0-4f21-aca0-4bc304706d0c
     context_mapping:
       language: 'taxonomy_term:langcode:language'
-    uuid: 60c1711a-53f0-4f21-aca0-4bc304706d0c
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

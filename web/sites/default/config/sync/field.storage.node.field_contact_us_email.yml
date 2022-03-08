@@ -2,11 +2,11 @@ uuid: 46c0157b-ae82-48cb-b559-05a2d87d4946
 langcode: en
 status: true
 dependencies:
+  module:
+    - node
   enforced:
     module:
       - contact_us
-  module:
-    - node
 _core:
   default_config_hash: XIBt8fwH-dL9qiopuMuUhdlrb_rrsOii9VbAIk_yXBE
 id: node.field_contact_us_email

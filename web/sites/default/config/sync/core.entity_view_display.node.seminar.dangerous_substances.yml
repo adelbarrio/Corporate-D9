@@ -31,11 +31,14 @@ third_party_settings:
         - field_location
         - field_seminar_start_date
         - field_seminar_end_date
+      label: 'Event Details'
       parent_name: ''
+      region: hidden
       weight: 3
       format_type: html_element
-      region: hidden
       format_settings:
+        classes: 'group-seminar-event-details field-group-div'
+        id: ''
         element: div
         show_label: true
         label_element: h3
@@ -43,18 +46,15 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
-        id: ''
-        classes: 'group-seminar-event-details field-group-div'
-      label: 'Event Details'
 id: node.seminar.dangerous_substances
 targetEntityType: node
 bundle: seminar
 mode: dangerous_substances
 content:
   content_moderation_control:
-    weight: -20
     settings: {  }
     third_party_settings: {  }
+    weight: -20
     region: content
 hidden:
   addtoany: true

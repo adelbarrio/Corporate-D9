@@ -92,7 +92,6 @@ source:
       label: "Alias"
       selector: item/pathalias
 process:
-  nid: nid
   langcode: constants/lang
   title: title
   field_summary/0/value:

@@ -13,20 +13,20 @@ pattern: 'activity/[term:field_activity_code]'
 selection_criteria:
   268dbc1b-19b7-4648-ac12-52e35a1bdb02:
     id: 'entity_bundle:taxonomy_term'
-    bundles:
-      activity: activity
     negate: false
+    uuid: 268dbc1b-19b7-4648-ac12-52e35a1bdb02
     context_mapping:
       taxonomy_term: taxonomy_term
-    uuid: 268dbc1b-19b7-4648-ac12-52e35a1bdb02
+    bundles:
+      activity: activity
   c608043b-476d-4e6e-8094-403e376bae9c:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: c608043b-476d-4e6e-8094-403e376bae9c
     context_mapping:
       language: 'taxonomy_term:langcode:language'
-    uuid: c608043b-476d-4e6e-8094-403e376bae9c
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

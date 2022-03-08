@@ -22,11 +22,11 @@ plugin: 'facet_block:language_practical_tools_on_ds_'
 settings:
   id: 'facet_block:language_practical_tools_on_ds_'
   label: Language
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: languagepracticaltoolsonds
 visibility:
   request_path:
     id: request_path
-    pages: /themes/dangerous-substances/practical-tools-dangerous-substances
     negate: false
+    pages: /themes/dangerous-substances/practical-tools-dangerous-substances

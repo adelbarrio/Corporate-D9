@@ -18,11 +18,11 @@ plugin: 'facet_block:type_of_visualisation_material'
 settings:
   id: 'facet_block:type_of_visualisation_material'
   label: 'Type of visualisation tool'
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: typeofvisualisationmaterialdangeroussubstances
 visibility:
   request_path:
     id: request_path
-    pages: /themes/dangerous-substances/search
     negate: false
+    pages: /themes/dangerous-substances/search

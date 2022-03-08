@@ -24,9 +24,8 @@ bundle: wiki_page
 mode: osha_resources
 content:
   field_wiki_page_url:
-    label: hidden
-    weight: 2
     type: link
+    label: hidden
     settings:
       trim_length: 80
       url_only: false
@@ -34,11 +33,12 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
+    weight: 2
     region: content
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
 hidden:
   addtoany: true

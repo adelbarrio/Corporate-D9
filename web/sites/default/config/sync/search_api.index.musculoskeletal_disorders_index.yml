@@ -2,10 +2,6 @@ uuid: 04c4680e-0bc6-439c-a694-36f4221db299
 langcode: en
 status: true
 dependencies:
-  module:
-    - search_api_solr
-    - node
-    - search_api
   config:
     - field.storage.node.field_available_in_languages
     - field.storage.node.field_material_country
@@ -34,24 +30,25 @@ dependencies:
     - field.storage.node.field_worker_groups_covered
     - field.storage.node.field_year
     - search_api.server.solr
+  module:
+    - search_api_solr
+    - node
+    - search_api
 third_party_settings:
   search_api_solr:
     finalize: false
     commit_before_finalize: false
     commit_after_finalize: false
-    multilingual:
-      limit_to_content_language: false
-      include_language_independent: true
     highlighter:
       maxAnalyzedChars: 51200
       fragmenter: gap
+      usePhraseHighlighter: true
+      highlightMultiTerm: true
+      preserveMulti: false
       regex:
         slop: 0.5
         pattern: blank
         maxAnalyzedChars: 10000
-      usePhraseHighlighter: true
-      highlightMultiTerm: true
-      preserveMulti: false
       highlight:
         mergeContiguous: false
         requireFieldMatch: false
@@ -75,6 +72,9 @@ third_party_settings:
       index_prefix: ''
       collection: ''
       timezone: ''
+    multilingual:
+      limit_to_content_language: false
+      include_language_independent: true
 id: musculoskeletal_disorders_index
 name: 'Musculoskeletal Disorders index'
 description: ''
@@ -361,6 +361,6 @@ tracker_settings:
   default:
     indexing_order: fifo
 options:
-  index_directly: true
   cron_limit: 50
+  index_directly: true
 server: solr

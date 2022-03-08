@@ -18,19 +18,19 @@ plugin: 'menu_block:thesaurus'
 settings:
   id: 'menu_block:thesaurus'
   label: Thesaurus
-  provider: menu_block
   label_display: '0'
+  provider: menu_block
   follow: false
   follow_parent: child
+  label_link: false
+  label_type: block
   level: 1
   depth: 0
   expand_all_items: false
   parent: 'thesaurus:'
   suggestion: thesaurus
-  label_type: block
-  label_link: false
 visibility:
   request_path:
     id: request_path
-    pages: "/tools-and-resources/eu-osha-thesaurus\r\n/tools-and-resources/eu-osha-thesaurus/hierarchical\r\n/tools-and-resources/eu-osha-thesaurus/alphabetical\r\n/tools-and-resources/eu-osha-thesaurus/alphabetical/*"
     negate: false
+    pages: "/tools-and-resources/eu-osha-thesaurus\r\n/tools-and-resources/eu-osha-thesaurus/hierarchical\r\n/tools-and-resources/eu-osha-thesaurus/alphabetical\r\n/tools-and-resources/eu-osha-thesaurus/alphabetical/*"

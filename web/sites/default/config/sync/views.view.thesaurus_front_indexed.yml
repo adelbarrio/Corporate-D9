@@ -25,71 +25,12 @@ base_table: search_api_index_thesaurus_term_index
 base_field: search_api_id
 display:
   default:
-    display_plugin: default
     id: default
     display_title: Master
+    display_plugin: default
     position: 0
     display_options:
-      access:
-        type: perm
-        options:
-          perm: 'access content'
-      cache:
-        type: tag
-        options: {  }
-      query:
-        type: views_query
-        options:
-          bypass_access: false
-          skip_access: false
-          preserve_facet_query_args: false
-      exposed_form:
-        type: bef
-        options:
-          submit_button: Search
-          reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          expose_sort_order: false
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-          text_input_required: 'Select any filter and click on Apply to see results'
-          text_input_required_format: basic_html
-          bef: {  }
-      pager:
-        type: pagerer
-        options:
-          preset: pagination
-          items_per_page: 10
-          offset: 0
-          id: '0'
-          total_pages: ''
-          expose:
-            items_per_page: 0
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: 0
-            items_per_page_options_all_label: '- All -'
-            offset: 0
-            offset_label: Offset
-      style:
-        type: grid
-        options:
-          grouping: {  }
-          columns: 12
-          automatic_width: false
-          alignment: vertical
-          col_class_default: false
-          col_class_custom: ''
-          row_class_default: false
-          row_class_custom: 'revamp-row no-flex'
-      row:
-        type: fields
-        options:
-          default_field_elements: true
-          inline: {  }
-          separator: ''
-          hide_empty: false
+      title: 'EU-OSHA thesaurus'
       fields:
         title:
           id: title
@@ -98,6 +39,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -160,7 +102,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          plugin_id: search_api_field
         field_synonyms:
           id: field_synonyms
           table: search_api_index_thesaurus_term_index
@@ -168,6 +109,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_field
           label: 'Synonyms:'
           exclude: false
           alter:
@@ -230,7 +172,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          plugin_id: search_api_field
         field_definition:
           id: field_definition
           table: search_api_index_thesaurus_term_index
@@ -238,6 +179,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -299,7 +241,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          plugin_id: search_api_field
         nid:
           id: nid
           table: search_api_datasource_thesaurus_term_index_entity_node
@@ -307,6 +248,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: true
           alter:
@@ -381,8 +324,6 @@ display:
             format_plural_values:
               - '1'
               - '@count'
-          entity_type: node
-          plugin_id: search_api_field
         nothing:
           id: nothing
           table: views
@@ -390,6 +331,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: custom
           label: ''
           exclude: false
           alter:
@@ -431,7 +373,71 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
-          plugin_id: custom
+      pager:
+        type: pagerer
+        options:
+          offset: 0
+          items_per_page: 10
+          preset: pagination
+          id: '0'
+          total_pages: ''
+          expose:
+            items_per_page: 0
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: 0
+            items_per_page_options_all_label: '- All -'
+            offset: 0
+            offset_label: Offset
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Search
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: false
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: basic_html
+          bef: {  }
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
+      sorts:
+        title:
+          id: title
+          table: search_api_index_thesaurus_term_index
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: ASC
+          expose:
+            label: Alphabetically
+            field_identifier: title
+          exposed: true
+        search_api_relevance:
+          id: search_api_relevance
+          table: search_api_index_thesaurus_term_index
+          field: search_api_relevance
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: DESC
+          expose:
+            label: Relevance
+            field_identifier: search_api_relevance
+          exposed: true
+      arguments: {  }
       filters:
         search_api_language:
           id: search_api_language
@@ -440,6 +446,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_language
           operator: in
           value:
             '***LANGUAGE_language_content***': '***LANGUAGE_language_content***'
@@ -487,7 +494,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: search_api_language
         search_api_fulltext:
           id: search_api_fulltext
           table: search_api_index_thesaurus_term_index
@@ -495,6 +501,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_fulltext
           operator: or
           value: ''
           group: 1
@@ -528,8 +535,8 @@ display:
               osh_collaborator: '0'
               news_editor: '0'
               read_only: '0'
-            placeholder: ''
             expose_fields: false
+            placeholder: ''
             searched_fields_id: search_api_fulltext_searched_fields
           is_grouped: false
           group_info:
@@ -549,33 +556,31 @@ display:
             - field_definition
             - field_synonyms
             - title
-          plugin_id: search_api_fulltext
-      sorts:
-        title:
-          id: title
-          table: search_api_index_thesaurus_term_index
-          field: title
-          relationship: none
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: true
-          expose:
-            label: Alphabetically
-          plugin_id: search_api
-        search_api_relevance:
-          id: search_api_relevance
-          table: search_api_index_thesaurus_term_index
-          field: search_api_relevance
-          relationship: none
-          group_type: group
-          admin_label: ''
-          order: DESC
-          exposed: true
-          expose:
-            label: Relevance
-          plugin_id: search_api
-      title: 'EU-OSHA thesaurus'
+      style:
+        type: grid
+        options:
+          grouping: {  }
+          columns: 12
+          automatic_width: false
+          alignment: vertical
+          row_class_custom: 'revamp-row no-flex'
+          row_class_default: false
+          col_class_custom: ''
+          col_class_default: false
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      query:
+        type: views_query
+        options:
+          bypass_access: false
+          skip_access: false
+          preserve_facet_query_args: false
+      relationships: {  }
       header: {  }
       footer:
         result:
@@ -585,12 +590,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: result
           empty: false
           content: '<div class="pager-total"><span>@start - @end / @total</span></div>'
-          plugin_id: result
-      empty: {  }
-      relationships: {  }
-      arguments: {  }
       display_extenders: {  }
     cache_metadata:
       max-age: -1
@@ -607,47 +609,11 @@ display:
         - 'config:field.storage.node.field_synonyms'
         - 'config:search_api.index.thesaurus_term_index'
   data_export_1:
-    display_plugin: data_export
     id: data_export_1
     display_title: 'Data export'
+    display_plugin: data_export
     position: 3
     display_options:
-      display_extenders:
-        metatag_display_extender: {  }
-      path: tools-and-resources/eu-osha-thesaurus/search/export
-      filename: EU-OSHA_thesaurus_search_results.csv
-      automatic_download: true
-      store_in_public_file_directory: null
-      redirect_to_display: none
-      custom_redirect_path: false
-      include_query_params: false
-      style:
-        type: data_export
-        options:
-          formats:
-            csv: csv
-          csv_settings:
-            delimiter: ','
-            enclosure: '"'
-            escape_char: \
-            strip_tags: true
-            trim: true
-            encoding: utf8
-            utf8_bom: '0'
-            use_serializer_encode_only: false
-      displays:
-        thesaurus_search: thesaurus_search
-        default: '0'
-      query:
-        type: views_query
-        options:
-          skip_access: 0
-          bypass_access: 0
-          preserve_facet_query_args: 0
-      defaults:
-        query: false
-        filters: false
-        filter_groups: false
       filters:
         search_api_language:
           id: search_api_language
@@ -656,6 +622,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_language
           operator: in
           value:
             '***LANGUAGE_language_content***': '***LANGUAGE_language_content***'
@@ -703,7 +670,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: search_api_language
         search_api_fulltext:
           id: search_api_fulltext
           table: search_api_index_thesaurus_term_index
@@ -711,6 +677,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_fulltext
           operator: or
           value: ''
           group: 1
@@ -744,8 +711,8 @@ display:
               osh_collaborator: '0'
               news_editor: '0'
               read_only: '0'
-            placeholder: ''
             expose_fields: false
+            placeholder: ''
             searched_fields_id: search_api_fulltext_searched_fields
           is_grouped: false
           group_info:
@@ -765,13 +732,48 @@ display:
             - field_definition
             - field_synonyms
             - title
-          plugin_id: search_api_fulltext
       filter_groups:
         operator: AND
         groups:
           1: AND
+      style:
+        type: data_export
+        options:
+          formats:
+            csv: csv
+          csv_settings:
+            delimiter: ','
+            enclosure: '"'
+            escape_char: \
+            strip_tags: true
+            trim: true
+            encoding: utf8
+            utf8_bom: '0'
+            use_serializer_encode_only: false
+      query:
+        type: views_query
+        options:
+          skip_access: 0
+          bypass_access: 0
+          preserve_facet_query_args: 0
+      defaults:
+        query: false
+        filters: false
+        filter_groups: false
+      display_extenders:
+        metatag_display_extender: {  }
+      path: tools-and-resources/eu-osha-thesaurus/search/export
+      displays:
+        thesaurus_search: thesaurus_search
+        default: '0'
+      filename: EU-OSHA_thesaurus_search_results.csv
+      automatic_download: true
       export_method: standard
       export_batch_size: 1000
+      store_in_public_file_directory: null
+      custom_redirect_path: false
+      redirect_to_display: none
+      include_query_params: false
     cache_metadata:
       max-age: -1
       contexts:
@@ -787,30 +789,11 @@ display:
         - 'config:field.storage.node.field_synonyms'
         - 'config:search_api.index.thesaurus_term_index'
   thesaurus_search:
-    display_plugin: page
     id: thesaurus_search
     display_title: Search
+    display_plugin: page
     position: 1
     display_options:
-      display_extenders:
-        metatag_display_extender: {  }
-      path: tools-and-resources/eu-osha-thesaurus
-      exposed_block: true
-      display_description: ''
-      footer:
-        result:
-          id: result
-          table: views
-          field: result
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: false
-          content: '<div class="pager-total"><span>@start - @end / @total</span></div>'
-          plugin_id: result
-      defaults:
-        footer: false
-        fields: false
       fields:
         title:
           id: title
@@ -819,6 +802,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -881,7 +865,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          plugin_id: search_api_field
         field_synonyms:
           id: field_synonyms
           table: search_api_index_thesaurus_term_index
@@ -889,6 +872,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_field
           label: 'Synonyms: '
           exclude: false
           alter:
@@ -951,7 +935,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          plugin_id: search_api_field
         field_definition:
           id: field_definition
           table: search_api_index_thesaurus_term_index
@@ -959,6 +942,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -1020,7 +1004,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          plugin_id: search_api_field
         nid:
           id: nid
           table: search_api_datasource_thesaurus_term_index_entity_node
@@ -1028,6 +1011,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: true
           alter:
@@ -1102,8 +1087,6 @@ display:
             format_plural_values:
               - '1'
               - '@count'
-          entity_type: node
-          plugin_id: search_api_field
         nothing:
           id: nothing
           table: views
@@ -1111,6 +1094,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: custom
           label: ''
           exclude: false
           alter:
@@ -1152,7 +1136,25 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
-          plugin_id: custom
+      defaults:
+        fields: false
+        footer: false
+      display_description: ''
+      footer:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: result
+          empty: false
+          content: '<div class="pager-total"><span>@start - @end / @total</span></div>'
+      exposed_block: true
+      display_extenders:
+        metatag_display_extender: {  }
+      path: tools-and-resources/eu-osha-thesaurus
     cache_metadata:
       max-age: -1
       contexts:

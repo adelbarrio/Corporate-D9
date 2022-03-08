@@ -52,11 +52,14 @@ third_party_settings:
     group_events_event_details:
       children:
         - field_organization
+      label: 'Event Details'
       parent_name: group_events_description
+      region: hidden
       weight: 0
       format_type: html_element
-      region: hidden
       format_settings:
+        classes: 'group-events-event-details field-group-div'
+        id: ''
         element: div
         show_label: true
         label_element: h3
@@ -64,9 +67,6 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
-        id: ''
-        classes: 'group-events-event-details field-group-div'
-      label: 'Event Details'
     group_events_description:
       children:
         - group_events_link
@@ -74,11 +74,14 @@ third_party_settings:
         - node_title
         - field_related_documents
         - group_events_event_details
+      label: Description
       parent_name: ''
+      region: hidden
       weight: 42
       format_type: html_element
-      region: hidden
       format_settings:
+        classes: 'group-events-description field-group-div'
+        id: ''
         element: div
         show_label: true
         label_element: h3
@@ -86,9 +89,6 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
-        id: ''
-        classes: 'group-events-description field-group-div'
-      label: Description
     group_events_link:
       children:
         - field_location
@@ -96,11 +96,14 @@ third_party_settings:
         - field_country_code
         - field_website_of_event
         - field_city
+      label: Link
       parent_name: group_events_description
+      region: hidden
       weight: 0
       format_type: html_element
-      region: hidden
       format_settings:
+        classes: 'group-events-links field-group-div'
+        id: ''
         element: div
         show_label: true
         label_element: h3
@@ -108,17 +111,17 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
-        id: ''
-        classes: 'group-events-links field-group-div'
-      label: Link
     group_events_related_documents:
       children:
         - body
+      label: 'Related resources'
       parent_name: group_events_description
+      region: hidden
       weight: 0
       format_type: html_element
-      region: hidden
       format_settings:
+        classes: 'group-events-related-documents field-group-div'
+        id: ''
         element: div
         show_label: true
         label_element: h3
@@ -126,9 +129,6 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
-        id: ''
-        classes: 'group-events-related-documents field-group-div'
-      label: 'Related resources'
   ds:
     layout:
       id: ds_1col
@@ -136,15 +136,15 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        label: ''
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        classes:
-          layout_class: {  }
+        label: ''
     regions:
       ds_content:
         - field_location
@@ -156,34 +156,34 @@ bundle: events
 mode: newsletter_items_blocks_events
 content:
   content_moderation_control:
-    weight: -20
     settings: {  }
     third_party_settings: {  }
+    weight: -20
     region: content
   field_country_code:
-    label: inline
-    weight: 4
     type: list_default
+    label: inline
     settings: {  }
     third_party_settings: {  }
+    weight: 4
     region: ds_content
   field_date:
-    weight: 0
+    type: daterange_default
     label: inline
     settings:
       timezone_override: ''
       format_type: only_day
       separator: to
     third_party_settings: {  }
-    type: daterange_default
+    weight: 0
     region: ds_content
   field_location:
-    label: inline
-    weight: 0
     type: string
+    label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 0
     region: ds_content
 hidden:
   addtoany: true

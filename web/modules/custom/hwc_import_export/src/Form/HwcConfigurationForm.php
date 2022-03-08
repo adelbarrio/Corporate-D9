@@ -57,6 +57,14 @@ class HwcConfigurationForm extends ConfigFormBase {
       '#required' => TRUE,
     ];
 
+    $form['ncw_add_slideshare'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Slideshare add res endpoint URI'),
+      '#description' => $this->t('Uri that will be appended to the Root endpoint URL defined'),
+      '#default_value' => $config->get('ncw_add_slideshare'),
+      '#required' => TRUE,
+    ];
+
     $form['ncw_add_news'] = [
       '#type' => 'textfield',
       '#title' => $this->t('News add res endpoint URI'),
@@ -113,6 +121,14 @@ class HwcConfigurationForm extends ConfigFormBase {
       '#required' => TRUE,
     ];
 
+    $form['ncw_add_youtube'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Youtube add res endpoint URI'),
+      '#description' => $this->t('Uri that will be appended to the Root endpoint URL defined'),
+      '#default_value' => $config->get('ncw_add_youtube'),
+      '#required' => TRUE,
+    ];
+
     $form['ncw_endpoint'] = [
       '#type' => 'textfield',
       '#title' => $this->t('NCW endpoint URLL'),
@@ -135,6 +151,7 @@ class HwcConfigurationForm extends ConfigFormBase {
       ->set('ncw_events', $values['ncw_events'])
       ->set('ncw_add_publication', $values['ncw_add_publication'])
       ->set('ncw_publication', $values['ncw_publication'])
+      ->set('ncw_add_slideshare', $values['ncw_add_slideshare'])
       ->set('ncw_add_news', $values['ncw_add_news'])
       ->set('ncw_news', $values['ncw_news'])
       ->set('ncw_add_highlights', $values['ncw_add_highlights'])
@@ -142,6 +159,7 @@ class HwcConfigurationForm extends ConfigFormBase {
       ->set('ncw_add_infographic', $values['ncw_add_infographic'])
       ->set('ncw_infographic', $values['ncw_infographic'])
       ->set('ncw_press_release', $values['ncw_press_release'])
+      ->set('ncw_add_youtube', $values['ncw_add_youtube'])
       ->set('ncw_endpoint', $values['ncw_endpoint'])
       ->save();
 

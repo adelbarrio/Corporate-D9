@@ -2,33 +2,30 @@ uuid: fce5cc0b-d6e1-432c-b99b-82d1e4ed2956
 langcode: en
 status: true
 dependencies:
-  module:
-    - search_api_solr
-    - node
-    - search_api
   config:
     - field.storage.node.body
     - field.storage.node.field_publication_date
     - field.storage.node.field_tags
     - search_api.server.solr
+  module:
+    - search_api_solr
+    - node
+    - search_api
 third_party_settings:
   search_api_solr:
     finalize: false
     commit_before_finalize: false
     commit_after_finalize: false
-    multilingual:
-      limit_to_content_language: false
-      include_language_independent: true
     highlighter:
       maxAnalyzedChars: 51200
       fragmenter: gap
+      usePhraseHighlighter: true
+      highlightMultiTerm: true
+      preserveMulti: false
       regex:
         slop: 0.5
         pattern: blank
         maxAnalyzedChars: 10000
-      usePhraseHighlighter: true
-      highlightMultiTerm: true
-      preserveMulti: false
       highlight:
         mergeContiguous: false
         requireFieldMatch: false
@@ -52,6 +49,9 @@ third_party_settings:
       index_prefix: ''
       collection: ''
       timezone: ''
+    multilingual:
+      limit_to_content_language: false
+      include_language_independent: true
 id: 25th_anniversary
 name: '25th anniversary'
 description: ''
@@ -118,15 +118,15 @@ processor_settings:
   add_url: {  }
   aggregated_field: {  }
   highlight:
-    highlight: always
-    highlight_partial: false
+    weights:
+      postprocess_query: 0
+    prefix: '<strong>'
+    suffix: '</strong>'
     excerpt: true
     excerpt_length: 256
     exclude_fields: {  }
-    prefix: '<strong>'
-    suffix: '</strong>'
-    weights:
-      postprocess_query: 0
+    highlight: always
+    highlight_partial: false
   language_with_fallback: {  }
   rendered_item: {  }
   solr_date_range:
@@ -136,6 +136,6 @@ tracker_settings:
   default:
     indexing_order: fifo
 options:
-  index_directly: true
   cron_limit: 50
+  index_directly: true
 server: solr

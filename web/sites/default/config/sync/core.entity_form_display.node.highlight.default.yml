@@ -38,15 +38,15 @@ bundle: highlight
 mode: default
 content:
   body:
-    weight: 4
     type: text_textarea_with_summary
+    weight: 4
+    region: content
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
-    region: content
   created:
     type: datetime_timestamp
     weight: 20
@@ -54,11 +54,11 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_activity:
-    weight: 9
     type: options_select
+    weight: 9
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_aditional_resources:
     type: entity_browser_entity_reference
     weight: 11
@@ -66,78 +66,78 @@ content:
     settings:
       entity_browser: entity_additional_reference
       field_widget_display: label
-      field_widget_remove: true
-      selection_mode: selection_append
       field_widget_edit: false
+      field_widget_remove: true
       field_widget_replace: false
       open: false
       field_widget_display_settings: {  }
+      selection_mode: selection_append
     third_party_settings: {  }
   field_archived:
+    type: boolean_checkbox
     weight: 10
-    type: boolean_checkbox
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    region: content
   field_avoid_archived:
-    weight: 14
     type: boolean_checkbox
+    weight: 14
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    region: content
   field_expiration_date:
-    weight: 6
     type: datetime_default
+    weight: 6
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_image_media:
+    type: media_library_widget
     weight: 2
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    type: media_library_widget
-    region: content
   field_image_oshmail_media:
     type: media_library_widget
     weight: 3
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
   field_migrate_hwc:
-    weight: 13
     type: boolean_checkbox
+    weight: 13
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    region: content
   field_publication_date:
-    weight: 5
     type: datetime_default
+    weight: 5
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_section:
+    type: options_select
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_show_on:
+    type: options_select
     weight: 12
-    type: options_select
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_tags:
-    weight: 7
     type: options_select
+    weight: 7
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_thesaurus_2020:
     type: options_select
     weight: 8
@@ -174,12 +174,12 @@ content:
   uid:
     type: entity_reference_autocomplete
     weight: 19
+    region: content
     settings:
       match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
-      match_limit: 10
-    region: content
     third_party_settings: {  }
   url_redirects:
     weight: 17

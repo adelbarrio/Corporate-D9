@@ -20,13 +20,13 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_external_url:
+    type: link_default
     weight: 1
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   moderation_state:
     type: string_textfield
     weight: 2

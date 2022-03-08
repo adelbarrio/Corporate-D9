@@ -36,15 +36,15 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        label: ''
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        classes:
-          layout_class: {  }
+        label: ''
     regions:
       ds_content:
         - field_publication_date
@@ -73,13 +73,13 @@ bundle: highlight
 mode: newsletter_items_blocks_hide_intro_text
 content:
   field_publication_date:
-    label: hidden
-    weight: 0
     type: datetime_default
+    label: hidden
     settings:
       timezone_override: ''
       format_type: only_day
     third_party_settings: {  }
+    weight: 0
     region: ds_content
 hidden:
   addtoany: true

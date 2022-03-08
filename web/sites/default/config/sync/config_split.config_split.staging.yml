@@ -5,6 +5,7 @@ dependencies: {  }
 id: staging
 label: Staging
 description: ''
+weight: 0
 folder: sites/default/config/staging
 module:
   migrate: 0
@@ -46,4 +47,3 @@ graylist:
   - xmlsitemap.xmlsitemap.g3XYqcXbSKPVBDODwnT6pq7oqhCFkPryj4vVqrl_Kfc
 graylist_dependents: false
 graylist_skip_equal: true
-weight: 0

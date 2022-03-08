@@ -1,0 +1,107 @@
+# Migration file for creating "publication" nodes from BBDD.
+#
+# This file contains much of the information which we
+# used to specify in the "Migration" class in Drupal 7.
+# But why write code if you can write YAML?
+# This is how we declare a Migration the Drupal 8 way.
+
+##################### BASIC INFORMATION ###################
+
+id: hwc_toolkit_topic_i18n
+label: 'Node: Toolkit Topic i18n'
+audit: true
+migration_group: hwc_toolkit_topic
+deriver: Drupal\node\Plugin\migrate\D7NodeDeriver
+source:
+  plugin: d7_node_entity_translation
+  node_type: tk_topic
+destination:
+  plugin: entity:node
+  translations: true
+  destination_module: content_translation
+dependencies:
+  enforced:
+    module:
+      - hwc_custom_migrations
+migration_dependencies:
+  required:
+    - hwc_toolkit_topic
+
+
+process:
+  nid: entity_id
+  type: type
+  langcode:
+    plugin: static_map
+    bypass: true
+    source: language
+    map:
+      'pt': 'pt-pt'
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  body:
+    -
+      plugin: get
+      source: body
+  'body/0/format':
+    -
+      plugin: default_value
+      default_value: full_html
+  field_publication_date:
+    -
+      plugin: sub_process
+      source: field_publication_date
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d H:i:s'
+          to_format: 'Y-m-d'
+          source: value
+  field_image:
+    -
+      plugin: file_id_lookup
+      source: field_image
+      migration:
+        - hwc_node_toolkit_topic_media_images_1
+        - hwc_node_toolkit_topic_media_images_bg
+        - hwc_node_toolkit_topic_media_images_cs
+        - hwc_node_toolkit_topic_media_images_da
+        - hwc_node_toolkit_topic_media_images_de
+        - hwc_node_toolkit_topic_media_images_es
+        - hwc_node_toolkit_topic_media_images_de
+        - hwc_node_toolkit_topic_media_images_el
+        - hwc_node_toolkit_topic_media_images_et
+        - hwc_node_toolkit_topic_media_images_fi
+        - hwc_node_toolkit_topic_media_images_hr
+        - hwc_node_toolkit_topic_media_images_hu
+        - hwc_node_toolkit_topic_media_images_is
+        - hwc_node_toolkit_topic_media_images_it
+        - hwc_node_toolkit_topic_media_images_lv
+        - hwc_node_toolkit_topic_media_images_lt
+        - hwc_node_toolkit_topic_media_images_nl
+        - hwc_node_toolkit_topic_media_images_mt
+        - hwc_node_toolkit_topic_media_images_no
+        - hwc_node_toolkit_topic_media_images_pl
+        - hwc_node_toolkit_topic_media_images_pt
+        - hwc_node_toolkit_topic_media_images_ro
+        - hwc_node_toolkit_topic_media_images_sk
+        - hwc_node_toolkit_topic_media_images_sl
+        - hwc_node_toolkit_topic_media_images_sv
+        - hwc_node_toolkit_topic_media_images_fr
+      no_stub: true
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  content_translation_source: source
+  content_translation_outdated: translate

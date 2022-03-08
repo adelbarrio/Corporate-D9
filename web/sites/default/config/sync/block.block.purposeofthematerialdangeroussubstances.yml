@@ -18,11 +18,11 @@ plugin: 'facet_block:purpose_of_the_material_dangerous_substances_'
 settings:
   id: 'facet_block:purpose_of_the_material_dangerous_substances_'
   label: 'Purpose of the material'
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: purposeofthematerialdangeroussubstances
 visibility:
   request_path:
     id: request_path
-    pages: /themes/dangerous-substances/search
     negate: false
+    pages: /themes/dangerous-substances/search

@@ -31,21 +31,21 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_context:
+    type: text_textarea
     weight: 5
-    type: text_textarea
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    region: content
   field_definition:
-    weight: 4
     type: text_textarea
+    weight: 4
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    region: content
   field_father:
     type: entity_reference_tree
     weight: 10
@@ -53,58 +53,58 @@ content:
     settings:
       theme: default
       dots: 0
-      label: ''
+      size: 60
+      placeholder: ''
       match_operator: CONTAINS
       match_limit: 10
-      size: 60
-      placeholder: ''
+      label: ''
     third_party_settings: {  }
   field_full_url:
-    weight: 1
     type: string_textfield
+    weight: 1
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    region: content
   field_glossary_the:
-    weight: 8
     type: options_select
+    weight: 8
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_notes:
+    type: text_textarea
     weight: 9
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   field_synonyms:
+    type: string_textfield
     weight: 6
-    type: string_textfield
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    region: content
   field_term_id:
-    weight: 3
     type: string_textfield
+    weight: 3
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    region: content
   field_term_reference:
-    weight: 7
     type: text_textarea
+    weight: 7
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    region: content
   langcode:
     type: language_select
     weight: 2
@@ -115,8 +115,8 @@ content:
   moderation_state:
     type: moderation_state_default
     weight: 12
-    settings: {  }
     region: content
+    settings: {  }
     third_party_settings: {  }
   path:
     type: path
@@ -126,10 +126,10 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 15
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -147,12 +147,12 @@ content:
   uid:
     type: entity_reference_autocomplete
     weight: 17
+    region: content
     settings:
       match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
-      match_limit: 10
-    region: content
     third_party_settings: {  }
   url_redirects:
     weight: 14

@@ -18,13 +18,13 @@ plugin: 'block_content:034befd7-9f4e-471b-b66c-aa84ee0b10b7'
 settings:
   id: 'block_content:034befd7-9f4e-471b-b66c-aa84ee0b10b7'
   label: 'RSS Feed (Careers)'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full
 visibility:
   request_path:
     id: request_path
-    pages: /careers
     negate: false
+    pages: /careers

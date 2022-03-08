@@ -1,0 +1,20 @@
+uuid: 17d1571b-bc79-4083-9c3e-fdeb1a7d4f20
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_digitalisation_priority_ar
+field_name: field_digitalisation_priority_ar
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

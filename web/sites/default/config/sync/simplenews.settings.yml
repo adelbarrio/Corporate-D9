@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: rnNxnXMi72RPRPGLvuGLUXirl-f-OJtK4sv1xY84Xd0
 hash_expiration: 86400
 newsletter:
   format: html
@@ -27,5 +29,3 @@ mail:
   spool_expire: 0
   debug: true
   source_cache: null
-_core:
-  default_config_hash: rnNxnXMi72RPRPGLvuGLUXirl-f-OJtK4sv1xY84Xd0

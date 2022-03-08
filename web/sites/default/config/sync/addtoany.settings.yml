@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: '-oeXHVXl-m1HE6XR_-FXfNgJOgPuHcOCWSkymfOR7Sc'
 buttons_size: 32
 additional_html: "<div id=\"share-this-on\">\r\n  <span class=\"text-share\">Share this on:</span>\r\n  <a class=\"a2a_button_facebook\"></a>\r\n  <a class=\"a2a_button_twitter\"></a>\r\n  <a class=\"a2a_button_linkedin_share\"></a>\r\n  <a class=\"print-icon\" href=\"javascript:print()\"></a>\r\n</div>"
 additional_css: ''
@@ -5,7 +7,6 @@ additional_js: ''
 universal_button: none
 custom_universal_button: ''
 universal_button_placement: before
-no_3p: false
 entities:
   media: 1
   node: 1
@@ -27,5 +28,4 @@ entities:
   content_moderation_state: 0
   section_association: 0
   paragraph: 0
-_core:
-  default_config_hash: '-oeXHVXl-m1HE6XR_-FXfNgJOgPuHcOCWSkymfOR7Sc'
+no_3p: false

@@ -1,5 +1,5 @@
 id: ncw_import_node
-label: 'NCW Import'
+label: 'NCW Import Publications'
 description: 'Migration of content from HWC and Oira'
 source_type: 'JSON'
 shared_configuration:

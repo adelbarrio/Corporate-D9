@@ -43,15 +43,15 @@ bundle: article
 mode: default
 content:
   body:
-    weight: 9
     type: text_textarea_with_summary
+    weight: 9
+    region: content
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
-    region: content
   comment:
     type: comment_default
     weight: 20
@@ -65,11 +65,11 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_activity:
-    weight: 17
     type: options_select
+    weight: 17
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_aditional_resources:
     type: entity_browser_entity_reference
     weight: 19
@@ -77,56 +77,56 @@ content:
     settings:
       entity_browser: article_publication_additional_resources
       field_widget_display: label
-      field_widget_remove: true
-      open: true
-      selection_mode: selection_append
       field_widget_edit: false
+      field_widget_remove: true
       field_widget_replace: false
+      open: true
       field_widget_display_settings: {  }
+      selection_mode: selection_append
     third_party_settings: {  }
   field_archived:
-    weight: 18
     type: boolean_checkbox
+    weight: 18
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    region: content
   field_article_type:
-    weight: 0
     type: options_select
+    weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_body_revamp:
-    weight: 10
     type: text_textarea_with_summary
+    weight: 10
+    region: content
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
-    region: content
   field_expiration_date:
-    weight: 8
     type: datetime_default
+    weight: 8
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_image_caption:
+    type: media_library_widget
     weight: 4
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    type: media_library_widget
-    region: content
   field_metatag:
+    type: metatag_firehose
     weight: 28
+    region: content
     settings:
       sidebar: true
     third_party_settings: {  }
-    type: metatag_firehose
-    region: content
   field_nace_codes:
     type: entity_reference_autocomplete
     weight: 13
@@ -138,21 +138,21 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_publication_date:
-    weight: 7
     type: datetime_default
+    weight: 7
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_related_oshwiki_articles:
-    weight: 16
     type: entity_reference_autocomplete
+    weight: 16
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    region: content
   field_resources:
     type: entity_reference_autocomplete
     weight: 20
@@ -164,29 +164,29 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_section:
+    type: options_select
     weight: 1
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_summary_html:
+    type: text_textarea
     weight: 3
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   field_tags:
+    type: entity_reference_autocomplete
     weight: 11
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   field_thesaurus_2020:
     type: entity_reference_autocomplete
     weight: 14
@@ -198,11 +198,11 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_wiki_categories:
-    weight: 15
     type: options_select
+    weight: 15
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   langcode:
     type: language_select
     weight: 5
@@ -213,8 +213,8 @@ content:
   moderation_state:
     type: moderation_state_default
     weight: 21
-    settings: {  }
     region: content
+    settings: {  }
     third_party_settings: {  }
   path:
     type: path
@@ -224,24 +224,24 @@ content:
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 27
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 25
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 24
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   title:
     type: string_textfield

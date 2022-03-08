@@ -50,7 +50,10 @@ source:
       label: 'field_image'
       selector: item/field_image/lt/0
 process:
-  nid: nid
+  nid:
+    - plugin: migration_lookup
+      source: nid
+      migration: hwc_press_release
   title:
     -
       plugin: skip_on_empty

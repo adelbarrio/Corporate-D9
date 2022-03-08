@@ -27,15 +27,15 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        label: ''
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        classes:
-          layout_class: {  }
+        label: ''
     regions:
       ds_content:
         - field_publication_date
@@ -55,11 +55,11 @@ bundle: gallery
 mode: default
 content:
   field_album_pictures:
-    weight: 3
+    type: image
     label: hidden
     settings:
-      image_style: photo_gallery
       image_link: ''
+      image_style: photo_gallery
     third_party_settings:
       ds:
         ds_limit: '3'
@@ -69,14 +69,14 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: image
+    weight: 3
     region: ds_content
   field_cover_photo:
-    weight: 2
+    type: image
     label: hidden
     settings:
-      image_style: 1000x1000
       image_link: ''
+      image_style: 1000x1000
     third_party_settings:
       ds:
         ft:
@@ -91,17 +91,17 @@ content:
         destination: field_gallery_link
         advanced: {  }
         token: ''
-    type: image
+    weight: 2
     region: ds_content
   field_gallery_link:
-    weight: 5
+    type: link
     label: hidden
     settings:
       trim_length: null
-      url_plain: true
-      target: _blank
       url_only: false
+      url_plain: true
       rel: '0'
+      target: _blank
     third_party_settings:
       ds:
         ft:
@@ -110,10 +110,10 @@ content:
             lb: 'Full gallery link'
             lb-col: false
             classes: {  }
-    type: link
+    weight: 5
     region: ds_content
   field_publication_date:
-    weight: 0
+    type: datetime_default
     label: hidden
     settings:
       timezone_override: ''
@@ -126,7 +126,7 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: datetime_default
+    weight: 0
     region: ds_content
 hidden:
   addtoany: true

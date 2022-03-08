@@ -5,17 +5,17 @@ dependencies: {  }
 id: careers_accordion
 label: 'Careers accordion'
 renderer: accordion_tabs
+hide_empty_tabs: false
+default_tab: 9999
 options:
   quick_tabs:
+    ajax: false
     class: ''
     style: ''
-    ajax: false
   accordion_tabs:
     jquery_ui:
       collapsible: true
       heightStyle: auto
-hide_empty_tabs: false
-default_tab: 9999
 configuration_data:
   -
     title: 'Who we employ'

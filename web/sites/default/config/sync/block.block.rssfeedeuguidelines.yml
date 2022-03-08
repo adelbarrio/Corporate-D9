@@ -18,13 +18,13 @@ plugin: 'block_content:155f73d4-62b4-4a99-99e6-968911bb6027'
 settings:
   id: 'block_content:155f73d4-62b4-4a99-99e6-968911bb6027'
   label: 'RSS Feed (EU Guidelines)'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full
 visibility:
   request_path:
     id: request_path
-    pages: /safety-and-health-legislation/european-guidelines
     negate: false
+    pages: /safety-and-health-legislation/european-guidelines

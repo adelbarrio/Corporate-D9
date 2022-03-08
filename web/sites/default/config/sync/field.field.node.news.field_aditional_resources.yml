@@ -26,12 +26,6 @@ default_value_callback: ''
 settings:
   handler: 'default:node'
   handler_settings:
-    behaviors:
-      views-select-list:
-        status: 0
-    sort:
-      field: _none
-      direction: ASC
     target_bundles:
       events: events
       external_url: external_url
@@ -42,4 +36,10 @@ settings:
       publication: publication
       slideshare: slideshare
       youtube: youtube
+    sort:
+      field: _none
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 0
 field_type: entity_reference

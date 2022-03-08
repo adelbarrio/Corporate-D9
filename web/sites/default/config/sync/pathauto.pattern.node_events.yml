@@ -12,20 +12,20 @@ pattern: 'oshevents/[node:title]'
 selection_criteria:
   2fe6e902-a4f7-443a-b94a-62281f316947:
     id: node_type
-    bundles:
-      events: events
     negate: false
+    uuid: 2fe6e902-a4f7-443a-b94a-62281f316947
     context_mapping:
       node: node
-    uuid: 2fe6e902-a4f7-443a-b94a-62281f316947
+    bundles:
+      events: events
   7f2856d9-a81b-4b47-bb81-2abae622e047:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: 7f2856d9-a81b-4b47-bb81-2abae622e047
     context_mapping:
       language: 'node:langcode:language'
-    uuid: 7f2856d9-a81b-4b47-bb81-2abae622e047
+    langcodes:
+      en: en
 selection_logic: and
 weight: 0
 relationships:

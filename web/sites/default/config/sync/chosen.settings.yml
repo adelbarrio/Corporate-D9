@@ -1,21 +1,21 @@
+_core:
+  default_config_hash: exRaKE0s6uZbfQrl_2WFEcTlc_1t81xEqCLuCCteUSk
 minimum_single: 0
 minimum_multiple: 0
 disable_search_threshold: 0
 minimum_width: 0
+max_shown_results: null
 use_relative_width: true
 jquery_selector: '.node-form select, .node-form form-select, .node-form select:visible, #edit-search-api-language-1, #edit-subjects-of-interest'
 search_contains: false
 disable_search: false
 allow_single_deselect: false
-placeholder_text_multiple: 'Choose some options'
-placeholder_text_single: 'Choose an option'
-no_results_text: 'No results match'
-max_shown_results: null
 disabled_themes:
   seven: '0'
   bootstrap_barrio: '0'
   ncwtheme: '0'
   newsletter_bilbomatica: '0'
 chosen_include: 2
-_core:
-  default_config_hash: exRaKE0s6uZbfQrl_2WFEcTlc_1t81xEqCLuCCteUSk
+placeholder_text_multiple: 'Choose some options'
+placeholder_text_single: 'Choose an option'
+no_results_text: 'No results match'

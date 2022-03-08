@@ -12,20 +12,20 @@ pattern: 'publications/[node:title]'
 selection_criteria:
   1c593783-a83b-4952-85cb-c06882458b55:
     id: node_type
-    bundles:
-      publication: publication
     negate: false
+    uuid: 1c593783-a83b-4952-85cb-c06882458b55
     context_mapping:
       node: node
-    uuid: 1c593783-a83b-4952-85cb-c06882458b55
+    bundles:
+      publication: publication
   53524e57-743a-445a-bef5-56953416ae42:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: 53524e57-743a-445a-bef5-56953416ae42
     context_mapping:
       language: 'node:langcode:language'
-    uuid: 53524e57-743a-445a-bef5-56953416ae42
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

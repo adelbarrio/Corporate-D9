@@ -54,15 +54,15 @@ bundle: events
 mode: default
 content:
   body:
-    weight: 22
     type: text_textarea_with_summary
+    weight: 22
+    region: content
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
-    region: content
   created:
     type: datetime_timestamp
     weight: 33
@@ -76,21 +76,21 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_adonis:
+    type: string_textfield
     weight: 13
-    type: string_textfield
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    region: content
   field_agency_rep_confirmed:
-    weight: 18
     type: string_textfield
+    weight: 18
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    region: content
   field_agency_role:
     type: options_select
     weight: 17
@@ -98,138 +98,138 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_agenda:
-    weight: 12
     type: options_select
+    weight: 12
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_city:
-    weight: 5
     type: string_textfield
+    weight: 5
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    region: content
   field_color:
-    weight: 24
     type: options_select
+    weight: 24
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_comments_summary_after_eve:
-    weight: 21
     type: string_textfield
+    weight: 21
+    region: content
     settings:
       size: 255
       placeholder: ''
     third_party_settings: {  }
-    region: content
   field_country_code:
+    type: options_select
     weight: 4
-    type: options_select
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_date:
-    weight: 7
-    settings: {  }
-    third_party_settings: {  }
     type: daterange_default
+    weight: 7
     region: content
+    settings: {  }
+    third_party_settings: {  }
   field_event_type:
+    type: options_select
     weight: 1
-    type: options_select
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_for_the_web:
-    weight: 8
     type: options_buttons
+    weight: 8
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_key_performance:
-    weight: 9
     type: options_select
+    weight: 9
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_location:
-    weight: 6
     type: string_textfield
+    weight: 6
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    region: content
   field_media_promotion:
-    weight: 20
     type: options_select
+    weight: 20
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_migrate_hwc:
-    weight: 26
     type: boolean_checkbox
+    weight: 26
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    region: content
   field_organization:
-    weight: 3
     type: string_textarea
+    weight: 3
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    region: content
   field_publications_exhibition_su:
-    weight: 19
     type: options_select
+    weight: 19
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_related_documents:
-    weight: 23
     type: file_generic
+    weight: 23
+    region: content
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
-    region: content
   field_show_eu_flag:
-    weight: 25
     type: boolean_checkbox
+    weight: 25
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    region: content
   field_show_on:
-    weight: 27
     type: chosen_select
+    weight: 27
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_tags:
+    type: options_select
     weight: 16
-    type: options_select
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_unit_ref:
-    weight: 14
     type: options_select
+    weight: 14
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_website_of_event:
-    weight: 10
     type: link_default
+    weight: 10
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    region: content
   langcode:
     type: language_select
     weight: 2
@@ -240,8 +240,8 @@ content:
   moderation_state:
     type: moderation_state_default
     weight: 28
-    settings: {  }
     region: content
+    settings: {  }
     third_party_settings: {  }
   path:
     type: path
@@ -251,10 +251,10 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 31
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
@@ -279,12 +279,12 @@ content:
   uid:
     type: entity_reference_autocomplete
     weight: 32
+    region: content
     settings:
       match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
-      match_limit: 10
-    region: content
     third_party_settings: {  }
   url_redirects:
     weight: 30

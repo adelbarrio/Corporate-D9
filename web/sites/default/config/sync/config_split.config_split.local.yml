@@ -5,6 +5,7 @@ dependencies: {  }
 id: local
 label: local
 description: ''
+weight: 0
 folder: sites/default/config/local
 module:
   custom_migrations: 0
@@ -24,4 +25,3 @@ graylist:
   - system.performance
 graylist_dependents: false
 graylist_skip_equal: true
-weight: 0

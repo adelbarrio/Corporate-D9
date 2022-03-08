@@ -54,8 +54,8 @@ filters:
     weight: -48
     settings:
       default_view_mode: default
-      allowed_media_types: {  }
       allowed_view_modes: {  }
+      allowed_media_types: {  }
   filter_autop:
     id: filter_autop
     provider: filter

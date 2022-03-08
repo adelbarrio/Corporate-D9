@@ -12,20 +12,20 @@ pattern: 'blog/[node:title]'
 selection_criteria:
   9d91bf0a-5618-4d35-80a6-1a43771db482:
     id: node_type
-    bundles:
-      blog: blog
     negate: false
+    uuid: 9d91bf0a-5618-4d35-80a6-1a43771db482
     context_mapping:
       node: node
-    uuid: 9d91bf0a-5618-4d35-80a6-1a43771db482
+    bundles:
+      blog: blog
   49d9d7ba-dc3a-4228-a91a-1a03609de7e3:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: 49d9d7ba-dc3a-4228-a91a-1a03609de7e3
     context_mapping:
       language: 'node:langcode:language'
-    uuid: 49d9d7ba-dc3a-4228-a91a-1a03609de7e3
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

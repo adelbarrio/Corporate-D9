@@ -18,13 +18,13 @@ plugin: 'block_content:8bb0c768-5104-4e57-b911-3c4ba035d29f'
 settings:
   id: 'block_content:8bb0c768-5104-4e57-b911-3c4ba035d29f'
   label: 'RSS Feed (Procurement)'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full
 visibility:
   request_path:
     id: request_path
-    pages: /about-eu-osha/procurement
     negate: false
+    pages: /about-eu-osha/procurement

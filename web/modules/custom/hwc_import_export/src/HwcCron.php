@@ -140,6 +140,9 @@ class HwcCron implements ContainerInjectionInterface {
       'hwc_press_release_sl',
       'hwc_press_release_sv',
       'hwc_press_release_fr',
+      'hwc_youtube',
+      'hwc_add_slideshare',
+      'hwc_slideshare',
     ];
 
     // Start every migration.
@@ -158,6 +161,7 @@ class HwcCron implements ContainerInjectionInterface {
         $migration->getIdMap()->deleteDestination(['nid' => $del['destid1']]);
         // Remove the node.
         $node = $this->entityTypeManager->getStorage('node')->load($del['destid1']);
+        $node->setUnpublished();
         $node->delete();
       }
     }

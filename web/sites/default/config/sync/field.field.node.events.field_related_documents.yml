@@ -22,10 +22,10 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
+  handler: 'default:file'
+  handler_settings: {  }
   file_directory: ''
   file_extensions: 'pdf doc docx odt rtf txt csv xls ods xlsx ppt pptx epub png jpg jpeg gif'
   max_filesize: '50 MB'
   description_field: true
-  handler: 'default:file'
-  handler_settings: {  }
 field_type: file

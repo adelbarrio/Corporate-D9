@@ -31,11 +31,14 @@ third_party_settings:
   field_group:
     group_event_details:
       children: {  }
+      label: 'Event Details'
       parent_name: ''
+      region: hidden
       weight: 31
       format_type: html_element
-      region: hidden
       format_settings:
+        classes: 'group-seminar-event-details field-group-div'
+        id: ''
         element: div
         show_label: true
         label_element: h3
@@ -43,9 +46,6 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
-        id: ''
-        classes: 'group-seminar-event-details field-group-div'
-      label: 'Event Details'
   ds:
     layout:
       id: ds_1col
@@ -53,15 +53,15 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        label: ''
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        classes:
-          layout_class: {  }
+        label: ''
     regions:
       ds_content:
         - field_seminar_start_date
@@ -86,40 +86,40 @@ mode: view
 content:
   body:
     type: smart_trim
-    weight: 3
-    region: ds_content
     label: hidden
     settings:
       trim_length: 250
       trim_type: chars
       trim_suffix: ...
+      wrap_output: false
       wrap_class: trimmed
       more_link: true
-      more_text: 'Show details'
       more_class: 'see-more-arrow minor-size'
+      more_text: 'Show details'
       summary_handler: full
       trim_options:
         text: true
         trim_zero: false
-      wrap_output: false
     third_party_settings: {  }
+    weight: 3
+    region: ds_content
   field_location:
     type: string
-    weight: 2
-    region: ds_content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 2
+    region: ds_content
   field_seminar_start_date:
     type: datetime_default
-    weight: 0
-    region: ds_content
     label: hidden
     settings:
       timezone_override: ''
       format_type: only_day
     third_party_settings: {  }
+    weight: 0
+    region: ds_content
 hidden:
   addtoany: true
   breadcrumbs: true
