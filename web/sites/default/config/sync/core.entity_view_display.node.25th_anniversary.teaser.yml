@@ -20,6 +20,11 @@ targetEntityType: node
 bundle: 25th_anniversary
 mode: teaser
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_publication_date:
     type: datetime_default
     label: hidden
@@ -32,6 +37,7 @@ content:
 hidden:
   addtoany: true
   body: true
+  breadcrumbs: true
   field_image_media: true
   field_language: true
   field_section: true

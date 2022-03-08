@@ -46,6 +46,7 @@ content:
 hidden:
   addtoany: true
   body: true
+  breadcrumbs: true
   field_activity: true
   field_archived: true
   field_author: true

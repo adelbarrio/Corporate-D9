@@ -48,6 +48,7 @@ content:
     region: content
 hidden:
   addtoany: true
+  breadcrumbs: true
   field_activity: true
   field_documentation_media: true
   field_events_meetings_media: true

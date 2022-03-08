@@ -65,6 +65,7 @@ content:
     region: content
 hidden:
   addtoany: true
+  breadcrumbs: true
   field_city: true
   field_contact_type: true
   field_contact_uuid: true

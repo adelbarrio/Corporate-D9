@@ -44,6 +44,7 @@ content:
     region: content
 hidden:
   addtoany: true
+  breadcrumbs: true
   field_country: true
   field_language: true
   field_section: true
