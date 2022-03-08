@@ -26,16 +26,16 @@ bundle: infographic
 mode: teaser
 content:
   body:
-    weight: 1
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 1
     region: content
   content_moderation_control:
-    weight: -20
     settings: {  }
     third_party_settings: {  }
+    weight: -20
     region: content
 hidden:
   addtoany: true

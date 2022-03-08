@@ -41,10 +41,10 @@ third_party_settings:
         label: hidden
         formatter: default
         settings:
+          link: false
           wrapper: h3
           class: ''
           exclude_node_title: '1'
-          link: false
 id: node.wiki_page.osha_wiki
 targetEntityType: node
 bundle: wiki_page
@@ -52,21 +52,20 @@ mode: osha_wiki
 content:
   field_summary_html:
     type: text_default
-    weight: 1
-    region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 1
+    region: content
   field_wiki_page_url:
-    label: hidden
-    weight: 2
     type: link
+    label: hidden
     settings:
       trim_length: 80
-      target: _blank
       url_only: false
       url_plain: false
       rel: '0'
+      target: _blank
     third_party_settings:
       ds:
         ft:
@@ -75,6 +74,7 @@ content:
             lb: ' Read full OSHwiki article'
             lb-col: true
             classes: {  }
+    weight: 2
     region: content
 hidden:
   addtoany: true

@@ -1,7 +1,26 @@
 uuid: 9558ae49-6acc-439a-9b1f-6c09a5ef8007
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.basic_html
+  module:
+    - aggregator
+    - comment
+    - entity_browser
+    - eu_cookie_compliance
+    - exclude_node_title
+    - file_entity
+    - filter
+    - matomo
+    - media
+    - node
+    - quiz
+    - simplenews
+    - sitemap
+    - system
+    - taxonomy_access_fix
+    - toolbar
 _core:
   default_config_hash: btW6TFHajhy7Eo6YUvdFiPh4TcPggo8GBXYctjV6zag
 id: authenticated
@@ -9,47 +28,34 @@ label: 'authenticated user'
 weight: -10
 is_admin: false
 permissions:
-  - 'access PDF version'
   - 'access administration pages'
   - 'access article_publication_additional_resources entity browser pages'
   - 'access blog_project_managers entity browser pages'
   - 'access comments'
   - 'access content'
-  - 'access dashboard'
   - 'access entity_additional_reference entity browser pages'
   - 'access news feeds'
   - 'access quiz'
-  - 'access site map'
   - 'access sitemap'
   - 'access toolbar'
-  - 'display EU Cookie Compliance popup'
   - 'display eu cookie compliance popup'
   - 'download any document files'
   - 'edit own comments'
   - 'opt-in or out of matomo tracking'
   - 'post comments'
-  - 'search content'
   - 'skip comment approval'
   - 'subscribe to newsletters'
-  - 'use Search Autocomplete'
   - 'use exclude node title'
-  - 'use manualcrop'
   - 'use text format basic_html'
-  - 'use text format filtered_html'
   - 'view all revisions'
   - 'view any quiz'
   - 'view files'
   - 'view media'
-  - 'view moderation history'
-  - 'view newsletter_content_collection entity collections'
-  - 'view osh content tab'
   - 'view own files'
   - 'view own private files'
-  - 'view own quiz results'
   - 'view own unpublished content'
   - 'view own unpublished media'
   - 'view results for own quiz'
-  - 'view revisions'
   - 'view terms in activity'
   - 'view terms in agency'
   - 'view terms in article_types'

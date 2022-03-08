@@ -51,19 +51,18 @@ bundle: musculoskeletal_disorders
 mode: view
 content:
   body:
-    label: hidden
     type: smart_trim
-    weight: 2
+    label: hidden
     settings:
       trim_length: 300
       trim_type: chars
       trim_suffix: ...
-      wrap_class: trimmed
-      more_text: 'Read more'
-      more_class: see-more-arrow
-      summary_handler: ignore
       wrap_output: false
+      wrap_class: trimmed
       more_link: false
+      more_class: see-more-arrow
+      more_text: 'Read more'
+      summary_handler: ignore
       trim_options:
         text: false
         trim_zero: false
@@ -75,9 +74,10 @@ content:
             lb: ''
             lb-col: true
             classes: {  }
+    weight: 2
     region: content
   field_external_url:
-    weight: 0
+    type: link
     label: hidden
     settings:
       trim_length: 80
@@ -86,12 +86,10 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 0
     region: content
   field_for_pictogram_guide:
     type: list_default
-    weight: 4
-    region: content
     label: inline
     settings: {  }
     third_party_settings:
@@ -103,15 +101,15 @@ content:
             lb: ''
             lb-col: true
             classes: {  }
+    weight: 4
+    region: content
   field_nominated_by_fop:
     type: boolean
-    weight: 3
-    region: content
     label: inline
     settings:
       format: yes-no
-      format_custom_true: ''
       format_custom_false: ''
+      format_custom_true: ''
     third_party_settings:
       ds:
         ft:
@@ -120,12 +118,14 @@ content:
             lb: ''
             lb-col: true
             classes: {  }
+    weight: 3
+    region: content
   field_type_of_item:
-    weight: 1
+    type: list_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 1
     region: content
 hidden:
   addtoany: true

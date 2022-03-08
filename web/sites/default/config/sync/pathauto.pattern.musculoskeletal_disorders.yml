@@ -12,20 +12,20 @@ pattern: 'themes/musculoskeletal-disorders/practical-tools-musculoskeletal-disor
 selection_criteria:
   492a161a-c8a1-4ef7-8ba3-e74d662d2173:
     id: node_type
-    bundles:
-      musculoskeletal_disorders: musculoskeletal_disorders
     negate: false
+    uuid: 492a161a-c8a1-4ef7-8ba3-e74d662d2173
     context_mapping:
       node: node
-    uuid: 492a161a-c8a1-4ef7-8ba3-e74d662d2173
+    bundles:
+      musculoskeletal_disorders: musculoskeletal_disorders
   bc0e4999-5cc2-4390-9c1b-896441619e16:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: bc0e4999-5cc2-4390-9c1b-896441619e16
     context_mapping:
       language: 'node:langcode:language'
-    uuid: bc0e4999-5cc2-4390-9c1b-896441619e16
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

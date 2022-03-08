@@ -46,13 +46,14 @@ third_party_settings:
       children:
         - field_file_media
         - field_publication_res_files
+      label: 'Summary & Resources'
       parent_name: ''
+      region: content
       weight: 7
       format_type: html_element
-      region: content
       format_settings:
-        id: ''
         classes: 'group-summary-resources field-group-html-element'
+        id: ''
         element: div
         show_label: true
         label_element: h3
@@ -60,7 +61,6 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
-      label: 'Summary & Resources'
 id: node.publication.default
 targetEntityType: node
 bundle: publication
@@ -68,83 +68,81 @@ mode: default
 content:
   body:
     type: text_default
-    weight: 6
-    region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
-  content_moderation_control:
-    weight: 0
+    weight: 6
     region: content
+  content_moderation_control:
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
   field_aditional_resources:
     type: entity_reference_entity_view
-    weight: 8
-    region: content
     label: hidden
     settings:
       view_mode: osha_resources
       link: false
     third_party_settings: {  }
+    weight: 8
+    region: content
   field_banner_publications_office:
     type: boolean
-    weight: 10
-    region: content
     label: hidden
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-  field_file_media:
     weight: 10
+    region: content
+  field_file_media:
+    type: entity_reference_label
     label: hidden
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 10
     region: content
   field_image_media:
-    weight: 1
+    type: media_thumbnail
     label: hidden
     settings:
-      image_style: cover_images
       image_link: ''
+      image_style: cover_images
     third_party_settings: {  }
-    type: media_thumbnail
+    weight: 1
     region: content
   field_pages_count:
     type: number_integer
-    weight: 4
-    region: content
     label: above
     settings:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
+    weight: 4
+    region: content
   field_publication_date:
-    weight: 2
+    type: datetime_default
     label: hidden
     settings:
       timezone_override: ''
       format_type: only_day
     third_party_settings: {  }
-    type: datetime_default
+    weight: 2
     region: content
   field_publication_res_files:
     type: entity_reference_entity_view
-    weight: 11
     label: hidden
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 11
     region: content
   field_publication_type:
     type: entity_reference_label
-    weight: 3
-    region: content
     label: hidden
     settings:
       link: false
@@ -156,10 +154,10 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
+    weight: 3
+    region: content
   field_related_publications:
     type: entity_reference_entity_view
-    weight: 9
-    region: content
     label: hidden
     settings:
       view_mode: osha_resources
@@ -173,14 +171,16 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
+    weight: 9
+    region: content
   field_tags:
     type: entity_reference_label
-    weight: 5
-    region: content
     label: hidden
     settings:
       link: true
     third_party_settings: {  }
+    weight: 5
+    region: content
 hidden:
   addtoany: true
   breadcrumbs: true

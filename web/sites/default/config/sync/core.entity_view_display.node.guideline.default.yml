@@ -29,38 +29,36 @@ bundle: guideline
 mode: default
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 1
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 1
     region: content
   content_moderation_control:
-    weight: -20
-    region: content
     settings: {  }
     third_party_settings: {  }
+    weight: -20
+    region: content
   field_additional_html:
     type: text_default
-    weight: 4
-    region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 4
+    region: content
   field_available_in_languages:
     type: languagefield_default
-    weight: 3
-    region: content
     label: above
     settings:
       link_to_entity: false
       format:
         name: name
     third_party_settings: {  }
+    weight: 3
+    region: content
   field_external_url:
     type: link
-    weight: 2
-    region: content
     label: above
     settings:
       trim_length: 80
@@ -69,13 +67,15 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
+    weight: 2
+    region: content
   field_summary:
     type: basic_string
-    weight: 0
-    region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   addtoany: true
   breadcrumbs: true

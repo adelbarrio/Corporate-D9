@@ -1,10 +1,9 @@
-uuid: e148b2f8-c307-4737-a8f5-9ce822fa279c
 langcode: en
-status: true
-dependencies: {  }
 id: search_site_header_form
+uuid: e148b2f8-c307-4737-a8f5-9ce822fa279c
 label: 'Search Site Header Form'
 selector: '#edit-search-api-fulltext'
+status: true
 minChar: 3
 autoSubmit: true
 autoRedirect: true
@@ -19,3 +18,4 @@ source: 'search_autocomplete::search_site_autocomplete'
 theme: basic-blue.css
 editable: true
 deletable: true
+dependencies: {  }

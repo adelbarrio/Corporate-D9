@@ -25,50 +25,50 @@ type: content_moderation
 type_settings:
   states:
     approved:
-      published: false
-      default_revision: false
       label: Approved
       weight: 1
+      published: false
+      default_revision: false
     draft:
       label: Draft
-      published: false
-      default_revision: false
       weight: -3
-    final_draft:
       published: false
       default_revision: false
+    final_draft:
       label: 'Final Draft'
       weight: -2
+      published: false
+      default_revision: false
     published:
       label: Published
+      weight: 3
       published: true
       default_revision: true
-      weight: 3
     ready_to_publish:
-      published: false
-      default_revision: false
       label: 'Ready To Publish'
       weight: 2
-    rejected:
       published: false
-      default_revision: true
+      default_revision: false
+    rejected:
       label: Rejected
       weight: -4
-    to_be_approved:
-      published: false
-      default_revision: false
-      label: 'To Be Approved'
-      weight: 0
-    to_be_reviewed:
-      published: false
-      default_revision: false
-      label: 'To Be Reviewed'
-      weight: -1
-    unpublished:
       published: false
       default_revision: true
+    to_be_approved:
+      label: 'To Be Approved'
+      weight: 0
+      published: false
+      default_revision: false
+    to_be_reviewed:
+      label: 'To Be Reviewed'
+      weight: -1
+      published: false
+      default_revision: false
+    unpublished:
       label: Unpublished
       weight: 4
+      published: false
+      default_revision: true
   transitions:
     approve_rejected_content:
       label: 'Approve rejected content'
@@ -96,10 +96,10 @@ type_settings:
       weight: -2
     create_new_draft:
       label: 'Create New Draft'
-      to: draft
-      weight: -30
       from:
         - draft
+      to: draft
+      weight: -30
     final_draft_to_final_draft:
       label: 'Final Draft to Final Draft'
       from:
@@ -342,10 +342,10 @@ type_settings:
       weight: -3
     publish:
       label: Publish
-      to: published
-      weight: 22
       from:
         - draft
+      to: published
+      weight: 22
     publishing:
       label: Publishing
       from:

@@ -2,11 +2,11 @@ uuid: 39480abd-4504-4ae7-bdff-b13d710d55f9
 langcode: en
 status: true
 dependencies:
+  module:
+    - file
   enforced:
     module:
       - file_entity
-  module:
-    - file
 _core:
   default_config_hash: fuTFvTm2wH_wVi3iK4BWiCAHE2nwnljQgh6BTyBoyfs
 id: file.thumbnail

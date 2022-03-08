@@ -39,17 +39,15 @@ mode: newsletter_items_blocks_hide_intro_text
 content:
   comment:
     type: comment_default
-    weight: 110
-    region: content
     label: above
     settings:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
+    weight: 110
+    region: content
   field_publication_date:
     type: datetime_default
-    weight: 0
-    region: content
     label: above
     settings:
       timezone_override: ''
@@ -62,6 +60,8 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
+    weight: 0
+    region: content
 hidden:
   addtoany: true
   body: true

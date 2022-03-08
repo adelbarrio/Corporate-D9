@@ -10,11 +10,11 @@ dependencies:
     - field.field.paragraph.multichoice.multichoice_score_chosen
     - field.field.paragraph.multichoice.multichoice_score_not_chosen
     - paragraphs.paragraphs_type.multichoice
+  module:
+    - text
   enforced:
     module:
       - quiz_multichoice
-  module:
-    - text
 _core:
   default_config_hash: OJXhsyJ1ZEg5ByaZykcJSWoElHDyy-XwBwLIZJc-Yd8
 id: paragraph.multichoice.default
@@ -23,53 +23,53 @@ bundle: multichoice
 mode: default
 content:
   multichoice_answer:
-    weight: 1
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 1
     region: content
   multichoice_correct:
-    weight: 0
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 0
     region: content
   multichoice_feedback_chosen:
-    weight: 2
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 2
     region: content
   multichoice_feedback_not_chosen:
-    weight: 3
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 3
     region: content
   multichoice_score_chosen:
-    weight: 4
+    type: number_integer
     label: above
     settings:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_integer
+    weight: 4
     region: content
   multichoice_score_not_chosen:
-    weight: 5
+    type: number_integer
     label: above
     settings:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_integer
+    weight: 5
     region: content
 hidden:
   breadcrumbs: true

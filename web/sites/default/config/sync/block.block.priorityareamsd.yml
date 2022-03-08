@@ -22,11 +22,11 @@ plugin: 'facet_block:priority_area_msd_'
 settings:
   id: 'facet_block:priority_area_msd_'
   label: 'Priority area'
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: priorityareamsd
 visibility:
   request_path:
     id: request_path
-    pages: /themes/musculoskeletal-disorders/search
     negate: false
+    pages: /themes/musculoskeletal-disorders/search

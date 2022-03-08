@@ -35,13 +35,13 @@ content:
   body:
     type: text_textarea_with_summary
     weight: 5
+    region: content
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
-    region: content
   created:
     type: datetime_timestamp
     weight: 20
@@ -49,92 +49,92 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_activity:
+    type: options_select
     weight: 14
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_additional_html:
+    type: text_textarea
     weight: 6
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea
-    region: content
   field_archived:
+    type: boolean_checkbox
     weight: 13
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_available_in_languages:
+    type: languagefield_select
     weight: 8
+    region: content
     settings:
       format:
         name: name
     third_party_settings: {  }
-    type: languagefield_select
-    region: content
   field_expiration_date:
+    type: datetime_default
     weight: 11
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: datetime_default
-    region: content
   field_external_url:
+    type: link_default
     weight: 7
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   field_legislation_category:
+    type: options_select
     weight: 2
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_nace_codes:
-    weight: 10
-    settings: {  }
-    third_party_settings: {  }
     type: multiple_options_select
+    weight: 10
     region: content
+    settings: {  }
+    third_party_settings: {  }
   field_publication_date:
-    weight: 3
-    settings: {  }
-    third_party_settings: {  }
     type: datetime_default
+    weight: 3
     region: content
-  field_section:
-    weight: 0
     settings: {  }
     third_party_settings: {  }
+  field_section:
     type: options_select
+    weight: 0
     region: content
+    settings: {  }
+    third_party_settings: {  }
   field_summary:
+    type: string_textarea
     weight: 4
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: string_textarea
-    region: content
   field_tags:
-    weight: 9
-    settings: {  }
-    third_party_settings: {  }
     type: options_select
+    weight: 9
     region: content
-  field_thesaurus_2020:
-    weight: 12
     settings: {  }
     third_party_settings: {  }
+  field_thesaurus_2020:
     type: multiple_options_select
+    weight: 12
     region: content
+    settings: {  }
+    third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
     weight: 15

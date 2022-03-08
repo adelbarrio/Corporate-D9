@@ -18,11 +18,11 @@ plugin: 'facet_block:available_in_languages_dangerous_substances_'
 settings:
   id: 'facet_block:available_in_languages_dangerous_substances_'
   label: Language
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: availableinlanguagesdangeroussubstances
 visibility:
   request_path:
     id: request_path
-    pages: /themes/dangerous-substances/search
     negate: false
+    pages: /themes/dangerous-substances/search

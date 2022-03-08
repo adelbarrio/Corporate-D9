@@ -22,11 +22,11 @@ plugin: 'facet_block:sector_indrustry_covered_msd_'
 settings:
   id: 'facet_block:sector_indrustry_covered_msd_'
   label: Sector
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: sectorindrustrycoveredmsd
 visibility:
   request_path:
     id: request_path
-    pages: /themes/musculoskeletal-disorders/search
     negate: false
+    pages: /themes/musculoskeletal-disorders/search

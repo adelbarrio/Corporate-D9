@@ -22,11 +22,11 @@ plugin: 'facet_block:purpose_of_the_material_practical_tools_msd_'
 settings:
   id: 'facet_block:purpose_of_the_material_practical_tools_msd_'
   label: 'Purpose of the material'
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: purposeofthematerialpracticaltoolsmsd
 visibility:
   request_path:
     id: request_path
-    pages: /themes/musculoskeletal-disorders/practical-tools-musculoskeletal-disorders
     negate: false
+    pages: /themes/musculoskeletal-disorders/practical-tools-musculoskeletal-disorders

@@ -39,37 +39,37 @@ bundle: article
 mode: full
 content:
   body:
-    label: hidden
-    weight: 3
     type: text_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 3
     region: content
   comment:
     type: comment_default
-    weight: 110
-    region: content
     label: above
     settings:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
-  content_moderation_control:
-    weight: 0
+    weight: 110
     region: content
+  content_moderation_control:
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
   field_aditional_resources:
-    label: hidden
-    weight: 4
     type: entity_reference_entity_view
+    label: hidden
     settings:
       view_mode: osha_resources
       link: false
     third_party_settings: {  }
+    weight: 4
     region: content
   field_image_caption:
-    weight: 1
+    type: entity_reference_entity_view
     label: hidden
     settings:
       view_mode: image_articles
@@ -82,37 +82,37 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: entity_reference_entity_view
+    weight: 1
     region: content
   field_related_oshwiki_articles:
     type: entity_reference_entity_view_delta
-    weight: 5
-    region: content
     label: above
     settings:
       view_mode: osha_wiki
+      link: false
       limit:
         number: ''
         offset: null
         reverse: false
         limit_before_sort: false
       sort:
-        field: ''
         asc: true
+        field: ''
       display:
-        number: 1
-        view_mode: default
         enable: false
-      link: false
+        view_mode: default
+        number: 1
     third_party_settings:
       ds:
         ds_limit: ''
+    weight: 5
+    region: content
   field_summary_html:
-    weight: 2
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 2
     region: content
 hidden:
   addtoany: true

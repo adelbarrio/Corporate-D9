@@ -16,10 +16,10 @@ plugin: 'quicktabs_block:careers_accordion'
 settings:
   id: 'quicktabs_block:careers_accordion'
   label: 'QuickTabs - Careers accordion'
-  provider: quicktabs
   label_display: '0'
+  provider: quicktabs
 visibility:
   request_path:
     id: request_path
-    pages: /node/21
     negate: false
+    pages: /node/21

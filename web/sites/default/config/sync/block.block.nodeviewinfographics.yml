@@ -18,13 +18,13 @@ plugin: 'block_content:a270deb0-c7c4-46ca-8e14-fee6064af2ca'
 settings:
   id: 'block_content:a270deb0-c7c4-46ca-8e14-fee6064af2ca'
   label: 'Node view Infographics'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full
 visibility:
   request_path:
     id: request_path
-    pages: "/tools-and-resources/infographics/*\r\n/tools-and-resources/infographics"
     negate: false
+    pages: "/tools-and-resources/infographics/*\r\n/tools-and-resources/infographics"

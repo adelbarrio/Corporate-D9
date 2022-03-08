@@ -2,11 +2,11 @@ uuid: 478ace4e-8013-457d-923e-6060844f20c2
 langcode: en
 status: true
 dependencies:
+  module:
+    - quiz
   enforced:
     module:
       - quiz
-  module:
-    - quiz
 _core:
   default_config_hash: tOzLMHVJG0n-Y5ZEUbhIVZDp4a2wWxXC1FociOextbA
 id: quiz_question.question

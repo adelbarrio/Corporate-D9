@@ -44,12 +44,12 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
   field_meta_tags:
+    type: metatag_firehose
     weight: 5
+    region: content
     settings:
       sidebar: true
     third_party_settings: {  }
-    type: metatag_firehose
-    region: content
   name:
     type: string_textfield
     weight: 0

@@ -22,11 +22,11 @@ plugin: 'facet_block:recommended_for_eu_osha_pictogram_guide'
 settings:
   id: 'facet_block:recommended_for_eu_osha_pictogram_guide'
   label: 'Recommended for EU-OSHA pictogram guide'
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: recommendedforeuoshapictogramguide
 visibility:
   request_path:
     id: request_path
-    pages: /themes/musculoskeletal-disorders/search
     negate: false
+    pages: /themes/musculoskeletal-disorders/search

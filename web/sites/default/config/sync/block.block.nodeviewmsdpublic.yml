@@ -18,13 +18,13 @@ plugin: 'block_content:59631c6e-346f-4641-9aec-51310a342237'
 settings:
   id: 'block_content:59631c6e-346f-4641-9aec-51310a342237'
   label: 'Node view msd public'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full
 visibility:
   request_path:
     id: request_path
-    pages: /themes/musculoskeletal-disorders/practical-tools-musculoskeletal-disorders
     negate: false
+    pages: /themes/musculoskeletal-disorders/practical-tools-musculoskeletal-disorders

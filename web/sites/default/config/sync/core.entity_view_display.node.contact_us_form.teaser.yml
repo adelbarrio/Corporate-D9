@@ -23,9 +23,9 @@ bundle: contact_us_form
 mode: teaser
 content:
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
 hidden:
   field_contact_us_address: true

@@ -5,11 +5,11 @@ dependencies:
   config:
     - field.storage.paragraph.multichoice_answer
     - paragraphs.paragraphs_type.multichoice
+  module:
+    - text
   enforced:
     module:
       - quiz_multichoice
-  module:
-    - text
 _core:
   default_config_hash: IPDuiPQccuVBMpWu-4VYHGppnHOWK1F5LHW01fMdgY4
 id: paragraph.multichoice.multichoice_answer

@@ -1,7 +1,16 @@
 uuid: 8435aca3-0252-438a-8d2e-ec2f306171ee
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - node.type.calls
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - media
+    - node
+    - workbench
+    - workbench_access
 id: procur_edt
 label: 'PROCUR EDT'
 weight: 7

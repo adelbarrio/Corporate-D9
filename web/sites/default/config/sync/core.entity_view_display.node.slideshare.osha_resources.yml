@@ -20,8 +20,6 @@ mode: osha_resources
 content:
   field_slideshare_url:
     type: link_separate
-    weight: 2
-    region: content
     label: hidden
     settings:
       trim_length: 250
@@ -37,12 +35,14 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
+    weight: 2
+    region: content
   field_thumbnail:
-    weight: 1
+    type: image
     label: hidden
     settings:
-      image_style: ''
       image_link: ''
+      image_style: ''
     third_party_settings:
       ds:
         ft:
@@ -51,13 +51,13 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: image
+    weight: 1
     region: content
   links:
-    weight: 0
-    region: content
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   addtoany: true
   breadcrumbs: true

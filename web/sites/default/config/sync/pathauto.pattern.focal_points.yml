@@ -12,20 +12,20 @@ pattern: 'about-eu-osha/national-focal-points/[node:title]'
 selection_criteria:
   9fb8c17a-2601-49b9-999b-d23db95cddcc:
     id: node_type
-    bundles:
-      fop_page: fop_page
     negate: false
+    uuid: 9fb8c17a-2601-49b9-999b-d23db95cddcc
     context_mapping:
       node: node
-    uuid: 9fb8c17a-2601-49b9-999b-d23db95cddcc
+    bundles:
+      fop_page: fop_page
   710da906-e9bd-4130-a581-e02c399f4064:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: 710da906-e9bd-4130-a581-e02c399f4064
     context_mapping:
       language: 'node:langcode:language'
-    uuid: 710da906-e9bd-4130-a581-e02c399f4064
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

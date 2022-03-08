@@ -1,7 +1,40 @@
 uuid: 23a587b8-9e9b-45ae-9b9c-e60fc7ccc07f
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.full_html_minimal
+    - node.type.25th_anniversary
+    - node.type.article
+    - node.type.blog
+    - node.type.calls
+    - node.type.highlight
+    - node.type.job_vacancies
+    - node.type.news
+    - node.type.newsletter_article
+    - node.type.newsletter_content
+    - node.type.page
+    - node.type.press_release
+    - node.type.publication
+    - node.type.seminar
+    - node.type.simplenews_issue
+    - workflows.workflow.editorial
+  module:
+    - conditional_fields
+    - content_moderation
+    - contextual
+    - file_entity
+    - filter
+    - media
+    - node
+    - osha_workflow
+    - path
+    - system
+    - toolbar
+    - workbench
+    - workbench_access
 id: approver
 label: Approver
 weight: -5
@@ -10,11 +43,8 @@ permissions:
   - 'access administration pages'
   - 'access content'
   - 'access contextual links'
-  - 'access dashboard'
-  - 'access media browser'
   - 'access toolbar'
   - 'access workbench'
-  - 'access workbench access by role'
   - 'administer approvers'
   - 'administer project_managers'
   - 'administer reviewers'
@@ -52,7 +82,6 @@ permissions:
   - 'edit any audio files'
   - 'edit any blog content'
   - 'edit any calls content'
-  - 'edit any content in to_be_approved'
   - 'edit any document files'
   - 'edit any highlight content'
   - 'edit any image files'
@@ -64,7 +93,6 @@ permissions:
   - 'edit any publication content'
   - 'edit any seminar content'
   - 'edit any video files'
-  - 'edit meta tags'
   - 'edit own 25th_anniversary content'
   - 'edit own article content'
   - 'edit own audio files'
@@ -81,35 +109,22 @@ permissions:
   - 'edit own publication content'
   - 'edit own seminar content'
   - 'edit own video files'
-  - 'moderate content from to_be_approved to approved'
-  - 'moderate content from to_be_approved to rejected'
-  - 'osha access administration pages'
   - 'use editorial transition from_to_be_approved_to_to_be_approved'
   - 'use editorial transition rejecting'
   - 'use editorial transition to_be_approved_to_approved'
-  - 'use manualcrop'
-  - 'use media wysiwyg'
   - 'use text format basic_html'
-  - 'use text format filtered_html'
   - 'use text format full_html'
   - 'use text format full_html_minimal'
   - 'use workbench access'
-  - 'use workbench_moderation my drafts tab'
   - 'view all revisions'
-  - 'view all unpublished content'
   - 'view any unpublished content'
   - 'view conditional fields'
   - 'view files'
   - 'view latest version'
   - 'view media'
-  - 'view moderation history'
-  - 'view moderation messages'
-  - 'view osh approver needs review tab'
-  - 'view osh content tab'
   - 'view own files'
   - 'view own private files'
   - 'view own unpublished content'
   - 'view private files'
-  - 'view revisions'
   - 'view the administration theme'
   - 'view workbench access information'

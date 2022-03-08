@@ -39,22 +39,21 @@ bundle: article
 mode: newsletter_items_blocks
 content:
   body:
-    label: hidden
-    weight: 1
     type: smart_trim
+    label: hidden
     settings:
       trim_length: 90
       trim_type: chars
       trim_suffix: ...
+      wrap_output: false
       wrap_class: trimmed
-      more_text: More
+      more_link: false
       more_class: more-link
+      more_text: More
       summary_handler: full
       trim_options:
         text: true
         trim_zero: false
-      wrap_output: false
-      more_link: false
     third_party_settings:
       ds:
         ft:
@@ -63,20 +62,19 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
+    weight: 1
     region: content
   comment:
     type: comment_default
-    weight: 110
-    region: content
     label: above
     settings:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
+    weight: 110
+    region: content
   field_publication_date:
     type: datetime_default
-    weight: 0
-    region: content
     label: above
     settings:
       timezone_override: ''
@@ -89,6 +87,8 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
+    weight: 0
+    region: content
 hidden:
   addtoany: true
   breadcrumbs: true

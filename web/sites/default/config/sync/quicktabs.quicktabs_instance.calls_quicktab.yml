@@ -5,17 +5,17 @@ dependencies: {  }
 id: calls_quicktab
 label: 'Calls quicktab'
 renderer: accordion_tabs
+hide_empty_tabs: false
+default_tab: 0
 options:
   quick_tabs:
+    ajax: false
     class: ''
     style: ''
-    ajax: false
   accordion_tabs:
     jquery_ui:
       collapsible: true
       heightStyle: auto
-hide_empty_tabs: false
-default_tab: 0
 configuration_data:
   -
     title: 'Open calls'

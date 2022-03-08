@@ -28,28 +28,28 @@ bundle: guideline
 mode: view
 content:
   body:
-    label: hidden
     type: smart_trim
-    weight: 0
+    label: hidden
     settings:
       trim_length: 300
       trim_type: chars
       trim_suffix: ...
+      wrap_output: false
       wrap_class: trimmed
       more_link: true
-      more_text: 'Read more'
       more_class: 'see-more-arrow minor-size'
+      more_text: 'Read more'
       summary_handler: full
       trim_options:
         text: true
         trim_zero: false
-      wrap_output: false
     third_party_settings: {  }
+    weight: 0
     region: content
   content_moderation_control:
-    weight: -20
     settings: {  }
     third_party_settings: {  }
+    weight: -20
     region: content
 hidden:
   addtoany: true

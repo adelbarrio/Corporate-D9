@@ -12,20 +12,20 @@ pattern: 'legislation/guidelines/[node:title]'
 selection_criteria:
   68d548f0-bae1-4d8e-80d1-bcb4f1372d25:
     id: node_type
-    bundles:
-      guideline: guideline
     negate: false
+    uuid: 68d548f0-bae1-4d8e-80d1-bcb4f1372d25
     context_mapping:
       node: node
-    uuid: 68d548f0-bae1-4d8e-80d1-bcb4f1372d25
+    bundles:
+      guideline: guideline
   189eda4c-087b-4f29-9da6-721cae0b3b53:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: 189eda4c-087b-4f29-9da6-721cae0b3b53
     context_mapping:
       language: 'node:langcode:language'
-    uuid: 189eda4c-087b-4f29-9da6-721cae0b3b53
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

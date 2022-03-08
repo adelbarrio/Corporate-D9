@@ -16,17 +16,16 @@ bundle: main
 mode: landing_menu
 content:
   children:
-    weight: 0
-    region: content
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
   field_image_menu_main:
     type: media_thumbnail
-    weight: 1
     label: hidden
     settings:
-      image_style: ''
       image_link: ''
+      image_style: ''
     third_party_settings:
       linked_field:
         linked: '1'
@@ -34,6 +33,7 @@ content:
         destination: link
         advanced: {  }
         token: ''
+    weight: 1
     region: content
 hidden:
   breadcrumbs: true

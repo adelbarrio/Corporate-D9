@@ -18,15 +18,15 @@ plugin: 'views_block:fop_flags-block_2'
 settings:
   id: 'views_block:fop_flags-block_2'
   label: ''
-  provider: views
   label_display: visible
+  provider: views
   views_label: ''
   items_per_page: none
 visibility:
-  node_type:
-    id: node_type
-    bundles:
-      fop_page: fop_page
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
+    bundles:
+      fop_page: fop_page

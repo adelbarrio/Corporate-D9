@@ -18,11 +18,11 @@ bundle: slideshare
 mode: default
 content:
   field_thumbnail:
-    weight: 1
+    type: image
     label: hidden
     settings:
-      image_style: ''
       image_link: ''
+      image_style: ''
     third_party_settings:
       ds:
         ft:
@@ -38,13 +38,13 @@ content:
         advanced:
           target: _blank
         token: ''
-    type: image
+    weight: 1
     region: content
   links:
-    weight: 0
-    region: content
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   addtoany: true
   breadcrumbs: true

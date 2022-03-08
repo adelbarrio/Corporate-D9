@@ -18,19 +18,19 @@ plugin: 'menu_block:main'
 settings:
   id: 'menu_block:main'
   label: 'Main navigation level 2'
-  provider: menu_block
   label_display: '0'
+  provider: menu_block
   follow: false
   follow_parent: active
+  label_link: false
+  label_type: block
   level: 2
   depth: 6
   expand_all_items: false
   parent: 'main:'
   suggestion: main
-  label_type: block
-  label_link: false
 visibility:
   request_path:
     id: request_path
-    pages: "/node/5445\r\n/themes/dangerous-substances/practical-tools-dangerous-substances\r\n/photo-gallery\r\n/photo-gallery/*\r\n/tools-and-publications\r\n/themes/musculoskeletal-disorders/practical-tools-musculoskeletal-disorders\r\n/tools-and-resources\r\n/tools-and-resources/blog\r\n/tools-and-resources/blog/*\r\n/blog/*\r\n/news-events\r\n/oshevents\r\n/highlights\r\n/highlights/*\r\n"
     negate: true
+    pages: "/node/5445\r\n/themes/dangerous-substances/practical-tools-dangerous-substances\r\n/photo-gallery\r\n/photo-gallery/*\r\n/tools-and-publications\r\n/themes/musculoskeletal-disorders/practical-tools-musculoskeletal-disorders\r\n/tools-and-resources\r\n/tools-and-resources/blog\r\n/tools-and-resources/blog/*\r\n/blog/*\r\n/news-events\r\n/oshevents\r\n/highlights\r\n/highlights/*\r\n"

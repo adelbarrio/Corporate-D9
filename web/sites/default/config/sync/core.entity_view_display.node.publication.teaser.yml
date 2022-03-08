@@ -44,13 +44,14 @@ third_party_settings:
   field_group:
     group_summary_resources:
       children: {  }
+      label: 'Summary & Resources'
       parent_name: ''
+      region: hidden
       weight: 43
       format_type: html_element
-      region: hidden
       format_settings:
-        id: ''
         classes: 'group-summary-resources field-group-html-element'
+        id: ''
         element: div
         show_label: true
         label_element: h3
@@ -58,7 +59,6 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
-      label: 'Summary & Resources'
   ds:
     layout:
       id: ds_1col
@@ -66,15 +66,15 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        label: ''
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        classes:
-          layout_class: {  }
+        label: ''
     regions:
       ds_content:
         - field_image_media
@@ -124,12 +124,10 @@ mode: teaser
 content:
   field_image_media:
     type: media_thumbnail
-    weight: 0
-    region: ds_content
     label: hidden
     settings:
-      image_style: cover_images
       image_link: ''
+      image_style: cover_images
     third_party_settings:
       ds:
         ft:
@@ -138,28 +136,28 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
+    weight: 0
+    region: ds_content
   field_pages_count:
     type: number_integer
-    weight: 3
-    region: ds_content
     label: hidden
     settings:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
+    weight: 3
+    region: ds_content
   field_publication_date:
-    weight: 1
+    type: datetime_default
     label: hidden
     settings:
       timezone_override: ''
       format_type: only_day
     third_party_settings: {  }
-    type: datetime_default
+    weight: 1
     region: ds_content
   field_publication_type:
     type: entity_reference_label
-    weight: 2
-    region: ds_content
     label: inline
     settings:
       link: true
@@ -171,6 +169,8 @@ content:
             lb: Type
             lb-col: true
             classes: {  }
+    weight: 2
+    region: ds_content
 hidden:
   addtoany: true
   body: true

@@ -18,11 +18,11 @@ plugin: 'facet_block:tags'
 settings:
   id: 'facet_block:tags'
   label: Topics
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: topics
 visibility:
   request_path:
     id: request_path
-    pages: "/publications\r\n"
     negate: false
+    pages: "/publications\r\n"

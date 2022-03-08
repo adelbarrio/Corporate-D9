@@ -2,11 +2,11 @@ uuid: 28910349-856b-42c0-b9bb-8c55cb4344b9
 langcode: en
 status: true
 dependencies:
+  module:
+    - node
   enforced:
     module:
       - contact_us
-  module:
-    - node
 _core:
   default_config_hash: FbbN5HFqhntWME6BNsGPLg7Q2g8j529_QzapZub5qOE
 id: node.field_contact_us_phone
@@ -15,8 +15,8 @@ entity_type: node
 type: string
 settings:
   max_length: 100
-  is_ascii: false
   case_sensitive: false
+  is_ascii: false
 module: core
 locked: false
 cardinality: 1

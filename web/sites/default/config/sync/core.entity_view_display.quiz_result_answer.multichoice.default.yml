@@ -16,10 +16,10 @@ bundle: multichoice
 mode: default
 content:
   table:
-    weight: 0
-    region: content
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   answer_feedback: true
   attempt: true

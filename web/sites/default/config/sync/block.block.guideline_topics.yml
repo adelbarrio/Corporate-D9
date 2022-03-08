@@ -22,11 +22,11 @@ plugin: 'facet_block:guideline_tags'
 settings:
   id: 'facet_block:guideline_tags'
   label: Topics
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: guideline_topics
 visibility:
   request_path:
     id: request_path
-    pages: '/search/*'
     negate: false
+    pages: '/search/*'

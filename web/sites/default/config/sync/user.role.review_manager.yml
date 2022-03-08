@@ -1,7 +1,126 @@
 uuid: 44e58933-7d62-426f-ac21-6d421e6119e2
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.full_html_minimal
+    - node.type.25th_anniversary
+    - node.type.article
+    - node.type.banner
+    - node.type.blog
+    - node.type.calls
+    - node.type.dangerous_substances
+    - node.type.directive
+    - node.type.events
+    - node.type.external_url
+    - node.type.file
+    - node.type.fop_page
+    - node.type.gallery
+    - node.type.guideline
+    - node.type.highlight
+    - node.type.infographic
+    - node.type.job_vacancies
+    - node.type.musculoskeletal_disorders
+    - node.type.news
+    - node.type.newsletter_article
+    - node.type.newsletter_content
+    - node.type.note_to_editor
+    - node.type.page
+    - node.type.press_contact
+    - node.type.press_release
+    - node.type.publication
+    - node.type.seminar
+    - node.type.simplenews_issue
+    - node.type.slideshare
+    - node.type.wiki_page
+    - node.type.youtube
+    - taxonomy.vocabulary.activity
+    - taxonomy.vocabulary.agency
+    - taxonomy.vocabulary.article_types
+    - taxonomy.vocabulary.attachment_file_type
+    - taxonomy.vocabulary.banner_links
+    - taxonomy.vocabulary.biological_hazard
+    - taxonomy.vocabulary.contact_topic
+    - taxonomy.vocabulary.contact_type
+    - taxonomy.vocabulary.contact_type_of_sender
+    - taxonomy.vocabulary.country
+    - taxonomy.vocabulary.country_status
+    - taxonomy.vocabulary.directive_type
+    - taxonomy.vocabulary.esener
+    - taxonomy.vocabulary.evaluation
+    - taxonomy.vocabulary.evaluation_quality_criteria
+    - taxonomy.vocabulary.exposure_route
+    - taxonomy.vocabulary.fop_link_sections
+    - taxonomy.vocabulary.glossary
+    - taxonomy.vocabulary.glossary_the
+    - taxonomy.vocabulary.glossary_type
+    - taxonomy.vocabulary.grade
+    - taxonomy.vocabulary.hashtag_terms
+    - taxonomy.vocabulary.hazard_health_effects
+    - taxonomy.vocabulary.hazard_physical_state
+    - taxonomy.vocabulary.hazards
+    - taxonomy.vocabulary.hazmap_categories
+    - taxonomy.vocabulary.health_effects
+    - taxonomy.vocabulary.legislation_category
+    - taxonomy.vocabulary.material_objective
+    - taxonomy.vocabulary.material_purpose
+    - taxonomy.vocabulary.msd_priority_area
+    - taxonomy.vocabulary.msds_glossary
+    - taxonomy.vocabulary.nace_codes
+    - taxonomy.vocabulary.newsletter_sections
+    - taxonomy.vocabulary.organised_by
+    - taxonomy.vocabulary.prevention_measures
+    - taxonomy.vocabulary.prevention_measures_msd
+    - taxonomy.vocabulary.priority_area
+    - taxonomy.vocabulary.provider_type
+    - taxonomy.vocabulary.publication_types
+    - taxonomy.vocabulary.purpose_of_material
+    - taxonomy.vocabulary.related_icons
+    - taxonomy.vocabulary.relevant_for
+    - taxonomy.vocabulary.resource_type
+    - taxonomy.vocabulary.section
+    - taxonomy.vocabulary.tags
+    - taxonomy.vocabulary.target_audience
+    - taxonomy.vocabulary.target_group
+    - taxonomy.vocabulary.thesaurus
+    - taxonomy.vocabulary.tooltips
+    - taxonomy.vocabulary.user_mention_terms
+    - taxonomy.vocabulary.wg_category
+    - taxonomy.vocabulary.wg_role_1
+    - taxonomy.vocabulary.wg_role_2
+    - taxonomy.vocabulary.wiki_categories
+    - taxonomy.vocabulary.worker_groups
+    - taxonomy.vocabulary.worker_groups_covered
+    - taxonomy.vocabulary.workflow_status
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - contextual
+    - entity_browser
+    - entityqueue
+    - file_entity
+    - filter
+    - mailsystem
+    - media
+    - node
+    - osha_lingua_tools
+    - osha_workflow
+    - path
+    - quick_node_clone
+    - scanner
+    - search_api_autocomplete
+    - search_autocomplete
+    - simplenews
+    - system
+    - taxonomy
+    - taxonomy_access_fix
+    - taxonomy_manager
+    - tmgmt
+    - toolbar
+    - workbench
+    - workbench_access
 id: review_manager
 label: 'Review Manager'
 weight: -7
@@ -14,34 +133,24 @@ permissions:
   - 'access content'
   - 'access content overview'
   - 'access contextual links'
-  - 'access dashboard'
   - 'access entity_additional_reference entity browser pages'
-  - 'access media browser'
   - 'access media overview'
   - 'access site in maintenance mode'
   - 'access taxonomy manager list'
   - 'access taxonomy overview'
   - 'access toolbar'
   - 'access workbench'
-  - 'access workbench access by role'
-  - 'add content to newsletter_content_collection entity collections'
   - 'administer approvers'
   - 'administer content types'
   - 'administer entityqueue'
   - 'administer media'
   - 'administer menu'
-  - 'administer menu attributes'
-  - 'administer menu positions'
-  - 'administer nodequeue'
   - 'administer nodes'
   - 'administer project_managers'
   - 'administer reviewers'
-  - 'administer search and replace settings'
   - 'administer taxonomy'
   - administer_mailsystem
-  - 'assign pm to node'
   - 'assign workbench access'
-  - 'bypass workbench moderation'
   - 'clone 25th_anniversary content'
   - 'clone article content'
   - 'clone banner content'
@@ -70,8 +179,6 @@ permissions:
   - 'create external_url content'
   - 'create file content'
   - 'create files'
-  - 'create flickr content'
-  - 'create flickr_gallery content'
   - 'create fop_page content'
   - 'create gallery content'
   - 'create guideline content'
@@ -83,7 +190,6 @@ permissions:
   - 'create news content'
   - 'create newsletter_article content'
   - 'create newsletter_content content'
-  - 'create newsletter_content_collection entity collections'
   - 'create note_to_editor content'
   - 'create page content'
   - 'create press_contact content'
@@ -157,8 +263,6 @@ permissions:
   - 'delete any directive content'
   - 'delete any external_url content'
   - 'delete any file content'
-  - 'delete any flickr content'
-  - 'delete any flickr_gallery content'
   - 'delete any gallery content'
   - 'delete any guideline content'
   - 'delete any infographic content'
@@ -178,7 +282,6 @@ permissions:
   - 'delete gallery revisions'
   - 'delete newsletter_article revisions'
   - 'delete newsletter_content revisions'
-  - 'delete newsletter_content_collection entity collections'
   - 'delete own audio files'
   - 'delete own calls content'
   - 'delete own directive content'
@@ -186,8 +289,6 @@ permissions:
   - 'delete own events content'
   - 'delete own external_url content'
   - 'delete own file content'
-  - 'delete own flickr content'
-  - 'delete own flickr_gallery content'
   - 'delete own gallery content'
   - 'delete own guideline content'
   - 'delete own image files'
@@ -221,22 +322,12 @@ permissions:
   - 'edit any banner content'
   - 'edit any blog content'
   - 'edit any calls content'
-  - 'edit any content in approved'
-  - 'edit any content in draft'
-  - 'edit any content in final_draft'
-  - 'edit any content in needs_review'
-  - 'edit any content in published'
-  - 'edit any content in ready_to_publish'
-  - 'edit any content in rejected'
-  - 'edit any content in to_be_approved'
   - 'edit any dangerous_substances content'
   - 'edit any directive content'
   - 'edit any document files'
   - 'edit any events content'
   - 'edit any external_url content'
   - 'edit any file content'
-  - 'edit any flickr content'
-  - 'edit any flickr_gallery content'
   - 'edit any fop_page content'
   - 'edit any gallery content'
   - 'edit any guideline content'
@@ -259,8 +350,6 @@ permissions:
   - 'edit any video files'
   - 'edit any wiki_page content'
   - 'edit any youtube content'
-  - 'edit meta tags'
-  - 'edit newsletter_content_collection entity collections'
   - 'edit own 25th_anniversary content'
   - 'edit own article content'
   - 'edit own audio files'
@@ -273,8 +362,6 @@ permissions:
   - 'edit own events content'
   - 'edit own external_url content'
   - 'edit own file content'
-  - 'edit own flickr content'
-  - 'edit own flickr_gallery content'
   - 'edit own fop_page content'
   - 'edit own gallery content'
   - 'edit own guideline content'
@@ -355,35 +442,8 @@ permissions:
   - 'edit terms in worker_groups'
   - 'edit terms in worker_groups_covered'
   - 'edit terms in workflow_status'
-  - 'manage content in newsletter_content_collection entity collections'
   - 'manipulate all entityqueues'
-  - 'manipulate all queues'
   - 'manipulate entityqueues'
-  - 'manipulate queues'
-  - 'moderate 25th_anniversary state from ready_to_publish to published'
-  - 'moderate article state from ready_to_publish to published'
-  - 'moderate calls state from ready_to_publish to published'
-  - 'moderate content from approved to ready_to_publish'
-  - 'moderate content from draft to final_draft'
-  - 'moderate content from final_draft to draft'
-  - 'moderate content from final_draft to needs_review'
-  - 'moderate content from final_draft to ready_to_publish'
-  - 'moderate content from final_draft to to_be_approved'
-  - 'moderate content from ready_to_publish to published'
-  - 'moderate content from rejected to draft'
-  - 'moderate content from rejected to final_draft'
-  - 'moderate content from rejected to ready_to_publish'
-  - 'moderate content from rejected to to_be_approved'
-  - 'moderate directive state from ready_to_publish to published'
-  - 'moderate guideline state from ready_to_publish to published'
-  - 'moderate highlight state from ready_to_publish to published'
-  - 'moderate infographic state from ready_to_publish to published'
-  - 'moderate job_vacancies state from ready_to_publish to published'
-  - 'moderate news state from ready_to_publish to published'
-  - 'moderate press_release state from ready_to_publish to published'
-  - 'moderate publication state from ready_to_publish to published'
-  - 'moderate seminar state from ready_to_publish to published'
-  - 'osha access administration pages'
   - 'perform search and replace'
   - 'perform search only'
   - 'reorder terms in activity'
@@ -449,7 +509,6 @@ permissions:
   - 'revert gallery revisions'
   - 'send newsletter'
   - 'submit translation jobs'
-  - 'undo search and replace'
   - 'update featured_press_release entityqueue'
   - 'update home_page_main_carousel entityqueue'
   - 'update home_page_recommended_resources entityqueue'
@@ -516,34 +575,23 @@ permissions:
   - 'use linguatools autocomplete'
   - 'use linguatools forms'
   - 'use linguatools forms for calls content'
-  - 'use manualcrop'
-  - 'use media wysiwyg'
-  - 'use search and replace'
   - 'use search autocomplete'
   - 'use search_api_autocomplete for search_autocomplete'
   - 'use text format basic_html'
-  - 'use text format filtered_html'
   - 'use text format full_html'
   - 'use text format full_html_minimal'
   - 'use workbench access'
-  - 'use workbench_moderation my drafts tab'
   - 'view all revisions'
-  - 'view all unpublished content'
   - 'view any unpublished content'
   - 'view files'
   - 'view gallery revisions'
   - 'view latest version'
-  - 'view moderation history'
-  - 'view moderation messages'
   - 'view newsletter_article revisions'
   - 'view newsletter_content revisions'
-  - 'view osh content tab'
-  - 'view osh review manager needs review tab'
   - 'view own files'
   - 'view own private files'
   - 'view own unpublished content'
   - 'view private files'
-  - 'view revisions'
   - 'view simplenews_issue revisions'
   - 'view terms in activity'
   - 'view terms in agency'

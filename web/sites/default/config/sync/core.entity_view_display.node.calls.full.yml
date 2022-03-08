@@ -28,15 +28,15 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        label: ''
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        classes:
-          layout_class: {  }
+        label: ''
     regions:
       ds_content:
         - content_moderation_control
@@ -56,44 +56,44 @@ bundle: calls
 mode: full
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 1
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 1
     region: ds_content
   content_moderation_control:
-    weight: -20
-    region: ds_content
     settings: {  }
     third_party_settings: {  }
+    weight: -20
+    region: ds_content
   field_calls_deadline:
-    weight: 2
+    type: datetime_default
     label: above
     settings:
       timezone_override: ''
       format_type: short
     third_party_settings: {  }
-    type: datetime_default
+    weight: 2
     region: ds_content
   field_related_resources_media:
-    weight: 3
+    type: entity_reference_entity_view_delta
     label: above
     settings:
       view_mode: default
+      link: false
       limit:
         number: ''
         offset: null
         reverse: false
         limit_before_sort: false
       sort:
-        field: ''
         asc: true
+        field: ''
       display:
-        number: 1
-        view_mode: default
         enable: false
-      link: false
+        view_mode: default
+        number: 1
     third_party_settings:
       ds:
         ds_limit: ''
@@ -103,7 +103,7 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: entity_reference_entity_view_delta
+    weight: 3
     region: ds_content
 hidden:
   addtoany: true

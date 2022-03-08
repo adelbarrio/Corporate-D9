@@ -32,13 +32,13 @@ content:
   body:
     type: text_textarea_with_summary
     weight: 7
+    region: content
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
-    region: content
   created:
     type: datetime_timestamp
     weight: 19
@@ -46,80 +46,80 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_activity:
+    type: options_select
     weight: 13
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_archived:
+    type: boolean_checkbox
     weight: 12
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_date_of_directive:
+    type: datetime_default
     weight: 5
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: datetime_default
-    region: content
   field_directive_type:
+    type: options_select
     weight: 2
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_expiration_date:
+    type: datetime_default
     weight: 11
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: datetime_default
-    region: content
   field_legislation_category:
+    type: options_select
     weight: 3
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_nace_codes:
-    weight: 9
-    settings: {  }
-    third_party_settings: {  }
     type: multiple_options_select
+    weight: 9
     region: content
+    settings: {  }
+    third_party_settings: {  }
   field_publication_date:
-    weight: 4
-    settings: {  }
-    third_party_settings: {  }
     type: datetime_default
+    weight: 4
     region: content
-  field_section:
-    weight: 0
     settings: {  }
     third_party_settings: {  }
+  field_section:
     type: options_select
+    weight: 0
     region: content
+    settings: {  }
+    third_party_settings: {  }
   field_summary:
+    type: string_textarea
     weight: 6
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: string_textarea
-    region: content
   field_tags:
-    weight: 8
-    settings: {  }
-    third_party_settings: {  }
     type: options_select
+    weight: 8
     region: content
-  field_thesaurus_2020:
-    weight: 10
     settings: {  }
     third_party_settings: {  }
+  field_thesaurus_2020:
     type: multiple_options_select
+    weight: 10
     region: content
+    settings: {  }
+    third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
     weight: 14

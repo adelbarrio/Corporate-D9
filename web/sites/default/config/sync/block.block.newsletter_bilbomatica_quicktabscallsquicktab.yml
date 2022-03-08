@@ -16,10 +16,10 @@ plugin: 'quicktabs_block:calls_quicktab'
 settings:
   id: 'quicktabs_block:calls_quicktab'
   label: 'QuickTabs - Calls quicktab'
-  provider: quicktabs
   label_display: '0'
+  provider: quicktabs
 visibility:
   request_path:
     id: request_path
-    pages: /node/1472
     negate: false
+    pages: /node/1472

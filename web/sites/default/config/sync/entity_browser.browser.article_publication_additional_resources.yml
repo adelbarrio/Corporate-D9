@@ -20,12 +20,12 @@ widget_selector: tabs
 widget_selector_configuration: {  }
 widgets:
   6d2263f9-3bca-44b7-a947-e44f4e7df50b:
+    id: view
+    uuid: 6d2263f9-3bca-44b7-a947-e44f4e7df50b
+    label: view
+    weight: 1
     settings:
-      view: additional_resources
-      view_display: entity_browser_2
       submit_text: 'Select entities'
       auto_select: false
-    uuid: 6d2263f9-3bca-44b7-a947-e44f4e7df50b
-    weight: 1
-    label: view
-    id: view
+      view: additional_resources
+      view_display: entity_browser_2

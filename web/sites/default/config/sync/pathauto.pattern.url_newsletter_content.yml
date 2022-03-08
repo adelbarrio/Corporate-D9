@@ -14,20 +14,20 @@ pattern: '/newsletter/[node:title]'
 selection_criteria:
   d32e75a1-50cf-4a3b-bdac-474f0a42cb5c:
     id: node_type
-    bundles:
-      newsletter_content: newsletter_content
     negate: false
+    uuid: d32e75a1-50cf-4a3b-bdac-474f0a42cb5c
     context_mapping:
       node: node
-    uuid: d32e75a1-50cf-4a3b-bdac-474f0a42cb5c
+    bundles:
+      newsletter_content: newsletter_content
   f33aeb8f-c71c-40ce-8558-9e957409eba7:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: f33aeb8f-c71c-40ce-8558-9e957409eba7
     context_mapping:
       language: 'node:langcode:language'
-    uuid: f33aeb8f-c71c-40ce-8558-9e957409eba7
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

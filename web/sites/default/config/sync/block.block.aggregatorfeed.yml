@@ -16,12 +16,12 @@ plugin: aggregator_feed_block
 settings:
   id: aggregator_feed_block
   label: 'EU-OSHA in the media'
-  provider: aggregator
   label_display: visible
+  provider: aggregator
   block_count: 3
   feed: '1'
 visibility:
   request_path:
     id: request_path
-    pages: "/about-eu-osha/press-room\r\n/highlights"
     negate: false
+    pages: "/about-eu-osha/press-room\r\n/highlights"

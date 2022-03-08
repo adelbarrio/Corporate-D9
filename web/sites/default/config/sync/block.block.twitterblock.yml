@@ -16,8 +16,8 @@ plugin: twitter_block
 settings:
   id: twitter_block
   label: 'Latest tweets'
-  provider: twitter_block
   label_display: visible
+  provider: twitter_block
   username: EU_OSHA
   theme: ''
   link_color: ''
@@ -37,5 +37,5 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "/tools-and-resources/blog\r\n/tools-and-resources/blog/*\r\n<front>\r\n/search/blog\r\n/blog/*\r\n"
     negate: false
+    pages: "/tools-and-resources/blog\r\n/tools-and-resources/blog/*\r\n<front>\r\n/search/blog\r\n/blog/*\r\n"

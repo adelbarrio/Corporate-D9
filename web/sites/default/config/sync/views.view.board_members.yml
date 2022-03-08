@@ -62,58 +62,12 @@ base_table: node_field_data
 base_field: nid
 display:
   default:
-    display_plugin: default
     id: default
     display_title: Master
+    display_plugin: default
     position: 0
     display_options:
-      access:
-        type: none
-        options: {  }
-      cache:
-        type: tag
-        options: {  }
-      query:
-        type: views_query
-        options:
-          disable_sql_rewrite: false
-          distinct: true
-          replica: false
-          query_comment: ''
-          query_tags: {  }
-      exposed_form:
-        type: basic
-        options:
-          submit_button: Apply
-          reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-      pager:
-        type: none
-        options:
-          offset: 0
-      style:
-        type: html_list
-        options:
-          grouping:
-            -
-              field: field_country
-              rendered: true
-              rendered_strip: false
-            -
-              field: field_wg_category
-              rendered: true
-              rendered_strip: false
-          row_class: revamp-row
-          default_row_class: true
-          type: ul
-          wrapper_class: item-list
-          class: ''
-      row:
-        type: fields
+      title: 'Board members'
       fields:
         field_country:
           id: field_country
@@ -122,6 +76,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -177,7 +132,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_wg_category:
           id: field_wg_category
           table: node__field_wg_category
@@ -185,6 +139,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -240,7 +195,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_wg_role_1:
           id: field_wg_role_1
           table: node__field_wg_role_1
@@ -248,6 +202,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -303,7 +258,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_personal_title:
           id: field_personal_title
           table: node__field_personal_title
@@ -311,6 +265,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -366,7 +321,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         title:
           id: title
           table: node_field_data
@@ -374,6 +328,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -429,9 +386,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: node
-          entity_field: title
-          plugin_id: field
         field_wg_role_2:
           id: field_wg_role_2
           table: node__field_wg_role_2
@@ -439,6 +393,7 @@ display:
           relationship: none
           group_type: group
           admin_label: 'WG Role 2 for CSS'
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -494,7 +449,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_wg_role_2_1:
           id: field_wg_role_2_1
           table: node__field_wg_role_2
@@ -502,6 +456,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -557,7 +512,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         nothing:
           id: nothing
           table: views
@@ -565,6 +519,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: custom
           label: ''
           exclude: false
           alter:
@@ -606,7 +561,6 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
-          plugin_id: custom
         field_press_contact_cv:
           id: field_press_contact_cv
           table: node__field_press_contact_cv
@@ -614,6 +568,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -669,7 +624,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_press_contact_declaration:
           id: field_press_contact_declaration
           table: node__field_press_contact_declaration
@@ -677,6 +631,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -732,7 +687,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         nothing_1:
           id: nothing_1
           table: views
@@ -740,6 +694,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: custom
           label: ''
           exclude: false
           alter:
@@ -781,7 +736,6 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
-          plugin_id: custom
         field_press_contact_organization:
           id: field_press_contact_organization
           table: node__field_press_contact_organization
@@ -789,6 +743,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -844,7 +799,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_location:
           id: field_location
           table: node__field_location
@@ -852,6 +806,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -907,7 +862,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_zip_code:
           id: field_zip_code
           table: node__field_zip_code
@@ -915,6 +869,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -970,7 +925,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_city:
           id: field_city
           table: node__field_city
@@ -978,6 +932,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -1033,7 +988,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_country_1:
           id: field_country_1
           table: node__field_country
@@ -1041,6 +995,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -1096,30 +1051,95 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
+      pager:
+        type: none
+        options:
+          offset: 0
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: none
+        options: {  }
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
+      sorts:
+        field_country_target_id:
+          id: field_country_target_id
+          table: node__field_country
+          field: field_country_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: field_country_target_id
+          exposed: false
+        weight:
+          id: weight
+          table: taxonomy_term_field_data
+          field: weight
+          relationship: field_wg_category
+          group_type: group
+          admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: weight
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: weight
+          exposed: false
+        weight_1:
+          id: weight_1
+          table: taxonomy_term_field_data
+          field: weight
+          relationship: field_wg_role_1
+          group_type: group
+          admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: weight
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: weight_1
+          exposed: false
+      arguments: {  }
       filters:
         status:
-          value: '1'
+          id: status
           table: node_field_data
           field: status
-          plugin_id: boolean
           entity_type: node
           entity_field: status
-          id: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
           expose:
             operator: ''
             operator_limit_selection: false
             operator_list: {  }
-          group: 1
         type:
           id: type
           table: node_field_data
           field: type
-          value:
-            press_contact: press_contact
           entity_type: node
           entity_field: type
           plugin_id: bundle
+          value:
+            press_contact: press_contact
           expose:
             operator_limit_selection: false
             operator_list: {  }
@@ -1130,6 +1150,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: taxonomy_index_tid
           operator: or
           value:
             - 2971
@@ -1163,12 +1184,11 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          type: shs
-          limit: true
           vid: contact_type
+          type: shs
           hierarchy: false
+          limit: true
           error_message: true
-          plugin_id: taxonomy_index_tid
         field_wg_category_target_id:
           id: field_wg_category_target_id
           table: node__field_wg_category
@@ -1176,6 +1196,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: taxonomy_index_tid
           operator: not
           value:
             3027: 3027
@@ -1210,12 +1231,11 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          type: shs
-          limit: true
           vid: wg_category
+          type: shs
           hierarchy: false
+          limit: true
           error_message: true
-          plugin_id: taxonomy_index_tid
         field_country_status_target_id:
           id: field_country_status_target_id
           table: taxonomy_term__field_country_status
@@ -1223,6 +1243,7 @@ display:
           relationship: field_country
           group_type: group
           admin_label: ''
+          plugin_id: taxonomy_index_tid
           operator: or
           value:
             3016: 3016
@@ -1256,57 +1277,38 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          type: shs
-          limit: true
           vid: country_status
+          type: shs
           hierarchy: false
+          limit: true
           error_message: true
-          plugin_id: taxonomy_index_tid
-      sorts:
-        field_country_target_id:
-          id: field_country_target_id
-          table: node__field_country
-          field: field_country_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          plugin_id: standard
-        weight:
-          id: weight
-          table: taxonomy_term_field_data
-          field: weight
-          relationship: field_wg_category
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          entity_type: taxonomy_term
-          entity_field: weight
-          plugin_id: standard
-        weight_1:
-          id: weight_1
-          table: taxonomy_term_field_data
-          field: weight
-          relationship: field_wg_role_1
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          entity_type: taxonomy_term
-          entity_field: weight
-          plugin_id: standard
-      title: 'Board members'
-      header: {  }
-      footer: {  }
-      empty: {  }
+      style:
+        type: html_list
+        options:
+          grouping:
+            -
+              field: field_country
+              rendered: true
+              rendered_strip: false
+            -
+              field: field_wg_category
+              rendered: true
+              rendered_strip: false
+          row_class: revamp-row
+          default_row_class: true
+          type: ul
+          wrapper_class: item-list
+          class: ''
+      row:
+        type: fields
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: true
+          replica: false
+          query_tags: {  }
       relationships:
         field_wg_category:
           id: field_wg_category
@@ -1320,8 +1322,8 @@ display:
           relationship: none
           group_type: group
           admin_label: 'field_wg_role_1: Taxonomy term'
-          required: false
           plugin_id: standard
+          required: false
         field_country:
           id: field_country
           table: node__field_country
@@ -1329,8 +1331,8 @@ display:
           relationship: none
           group_type: group
           admin_label: 'field_country: Taxonomy term'
-          required: true
           plugin_id: standard
+          required: true
         reverse__taxonomy_term__field_country_status:
           id: reverse__taxonomy_term__field_country_status
           table: taxonomy_term_field_data
@@ -1338,12 +1340,13 @@ display:
           relationship: field_wg_category
           group_type: group
           admin_label: field_country_status
-          required: false
           entity_type: taxonomy_term
           plugin_id: entity_reverse
-      arguments: {  }
-      display_extenders: {  }
+          required: false
       group_by: false
+      header: {  }
+      footer: {  }
+      display_extenders: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -1364,41 +1367,82 @@ display:
         - 'config:field.storage.node.field_wg_role_2'
         - 'config:field.storage.node.field_zip_code'
   block_1:
-    display_plugin: block
     id: block_1
     display_title: Block
+    display_plugin: block
     position: 1
     display_options:
-      display_extenders:
-        metatag_display_extender: {  }
-      rendering_language: '***LANGUAGE_language_interface***'
+      sorts:
+        field_iso2_value:
+          id: field_iso2_value
+          table: taxonomy_term__field_iso2
+          field: field_iso2_value
+          relationship: field_country
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: field_iso2_value
+          exposed: false
+        weight:
+          id: weight
+          table: taxonomy_term_field_data
+          field: weight
+          relationship: field_wg_category
+          group_type: group
+          admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: weight
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: weight
+          exposed: false
+        weight_1:
+          id: weight_1
+          table: taxonomy_term_field_data
+          field: weight
+          relationship: field_wg_role_1
+          group_type: group
+          admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: weight
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: weight_1
+          exposed: false
       filters:
         status:
-          value: '1'
+          id: status
           table: node_field_data
           field: status
-          plugin_id: boolean
           entity_type: node
           entity_field: status
-          id: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
           expose:
             operator: ''
             operator_limit_selection: false
             operator_list: {  }
-          group: 1
         type:
           id: type
           table: node_field_data
           field: type
-          value:
-            press_contact: press_contact
           entity_type: node
           entity_field: type
           plugin_id: bundle
+          value:
+            press_contact: press_contact
+          group: 1
           expose:
             operator_limit_selection: false
             operator_list: {  }
-          group: 1
         field_contact_type_target_id:
           id: field_contact_type_target_id
           table: node__field_contact_type
@@ -1406,6 +1450,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: taxonomy_index_tid
           operator: or
           value:
             6753: 6753
@@ -1439,12 +1484,11 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          type: shs
-          limit: true
           vid: contact_type
+          type: shs
           hierarchy: false
+          limit: true
           error_message: true
-          plugin_id: taxonomy_index_tid
         field_country_status_target_id:
           id: field_country_status_target_id
           table: taxonomy_term__field_country_status
@@ -1452,6 +1496,7 @@ display:
           relationship: field_country
           group_type: group
           admin_label: ''
+          plugin_id: taxonomy_index_tid
           operator: or
           value:
             3016: 3016
@@ -1485,12 +1530,11 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          type: shs
-          limit: true
           vid: country_status
+          type: shs
           hierarchy: false
+          limit: true
           error_message: true
-          plugin_id: taxonomy_index_tid
         field_is_observer_value:
           id: field_is_observer_value
           table: node__field_is_observer
@@ -1498,6 +1542,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: boolean
           operator: '='
           value: '0'
           group: 1
@@ -1528,7 +1573,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: boolean
         field_wg_role_1_target_id:
           id: field_wg_role_1_target_id
           table: node__field_wg_role_1
@@ -1536,6 +1580,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: taxonomy_index_tid
           operator: or
           value:
             3097: 3097
@@ -1582,12 +1627,11 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          type: shs
-          limit: true
           vid: wg_role_1
+          type: shs
           hierarchy: false
+          limit: true
           error_message: true
-          plugin_id: taxonomy_index_tid
         field_wg_category_target_id:
           id: field_wg_category_target_id
           table: node__field_wg_category
@@ -1595,6 +1639,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: taxonomy_index_tid
           operator: or
           value:
             302149: 302149
@@ -1637,61 +1682,22 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          type: shs
-          limit: true
           vid: wg_category
+          type: shs
           hierarchy: false
+          limit: true
           error_message: true
-          plugin_id: taxonomy_index_tid
-      defaults:
-        filters: false
-        filter_groups: false
-        sorts: false
       filter_groups:
         operator: AND
         groups:
           1: AND
-      sorts:
-        field_iso2_value:
-          id: field_iso2_value
-          table: taxonomy_term__field_iso2
-          field: field_iso2_value
-          relationship: field_country
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          plugin_id: standard
-        weight:
-          id: weight
-          table: taxonomy_term_field_data
-          field: weight
-          relationship: field_wg_category
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          entity_type: taxonomy_term
-          entity_field: weight
-          plugin_id: standard
-        weight_1:
-          id: weight_1
-          table: taxonomy_term_field_data
-          field: weight
-          relationship: field_wg_role_1
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          entity_type: taxonomy_term
-          entity_field: weight
-          plugin_id: standard
+      defaults:
+        sorts: false
+        filters: false
+        filter_groups: false
+      rendering_language: '***LANGUAGE_language_interface***'
+      display_extenders:
+        metatag_display_extender: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -1711,38 +1717,34 @@ display:
         - 'config:field.storage.node.field_wg_role_2'
         - 'config:field.storage.node.field_zip_code'
   block_2:
-    display_plugin: block
     id: block_2
     display_title: 'Block EFTA'
+    display_plugin: block
     position: 1
     display_options:
-      display_extenders:
-        metatag_display_extender: {  }
-      rendering_language: '***LANGUAGE_language_interface***'
-      display_description: ''
       filters:
         status:
-          value: '1'
+          id: status
           table: node_field_data
           field: status
-          plugin_id: boolean
           entity_type: node
           entity_field: status
-          id: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
           expose:
             operator: ''
             operator_limit_selection: false
             operator_list: {  }
-          group: 1
         type:
           id: type
           table: node_field_data
           field: type
-          value:
-            press_contact: press_contact
           entity_type: node
           entity_field: type
           plugin_id: bundle
+          value:
+            press_contact: press_contact
           expose:
             operator_limit_selection: false
             operator_list: {  }
@@ -1753,6 +1755,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: taxonomy_index_tid
           operator: or
           value:
             6753: 6753
@@ -1786,12 +1789,11 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          type: shs
-          limit: true
           vid: contact_type
+          type: shs
           hierarchy: false
+          limit: true
           error_message: true
-          plugin_id: taxonomy_index_tid
         field_wg_category_target_id:
           id: field_wg_category_target_id
           table: node__field_wg_category
@@ -1799,6 +1801,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: taxonomy_index_tid
           operator: not
           value:
             3027: 3027
@@ -1833,12 +1836,11 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          type: shs
-          limit: true
           vid: wg_category
+          type: shs
           hierarchy: false
+          limit: true
           error_message: true
-          plugin_id: taxonomy_index_tid
         field_country_status_target_id:
           id: field_country_status_target_id
           table: taxonomy_term__field_country_status
@@ -1846,6 +1848,7 @@ display:
           relationship: field_country
           group_type: group
           admin_label: ''
+          plugin_id: taxonomy_index_tid
           operator: or
           value:
             3017: 3017
@@ -1879,12 +1882,11 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          type: shs
-          limit: true
           vid: country_status
+          type: shs
           hierarchy: false
+          limit: true
           error_message: true
-          plugin_id: taxonomy_index_tid
         field_is_observer_value:
           id: field_is_observer_value
           table: node__field_is_observer
@@ -1892,6 +1894,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: boolean
           operator: '='
           value: '0'
           group: 1
@@ -1922,14 +1925,17 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: boolean
-      defaults:
-        filters: false
-        filter_groups: false
       filter_groups:
         operator: AND
         groups:
           1: AND
+      defaults:
+        filters: false
+        filter_groups: false
+      display_description: ''
+      rendering_language: '***LANGUAGE_language_interface***'
+      display_extenders:
+        metatag_display_extender: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -1949,195 +1955,11 @@ display:
         - 'config:field.storage.node.field_wg_role_2'
         - 'config:field.storage.node.field_zip_code'
   block_3:
-    display_plugin: block
     id: block_3
     display_title: 'Block Obs'
+    display_plugin: block
     position: 1
     display_options:
-      display_extenders:
-        metatag_display_extender: {  }
-      rendering_language: '***LANGUAGE_language_interface***'
-      display_description: ''
-      filters:
-        status:
-          value: '1'
-          table: node_field_data
-          field: status
-          plugin_id: boolean
-          entity_type: node
-          entity_field: status
-          id: status
-          expose:
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-          group: 1
-        type:
-          id: type
-          table: node_field_data
-          field: type
-          value:
-            press_contact: press_contact
-          entity_type: node
-          entity_field: type
-          plugin_id: bundle
-          expose:
-            operator_limit_selection: false
-            operator_list: {  }
-          group: 1
-        field_contact_type_target_id:
-          id: field_contact_type_target_id
-          table: node__field_contact_type
-          field: field_contact_type_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value:
-            6753: 6753
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: shs
-          limit: true
-          vid: contact_type
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
-        field_wg_role_1_target_id:
-          id: field_wg_role_1_target_id
-          table: node__field_wg_role_1
-          field: field_wg_role_1_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value:
-            24270: 24270
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: shs
-          limit: true
-          vid: wg_role_1
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
-      defaults:
-        filters: false
-        filter_groups: false
-        sorts: false
-        style: false
-        row: false
-        fields: false
-      filter_groups:
-        operator: AND
-        groups:
-          1: AND
-      sorts:
-        weight:
-          id: weight
-          table: taxonomy_term_field_data
-          field: weight
-          relationship: field_wg_category
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          entity_type: taxonomy_term
-          entity_field: weight
-          plugin_id: standard
-        weight_1:
-          id: weight_1
-          table: taxonomy_term_field_data
-          field: weight
-          relationship: field_wg_role_1
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          entity_type: taxonomy_term
-          entity_field: weight
-          plugin_id: standard
-      block_hide_empty: true
-      style:
-        type: html_list
-        options:
-          grouping:
-            -
-              field: nothing_2
-              rendered: true
-              rendered_strip: false
-            -
-              field: field_wg_category
-              rendered: true
-              rendered_strip: false
-          row_class: revamp-row
-          default_row_class: true
-          type: ul
-          wrapper_class: item-list
-          class: ''
-      row:
-        type: fields
-        options: {  }
       fields:
         field_country:
           id: field_country
@@ -2146,6 +1968,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -2201,7 +2024,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_wg_category:
           id: field_wg_category
           table: node__field_wg_category
@@ -2209,6 +2031,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -2264,7 +2087,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_wg_role_1:
           id: field_wg_role_1
           table: node__field_wg_role_1
@@ -2272,6 +2094,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -2327,7 +2150,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         nothing_2:
           id: nothing_2
           table: views
@@ -2335,6 +2157,7 @@ display:
           relationship: none
           group_type: group
           admin_label: 'Observer title text'
+          plugin_id: custom
           label: ''
           exclude: true
           alter:
@@ -2376,7 +2199,6 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
-          plugin_id: custom
         field_personal_title:
           id: field_personal_title
           table: node__field_personal_title
@@ -2384,6 +2206,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -2439,7 +2262,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         title:
           id: title
           table: node_field_data
@@ -2447,6 +2269,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -2502,9 +2327,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: node
-          entity_field: title
-          plugin_id: field
         field_wg_role_2:
           id: field_wg_role_2
           table: node__field_wg_role_2
@@ -2512,6 +2334,7 @@ display:
           relationship: none
           group_type: group
           admin_label: 'WG Role 2 for CSS'
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -2567,7 +2390,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_wg_role_2_1:
           id: field_wg_role_2_1
           table: node__field_wg_role_2
@@ -2575,6 +2397,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -2630,7 +2453,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         nothing:
           id: nothing
           table: views
@@ -2638,6 +2460,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: custom
           label: ''
           exclude: false
           alter:
@@ -2679,7 +2502,6 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
-          plugin_id: custom
         field_press_contact_cv:
           id: field_press_contact_cv
           table: node__field_press_contact_cv
@@ -2687,6 +2509,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -2742,7 +2565,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_press_contact_declaration:
           id: field_press_contact_declaration
           table: node__field_press_contact_declaration
@@ -2750,6 +2572,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -2805,7 +2628,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         nothing_1:
           id: nothing_1
           table: views
@@ -2813,6 +2635,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: custom
           label: ''
           exclude: false
           alter:
@@ -2854,7 +2677,6 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
-          plugin_id: custom
         field_press_contact_organization:
           id: field_press_contact_organization
           table: node__field_press_contact_organization
@@ -2862,6 +2684,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -2917,7 +2740,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_location:
           id: field_location
           table: node__field_location
@@ -2925,6 +2747,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -2980,7 +2803,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_zip_code:
           id: field_zip_code
           table: node__field_zip_code
@@ -2988,6 +2810,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -3043,7 +2866,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_city:
           id: field_city
           table: node__field_city
@@ -3051,6 +2873,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -3106,7 +2929,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_country_1:
           id: field_country_1
           table: node__field_country
@@ -3114,6 +2936,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -3169,57 +2992,61 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_interface'
-        - user
-        - 'user.node_grants:view'
-      tags:
-        - 'config:field.storage.node.field_city'
-        - 'config:field.storage.node.field_country'
-        - 'config:field.storage.node.field_location'
-        - 'config:field.storage.node.field_personal_title'
-        - 'config:field.storage.node.field_press_contact_cv'
-        - 'config:field.storage.node.field_press_contact_declaration'
-        - 'config:field.storage.node.field_press_contact_organization'
-        - 'config:field.storage.node.field_wg_category'
-        - 'config:field.storage.node.field_wg_role_1'
-        - 'config:field.storage.node.field_wg_role_2'
-        - 'config:field.storage.node.field_zip_code'
-  block_4:
-    display_plugin: block
-    id: block_4
-    display_title: 'Block Expert nominated by the european parliament'
-    position: 1
-    display_options:
-      display_extenders:
-        metatag_display_extender: {  }
-      rendering_language: '***LANGUAGE_language_interface***'
+      sorts:
+        weight:
+          id: weight
+          table: taxonomy_term_field_data
+          field: weight
+          relationship: field_wg_category
+          group_type: group
+          admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: weight
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: weight
+          exposed: false
+        weight_1:
+          id: weight_1
+          table: taxonomy_term_field_data
+          field: weight
+          relationship: field_wg_role_1
+          group_type: group
+          admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: weight
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: weight_1
+          exposed: false
       filters:
         status:
-          value: '1'
+          id: status
           table: node_field_data
           field: status
-          plugin_id: boolean
           entity_type: node
           entity_field: status
-          id: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
           expose:
             operator: ''
             operator_limit_selection: false
             operator_list: {  }
-          group: 1
         type:
           id: type
           table: node_field_data
           field: type
-          value:
-            press_contact: press_contact
           entity_type: node
           entity_field: type
           plugin_id: bundle
+          value:
+            press_contact: press_contact
+          group: 1
           expose:
             operator_limit_selection: false
             operator_list: {  }
@@ -3230,6 +3057,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: taxonomy_index_tid
           operator: or
           value:
             6753: 6753
@@ -3263,12 +3091,220 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          type: shs
-          limit: true
           vid: contact_type
+          type: shs
           hierarchy: false
+          limit: true
           error_message: true
+        field_wg_role_1_target_id:
+          id: field_wg_role_1_target_id
+          table: node__field_wg_role_1
+          field: field_wg_role_1_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
           plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            24270: 24270
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: wg_role_1
+          type: shs
+          hierarchy: false
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: html_list
+        options:
+          grouping:
+            -
+              field: nothing_2
+              rendered: true
+              rendered_strip: false
+            -
+              field: field_wg_category
+              rendered: true
+              rendered_strip: false
+          row_class: revamp-row
+          default_row_class: true
+          type: ul
+          wrapper_class: item-list
+          class: ''
+      row:
+        type: fields
+        options: {  }
+      defaults:
+        style: false
+        row: false
+        fields: false
+        sorts: false
+        filters: false
+        filter_groups: false
+      display_description: ''
+      rendering_language: '***LANGUAGE_language_interface***'
+      display_extenders:
+        metatag_display_extender: {  }
+      block_hide_empty: true
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - user
+        - 'user.node_grants:view'
+      tags:
+        - 'config:field.storage.node.field_city'
+        - 'config:field.storage.node.field_country'
+        - 'config:field.storage.node.field_location'
+        - 'config:field.storage.node.field_personal_title'
+        - 'config:field.storage.node.field_press_contact_cv'
+        - 'config:field.storage.node.field_press_contact_declaration'
+        - 'config:field.storage.node.field_press_contact_organization'
+        - 'config:field.storage.node.field_wg_category'
+        - 'config:field.storage.node.field_wg_role_1'
+        - 'config:field.storage.node.field_wg_role_2'
+        - 'config:field.storage.node.field_zip_code'
+  block_4:
+    id: block_4
+    display_title: 'Block Expert nominated by the european parliament'
+    display_plugin: block
+    position: 1
+    display_options:
+      sorts:
+        weight:
+          id: weight
+          table: taxonomy_term_field_data
+          field: weight
+          relationship: field_wg_category
+          group_type: group
+          admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: weight
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: weight
+          exposed: false
+        weight_1:
+          id: weight_1
+          table: taxonomy_term_field_data
+          field: weight
+          relationship: field_wg_role_1
+          group_type: group
+          admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: weight
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: weight_1
+          exposed: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            press_contact: press_contact
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        field_contact_type_target_id:
+          id: field_contact_type_target_id
+          table: node__field_contact_type
+          field: field_contact_type_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            6753: 6753
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: contact_type
+          type: shs
+          hierarchy: false
+          limit: true
+          error_message: true
         field_wg_category_target_id:
           id: field_wg_category_target_id
           table: node__field_wg_category
@@ -3276,6 +3312,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: taxonomy_index_tid
           operator: or
           value:
             4881: 4881
@@ -3309,50 +3346,23 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          type: shs
-          limit: true
           vid: wg_category
+          type: shs
           hierarchy: false
+          limit: true
           error_message: true
-          plugin_id: taxonomy_index_tid
-      defaults:
-        filters: false
-        filter_groups: false
-        sorts: false
       filter_groups:
         operator: AND
         groups:
           1: AND
-      sorts:
-        weight:
-          id: weight
-          table: taxonomy_term_field_data
-          field: weight
-          relationship: field_wg_category
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          entity_type: taxonomy_term
-          entity_field: weight
-          plugin_id: standard
-        weight_1:
-          id: weight_1
-          table: taxonomy_term_field_data
-          field: weight
-          relationship: field_wg_role_1
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          entity_type: taxonomy_term
-          entity_field: weight
-          plugin_id: standard
+      defaults:
+        sorts: false
+        filters: false
+        filter_groups: false
       display_description: ''
+      rendering_language: '***LANGUAGE_language_interface***'
+      display_extenders:
+        metatag_display_extender: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -3372,42 +3382,69 @@ display:
         - 'config:field.storage.node.field_wg_role_2'
         - 'config:field.storage.node.field_zip_code'
   block_5:
-    display_plugin: block
     id: block_5
     display_title: 'Block EC'
+    display_plugin: block
     position: 1
     display_options:
-      display_extenders:
-        metatag_display_extender: {  }
-      rendering_language: '***LANGUAGE_language_interface***'
-      display_description: ''
+      sorts:
+        weight_1:
+          id: weight_1
+          table: taxonomy_term_field_data
+          field: weight
+          relationship: field_wg_role_1
+          group_type: group
+          admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: weight
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: weight_1
+          exposed: false
+        weight:
+          id: weight
+          table: taxonomy_term_field_data
+          field: weight
+          relationship: field_wg_category
+          group_type: group
+          admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: weight
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: weight
+          exposed: false
       filters:
         status:
-          value: '1'
+          id: status
           table: node_field_data
           field: status
-          plugin_id: boolean
           entity_type: node
           entity_field: status
-          id: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
           expose:
             operator: ''
             operator_limit_selection: false
             operator_list: {  }
-          group: 1
         type:
           id: type
           table: node_field_data
           field: type
-          value:
-            press_contact: press_contact
           entity_type: node
           entity_field: type
           plugin_id: bundle
+          value:
+            press_contact: press_contact
+          group: 1
           expose:
             operator_limit_selection: false
             operator_list: {  }
-          group: 1
         field_contact_type_target_id:
           id: field_contact_type_target_id
           table: node__field_contact_type
@@ -3415,6 +3452,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: taxonomy_index_tid
           operator: or
           value:
             6753: 6753
@@ -3448,12 +3486,11 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          type: shs
-          limit: true
           vid: contact_type
+          type: shs
           hierarchy: false
+          limit: true
           error_message: true
-          plugin_id: taxonomy_index_tid
         field_wg_category_target_id:
           id: field_wg_category_target_id
           table: node__field_wg_category
@@ -3461,6 +3498,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: taxonomy_index_tid
           operator: or
           value:
             3027: 3027
@@ -3495,52 +3533,15 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          type: shs
-          limit: true
           vid: wg_category
+          type: shs
           hierarchy: false
+          limit: true
           error_message: true
-          plugin_id: taxonomy_index_tid
-      defaults:
-        filters: false
-        filter_groups: false
-        sorts: false
-        style: false
-        row: false
       filter_groups:
         operator: AND
         groups:
           1: AND
-      sorts:
-        weight_1:
-          id: weight_1
-          table: taxonomy_term_field_data
-          field: weight
-          relationship: field_wg_role_1
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          entity_type: taxonomy_term
-          entity_field: weight
-          plugin_id: standard
-        weight:
-          id: weight
-          table: taxonomy_term_field_data
-          field: weight
-          relationship: field_wg_category
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          entity_type: taxonomy_term
-          entity_field: weight
-          plugin_id: standard
-      block_hide_empty: true
       style:
         type: html_list
         options:
@@ -3561,6 +3562,17 @@ display:
       row:
         type: fields
         options: {  }
+      defaults:
+        style: false
+        row: false
+        sorts: false
+        filters: false
+        filter_groups: false
+      display_description: ''
+      rendering_language: '***LANGUAGE_language_interface***'
+      display_extenders:
+        metatag_display_extender: {  }
+      block_hide_empty: true
     cache_metadata:
       max-age: -1
       contexts:

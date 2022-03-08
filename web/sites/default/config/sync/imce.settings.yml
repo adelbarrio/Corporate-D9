@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: 4FhrEwOM9yJ8neEoN77sxroTRBUXqRwap0KSJtFnYJs
 abs_urls: false
 admin_theme: false
 roles_profiles:
@@ -5,5 +7,3 @@ roles_profiles:
     public: admin
   review_manager:
     public: admin
-_core:
-  default_config_hash: 4FhrEwOM9yJ8neEoN77sxroTRBUXqRwap0KSJtFnYJs

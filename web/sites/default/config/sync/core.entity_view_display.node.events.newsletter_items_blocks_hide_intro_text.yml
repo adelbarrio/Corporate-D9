@@ -56,11 +56,14 @@ third_party_settings:
       children:
         - field_location
         - field_organization
+      label: 'Event Details'
       parent_name: group_events_related_documents
+      region: ds_content
       weight: 5
       format_type: html_element
-      region: ds_content
       format_settings:
+        classes: 'group-events-event-details field-group-div'
+        id: ''
         element: div
         show_label: true
         label_element: h3
@@ -68,17 +71,17 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
-        id: ''
-        classes: 'group-events-event-details field-group-div'
-      label: 'Event Details'
     group_events_description:
       children:
         - body
+      label: Description
       parent_name: group_events_link
+      region: ds_content
       weight: 4
       format_type: html_element
-      region: ds_content
       format_settings:
+        classes: 'group-events-description field-group-div'
+        id: ''
         element: div
         show_label: true
         label_element: h3
@@ -86,19 +89,19 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
-        id: ''
-        classes: 'group-events-description field-group-div'
-      label: Description
     group_events_link:
       children:
         - group_events_related_documents
         - group_events_description
         - field_website_of_event
+      label: Link
       parent_name: ''
+      region: ds_content
       weight: 5
       format_type: html_element
-      region: ds_content
       format_settings:
+        classes: 'group-events-links field-group-div'
+        id: ''
         element: div
         show_label: true
         label_element: h3
@@ -106,18 +109,18 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
-        id: ''
-        classes: 'group-events-links field-group-div'
-      label: Link
     group_events_related_documents:
       children:
         - group_events_event_details
         - field_related_documents
+      label: 'Related resources'
       parent_name: group_events_link
+      region: ds_content
       weight: 3
       format_type: html_element
-      region: ds_content
       format_settings:
+        classes: 'group-events-related-documents field-group-div'
+        id: ''
         element: div
         show_label: true
         label_element: h3
@@ -125,9 +128,6 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
-        id: ''
-        classes: 'group-events-related-documents field-group-div'
-      label: 'Related resources'
   ds:
     layout:
       id: ds_1col
@@ -135,15 +135,15 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        label: ''
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        classes:
-          layout_class: {  }
+        label: ''
     regions:
       ds_content:
         - node_title
@@ -171,69 +171,67 @@ bundle: events
 mode: newsletter_items_blocks_hide_intro_text
 content:
   body:
-    label: hidden
-    weight: 1
     type: text_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 1
     region: ds_content
   content_moderation_control:
-    weight: -20
     settings: {  }
     third_party_settings: {  }
+    weight: -20
     region: content
   field_city:
-    label: inline
-    weight: 1
     type: string
+    label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 1
     region: ds_content
   field_country_code:
-    label: hidden
-    weight: 3
     type: list_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 3
     region: ds_content
   field_date:
-    weight: 2
+    type: daterange_default
     label: hidden
     settings:
       timezone_override: ''
       format_type: only_day
       separator: to
     third_party_settings: {  }
-    type: daterange_default
+    weight: 2
     region: ds_content
   field_location:
-    label: inline
-    weight: 2
     type: string
+    label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 2
     region: ds_content
   field_organization:
-    label: inline
-    weight: 5
     type: basic_string
+    label: inline
     settings: {  }
     third_party_settings: {  }
+    weight: 5
     region: ds_content
   field_related_documents:
-    label: hidden
-    weight: 6
     type: file_default
+    label: hidden
     settings:
       use_description_as_link_text: true
     third_party_settings: {  }
+    weight: 6
     region: ds_content
   field_website_of_event:
     type: link
-    weight: 5
-    region: ds_content
     label: hidden
     settings:
       trim_length: 80
@@ -242,6 +240,8 @@ content:
       rel: '0'
       target: '0'
     third_party_settings: {  }
+    weight: 5
+    region: ds_content
 hidden:
   addtoany: true
   breadcrumbs: true

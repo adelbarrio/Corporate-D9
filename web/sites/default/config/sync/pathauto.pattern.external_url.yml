@@ -12,20 +12,20 @@ pattern: 'additional-resources/external-url/[node:title]'
 selection_criteria:
   fe3f059a-6839-4eeb-a0e7-2815b8567fbf:
     id: node_type
-    bundles:
-      external_url: external_url
     negate: false
+    uuid: fe3f059a-6839-4eeb-a0e7-2815b8567fbf
     context_mapping:
       node: node
-    uuid: fe3f059a-6839-4eeb-a0e7-2815b8567fbf
+    bundles:
+      external_url: external_url
   eee19c3f-4429-4a0f-82d2-8b66e775b7de:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: eee19c3f-4429-4a0f-82d2-8b66e775b7de
     context_mapping:
       language: 'node:langcode:language'
-    uuid: eee19c3f-4429-4a0f-82d2-8b66e775b7de
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

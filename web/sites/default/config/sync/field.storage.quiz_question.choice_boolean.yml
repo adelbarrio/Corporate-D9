@@ -2,11 +2,11 @@ uuid: ce0fdf64-02b6-4685-af5a-8cb10f8b86c8
 langcode: en
 status: true
 dependencies:
+  module:
+    - quiz
   enforced:
     module:
       - quiz_multichoice
-  module:
-    - quiz
 _core:
   default_config_hash: r53i_p6x_MkoEvuJpLI0Y5Uy2LtY7JMwN_vwTK97644
 id: quiz_question.choice_boolean

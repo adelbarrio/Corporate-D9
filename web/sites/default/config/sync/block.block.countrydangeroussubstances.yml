@@ -18,11 +18,11 @@ plugin: 'facet_block:country_dangerous_substances_'
 settings:
   id: 'facet_block:country_dangerous_substances_'
   label: Country
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: countrydangeroussubstances
 visibility:
   request_path:
     id: request_path
-    pages: /themes/dangerous-substances/search
     negate: false
+    pages: /themes/dangerous-substances/search

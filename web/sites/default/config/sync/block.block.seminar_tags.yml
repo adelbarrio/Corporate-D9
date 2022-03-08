@@ -22,11 +22,11 @@ plugin: 'facet_block:seminar_tags'
 settings:
   id: 'facet_block:seminar_tags'
   label: Topics
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: seminar_tags
 visibility:
   request_path:
     id: request_path
-    pages: "/search/seminars\r\n/tools-and-resources/seminars"
     negate: false
+    pages: "/search/seminars\r\n/tools-and-resources/seminars"

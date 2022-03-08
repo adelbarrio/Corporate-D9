@@ -29,75 +29,34 @@ base_table: node_field_data
 base_field: nid
 display:
   default:
-    display_plugin: default
     id: default
     display_title: Master
+    display_plugin: default
     position: 0
     display_options:
-      access:
-        type: perm
-        options:
-          perm: 'access content'
-      cache:
-        type: tag
-        options: {  }
-      query:
-        type: views_query
-        options:
-          disable_sql_rewrite: false
-          distinct: false
-          replica: false
-          query_comment: ''
-          query_tags: {  }
-      exposed_form:
-        type: basic
-        options:
-          submit_button: Apply
-          reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-      pager:
-        type: some
-        options:
-          items_per_page: 5
-          offset: 0
-      style:
-        type: default
-        options:
-          grouping: {  }
-          row_class: ''
-          default_row_class: true
-      row:
-        type: fields
+      title: 'Related infographics'
       fields:
         title:
           id: title
           table: node_field_data
           field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
           entity_type: node
           entity_field: title
+          plugin_id: field
           label: ''
+          exclude: false
           alter:
             alter_text: false
             make_link: false
             absolute: false
-            trim: false
             word_boundary: false
             ellipsis: false
             strip_tags: false
+            trim: false
             html: false
-          hide_empty: false
-          empty_zero: false
-          settings:
-            link_to_entity: true
-          plugin_id: field
-          relationship: none
-          group_type: group
-          admin_label: ''
-          exclude: false
           element_type: ''
           element_class: ''
           element_label_type: ''
@@ -107,9 +66,13 @@ display:
           element_wrapper_class: ''
           element_default_classes: true
           empty: ''
+          hide_empty: false
+          empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
           type: string
+          settings:
+            link_to_entity: true
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -127,6 +90,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -171,8 +135,8 @@ display:
           click_sort_column: target_id
           type: media_thumbnail
           settings:
-            image_style: medium
             image_link: content
+            image_style: medium
           group_column: target_id
           group_columns: {  }
           group_rows: true
@@ -183,7 +147,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         body:
           id: body
           table: node__body
@@ -191,6 +154,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -245,21 +209,166 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 5
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
+      sorts:
+        field_publication_date_value:
+          id: field_publication_date_value
+          table: node__field_publication_date
+          field: field_publication_date_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: field_publication_date_value
+          exposed: false
+          granularity: minute
+      arguments:
+        nid:
+          id: nid
+          table: node_field_revision
+          field: nid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: node
+          default_argument_options: {  }
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+        term_node_tid_depth:
+          id: term_node_tid_depth
+          table: node_field_data
+          field: term_node_tid_depth
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: taxonomy_index_tid_depth
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: taxonomy_tid
+          default_argument_options:
+            term_page: '1'
+            node: true
+            limit: true
+            vids:
+              tags: tags
+            anyall: ','
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          depth: 0
+          use_taxonomy_term_path: false
+        term_node_tid_depth_modifier:
+          id: term_node_tid_depth_modifier
+          table: node_field_data
+          field: term_node_tid_depth_modifier
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: taxonomy_index_tid_depth_modifier
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options: null
+          default_argument_skip_url: false
+          summary_options: null
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
       filters:
         status:
-          value: '1'
+          id: status
           table: node_field_data
           field: status
-          plugin_id: boolean
           entity_type: node
           entity_field: status
-          id: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
           expose:
             operator: ''
             operator_limit_selection: false
             operator_list: {  }
-          group: 1
         type:
           id: type
           table: node_field_data
@@ -267,6 +376,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
           operator: in
           value:
             infographic: infographic
@@ -299,9 +411,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          entity_type: node
-          entity_field: type
-          plugin_id: bundle
         field_publication_date_value:
           id: field_publication_date_value
           table: node__field_publication_date
@@ -309,6 +418,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: datetime
           operator: '<='
           value:
             min: ''
@@ -331,9 +441,9 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            placeholder: ''
             min_placeholder: ''
             max_placeholder: ''
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -346,134 +456,25 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: datetime
-      sorts:
-        field_publication_date_value:
-          id: field_publication_date_value
-          table: node__field_publication_date
-          field: field_publication_date_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          order: DESC
-          exposed: false
-          expose:
-            label: ''
-          granularity: minute
-          plugin_id: datetime
-      title: 'Related infographics'
+      style:
+        type: default
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+      row:
+        type: fields
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {  }
+      relationships: {  }
       header: {  }
       footer: {  }
-      empty: {  }
-      relationships: {  }
-      arguments:
-        nid:
-          id: nid
-          table: node_field_revision
-          field: nid
-          relationship: none
-          group_type: group
-          admin_label: ''
-          default_action: default
-          exception:
-            value: all
-            title_enable: false
-            title: All
-          title_enable: false
-          title: ''
-          default_argument_type: node
-          default_argument_options: {  }
-          default_argument_skip_url: false
-          summary_options:
-            base_path: ''
-            count: true
-            items_per_page: 25
-            override: false
-          summary:
-            sort_order: asc
-            number_of_records: 0
-            format: default_summary
-          specify_validation: false
-          validate:
-            type: none
-            fail: 'not found'
-          validate_options: {  }
-          break_phrase: false
-          not: false
-          entity_type: node
-          entity_field: nid
-          plugin_id: node_nid
-        term_node_tid_depth:
-          id: term_node_tid_depth
-          table: node_field_data
-          field: term_node_tid_depth
-          relationship: none
-          group_type: group
-          admin_label: ''
-          default_action: default
-          exception:
-            value: all
-            title_enable: false
-            title: All
-          title_enable: false
-          title: ''
-          default_argument_type: taxonomy_tid
-          default_argument_options:
-            term_page: '1'
-            node: true
-            limit: true
-            vids:
-              tags: tags
-            anyall: ','
-          default_argument_skip_url: false
-          summary_options:
-            base_path: ''
-            count: true
-            items_per_page: 25
-            override: false
-          summary:
-            sort_order: asc
-            number_of_records: 0
-            format: default_summary
-          specify_validation: false
-          validate:
-            type: none
-            fail: 'not found'
-          validate_options: {  }
-          depth: 0
-          break_phrase: false
-          use_taxonomy_term_path: false
-          entity_type: node
-          plugin_id: taxonomy_index_tid_depth
-        term_node_tid_depth_modifier:
-          id: term_node_tid_depth_modifier
-          table: node_field_data
-          field: term_node_tid_depth_modifier
-          relationship: none
-          group_type: group
-          admin_label: ''
-          default_action: ignore
-          exception:
-            value: all
-            title_enable: false
-            title: All
-          title_enable: false
-          title: ''
-          default_argument_type: fixed
-          default_argument_options: null
-          default_argument_skip_url: false
-          summary_options: null
-          summary:
-            sort_order: asc
-            number_of_records: 0
-            format: default_summary
-          specify_validation: false
-          validate:
-            type: none
-            fail: 'not found'
-          validate_options: {  }
-          entity_type: node
-          plugin_id: taxonomy_index_tid_depth_modifier
       display_extenders: {  }
     cache_metadata:
       max-age: -1
@@ -487,15 +488,15 @@ display:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_thumbnail_media'
   block_1:
-    display_plugin: block
     id: block_1
     display_title: 'Related infographics'
+    display_plugin: block
     position: 1
     display_options:
-      display_extenders:
-        metatag_display_extender: {  }
       display_description: ''
       rendering_language: '***LANGUAGE_language_content***'
+      display_extenders:
+        metatag_display_extender: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -508,27 +509,12 @@ display:
         - 'config:field.storage.node.field_thumbnail_media'
     deleted: false
   block_3:
-    display_plugin: block
     id: block_3
     display_title: 'Tags Filter'
+    display_plugin: block
     position: 1
     display_options:
-      display_extenders:
-        metatag_display_extender: {  }
-      display_description: ''
-      rendering_language: '***LANGUAGE_language_interface***'
       title: 'Show infographics for'
-      defaults:
-        title: false
-        arguments: false
-        fields: false
-        pager: false
-        group_by: false
-        sorts: false
-        style: false
-        row: false
-        header: false
-      arguments: {  }
       fields:
         field_tags:
           id: field_tags
@@ -537,6 +523,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -581,15 +568,15 @@ display:
           click_sort_column: target_id
           type: entity_reference_label_delta
           settings:
-            link: 0
             limit:
               number: ''
               offset: null
               reverse: false
               limit_before_sort: false
             sort:
-              field: ''
               asc: false
+              field: ''
+            link: 0
           group_column: target_id
           group_columns: {  }
           group_rows: false
@@ -600,13 +587,12 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
       pager:
         type: none
         options:
           offset: 0
-      group_by: true
       sorts: {  }
+      arguments: {  }
       style:
         type: default
         options:
@@ -616,6 +602,18 @@ display:
       row:
         type: fields
         options: {  }
+      defaults:
+        title: false
+        pager: false
+        group_by: false
+        style: false
+        row: false
+        fields: false
+        sorts: false
+        arguments: false
+        header: false
+      group_by: true
+      display_description: ''
       header:
         area_text_custom:
           id: area_text_custom
@@ -624,10 +622,13 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          empty: false
-          tokenize: false
-          content: '<div class="views-row moved-by-jquery"><a href="/tools-and-resources/infographics">All topics</a></div>'
           plugin_id: text_custom
+          empty: false
+          content: '<div class="views-row moved-by-jquery"><a href="/tools-and-resources/infographics">All topics</a></div>'
+          tokenize: false
+      rendering_language: '***LANGUAGE_language_interface***'
+      display_extenders:
+        metatag_display_extender: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -638,66 +639,13 @@ display:
         - 'config:field.storage.node.field_tags'
     deleted: false
   page_1:
-    display_plugin: page
     id: page_1
     display_title: Page
+    display_plugin: page
     position: 1
     display_options:
-      display_extenders:
-        metatag_display_extender: {  }
-      display_description: ''
-      rendering_language: '***LANGUAGE_language_content***'
+      enabled: true
       title: ''
-      defaults:
-        title: false
-        arguments: false
-        fields: false
-        pager: false
-        style: false
-        row: false
-        query: false
-        sorts: false
-      arguments:
-        field_tags_target_id:
-          id: field_tags_target_id
-          table: node__field_tags
-          field: field_tags_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          default_action: ignore
-          exception:
-            value: all
-            title_enable: false
-            title: All
-          title_enable: false
-          title: ''
-          default_argument_type: fixed
-          default_argument_options:
-            argument: ''
-          default_argument_skip_url: false
-          summary_options:
-            base_path: ''
-            count: true
-            items_per_page: 25
-            override: false
-          summary:
-            sort_order: asc
-            number_of_records: 0
-            format: default_summary
-          specify_validation: true
-          validate:
-            type: 'entity:taxonomy_term'
-            fail: ignore
-          validate_options:
-            bundles:
-              tags: tags
-            operation: view
-            multiple: 0
-            access: false
-          break_phrase: false
-          not: false
-          plugin_id: numeric
       fields:
         title:
           id: title
@@ -706,6 +654,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -761,9 +712,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: node
-          entity_field: title
-          plugin_id: field
         field_image_media:
           id: field_image_media
           table: node__field_image_media
@@ -771,6 +719,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -815,8 +764,8 @@ display:
           click_sort_column: target_id
           type: media_thumbnail
           settings:
-            image_style: infographic_thumbnail
             image_link: content
+            image_style: infographic_thumbnail
           group_column: target_id
           group_columns: {  }
           group_rows: true
@@ -827,7 +776,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_thumbnail_media:
           id: field_thumbnail_media
           table: node__field_thumbnail_media
@@ -835,6 +783,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -879,8 +828,8 @@ display:
           click_sort_column: target_id
           type: media_thumbnail
           settings:
-            image_style: infographic_thumbail_view
             image_link: content
+            image_style: infographic_thumbail_view
           group_column: target_id
           group_columns: {  }
           group_rows: true
@@ -891,7 +840,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         body:
           id: body
           table: node__body
@@ -899,6 +847,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -953,35 +902,10 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
       pager:
         type: none
         options:
           offset: 0
-      style:
-        type: grid
-        options:
-          grouping: {  }
-          columns: 12
-          automatic_width: false
-          alignment: horizontal
-          col_class_default: true
-          col_class_custom: 'col-12 col-sm-6 col-lg-4 infographic-item-view'
-          row_class_default: false
-          row_class_custom: row
-      row:
-        type: fields
-        options: {  }
-      path: tools-and-resources/infographics
-      query:
-        type: views_query
-        options:
-          disable_sql_rewrite: false
-          distinct: true
-          replica: false
-          query_comment: ''
-          query_tags: null
-      enabled: true
       sorts:
         field_publication_date_value:
           id: field_publication_date_value
@@ -990,12 +914,13 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: datetime
           order: DESC
-          exposed: false
           expose:
             label: ''
+            field_identifier: field_publication_date_value
+          exposed: false
           granularity: minute
-          plugin_id: datetime
         nid:
           id: nid
           table: node_field_data
@@ -1003,13 +928,91 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
           entity_type: node
           entity_field: nid
           plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: nid
+          exposed: false
+      arguments:
+        field_tags_target_id:
+          id: field_tags_target_id
+          table: node__field_tags
+          field: field_tags_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: numeric
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: true
+          validate:
+            type: 'entity:taxonomy_term'
+            fail: ignore
+          validate_options:
+            bundles:
+              tags: tags
+            access: false
+            operation: view
+            multiple: 0
+          break_phrase: false
+          not: false
+      style:
+        type: grid
+        options:
+          grouping: {  }
+          columns: 12
+          automatic_width: false
+          alignment: horizontal
+          row_class_custom: row
+          row_class_default: false
+          col_class_custom: 'col-12 col-sm-6 col-lg-4 infographic-item-view'
+          col_class_default: true
+      row:
+        type: fields
+        options: {  }
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: true
+          replica: false
+          query_tags: null
+      defaults:
+        query: false
+        title: false
+        pager: false
+        style: false
+        row: false
+        fields: false
+        sorts: false
+        arguments: false
+      display_description: ''
+      rendering_language: '***LANGUAGE_language_content***'
+      display_extenders:
+        metatag_display_extender: {  }
+      path: tools-and-resources/infographics
     cache_metadata:
       max-age: -1
       contexts:
@@ -1023,65 +1026,12 @@ display:
         - 'config:field.storage.node.field_thumbnail_media'
     deleted: false
   page_2:
-    display_plugin: page
     id: page_2
     display_title: 'Filtered Page'
+    display_plugin: page
     position: 1
     display_options:
-      display_extenders:
-        metatag_display_extender: {  }
-      display_description: ''
-      rendering_language: '***LANGUAGE_language_content***'
       title: ''
-      defaults:
-        title: false
-        arguments: false
-        fields: false
-        pager: false
-        style: false
-        row: false
-        query: false
-      arguments:
-        field_tags_target_id:
-          id: field_tags_target_id
-          table: node__field_tags
-          field: field_tags_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          default_action: ignore
-          exception:
-            value: all
-            title_enable: false
-            title: All
-          title_enable: false
-          title: ''
-          default_argument_type: fixed
-          default_argument_options:
-            argument: ''
-          default_argument_skip_url: false
-          summary_options:
-            base_path: ''
-            count: true
-            items_per_page: 25
-            override: false
-          summary:
-            sort_order: asc
-            number_of_records: 0
-            format: default_summary
-          specify_validation: true
-          validate:
-            type: 'entity:taxonomy_term'
-            fail: ignore
-          validate_options:
-            bundles:
-              tags: tags
-            operation: view
-            multiple: 0
-            access: false
-          break_phrase: false
-          not: false
-          plugin_id: numeric
       fields:
         title:
           id: title
@@ -1090,6 +1040,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -1145,9 +1098,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: node
-          entity_field: title
-          plugin_id: field
         field_image_media:
           id: field_image_media
           table: node__field_image_media
@@ -1155,6 +1105,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -1199,8 +1150,8 @@ display:
           click_sort_column: target_id
           type: media_thumbnail
           settings:
-            image_style: infographic_thumbnail
             image_link: content
+            image_style: infographic_thumbnail
           group_column: target_id
           group_columns: {  }
           group_rows: true
@@ -1211,7 +1162,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_thumbnail_media:
           id: field_thumbnail_media
           table: node__field_thumbnail_media
@@ -1219,6 +1169,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -1263,8 +1214,8 @@ display:
           click_sort_column: target_id
           type: media_thumbnail
           settings:
-            image_style: infographic_thumbnail
             image_link: content
+            image_style: infographic_thumbnail
           group_column: target_id
           group_columns: {  }
           group_rows: true
@@ -1275,7 +1226,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         body:
           id: body
           table: node__body
@@ -1283,6 +1233,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -1337,11 +1288,51 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
       pager:
         type: none
         options:
           offset: 0
+      arguments:
+        field_tags_target_id:
+          id: field_tags_target_id
+          table: node__field_tags
+          field: field_tags_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: numeric
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: true
+          validate:
+            type: 'entity:taxonomy_term'
+            fail: ignore
+          validate_options:
+            bundles:
+              tags: tags
+            access: false
+            operation: view
+            multiple: 0
+          break_phrase: false
+          not: false
       style:
         type: grid
         options:
@@ -1349,22 +1340,34 @@ display:
           columns: 12
           automatic_width: false
           alignment: horizontal
-          col_class_default: true
-          col_class_custom: 'col-12 col-sm-6 col-lg-4 infographic-item-view'
-          row_class_default: false
           row_class_custom: row
+          row_class_default: false
+          col_class_custom: 'col-12 col-sm-6 col-lg-4 infographic-item-view'
+          col_class_default: true
       row:
         type: fields
         options: {  }
-      path: tools-and-resources/infographics/%
       query:
         type: views_query
         options:
+          query_comment: ''
           disable_sql_rewrite: false
           distinct: true
           replica: false
-          query_comment: ''
           query_tags: null
+      defaults:
+        query: false
+        title: false
+        pager: false
+        style: false
+        row: false
+        fields: false
+        arguments: false
+      display_description: ''
+      rendering_language: '***LANGUAGE_language_content***'
+      display_extenders:
+        metatag_display_extender: {  }
+      path: tools-and-resources/infographics/%
     cache_metadata:
       max-age: -1
       contexts:

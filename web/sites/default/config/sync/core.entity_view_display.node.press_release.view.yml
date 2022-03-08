@@ -36,15 +36,15 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        label: ''
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        classes:
-          layout_class: {  }
+        label: ''
     regions:
       ds_content:
         - content_moderation_control
@@ -69,44 +69,44 @@ bundle: press_release
 mode: view
 content:
   content_moderation_control:
-    weight: -20
-    region: ds_content
     settings: {  }
     third_party_settings: {  }
+    weight: -20
+    region: ds_content
   field_image_media:
-    weight: 2
+    type: media_thumbnail
     label: hidden
     settings:
-      image_style: thumbnail
       image_link: ''
+      image_style: thumbnail
     third_party_settings: {  }
-    type: media_thumbnail
+    weight: 2
     region: ds_content
   field_publication_date:
-    weight: 0
+    type: datetime_default
     label: hidden
     settings:
       timezone_override: ''
       format_type: eu_short_date
     third_party_settings: {  }
-    type: datetime_default
+    weight: 0
     region: ds_content
   field_summary_html:
-    weight: 3
+    type: smart_trim
     label: hidden
     settings:
       trim_length: 380
       trim_type: chars
       trim_suffix: ...
+      wrap_output: false
       wrap_class: trimmed
       more_link: true
-      more_text: 'Show details'
       more_class: 'see-more-arrow minor-size'
+      more_text: 'Show details'
+      summary_handler: full
       trim_options:
         text: true
         trim_zero: false
-      wrap_output: false
-      summary_handler: full
     third_party_settings:
       ds:
         ft:
@@ -115,7 +115,7 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: smart_trim
+    weight: 3
     region: ds_content
 hidden:
   addtoany: true

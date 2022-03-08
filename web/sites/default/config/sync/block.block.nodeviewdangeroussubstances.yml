@@ -18,13 +18,13 @@ plugin: 'block_content:d1c9992d-0155-44c1-917e-b7dd23dc5ed1'
 settings:
   id: 'block_content:d1c9992d-0155-44c1-917e-b7dd23dc5ed1'
   label: 'Node view Dangerous substances'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full
 visibility:
   request_path:
     id: request_path
-    pages: /themes/dangerous-substances/practical-tools-dangerous-substances
     negate: false
+    pages: /themes/dangerous-substances/practical-tools-dangerous-substances

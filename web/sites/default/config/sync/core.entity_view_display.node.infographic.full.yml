@@ -28,25 +28,25 @@ bundle: infographic
 mode: full
 content:
   body:
-    weight: 1
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 1
     region: content
   content_moderation_control:
-    weight: -20
-    region: content
     settings: {  }
     third_party_settings: {  }
+    weight: -20
+    region: content
   field_thumbnail_media:
     type: media_thumbnail
-    weight: 0
     label: hidden
     settings:
-      image_style: infographic_thumbnail
       image_link: ''
+      image_style: infographic_thumbnail
     third_party_settings: {  }
+    weight: 0
     region: content
 hidden:
   addtoany: true

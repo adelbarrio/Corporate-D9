@@ -22,11 +22,11 @@ plugin: 'facet_block:topics'
 settings:
   id: 'facet_block:topics'
   label: Topics
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: topics_2
 visibility:
   request_path:
     id: request_path
-    pages: /search/site
     negate: false
+    pages: /search/site

@@ -12,20 +12,20 @@ pattern: 'about-eu-osha/careers/[node:title]'
 selection_criteria:
   0b1d52ef-6a0b-4c97-89b9-b817be16d2a6:
     id: node_type
-    bundles:
-      job_vacancies: job_vacancies
     negate: false
+    uuid: 0b1d52ef-6a0b-4c97-89b9-b817be16d2a6
     context_mapping:
       node: node
-    uuid: 0b1d52ef-6a0b-4c97-89b9-b817be16d2a6
+    bundles:
+      job_vacancies: job_vacancies
   9671b2da-be88-4da9-b2c0-7e064e399cda:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: 9671b2da-be88-4da9-b2c0-7e064e399cda
     context_mapping:
       language: 'node:langcode:language'
-    uuid: 9671b2da-be88-4da9-b2c0-7e064e399cda
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

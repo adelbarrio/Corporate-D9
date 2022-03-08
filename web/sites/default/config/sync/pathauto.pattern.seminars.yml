@@ -12,20 +12,20 @@ pattern: 'tools-and-resources/seminars/[node:title]'
 selection_criteria:
   b2800607-2742-480f-a39f-09d6c605da95:
     id: node_type
-    bundles:
-      seminar: seminar
     negate: false
+    uuid: b2800607-2742-480f-a39f-09d6c605da95
     context_mapping:
       node: node
-    uuid: b2800607-2742-480f-a39f-09d6c605da95
+    bundles:
+      seminar: seminar
   201bdd66-2bb2-4e2d-b04b-37d654ab99f2:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: 201bdd66-2bb2-4e2d-b04b-37d654ab99f2
     context_mapping:
       language: 'node:langcode:language'
-    uuid: 201bdd66-2bb2-4e2d-b04b-37d654ab99f2
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

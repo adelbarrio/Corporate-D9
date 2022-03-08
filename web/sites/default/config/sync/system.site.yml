@@ -1,3 +1,6 @@
+_core:
+  default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE
+langcode: en
 uuid: d8c2980d-01f5-42cb-ad38-682e78b9973e
 name: 'Safety and health at work EU-OSHA'
 mail: no-reply@osha.europa.eu
@@ -8,8 +11,5 @@ page:
   front: /node/28067
 admin_compact_mode: false
 weight_select_max: 100
-langcode: en
 default_langcode: en
-_core:
-  default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE
 mail_notification: ''

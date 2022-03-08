@@ -22,11 +22,11 @@ plugin: 'facet_block:purpose_of_the_material_msd_'
 settings:
   id: 'facet_block:purpose_of_the_material_msd_'
   label: 'Purpose of the material'
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: purposeofthematerialmsd
 visibility:
   request_path:
     id: request_path
-    pages: /themes/musculoskeletal-disorders/search
     negate: false
+    pages: /themes/musculoskeletal-disorders/search

@@ -22,21 +22,21 @@ bundle: youtube
 mode: newsletter_item
 content:
   body:
-    weight: 1
+    type: smart_trim
     label: hidden
     settings:
       trim_length: 250
       trim_type: chars
       trim_suffix: ...
+      wrap_output: false
       wrap_class: trimmed
-      more_text: More
+      more_link: false
       more_class: more-link
+      more_text: More
       summary_handler: full
       trim_options:
         text: true
         trim_zero: false
-      wrap_output: false
-      more_link: false
     third_party_settings:
       ds:
         ft:
@@ -45,16 +45,14 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: smart_trim
+    weight: 1
     region: content
   field_image_for_oshmail:
     type: image
-    weight: 0
-    region: content
     label: hidden
     settings:
-      image_style: oshmail
       image_link: ''
+      image_style: oshmail
     third_party_settings:
       ds:
         ft:
@@ -63,6 +61,8 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
+    weight: 0
+    region: content
 hidden:
   addtoany: true
   breadcrumbs: true

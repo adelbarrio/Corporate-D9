@@ -1,8 +1,4 @@
 display:
   default:
     display_options:
-      filters:
-        field_glossary_type_target_id:
-          expose:
-            description: ''
       title: 'Речник на термините'

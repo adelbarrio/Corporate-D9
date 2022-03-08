@@ -15,7 +15,7 @@ bundle: external_url
 mode: teaser
 content:
   field_external_url:
-    weight: 0
+    type: link
     label: hidden
     settings:
       trim_length: 80
@@ -24,7 +24,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 0
     region: content
 hidden:
   addtoany: true
