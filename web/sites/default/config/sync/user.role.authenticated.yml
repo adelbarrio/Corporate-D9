@@ -12,7 +12,6 @@ dependencies:
     - exclude_node_title
     - file_entity
     - filter
-    - matomo
     - media
     - node
     - quiz
