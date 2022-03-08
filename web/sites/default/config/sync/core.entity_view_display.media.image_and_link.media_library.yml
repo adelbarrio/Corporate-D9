@@ -29,6 +29,7 @@ content:
     region: content
 hidden:
   addtoany: true
+  breadcrumbs: true
   created: true
   field_external_link: true
   field_link_image: true

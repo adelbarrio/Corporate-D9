@@ -28,6 +28,8 @@ content:
     weight: 100
     region: content
 hidden:
+  addtoany: true
+  breadcrumbs: true
   field_contact_us_address: true
   field_contact_us_company_name: true
   field_contact_us_country: true
@@ -37,3 +39,4 @@ hidden:
   field_contact_us_phone: true
   field_contact_us_query: true
   langcode: true
+  search_api_excerpt: true

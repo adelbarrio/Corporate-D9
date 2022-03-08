@@ -67,6 +67,7 @@ content:
     region: content
 hidden:
   addtoany: true
+  breadcrumbs: true
   created: true
   langcode: true
   name: true

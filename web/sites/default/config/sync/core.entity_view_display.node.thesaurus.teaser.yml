@@ -29,6 +29,7 @@ content:
     region: content
 hidden:
   addtoany: true
+  breadcrumbs: true
   comment_node_thesaurus: true
   field_context: true
   field_definition: true

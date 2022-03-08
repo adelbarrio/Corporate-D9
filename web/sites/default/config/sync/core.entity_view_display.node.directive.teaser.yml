@@ -25,6 +25,11 @@ targetEntityType: node
 bundle: directive
 mode: teaser
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_summary:
     type: basic_string
     label: hidden
@@ -35,6 +40,7 @@ content:
 hidden:
   addtoany: true
   body: true
+  breadcrumbs: true
   field_activity: true
   field_archived: true
   field_date_of_directive: true
