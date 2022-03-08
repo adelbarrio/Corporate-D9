@@ -105,9 +105,6 @@ content:
     type: entity_reference_label
     region: content
   field_file_media:
-    weight: 10
-    region: content
-  field_file_media:
     type: entity_reference_label
     label: hidden
     settings:

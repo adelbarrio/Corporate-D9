@@ -268,7 +268,6 @@ content:
   moderation_state:
     type: moderation_state_default
     weight: 26
-    settings: {  }
     region: content
     settings: {  }
     third_party_settings: {  }
