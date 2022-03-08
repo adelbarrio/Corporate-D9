@@ -118,25 +118,25 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_banner_publications_office:
-    weight: 13
     type: boolean_checkbox
+    weight: 13
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_booklet:
+    type: boolean_checkbox
     weight: 25
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_digitalisation_priority_ar:
+    type: chosen_select
     weight: 9
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: chosen_select
-    region: content
   field_expiration_date:
     type: datetime_default
     weight: 5

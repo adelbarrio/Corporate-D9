@@ -21,8 +21,10 @@ content:
     weight: 0
     region: content
 hidden:
+  breadcrumbs: true
   filemime: true
   filesize: true
   langcode: true
+  search_api_excerpt: true
   uid: true
   uri: true

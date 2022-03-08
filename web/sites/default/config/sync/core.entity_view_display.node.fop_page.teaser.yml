@@ -35,6 +35,7 @@ content:
     region: content
 hidden:
   addtoany: true
+  breadcrumbs: true
   field_archived: true
   field_country: true
   field_fop_link: true

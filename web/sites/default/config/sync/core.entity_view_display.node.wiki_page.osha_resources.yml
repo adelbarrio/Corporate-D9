@@ -43,6 +43,7 @@ content:
 hidden:
   addtoany: true
   body: true
+  breadcrumbs: true
   comment_node_wiki_page: true
   field_nace_codes: true
   field_summary_html: true
