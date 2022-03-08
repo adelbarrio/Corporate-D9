@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.publication.field_author
     - field.field.node.publication.field_banner_publications_office
     - field.field.node.publication.field_booklet
+    - field.field.node.publication.field_digitalisation_priority_ar
     - field.field.node.publication.field_expiration_date
     - field.field.node.publication.field_file_media
     - field.field.node.publication.field_image_media
@@ -261,6 +262,7 @@ hidden:
   field_author: true
   field_banner_publications_office: true
   field_booklet: true
+  field_digitalisation_priority_ar: true
   field_expiration_date: true
   field_file_media: true
   field_msd_priority_area: true

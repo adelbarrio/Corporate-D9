@@ -1,0 +1,40 @@
+uuid: 4d7c16f5-a970-4945-8697-3ebef15ff48d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_digitalisation_priority_ar
+    - node.type.publication
+    - taxonomy.vocabulary.digitalisation_priority_area
+  module:
+    - tmgmt_content
+    - unique_content_field_validation
+third_party_settings:
+  unique_content_field_validation:
+    unique: false
+    unique_text: ''
+    unique_multivalue: false
+    unique_multivalue_text: ''
+  tmgmt_content:
+    excluded: false
+id: node.publication.field_digitalisation_priority_ar
+field_name: field_digitalisation_priority_ar
+entity_type: node
+bundle: publication
+label: 'Digitalisation priority area'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      digitalisation_priority_area: digitalisation_priority_area
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
