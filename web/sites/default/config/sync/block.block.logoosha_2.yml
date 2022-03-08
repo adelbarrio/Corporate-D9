@@ -17,8 +17,8 @@ plugin: 'block_content:9e7c79b2-76b7-4af6-9910-9c25239698ae'
 settings:
   id: 'block_content:9e7c79b2-76b7-4af6-9910-9c25239698ae'
   label: 'Logo OSHA'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full

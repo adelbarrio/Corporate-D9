@@ -19,11 +19,11 @@ plugin: 'views_block:related_content-block_3'
 settings:
   id: 'views_block:related_content-block_3'
   label: ''
-  provider: views
   label_display: visible
+  provider: views
+  context_mapping: {  }
   views_label: ''
   items_per_page: none
-  context_mapping: {  }
   cache:
     esi: 0
     ttl: '0'
@@ -31,16 +31,16 @@ settings:
 visibility:
   'entity_bundle:node':
     id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
     bundles:
       25th_anniversary: 25th_anniversary
       article: article
       highlight: highlight
       infographic: infographic
       news: news
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
   request_path:
     id: request_path
-    pages: "/emerging-risks\r\n/themes/work-related-diseases/health-surveillance\r\n/themes/osh-management-context-ageing-workforce/ep-osh-project\r\n/tools-and-resources/glossaries\r\n/tools-and-resources/e-guides/dangerous-substances-e-tool\r\n/about-eu-osha/eu-osha-1994-2019/25th-anniversary-quiz\r\n/about-eu-osha/what-we-do/how-we-work/annual-reports"
     negate: true
+    pages: "/emerging-risks\r\n/themes/work-related-diseases/health-surveillance\r\n/themes/osh-management-context-ageing-workforce/ep-osh-project\r\n/tools-and-resources/glossaries\r\n/tools-and-resources/e-guides/dangerous-substances-e-tool\r\n/about-eu-osha/eu-osha-1994-2019/25th-anniversary-quiz\r\n/about-eu-osha/what-we-do/how-we-work/annual-reports"

@@ -17,10 +17,10 @@ plugin: page_title_block
 settings:
   id: page_title_block
   label: 'Page title'
-  provider: core
   label_display: '0'
+  provider: core
 visibility:
   request_path:
     id: request_path
-    pages: "/publications/*\r\n/oshnews/*\r\n/highlights/*\r\n/oshevents/*\r\n/related-content/*/news/*\r\n/tools-and-resources/seminars/*\r\n/tools-and-resources/eu-osha-thesaurus/term/*"
     negate: true
+    pages: "/publications/*\r\n/oshnews/*\r\n/highlights/*\r\n/oshevents/*\r\n/related-content/*/news/*\r\n/tools-and-resources/seminars/*\r\n/tools-and-resources/eu-osha-thesaurus/term/*"

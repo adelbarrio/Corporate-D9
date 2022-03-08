@@ -22,15 +22,13 @@ mode: default
 content:
   body:
     type: text_default
-    weight: 2
-    region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 2
+    region: content
   field_publication_date:
     type: datetime_default
-    weight: 1
-    region: content
     label: hidden
     settings:
       timezone_override: ''
@@ -43,8 +41,10 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
+    weight: 1
+    region: content
   field_youtube:
-    weight: 0
+    type: youtube_video
     label: hidden
     settings:
       youtube_size: 450x315
@@ -57,7 +57,7 @@ content:
       youtube_autohide: false
       youtube_iv_load_policy: false
     third_party_settings: {  }
-    type: youtube_video
+    weight: 0
     region: content
 hidden:
   addtoany: true

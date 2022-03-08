@@ -18,14 +18,14 @@ bundle: newsletter_subscription_block
 mode: default
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 3
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 3
     region: content
   field_newsletter_privacy_notice:
-    weight: 5
+    type: link
     label: hidden
     settings:
       trim_length: 80
@@ -34,18 +34,18 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 5
     region: content
   field_newsletter_subtitle:
-    weight: 2
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 2
     region: content
   field_newsletter_title_with_link:
-    weight: 0
+    type: link
     label: hidden
     settings:
       trim_length: 80
@@ -61,13 +61,13 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: link
+    weight: 0
     region: content
   subscription_form:
-    weight: 4
-    region: content
     settings: {  }
     third_party_settings: {  }
+    weight: 4
+    region: content
 hidden:
   breadcrumbs: true
   langcode: true

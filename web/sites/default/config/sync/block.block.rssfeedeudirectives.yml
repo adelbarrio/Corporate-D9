@@ -18,13 +18,13 @@ plugin: 'block_content:d0c9edf0-c47e-4e79-b482-0d53a055cbba'
 settings:
   id: 'block_content:d0c9edf0-c47e-4e79-b482-0d53a055cbba'
   label: 'RSS Feed (EU Directives)'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full
 visibility:
   request_path:
     id: request_path
-    pages: /safety-and-health-legislation/european-directives
     negate: false
+    pages: /safety-and-health-legislation/european-directives

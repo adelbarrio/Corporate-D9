@@ -28,24 +28,24 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_media_image:
+    type: image_widget_crop
     weight: 1
+    region: content
     settings:
-      show_default_crop: true
-      warn_multiple_usages: true
+      progress_indicator: throbber
       preview_image_style: original_image
       crop_preview_image_style: original_image
-      progress_indicator: throbber
       crop_list:
         - news
         - custom_crop_
         - osh_mail
       crop_types_required: {  }
+      warn_multiple_usages: true
       show_crop_area: false
+      show_default_crop: true
     third_party_settings:
       imce:
         enabled: true
-    type: image_widget_crop
-    region: content
   name:
     type: string_textfield
     weight: 0

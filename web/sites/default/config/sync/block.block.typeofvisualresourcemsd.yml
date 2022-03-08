@@ -22,11 +22,11 @@ plugin: 'facet_block:type_of_visual_resource_msd_'
 settings:
   id: 'facet_block:type_of_visual_resource_msd_'
   label: 'Type of visual resource'
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: typeofvisualresourcemsd
 visibility:
   request_path:
     id: request_path
-    pages: /themes/musculoskeletal-disorders/search
     negate: false
+    pages: /themes/musculoskeletal-disorders/search

@@ -27,23 +27,23 @@ bundle: directive
 mode: full
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 1
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 1
     region: content
   content_moderation_control:
-    weight: -20
-    region: content
     settings: {  }
     third_party_settings: {  }
+    weight: -20
+    region: content
   field_summary:
-    weight: 0
+    type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    weight: 0
     region: content
 hidden:
   addtoany: true

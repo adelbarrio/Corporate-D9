@@ -22,11 +22,11 @@ plugin: 'facet_block:target_group_practical_tools_on_ds_'
 settings:
   id: 'facet_block:target_group_practical_tools_on_ds_'
   label: 'Target group'
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: targetgrouppracticaltoolsonds
 visibility:
   request_path:
     id: request_path
-    pages: /themes/dangerous-substances/practical-tools-dangerous-substances
     negate: false
+    pages: /themes/dangerous-substances/practical-tools-dangerous-substances

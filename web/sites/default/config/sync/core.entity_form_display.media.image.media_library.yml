@@ -40,18 +40,18 @@ content:
     weight: 0
     region: content
     settings:
-      show_default_crop: true
-      warn_multiple_usages: true
+      progress_indicator: throbber
       preview_image_style: original_image
       crop_preview_image_style: original_image
-      progress_indicator: throbber
       crop_list:
         - banners_home
         - infhograpic
         - original
         - osh_mail
       crop_types_required: {  }
+      warn_multiple_usages: true
       show_crop_area: false
+      show_default_crop: true
     third_party_settings:
       imce:
         enabled: false

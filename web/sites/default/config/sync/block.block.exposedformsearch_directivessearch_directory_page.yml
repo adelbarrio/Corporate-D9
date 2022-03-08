@@ -18,11 +18,11 @@ plugin: 'views_exposed_filter_block:search_directives-search_directory_page'
 settings:
   id: 'views_exposed_filter_block:search_directives-search_directory_page'
   label: ''
-  provider: views
   label_display: visible
+  provider: views
   views_label: 'Filter results'
 visibility:
   request_path:
     id: request_path
-    pages: "/search/directives\r\n/safety-and-health-legislation/european-directives\r\n/legislation/directives/*\r\n/legislation/guidelines/*\r\n/legislation/directive/*"
     negate: false
+    pages: "/search/directives\r\n/safety-and-health-legislation/european-directives\r\n/legislation/directives/*\r\n/legislation/guidelines/*\r\n/legislation/directive/*"

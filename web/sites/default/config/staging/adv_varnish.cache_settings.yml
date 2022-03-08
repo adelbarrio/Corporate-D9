@@ -1,21 +1,21 @@
-cache_control:
-  anonymous: '/user/logout|must-revalidate, no-cache, private'
-  authenticated: ''
 _core:
   default_config_hash: GLswejPT_b3G9TtpI4NKwR1mhIB_-FnysNn9QKc-01w
 general:
-  varnish_purger: true
-  varnish_server: 'https://test.osha.europa.eu'
-  purger_maintenance_mode: false
-  logging: '1'
-  debug: '0'
-  noise: ''
-  secret: 0f29c810-0a59-4fc5-b500-1312669c165b
-  grace: '10'
   page_cache_maximum_age: '3600'
+  noise: ''
+  debug: '0'
+  logging: '1'
+  secret: 0f29c810-0a59-4fc5-b500-1312669c165b
+  varnish_server: 'https://test.osha.europa.eu'
+  varnish_purger: true
+  purger_maintenance_mode: false
+  grace: '10'
 available:
   enable_cache: true
   authenticated_users: false
   esi: false
   esi_purge_user_blocks: false
   excluded_urls: ''
+cache_control:
+  anonymous: '/user/logout|must-revalidate, no-cache, private'
+  authenticated: ''

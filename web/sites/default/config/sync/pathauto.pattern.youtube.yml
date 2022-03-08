@@ -12,20 +12,20 @@ pattern: 'additional-resources/youtube/[node:title]'
 selection_criteria:
   08397cba-84c6-42fb-8492-bbf49658b0ea:
     id: node_type
-    bundles:
-      youtube: youtube
     negate: false
+    uuid: 08397cba-84c6-42fb-8492-bbf49658b0ea
     context_mapping:
       node: node
-    uuid: 08397cba-84c6-42fb-8492-bbf49658b0ea
+    bundles:
+      youtube: youtube
   2e5049e8-a1b5-4738-9bb4-5f04d8417a49:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: 2e5049e8-a1b5-4738-9bb4-5f04d8417a49
     context_mapping:
       language: 'node:langcode:language'
-    uuid: 2e5049e8-a1b5-4738-9bb4-5f04d8417a49
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

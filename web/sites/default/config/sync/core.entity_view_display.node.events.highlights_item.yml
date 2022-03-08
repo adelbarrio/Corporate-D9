@@ -50,17 +50,17 @@ bundle: events
 mode: highlights_item
 content:
   body:
-    label: hidden
-    weight: 0
     type: text_summary_or_trimmed
+    label: hidden
     settings:
       trim_length: 400
     third_party_settings: {  }
+    weight: 0
     region: content
   content_moderation_control:
-    weight: -20
     settings: {  }
     third_party_settings: {  }
+    weight: -20
     region: content
 hidden:
   addtoany: true

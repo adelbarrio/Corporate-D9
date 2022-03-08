@@ -19,15 +19,15 @@ bundle: e_guide
 mode: default
 content:
   field_country:
-    weight: 2
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 2
     region: content
   field_external_url:
-    weight: 0
+    type: link
     label: above
     settings:
       trim_length: 80
@@ -36,20 +36,20 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 0
     region: content
   field_language:
-    weight: 4
+    type: languagefield_default
     label: above
     settings:
       link_to_entity: false
       format:
         name: name
     third_party_settings: {  }
-    type: languagefield_default
+    weight: 4
     region: content
   field_link:
-    weight: 1
+    type: link
     label: above
     settings:
       trim_length: 80
@@ -58,17 +58,17 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 1
     region: content
   langcode:
     type: language
-    weight: 3
-    region: content
     label: above
     settings:
       link_to_entity: false
       native_language: false
     third_party_settings: {  }
+    weight: 3
+    region: content
 hidden:
   addtoany: true
   breadcrumbs: true

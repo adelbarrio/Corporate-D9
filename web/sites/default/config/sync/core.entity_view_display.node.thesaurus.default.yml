@@ -27,15 +27,15 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        label: ''
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        classes:
-          layout_class: {  }
+        label: ''
     regions:
       ds_content:
         - node_title
@@ -58,9 +58,8 @@ bundle: thesaurus
 mode: default
 content:
   field_context:
-    label: above
-    weight: 3
     type: text_default
+    label: above
     settings: {  }
     third_party_settings:
       ds:
@@ -70,11 +69,11 @@ content:
             lb: 'Context: '
             lb-col: false
             classes: {  }
+    weight: 3
     region: ds_content
   field_definition:
-    label: above
-    weight: 1
     type: text_default
+    label: above
     settings: {  }
     third_party_settings:
       ds:
@@ -84,25 +83,25 @@ content:
             lb: 'Definition: '
             lb-col: false
             classes: {  }
+    weight: 1
     region: ds_content
   field_father:
-    label: hidden
-    weight: 7
     type: entity_reference_entity_id
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 7
     region: ds_content
   field_notes:
-    weight: 5
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 5
     region: ds_content
   field_synonyms:
-    label: above
-    weight: 2
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings:
@@ -114,11 +113,10 @@ content:
             lb: 'Synonyms: '
             lb-col: false
             classes: {  }
+    weight: 2
     region: ds_content
   field_term_id:
     type: smart_trim
-    weight: 6
-    region: ds_content
     label: hidden
     settings:
       trim_length: 600
@@ -132,12 +130,14 @@ content:
       summary_handler: full
       trim_options: {  }
     third_party_settings: {  }
+    weight: 6
+    region: ds_content
   field_term_reference:
-    label: above
-    weight: 4
     type: text_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 4
     region: ds_content
 hidden:
   addtoany: true

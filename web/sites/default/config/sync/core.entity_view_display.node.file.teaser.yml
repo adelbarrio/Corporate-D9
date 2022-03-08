@@ -28,13 +28,13 @@ mode: teaser
 content:
   field_file_media:
     type: entity_reference_entity_view
-    weight: 0
-    region: content
     label: hidden
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   addtoany: true
   breadcrumbs: true

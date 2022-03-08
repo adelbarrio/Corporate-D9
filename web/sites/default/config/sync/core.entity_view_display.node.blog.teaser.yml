@@ -28,8 +28,6 @@ mode: teaser
 content:
   field_summary_html:
     type: smart_trim
-    weight: 0
-    region: content
     label: hidden
     settings:
       trim_length: 600
@@ -43,6 +41,8 @@ content:
       summary_handler: full
       trim_options: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   addtoany: true
   body: true

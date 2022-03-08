@@ -1,26 +1,56 @@
 uuid: 7cf5d749-7b1a-4d5f-a929-211b90d4d87f
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.dangerous_substances_minimal
+    - filter.format.full_html
+    - filter.format.full_html_minimal
+    - filter.format.restricted_html
+    - node.type.article
+    - node.type.blog
+    - node.type.calls
+    - node.type.dangerous_substances
+    - node.type.directive
+    - node.type.guideline
+    - node.type.highlight
+    - node.type.job_vacancies
+    - node.type.musculoskeletal_disorders
+    - node.type.news
+    - node.type.press_release
+    - node.type.publication
+    - node.type.seminar
+    - node.type.wiki_page
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - contextual
+    - file_entity
+    - filter
+    - media
+    - node
+    - osha_lingua_tools
+    - osha_workflow
+    - path
+    - system
+    - toolbar
+    - workbench
+    - workbench_access
 id: project_manager
 label: 'Project Manager'
 weight: -6
 is_admin: null
 permissions:
-  - 'accept job item translation'
   - 'access administration pages'
   - 'access content'
   - 'access contextual links'
-  - 'access dashboard'
-  - 'access media browser'
   - 'access media overview'
   - 'access toolbar'
   - 'access workbench'
-  - 'access workbench access by role'
   - 'administer approvers'
   - 'administer project_managers'
   - 'administer reviewers'
-  - 'administer search and replace settings'
   - 'create calls content'
   - 'create dangerous_substances content'
   - 'create directive content'
@@ -57,14 +87,6 @@ permissions:
   - 'edit any audio files'
   - 'edit any blog content'
   - 'edit any calls content'
-  - 'edit any content in approved'
-  - 'edit any content in draft'
-  - 'edit any content in final_draft'
-  - 'edit any content in needs_review'
-  - 'edit any content in published'
-  - 'edit any content in ready_to_publish'
-  - 'edit any content in rejected'
-  - 'edit any content in to_be_approved'
   - 'edit any dangerous_substances content'
   - 'edit any directive content'
   - 'edit any document files'
@@ -79,7 +101,6 @@ permissions:
   - 'edit any seminar content'
   - 'edit any video files'
   - 'edit any wiki_page content'
-  - 'edit meta tags'
   - 'edit own article content'
   - 'edit own audio files'
   - 'edit own blog content'
@@ -98,41 +119,6 @@ permissions:
   - 'edit own seminar content'
   - 'edit own video files'
   - 'edit own wiki_page content'
-  - 'mark access section as reviewed'
-  - 'moderate article state from approved to ready_to_publish'
-  - 'moderate calls state from ready_to_publish to published'
-  - 'moderate content from approved to final_draft'
-  - 'moderate content from draft to final_draft'
-  - 'moderate content from final_draft to needs_review'
-  - 'moderate content from final_draft to ready_to_publish'
-  - 'moderate content from final_draft to to_be_approved'
-  - 'moderate content from needs_review to final_draft'
-  - 'moderate content from needs_review to ready_to_publish'
-  - 'moderate content from needs_review to to_be_approved'
-  - 'moderate content from rejected to draft'
-  - 'moderate content from rejected to final_draft'
-  - 'moderate content from rejected to to_be_approved'
-  - 'moderate directive state from approved to ready_to_publish'
-  - 'moderate directive state from ready_to_publish to published'
-  - 'moderate directive state from to_be_approved to approved'
-  - 'moderate directive state from to_be_approved to rejected'
-  - 'moderate guideline state from approved to ready_to_publish'
-  - 'moderate guideline state from needs_review to ready_to_publish'
-  - 'moderate guideline state from ready_to_publish to published'
-  - 'moderate guideline state from to_be_approved to approved'
-  - 'moderate guideline state from to_be_approved to rejected'
-  - 'moderate highlight state from approved to ready_to_publish'
-  - 'moderate highlight state from ready_to_publish to published'
-  - 'moderate infographic state from approved to ready_to_publish'
-  - 'moderate infographic state from ready_to_publish to published'
-  - 'moderate job_vacancies state from ready_to_publish to published'
-  - 'moderate news state from approved to ready_to_publish'
-  - 'moderate press_release state from approved to ready_to_publish'
-  - 'moderate publication state from approved to ready_to_publish'
-  - 'moderate seminar state from approved to ready_to_publish'
-  - 'moderate seminar state from ready_to_publish to published'
-  - 'osha access administration pages'
-  - 'undo search and replace'
   - 'use editorial transition content_approved_and_ready_to_publish'
   - 'use editorial transition content_rejected_by_the_project_manager'
   - 'use editorial transition create_new_draft'
@@ -144,49 +130,32 @@ permissions:
   - 'use editorial transition project_manager_rejects_rejected_content'
   - 'use editorial transition review_manager_accepts_rejected_content'
   - 'use editorial transition review_manager_rejects_rejected_content'
-  - 'use editorial transition send_back_to_be_reviewed'
   - 'use editorial transition send_back_to_final_draft'
-  - 'use editorial transition send_back_to_final_draft_from_approved'
   - 'use editorial transition send_to_be_approved'
   - 'use editorial transition send_to_be_approved_from_final_draft'
   - 'use editorial transition send_to_be_reviewed'
   - 'use editorial transition send_to_final_draft'
   - 'use editorial transition send_to_final_draft_from_publish'
-  - 'use editorial transition send_to_ready_to_publish'
   - 'use editorial transition send_to_ready_to_publish_from_draft_'
   - 'use editorial transition send_to_ready_to_publish_from_final_draft'
   - 'use editorial transition send_to_ready_to_publish_from_to_be_reviewed'
   - 'use linguatools autocomplete'
   - 'use linguatools forms for calls content'
-  - 'use manualcrop'
-  - 'use media wysiwyg'
-  - 'use search and replace'
   - 'use text format basic_html'
-  - 'use text format dangerous_substances'
   - 'use text format dangerous_substances_minimal'
-  - 'use text format filtered_html'
   - 'use text format full_html'
   - 'use text format full_html_minimal'
   - 'use text format restricted_html'
   - 'use workbench access'
-  - 'use workbench_moderation my drafts tab'
   - 'view all media revisions'
   - 'view all revisions'
-  - 'view all unpublished content'
   - 'view any unpublished content'
   - 'view files'
   - 'view latest version'
-  - 'view moderation history'
-  - 'view moderation messages'
-  - 'view osh content tab'
-  - 'view osh project manager needs review tab'
   - 'view own files'
   - 'view own private files'
   - 'view own unpublished content'
   - 'view own unpublished media'
   - 'view private files'
-  - 'view revisions'
   - 'view the administration theme'
-  - 'view translation job'
-  - 'view translation job item'
   - 'view workbench access information'

@@ -18,12 +18,12 @@ plugin: 'views_block:press_contacts-block_1'
 settings:
   id: 'views_block:press_contacts-block_1'
   label: 'Press contacts'
-  provider: views
   label_display: visible
+  provider: views
   views_label: 'Press contacts'
   items_per_page: none
 visibility:
   request_path:
     id: request_path
-    pages: /about-eu-osha/press-room
     negate: false
+    pages: /about-eu-osha/press-room

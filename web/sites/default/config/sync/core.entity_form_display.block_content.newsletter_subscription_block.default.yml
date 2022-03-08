@@ -19,37 +19,37 @@ content:
   body:
     type: text_textarea_with_summary
     weight: 3
+    region: content
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
-    region: content
   field_newsletter_privacy_notice:
+    type: link_default
     weight: 4
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   field_newsletter_subtitle:
+    type: string_textfield
     weight: 2
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_newsletter_title_with_link:
+    type: link_default
     weight: 1
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   info:
     type: string_textfield
     weight: 0

@@ -19,14 +19,17 @@ plugin: 'views_block:related_content-block_2'
 settings:
   id: 'views_block:related_content-block_2'
   label: ''
-  provider: views
   label_display: visible
+  provider: views
+  context_mapping: {  }
   views_label: ''
   items_per_page: none
-  context_mapping: {  }
 visibility:
   'entity_bundle:node':
     id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
     bundles:
       25th_anniversary: 25th_anniversary
       article: article
@@ -39,10 +42,7 @@ visibility:
       press_release: press_release
       seminar: seminar
       wiki_page: wiki_page
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
   request_path:
     id: request_path
-    pages: /safety-and-health-legislation
     negate: true
+    pages: /safety-and-health-legislation

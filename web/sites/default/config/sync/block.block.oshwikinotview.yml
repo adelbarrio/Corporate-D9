@@ -22,13 +22,13 @@ plugin: 'block_content:c2a2cb21-42a2-4f50-91a6-81d58187e5ba'
 settings:
   id: 'block_content:c2a2cb21-42a2-4f50-91a6-81d58187e5ba'
   label: 'OSHWiki (Not view)'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full
 visibility:
   request_path:
     id: request_path
-    pages: "/tools-and-resources/oira\r\n/tools-and-resources/oshwiki"
     negate: false
+    pages: "/tools-and-resources/oira\r\n/tools-and-resources/oshwiki"

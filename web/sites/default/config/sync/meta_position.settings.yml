@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: O3TyEiaoQmBTDp_IxBK2QMkmZw0MLSvh_hw8vysOiho
 enabled: 1
 node_types:
   25th_anniversary: 25th_anniversary
@@ -35,5 +37,3 @@ node_types:
   thesaurus: thesaurus
   wiki_page: wiki_page
   youtube: youtube
-_core:
-  default_config_hash: O3TyEiaoQmBTDp_IxBK2QMkmZw0MLSvh_hw8vysOiho

@@ -1,3 +1,6 @@
+_core:
+  default_config_hash: m3e3lR0iNbau3eUO2RZya6iS06zv02m1JJe8X-PZuhk
+langcode: es
 scanner_mode: true
 scanner_wholeword: true
 scanner_regex: false
@@ -6,6 +9,3 @@ scanner_pathauto: false
 scanner_language: all
 enabled_content_types: {  }
 fields_of_selected_content_type: {  }
-_core:
-  default_config_hash: m3e3lR0iNbau3eUO2RZya6iS06zv02m1JJe8X-PZuhk
-langcode: es

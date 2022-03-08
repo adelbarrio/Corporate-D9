@@ -34,184 +34,185 @@ bundle: register_records
 mode: default
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 101
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 101
     region: content
   field_activity:
-    weight: 120
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 120
     region: content
   field_documentation_media:
     type: entity_reference_entity_view
-    weight: 104
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 104
     region: content
   field_events_meetings_media:
     type: entity_reference_entity_view
-    weight: 105
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 105
     region: content
   field_finance_procurement_media:
     type: entity_reference_entity_view
-    weight: 106
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 106
     region: content
   field_general_services_media:
     type: entity_reference_entity_view
-    weight: 107
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 107
     region: content
   field_governance_media:
     type: entity_reference_entity_view
-    weight: 108
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 108
     region: content
   field_human_resources_media:
     type: entity_reference_entity_view
-    weight: 109
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 109
     region: content
   field_ict_media:
     type: entity_reference_entity_view
-    weight: 110
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 110
     region: content
   field_language:
-    weight: 117
+    type: languagefield_default
     label: above
     settings:
       link_to_entity: false
       format:
         name: name
     third_party_settings: {  }
-    type: languagefield_default
+    weight: 117
     region: content
   field_missions_media:
     type: entity_reference_entity_view
-    weight: 111
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 111
     region: content
   field_relationship_management_me:
     type: entity_reference_entity_view
-    weight: 103
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 103
     region: content
   field_research_activities_media:
     type: entity_reference_entity_view
-    weight: 112
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 112
     region: content
   field_section:
-    weight: 116
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 116
     region: content
   field_staff_committee_media:
     type: entity_reference_entity_view
-    weight: 113
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 113
     region: content
   field_summary:
-    weight: 102
+    type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    weight: 102
     region: content
   field_surveys_media:
     type: entity_reference_entity_view
-    weight: 114
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 114
     region: content
   field_tags:
-    weight: 118
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 118
     region: content
   field_websites_online_serv_media:
     type: entity_reference_entity_view
-    weight: 115
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 115
     region: content
   field_wiki_categories:
-    weight: 119
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 119
     region: content
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
 hidden:
   addtoany: true
+  breadcrumbs: true
   langcode: true
   search_api_excerpt: true

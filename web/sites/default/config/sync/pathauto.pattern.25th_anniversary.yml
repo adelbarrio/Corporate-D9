@@ -12,20 +12,20 @@ pattern: 'about-eu-osha/eu-osha-1994-2019/our-story/[node:title]'
 selection_criteria:
   16b2f995-561e-4d94-9c16-5beb4ed04731:
     id: node_type
-    bundles:
-      25th_anniversary: 25th_anniversary
     negate: false
+    uuid: 16b2f995-561e-4d94-9c16-5beb4ed04731
     context_mapping:
       node: node
-    uuid: 16b2f995-561e-4d94-9c16-5beb4ed04731
+    bundles:
+      25th_anniversary: 25th_anniversary
   c4d1db8f-ee5e-4e6f-95e6-f0d3af151f7d:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: c4d1db8f-ee5e-4e6f-95e6-f0d3af151f7d
     context_mapping:
       language: 'node:langcode:language'
-    uuid: c4d1db8f-ee5e-4e6f-95e6-f0d3af151f7d
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

@@ -19,11 +19,14 @@ third_party_settings:
     group_provider_url:
       children:
         - field_title
+      label: 'Provider url:'
       parent_name: ''
+      region: content
       weight: 2
       format_type: html_element
-      region: content
       format_settings:
+        classes: provider-url
+        id: ''
         element: div
         show_label: true
         label_element: div
@@ -31,40 +34,37 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
-        id: ''
-        classes: provider-url
-      label: 'Provider url:'
 id: paragraph.paragraph_provider.default
 targetEntityType: paragraph
 bundle: paragraph_provider
 mode: default
 content:
   field_other_type_provider:
-    weight: 5
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 5
     region: content
   field_provider_name_english:
-    weight: 0
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 0
     region: content
   field_provider_name_original:
-    weight: 1
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 1
     region: content
   field_title:
-    weight: 3
+    type: string
     label: hidden
     settings:
       link_to_entity: false
@@ -82,10 +82,10 @@ content:
         destination: field_url
         advanced: {  }
         token: ''
-    type: string
+    weight: 3
     region: content
   field_type_of_provider:
-    weight: 4
+    type: entity_reference_label
     label: above
     settings:
       link: true
@@ -98,7 +98,7 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    type: entity_reference_label
+    weight: 4
     region: content
 hidden:
   breadcrumbs: true

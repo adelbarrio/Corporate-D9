@@ -1,14 +1,14 @@
+_core:
+  default_config_hash: RSNbRD3ekSaZoE19f3eHhm93gKOcD2PtmaAVmV3XMes
 transport: smtp
 smtp_host: relay.sarenet.es
 smtp_port: 25
 smtp_encryption: tls
+sendmail_path: /usr/sbin/sendmail
+sendmail_mode: bs
 smtp_credential_provider: swiftmailer
 smtp_credentials:
   swiftmailer:
     username: ''
     password: null
-sendmail_path: /usr/sbin/sendmail
-sendmail_mode: bs
 spool_directory: ''
-_core:
-  default_config_hash: RSNbRD3ekSaZoE19f3eHhm93gKOcD2PtmaAVmV3XMes

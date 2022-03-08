@@ -18,15 +18,18 @@ plugin: addtoany_block
 settings:
   id: addtoany_block
   label: 'AddToAny buttons'
-  provider: addtoany
   label_display: '0'
+  provider: addtoany
 visibility:
   request_path:
     id: request_path
-    pages: "/publications/*\r\n/tools-and-resources/seminars/*\r\n/newsletter/*\r\n/oshwiki/*"
     negate: true
+    pages: "/publications/*\r\n/tools-and-resources/seminars/*\r\n/newsletter/*\r\n/oshwiki/*"
   'entity_bundle:node':
     id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
     bundles:
       25th_anniversary: 25th_anniversary
       article: article
@@ -35,19 +38,3 @@ visibility:
       news: news
       press_contact: press_contact
       press_release: press_release
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
-  node_type:
-    id: node_type
-    bundles:
-      25th_anniversary: 25th_anniversary
-      article: article
-      events: events
-      highlight: highlight
-      news: news
-      press_contact: press_contact
-      press_release: press_release
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'

@@ -18,13 +18,13 @@ plugin: 'block_content:1b2e1dfa-2a67-4f38-8879-3d123e28e08e'
 settings:
   id: 'block_content:1b2e1dfa-2a67-4f38-8879-3d123e28e08e'
   label: 'Node view events'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full
 visibility:
   request_path:
     id: request_path
-    pages: /oshevents
     negate: false
+    pages: /oshevents

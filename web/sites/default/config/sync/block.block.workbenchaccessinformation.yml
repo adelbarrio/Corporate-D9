@@ -16,13 +16,16 @@ plugin: workbench_access_block
 settings:
   id: workbench_access_block
   label: 'Workbench Access information'
-  provider: workbench_access
   label_display: '0'
+  provider: workbench_access
   context_mapping:
     node: '@node.node_route_context:node'
 visibility:
   'entity_bundle:node':
     id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
     bundles:
       25th_anniversary: 25th_anniversary
       article: article
@@ -43,6 +46,3 @@ visibility:
       publication: publication
       register_records: register_records
       seminar: seminar
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'

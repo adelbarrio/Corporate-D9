@@ -18,11 +18,11 @@ plugin: 'facet_block:provider_name_original_dangerous_substances_'
 settings:
   id: 'facet_block:provider_name_original_dangerous_substances_'
   label: 'Provider name'
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: providernameoriginaldangeroussubstances
 visibility:
   request_path:
     id: request_path
-    pages: /themes/dangerous-substances/search
     negate: false
+    pages: /themes/dangerous-substances/search

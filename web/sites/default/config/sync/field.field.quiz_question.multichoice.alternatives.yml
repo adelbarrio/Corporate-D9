@@ -6,11 +6,11 @@ dependencies:
     - field.storage.quiz_question.alternatives
     - paragraphs.paragraphs_type.multichoice
     - quiz.question.type.multichoice
+  module:
+    - entity_reference_revisions
   enforced:
     module:
       - quiz_multichoice
-  module:
-    - entity_reference_revisions
 _core:
   default_config_hash: OckYB-GK7ho30FdRWDPLhfer-LCq35ly8OK_49pDN_Q
 id: quiz_question.multichoice.alternatives
@@ -26,13 +26,13 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       multichoice: multichoice
+    negate: 0
     target_bundles_drag_drop:
       multichoice:
-        enabled: true
         weight: 3
+        enabled: true
       quiz_result_feedback:
         weight: 4
         enabled: false

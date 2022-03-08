@@ -22,11 +22,11 @@ plugin: 'facet_block:hazards_msd_'
 settings:
   id: 'facet_block:hazards_msd_'
   label: Hazards
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: hazardsmsd
 visibility:
   request_path:
     id: request_path
-    pages: /themes/musculoskeletal-disorders/search
     negate: false
+    pages: /themes/musculoskeletal-disorders/search

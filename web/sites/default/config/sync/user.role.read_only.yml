@@ -1,7 +1,19 @@
 uuid: 72a862ab-2e9a-4490-a64d-be5960772cb1
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.full_html
+  module:
+    - content_moderation
+    - contextual
+    - file_entity
+    - filter
+    - media
+    - node
+    - system
+    - toolbar
+    - workbench_access
 id: read_only
 label: 'Read only'
 weight: 5
@@ -14,7 +26,6 @@ permissions:
   - 'use text format full_html'
   - 'use workbench access'
   - 'view all revisions'
-  - 'view all unpublished content'
   - 'view any unpublished content'
   - 'view files'
   - 'view latest version'
@@ -24,5 +35,4 @@ permissions:
   - 'view own unpublished content'
   - 'view own unpublished media'
   - 'view private files'
-  - 'view revisions'
   - 'view the administration theme'

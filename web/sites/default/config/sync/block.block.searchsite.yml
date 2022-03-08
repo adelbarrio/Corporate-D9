@@ -17,8 +17,8 @@ plugin: 'block_content:b26af753-3f5d-4513-9674-87faaac13581'
 settings:
   id: 'block_content:b26af753-3f5d-4513-9674-87faaac13581'
   label: 'Search site'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full

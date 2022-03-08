@@ -18,13 +18,13 @@ plugin: 'block_content:011c9c34-827f-43fa-984d-3791bde18e77'
 settings:
   id: 'block_content:011c9c34-827f-43fa-984d-3791bde18e77'
   label: 'Try alert service'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full
 visibility:
   request_path:
     id: request_path
-    pages: '<front>'
     negate: false
+    pages: '<front>'

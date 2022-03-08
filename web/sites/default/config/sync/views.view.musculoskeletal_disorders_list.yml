@@ -27,99 +27,12 @@ base_table: search_api_index_musculoskeletal_disorders_index
 base_field: search_api_id
 display:
   default:
-    display_plugin: default
     id: default
     display_title: Default
+    display_plugin: default
     position: 0
     display_options:
-      access:
-        type: perm
-        options:
-          perm: 'access content'
-      cache:
-        type: tag
-        options: {  }
-      query:
-        type: views_query
-        options:
-          bypass_access: false
-          skip_access: false
-          preserve_facet_query_args: false
-      exposed_form:
-        type: bef
-        options:
-          submit_button: Search
-          reset_button: false
-          reset_button_label: 'Clear filter'
-          exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-          text_input_required: 'Select any filter and click on Apply to see results'
-          text_input_required_format: basic_html
-          bef:
-            general:
-              autosubmit: false
-              autosubmit_exclude_textfield: false
-              autosubmit_textfield_delay: 500
-              autosubmit_hide: false
-              input_required: false
-              allow_secondary: false
-              secondary_label: 'Advanced options'
-              secondary_open: false
-            sort:
-              plugin_id: default
-              advanced:
-                combine: false
-                combine_rewrite: ''
-                reset: false
-                reset_label: ''
-                collapsible: false
-                collapsible_label: 'Sort options'
-                is_secondary: false
-            filter:
-              search_api_fulltext:
-                plugin_id: default
-                advanced:
-                  placeholder_text: ''
-                  rewrite:
-                    filter_rewrite_values: ''
-                  collapsible: false
-                  is_secondary: false
-      pager:
-        type: pagerer
-        options:
-          preset: pagination
-          items_per_page: 7
-          offset: 0
-          id: '0'
-          total_pages: ''
-          expose:
-            items_per_page: 0
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: 0
-            items_per_page_options_all_label: '- All -'
-            offset: 0
-            offset_label: Offset
-      style:
-        type: grid
-        options:
-          grouping: {  }
-          columns: 12
-          automatic_width: false
-          alignment: vertical
-          col_class_default: false
-          col_class_custom: ''
-          row_class_default: false
-          row_class_custom: 'revamp-row no-flex'
-      row:
-        type: fields
-        options:
-          default_field_elements: true
-          inline: {  }
-          separator: ''
-          hide_empty: false
+      title: ''
       fields:
         title:
           id: title
@@ -128,6 +41,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -190,8 +105,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_type_of_item:
           id: field_type_of_item
           table: search_api_datasource_musculoskeletal_disorders_index_entity_node
@@ -199,6 +112,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: true
           alter:
@@ -260,8 +175,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
         field_material_country:
           id: field_material_country
           table: search_api_datasource_musculoskeletal_disorders_index_entity_node
@@ -269,6 +182,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: true
           alter:
@@ -457,8 +372,6 @@ display:
                 display_method: label
               workflow_status:
                 display_method: label
-          entity_type: node
-          plugin_id: search_api_field
         field_available_in_languages:
           id: field_available_in_languages
           table: search_api_index_musculoskeletal_disorders_index
@@ -466,6 +379,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_field
           label: ''
           exclude: true
           alter:
@@ -532,7 +446,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          plugin_id: search_api_field
         field_msd_provider:
           id: field_msd_provider
           table: search_api_index_musculoskeletal_disorders_index
@@ -540,6 +453,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_field
           label: ''
           exclude: true
           alter:
@@ -602,7 +516,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          plugin_id: search_api_field
         nothing:
           id: nothing
           table: views
@@ -610,6 +523,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: custom
           label: ''
           exclude: false
           alter:
@@ -651,7 +565,6 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
-          plugin_id: custom
         body:
           id: body
           table: search_api_datasource_musculoskeletal_disorders_index_entity_node
@@ -659,6 +572,8 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          plugin_id: search_api_field
           label: ''
           exclude: false
           alter:
@@ -709,8 +624,8 @@ display:
             wrap_output: false
             wrap_class: trimmed
             more_link: true
-            more_text: 'See more'
             more_class: see-more-arrow
+            more_text: 'See more'
             summary_handler: full
             trim_options:
               text: true
@@ -732,8 +647,110 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          entity_type: node
-          plugin_id: search_api_field
+      pager:
+        type: pagerer
+        options:
+          offset: 0
+          items_per_page: 7
+          preset: pagination
+          id: '0'
+          total_pages: ''
+          expose:
+            items_per_page: 0
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: 0
+            items_per_page_options_all_label: '- All -'
+            offset: 0
+            offset_label: Offset
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Search
+          reset_button: false
+          reset_button_label: 'Clear filter'
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: basic_html
+          bef:
+            general:
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_hide: false
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+            sort:
+              plugin_id: default
+              advanced:
+                combine: false
+                combine_rewrite: ''
+                reset: false
+                reset_label: ''
+                collapsible: false
+                collapsible_label: 'Sort options'
+                is_secondary: false
+            filter:
+              search_api_fulltext:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: true
+          content: 'No results'
+          tokenize: false
+      sorts:
+        field_year:
+          id: field_year
+          table: search_api_index_musculoskeletal_disorders_index
+          field: field_year
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: DESC
+          expose:
+            label: 'Publication year'
+            field_identifier: field_year
+          exposed: true
+        search_api_relevance:
+          id: search_api_relevance
+          table: search_api_index_musculoskeletal_disorders_index
+          field: search_api_relevance
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: DESC
+          expose:
+            label: Relevance
+            field_identifier: search_api_relevance
+          exposed: true
+      arguments: {  }
       filters:
         status:
           id: status
@@ -742,6 +759,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_boolean
           operator: '='
           value: '1'
           group: 1
@@ -772,7 +790,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: search_api_boolean
         type:
           id: type
           table: search_api_index_musculoskeletal_disorders_index
@@ -780,6 +797,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_options
           operator: or
           value:
             musculoskeletal_disorders: musculoskeletal_disorders
@@ -813,7 +831,6 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          plugin_id: search_api_options
         search_api_fulltext:
           id: search_api_fulltext
           table: search_api_index_musculoskeletal_disorders_index
@@ -821,6 +838,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: search_api_fulltext
           operator: and
           value: ''
           group: 1
@@ -854,8 +872,8 @@ display:
               osh_collaborator: '0'
               news_editor: '0'
               read_only: '0'
-            placeholder: ''
             expose_fields: false
+            placeholder: ''
             searched_fields_id: search_api_fulltext_searched_fields
           is_grouped: false
           group_info:
@@ -874,33 +892,31 @@ display:
           fields:
             - body
             - title
-          plugin_id: search_api_fulltext
-      sorts:
-        field_year:
-          id: field_year
-          table: search_api_index_musculoskeletal_disorders_index
-          field: field_year
-          relationship: none
-          group_type: group
-          admin_label: ''
-          order: DESC
-          exposed: true
-          expose:
-            label: 'Publication year'
-          plugin_id: search_api
-        search_api_relevance:
-          id: search_api_relevance
-          table: search_api_index_musculoskeletal_disorders_index
-          field: search_api_relevance
-          relationship: none
-          group_type: group
-          admin_label: ''
-          order: DESC
-          exposed: true
-          expose:
-            label: Relevance
-          plugin_id: search_api
-      title: ''
+      style:
+        type: grid
+        options:
+          grouping: {  }
+          columns: 12
+          automatic_width: false
+          alignment: vertical
+          row_class_custom: 'revamp-row no-flex'
+          row_class_default: false
+          col_class_custom: ''
+          col_class_default: false
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      query:
+        type: views_query
+        options:
+          bypass_access: false
+          skip_access: false
+          preserve_facet_query_args: false
+      relationships: {  }
       header:
         area_text_custom:
           id: area_text_custom
@@ -909,10 +925,10 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          empty: false
-          tokenize: false
-          content: '<a class="clear-filter-view" href="/themes/musculoskeletal-disorders/practical-tools-musculoskeletal-disorders">Clear filter</a>'
           plugin_id: text_custom
+          empty: false
+          content: '<a class="clear-filter-view" href="/themes/musculoskeletal-disorders/practical-tools-musculoskeletal-disorders">Clear filter</a>'
+          tokenize: false
         result:
           id: result
           table: views
@@ -920,9 +936,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: result
           empty: false
           content: '<h2 class="mt-3 available-resources">Resources available <span class="available-resources-number"><small>(@total)</small></span></h2>'
-          plugin_id: result
       footer:
         result:
           id: result
@@ -931,23 +947,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: result
           empty: false
           content: '<div class="pager-total"><span>@start - @end / @total</span></div>'
-          plugin_id: result
-      empty:
-        area_text_custom:
-          id: area_text_custom
-          table: views
-          field: area_text_custom
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          tokenize: false
-          content: 'No results'
-          plugin_id: text_custom
-      relationships: {  }
-      arguments: {  }
       display_extenders: {  }
     cache_metadata:
       max-age: -1
@@ -968,18 +970,18 @@ display:
         - 'config:field.storage.node.field_type_of_item'
         - 'config:search_api.index.musculoskeletal_disorders_index'
   page_1:
-    display_plugin: page
     id: page_1
     display_title: Page
+    display_plugin: page
     position: 1
     display_options:
-      display_extenders:
-        metatag_display_extender: {  }
-      path: themes/musculoskeletal-disorders/practical-tools-musculoskeletal-disorders
       cache:
         type: none
       defaults:
         cache: false
+      display_extenders:
+        metatag_display_extender: {  }
+      path: themes/musculoskeletal-disorders/practical-tools-musculoskeletal-disorders
     cache_metadata:
       max-age: -1
       contexts:

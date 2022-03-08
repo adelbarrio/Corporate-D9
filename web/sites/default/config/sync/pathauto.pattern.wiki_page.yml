@@ -12,20 +12,20 @@ pattern: '/oshwiki/[node:title]'
 selection_criteria:
   f925f7c5-319d-451f-b4ae-0a50e17178f5:
     id: node_type
-    bundles:
-      wiki_page: wiki_page
     negate: false
+    uuid: f925f7c5-319d-451f-b4ae-0a50e17178f5
     context_mapping:
       node: node
-    uuid: f925f7c5-319d-451f-b4ae-0a50e17178f5
+    bundles:
+      wiki_page: wiki_page
   a5589c7b-d154-4a3c-9c7d-8183bc7c8fc0:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: a5589c7b-d154-4a3c-9c7d-8183bc7c8fc0
     context_mapping:
       language: 'node:langcode:language'
-    uuid: a5589c7b-d154-4a3c-9c7d-8183bc7c8fc0
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

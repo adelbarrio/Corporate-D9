@@ -18,12 +18,12 @@ plugin: 'views_block:infographic-block_3'
 settings:
   id: 'views_block:infographic-block_3'
   label: ''
-  provider: views
   label_display: visible
+  provider: views
   views_label: ''
   items_per_page: none
 visibility:
   request_path:
     id: request_path
-    pages: "/tools-and-resources/infographics/*\r\n/tools-and-resources/infographics"
     negate: false
+    pages: "/tools-and-resources/infographics/*\r\n/tools-and-resources/infographics"

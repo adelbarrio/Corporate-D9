@@ -12,20 +12,20 @@ pattern: 'contact/[node:title]'
 selection_criteria:
   38412a69-a0e4-4384-8071-d9325772918f:
     id: node_type
-    bundles:
-      press_contact: press_contact
     negate: false
+    uuid: 38412a69-a0e4-4384-8071-d9325772918f
     context_mapping:
       node: node
-    uuid: 38412a69-a0e4-4384-8071-d9325772918f
+    bundles:
+      press_contact: press_contact
   14278f98-70b1-4dd5-97bd-de9996701ada:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: 14278f98-70b1-4dd5-97bd-de9996701ada
     context_mapping:
       language: 'node:langcode:language'
-    uuid: 14278f98-70b1-4dd5-97bd-de9996701ada
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

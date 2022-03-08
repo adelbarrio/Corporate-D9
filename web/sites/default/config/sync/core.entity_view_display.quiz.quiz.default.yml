@@ -15,15 +15,15 @@ bundle: quiz
 mode: default
 content:
   stats:
+    settings: {  }
+    third_party_settings: {  }
     weight: 0
     region: content
+  take:
     settings: {  }
     third_party_settings: {  }
-  take:
     weight: 1
     region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   body: true
   breadcrumbs: true

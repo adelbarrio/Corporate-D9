@@ -32,7 +32,7 @@ jQuery(document).ready(function($) {
   //Add Matomo event when click on banners
   if (typeof _paq != 'undefined') {
     $('.view-display-id-home_page_banner_top .view-content a').click(function(e) {
-      var path = jQuery(this).attr('href');
+      var path = jQuery(this).attr('href') + '|' + $(this).closest('.home-boxes').data('changed');
       _paq.push(['trackEvent', 'Banner', 'Click', path]);
     });
   }

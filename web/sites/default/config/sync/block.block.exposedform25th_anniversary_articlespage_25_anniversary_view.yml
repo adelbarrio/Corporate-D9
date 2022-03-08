@@ -18,11 +18,11 @@ plugin: 'views_exposed_filter_block:25th_anniversary_articles-page_25_anniversar
 settings:
   id: 'views_exposed_filter_block:25th_anniversary_articles-page_25_anniversary_view'
   label: ''
-  provider: views
   label_display: '0'
+  provider: views
   views_label: ''
 visibility:
   request_path:
     id: request_path
-    pages: /about-eu-osha/our-story/look-back-future/25-anniversary-articles
     negate: false
+    pages: /about-eu-osha/our-story/look-back-future/25-anniversary-articles

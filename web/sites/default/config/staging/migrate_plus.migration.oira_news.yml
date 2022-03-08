@@ -87,7 +87,7 @@ source:
       selector: item/field_publication_date/und
     -
       name: summary
-      label: 'Summary'
+      label: Summary
       selector: item/field_summary/en/0
     -
       name: field_migration_source
@@ -113,20 +113,24 @@ process:
   changed: changed
   sticky: sticky
   field_summary_html:
-    - plugin: get
+    -
+      plugin: get
       source: summary
-  'field_summary_html/0/format':
-    - plugin: default_value
+  field_summary_html/0/format:
+    -
+      plugin: default_value
       default_value: full_html
   field_publication_date:
     -
       plugin: oie_date_format_alter
       source: publication_date
   body:
-    - plugin: get
+    -
+      plugin: get
       source: body
-  'body/0/format':
-    - plugin: default_value
+  body/0/format:
+    -
+      plugin: default_value
       default_value: full_html
   field_aditional_resources: field_aditional_resources
   field_page_count: field_page_count

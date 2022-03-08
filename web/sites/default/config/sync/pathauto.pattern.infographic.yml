@@ -12,20 +12,20 @@ pattern: 'tools-and-publications/infographics/[node:title]'
 selection_criteria:
   97a8adec-a8c2-40ca-b3a1-883361e96412:
     id: node_type
-    bundles:
-      infographic: infographic
     negate: false
+    uuid: 97a8adec-a8c2-40ca-b3a1-883361e96412
     context_mapping:
       node: node
-    uuid: 97a8adec-a8c2-40ca-b3a1-883361e96412
+    bundles:
+      infographic: infographic
   a2e689f1-d83a-49b7-9c5d-80b7f83bdce8:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: a2e689f1-d83a-49b7-9c5d-80b7f83bdce8
     context_mapping:
       language: 'node:langcode:language'
-    uuid: a2e689f1-d83a-49b7-9c5d-80b7f83bdce8
+    langcodes:
+      en: en
 selection_logic: and
 weight: -5
 relationships:

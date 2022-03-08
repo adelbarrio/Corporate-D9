@@ -22,11 +22,11 @@ plugin: 'facet_block:type_of_item_msd_'
 settings:
   id: 'facet_block:type_of_item_msd_'
   label: Type
-  provider: facets
   label_display: visible
+  provider: facets
   block_id: typemsd
 visibility:
   request_path:
     id: request_path
-    pages: /themes/musculoskeletal-disorders/search
     negate: false
+    pages: /themes/musculoskeletal-disorders/search

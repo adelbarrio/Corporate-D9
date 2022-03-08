@@ -54,11 +54,14 @@ third_party_settings:
       children:
         - field_location
         - field_organization
+      label: 'Event Details'
       parent_name: ''
+      region: ds_content
       weight: 4
       format_type: html_element
-      region: ds_content
       format_settings:
+        classes: 'group-events-event-details field-group-div'
+        id: ''
         element: div
         show_label: true
         label_element: h3
@@ -66,16 +69,16 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
-        id: ''
-        classes: 'group-events-event-details field-group-div'
-      label: 'Event Details'
     group_events_description:
       children: {  }
+      label: Description
       parent_name: ''
+      region: ds_content
       weight: 5
       format_type: html_element
-      region: ds_content
       format_settings:
+        classes: 'group-events-description field-group-div'
+        id: ''
         element: div
         show_label: true
         label_element: h3
@@ -83,18 +86,18 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
-        id: ''
-        classes: 'group-events-description field-group-div'
-      label: Description
     group_events_link:
       children:
         - field_related_documents
         - field_website_of_event
+      label: Link
       parent_name: ''
+      region: hidden
       weight: 48
       format_type: html_element
-      region: hidden
       format_settings:
+        classes: 'group-events-links field-group-div'
+        id: ''
         element: div
         show_label: true
         label_element: h3
@@ -102,16 +105,16 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
-        id: ''
-        classes: 'group-events-links field-group-div'
-      label: Link
     group_events_related_documents:
       children: {  }
+      label: 'Related resources'
       parent_name: ''
+      region: hidden
       weight: 49
       format_type: html_element
-      region: hidden
       format_settings:
+        classes: 'group-events-related-documents field-group-div'
+        id: ''
         element: div
         show_label: true
         label_element: h3
@@ -119,9 +122,6 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
-        id: ''
-        classes: 'group-events-related-documents field-group-div'
-      label: 'Related resources'
   ds:
     layout:
       id: ds_1col
@@ -129,15 +129,15 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
-        label: ''
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
         outer_wrapper: div
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        classes:
-          layout_class: {  }
+        label: ''
     regions:
       ds_content:
         - field_city
@@ -154,22 +154,21 @@ bundle: events
 mode: newsletter_items_blocks
 content:
   body:
-    label: hidden
-    weight: 3
     type: smart_trim
+    label: hidden
     settings:
       trim_length: 90
       trim_type: chars
       trim_suffix: ...
+      wrap_output: false
       wrap_class: trimmed
-      more_text: More
+      more_link: false
       more_class: more-link
+      more_text: More
       summary_handler: full
       trim_options:
         text: true
         trim_zero: false
-      wrap_output: false
-      more_link: false
     third_party_settings:
       ds:
         ft:
@@ -178,51 +177,52 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
+    weight: 3
     region: ds_content
   content_moderation_control:
-    weight: -20
     settings: {  }
     third_party_settings: {  }
+    weight: -20
     region: content
   field_city:
-    label: hidden
-    weight: 0
     type: string
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 0
     region: ds_content
   field_country_code:
-    label: hidden
-    weight: 2
     type: list_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 2
     region: ds_content
   field_date:
-    weight: 1
+    type: daterange_default
     label: hidden
     settings:
       timezone_override: ''
       format_type: only_day
       separator: to
     third_party_settings: {  }
-    type: daterange_default
+    weight: 1
     region: ds_content
   field_location:
-    label: inline
-    weight: 2
     type: string
+    label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 2
     region: ds_content
   field_organization:
-    label: inline
-    weight: 5
     type: basic_string
+    label: inline
     settings: {  }
     third_party_settings: {  }
+    weight: 5
     region: ds_content
 hidden:
   addtoany: true

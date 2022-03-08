@@ -14,21 +14,21 @@ bundle: photo_gallery_type
 mode: default
 content:
   description:
-    label: hidden
     type: text_default
-    weight: 0
-    region: content
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
   field_image:
     type: image
-    weight: 1
-    region: content
     label: above
     settings:
-      image_style: ''
       image_link: ''
+      image_style: ''
     third_party_settings: {  }
+    weight: 1
+    region: content
 hidden:
   breadcrumbs: true
   langcode: true

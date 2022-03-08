@@ -37,13 +37,13 @@ content:
   body:
     type: text_textarea_with_summary
     weight: 4
+    region: content
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
-    region: content
   created:
     type: datetime_timestamp
     weight: 22
@@ -51,58 +51,58 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_activity:
+    type: options_select
     weight: 13
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_archived:
+    type: boolean_checkbox
     weight: 12
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_country_code:
-    weight: 16
-    settings: {  }
-    third_party_settings: {  }
     type: options_select
+    weight: 16
     region: content
-  field_expiration_date:
-    weight: 3
     settings: {  }
     third_party_settings: {  }
+  field_expiration_date:
     type: datetime_default
+    weight: 3
     region: content
+    settings: {  }
+    third_party_settings: {  }
   field_location:
+    type: string_textfield
     weight: 9
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_pages_count:
+    type: number
     weight: 15
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: number
-    region: content
   field_publication_date:
+    type: datetime_default
     weight: 2
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: datetime_default
-    region: content
   field_related_resources_media:
     type: media_library_widget
     weight: 7
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
   field_report_media:
     type: media_library_widget
     weight: 8
@@ -111,42 +111,42 @@ content:
       media_types: {  }
     third_party_settings: {  }
   field_section:
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
     type: options_select
+    weight: 0
     region: content
+    settings: {  }
+    third_party_settings: {  }
   field_seminar_end_date:
+    type: datetime_default
     weight: 11
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: datetime_default
-    region: content
   field_seminar_start_date:
+    type: datetime_default
     weight: 10
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: datetime_default
-    region: content
   field_show_eu_flag:
+    type: boolean_checkbox
     weight: 14
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_tags:
-    weight: 5
-    settings: {  }
-    third_party_settings: {  }
     type: chosen_select
+    weight: 5
     region: content
-  field_thesaurus_2020:
-    weight: 6
     settings: {  }
     third_party_settings: {  }
+  field_thesaurus_2020:
     type: multiple_options_select
+    weight: 6
     region: content
+    settings: {  }
+    third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
     weight: 17

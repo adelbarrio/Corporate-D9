@@ -1,7 +1,48 @@
 uuid: ebcfbe30-c93e-4262-8db6-926c811d35e3
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.full_html_minimal
+    - media.type.audio
+    - media.type.document
+    - media.type.image
+    - media.type.image_and_link
+    - media.type.image_caption
+    - media.type.remote_video
+    - media.type.video
+    - node.type.article
+    - node.type.blog
+    - node.type.calls
+    - node.type.directive
+    - node.type.e_guide
+    - node.type.guideline
+    - node.type.highlight
+    - node.type.job_vacancies
+    - node.type.news
+    - node.type.press_release
+    - node.type.publication
+    - node.type.seminar
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - contextual
+    - file_entity
+    - filter
+    - media
+    - node
+    - osha_workflow
+    - path
+    - scanner
+    - search_api_autocomplete
+    - search_autocomplete
+    - sitemap
+    - system
+    - toolbar
+    - workbench
+    - workbench_access
 id: editor
 label: Editor
 weight: -8
@@ -10,13 +51,10 @@ permissions:
   - 'access administration pages'
   - 'access content'
   - 'access contextual links'
-  - 'access dashboard'
-  - 'access media browser'
   - 'access media overview'
   - 'access sitemap'
   - 'access toolbar'
   - 'access workbench'
-  - 'access workbench access by role'
   - 'administer approvers'
   - 'administer project_managers'
   - 'administer reviewers'
@@ -75,8 +113,6 @@ permissions:
   - 'edit any audio media'
   - 'edit any blog content'
   - 'edit any calls content'
-  - 'edit any content in draft'
-  - 'edit any content in published'
   - 'edit any directive content'
   - 'edit any document files'
   - 'edit any document media'
@@ -94,15 +130,6 @@ permissions:
   - 'edit any seminar content'
   - 'edit any video files'
   - 'edit any video media'
-  - 'edit calls content in approved'
-  - 'edit calls content in draft'
-  - 'edit calls content in final_draft'
-  - 'edit calls content in needs_review'
-  - 'edit calls content in published'
-  - 'edit calls content in ready_to_publish'
-  - 'edit calls content in rejected'
-  - 'edit calls content in to_be_approved'
-  - 'edit meta tags'
   - 'edit own article content'
   - 'edit own audio files'
   - 'edit own audio media'
@@ -125,51 +152,30 @@ permissions:
   - 'edit own seminar content'
   - 'edit own video files'
   - 'edit own video media'
-  - 'moderate calls state from approved to final_draft'
-  - 'moderate calls state from draft to final_draft'
-  - 'moderate calls state from final_draft to needs_review'
-  - 'moderate calls state from final_draft to ready_to_publish'
-  - 'moderate calls state from final_draft to to_be_approved'
-  - 'moderate calls state from needs_review to final_draft'
-  - 'moderate calls state from needs_review to ready_to_publish'
-  - 'moderate calls state from needs_review to to_be_approved'
-  - 'moderate calls state from ready_to_publish to published'
-  - 'moderate calls state from rejected to draft'
-  - 'moderate calls state from rejected to final_draft'
-  - 'moderate calls state from rejected to to_be_approved'
-  - 'moderate content from draft to final_draft'
-  - 'moderate job_vacancies state from ready_to_publish to published'
-  - 'moderate seminar state from ready_to_publish to published'
-  - 'osha access administration pages'
+  - 'perform search and replace'
+  - 'perform search only'
   - 'use editorial transition create_new_draft'
   - 'use editorial transition from_published_to_draft_new_version_'
   - 'use editorial transition send_to_final_draft'
   - 'use editorial transition send_to_final_draft_from_publish'
-  - 'use manualcrop'
-  - 'use media wysiwyg'
+  - 'use search autocomplete'
+  - 'use search_api_autocomplete for search_autocomplete'
   - 'use text format basic_html'
-  - 'use text format filtered_html'
   - 'use text format full_html'
   - 'use text format full_html_minimal'
   - 'use workbench access'
-  - 'use workbench_moderation my drafts tab'
   - 'view all media revisions'
   - 'view all revisions'
-  - 'view all unpublished content'
   - 'view any unpublished content'
   - 'view files'
   - 'view latest version'
   - 'view media'
-  - 'view moderation history'
-  - 'view moderation messages'
-  - 'view osh content tab'
   - 'view own files'
   - 'view own private files'
   - 'view own unpublished content'
   - 'view own unpublished media'
   - 'view press_release revisions'
   - 'view private files'
-  - 'view revisions'
   - 'view seminar revisions'
   - 'view the administration theme'
   - 'view workbench access information'

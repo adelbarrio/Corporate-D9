@@ -18,13 +18,13 @@ plugin: 'block_content:fd4405e9-a14c-4699-a25a-aed075dc517e'
 settings:
   id: 'block_content:fd4405e9-a14c-4699-a25a-aed075dc517e'
   label: 'Filter results'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full
 visibility:
   request_path:
     id: request_path
-    pages: /themes/musculoskeletal-disorders/practical-tools-musculoskeletal-disorders
     negate: false
+    pages: /themes/musculoskeletal-disorders/practical-tools-musculoskeletal-disorders

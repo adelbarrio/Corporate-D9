@@ -2,12 +2,12 @@ uuid: 406dfee0-3ddc-404a-ae07-adfb5317463d
 langcode: en
 status: true
 dependencies:
-  enforced:
-    module:
-      - quiz
   module:
     - paragraphs
     - range
+  enforced:
+    module:
+      - quiz
 _core:
   default_config_hash: Iw1fTLv2PkUfMCSNnFLar2x1Z4msbqLpMN8nfUQf9aA
 id: paragraph.quiz_feedback_range

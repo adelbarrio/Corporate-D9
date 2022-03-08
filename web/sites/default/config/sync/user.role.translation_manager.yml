@@ -1,55 +1,45 @@
 uuid: 0e5c28d4-3948-44a2-a230-0ce7fa58f1e6
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.full_html
+    - filter.format.full_html_minimal
+    - node.type.blog
+  module:
+    - content_moderation
+    - content_translation
+    - filter
+    - node
+    - system
+    - tmgmt
+    - toolbar
+    - workbench
+    - workbench_access
 id: translation_manager
 label: 'Translation Manager'
 weight: -4
 is_admin: null
 permissions:
-  - 'abort job item'
   - 'accept translation jobs'
   - 'access content'
-  - 'access dashboard'
   - 'access toolbar'
   - 'access user profiles'
   - 'access workbench'
-  - 'access workbench access by role'
-  - 'add content to translators_group entity collections'
   - 'administer content translation'
   - 'create blog content'
   - 'create content translations'
   - 'create translation jobs'
-  - 'create translators_group entity collections'
   - 'delete content translations'
-  - 'delete translators_group entity collections'
   - 'edit own blog content'
-  - 'edit translation content validators'
-  - 'edit translation job item'
-  - 'edit translators_group entity collections'
-  - 'manage content in translators group entity collections'
-  - 'manage content in translators_group entity collections'
-  - 'osha access administration pages'
-  - 'osha tmgmt upload translation file'
-  - 'preview layout validation'
-  - 'set job item to ready to publish state'
-  - 'set job item to require content validation state'
-  - 'set job item to translated state'
   - 'submit translation jobs'
   - 'translate any entity'
   - 'translate editable entities'
-  - 'translate node entities'
   - 'update content translations'
-  - 'use manualcrop'
   - 'use text format full_html'
   - 'use text format full_html_minimal'
-  - 'view all unpublished content'
   - 'view any unpublished content'
   - 'view latest version'
   - 'view own unpublished content'
   - 'view the administration theme'
-  - 'view translation content validators'
-  - 'view translation job'
-  - 'view translation job item'
-  - 'view translators_group entity collections'
   - 'view workbench access information'
