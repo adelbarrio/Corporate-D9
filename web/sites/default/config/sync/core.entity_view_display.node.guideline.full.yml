@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.guideline.field_thesaurus_2020
     - node.type.guideline
   module:
+    - ds
     - languagefield
     - link
     - text
@@ -62,12 +63,20 @@ content:
     type: link
     label: above
     settings:
-      trim_length: 80
+      trim_length: 250
       url_only: false
       url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
     weight: 2
     region: content
   field_summary:
