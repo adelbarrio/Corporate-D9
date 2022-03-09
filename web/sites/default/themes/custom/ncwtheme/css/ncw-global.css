@@ -2150,6 +2150,10 @@ ul.menu .menu-item .field--type-image img {
   margin: 0;
 }
 
+ul.ckeditor-ul-padding {
+  display: table;
+}
+
 /* Summary */
 .field--name-field-summary-html {
   font-size: 0.9rem;
