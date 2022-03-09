@@ -1,4 +1,11 @@
 jQuery(document).ready(function ($) {
+
+  //Chenge text Save (all translations) to Save
+
+  if ($('#edit-submit') && $('#edit-submit').val().toLowerCase() === 'save (all translations)'){
+    $('#edit-submit').val('Save');
+  }
+
   $('tr').each(function () {
     if ($('td:nth-child(1):contains("Red")', this).length) {
       $(this).addClass('red');
