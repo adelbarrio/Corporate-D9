@@ -1,0 +1,12 @@
+diff --git a/css/eu_cookie_compliance.css b/css/eu_cookie_compliance.css
+index 2a704e6..9a97fc5 100644
+--- a/css/eu_cookie_compliance.css
++++ b/css/eu_cookie_compliance.css
+@@ -243,3 +243,7 @@
+     right: unset;
+   }
+ }
++
++.user-logged-in #sliding-popup{
++  display: none !important;
++}
