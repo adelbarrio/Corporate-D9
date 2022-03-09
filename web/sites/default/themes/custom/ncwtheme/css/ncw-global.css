@@ -2150,6 +2150,10 @@ ul.menu .menu-item .field--type-image img {
   margin: 0;
 }
 
+ul.ckeditor-ul-padding {
+  display: table;
+}
+
 /* Summary */
 .field--name-field-summary-html {
   font-size: 0.9rem;
@@ -7469,8 +7473,8 @@ html[lang=de] #block-thesaurus ul .nav-item, html[lang=el] #block-thesaurus ul .
 .view-legislation-guidelines .table-responsive .table-striped tbody tr td {
   padding: 0;
   border-top: none;
-  padding-top: 1rem;
-  padding-bottom: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
 }
 .view-legislation-directives .table-responsive .table-striped tbody tr td a,
 .view-legislation-guidelines .table-responsive .table-striped tbody tr td a {
@@ -7479,8 +7483,8 @@ html[lang=de] #block-thesaurus ul .nav-item, html[lang=el] #block-thesaurus ul .
   border-bottom: 0px;
   font-size: 1.35rem;
   font-weight: 400;
-  padding-bottom: 1rem;
-  line-height: 30px;
+  padding-bottom: 0.5rem;
+  line-height: 24px;
 }
 .view-legislation-directives .table-responsive .table-striped tbody tr td .see-more-arrow.minor-size, .view-legislation-directives .table-responsive .table-striped tbody tr td .node--type-publication .rr-right-column .minor-size.field--name-node-link, .node--type-publication .rr-right-column .view-legislation-directives .table-responsive .table-striped tbody tr td .minor-size.field--name-node-link,
 .view-legislation-guidelines .table-responsive .table-striped tbody tr td .see-more-arrow.minor-size,
@@ -7506,7 +7510,7 @@ html[lang=de] #block-thesaurus ul .nav-item, html[lang=el] #block-thesaurus ul .
 .view-legislation-guidelines .table-responsive .table-striped tbody tr td .directive-summary,
 .view-legislation-guidelines .table-responsive .table-striped tbody tr td .guidelines-summary {
   font-size: 0.9rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0;
 }
 .view-legislation-directives .table-responsive .table-striped caption,
 .view-legislation-guidelines .table-responsive .table-striped caption {

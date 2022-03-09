@@ -1,15 +1,15 @@
+_core:
+  default_config_hash: IhwTepsVwtbtbcT5GzQKhCXDCRvbk3MNkWqPiuiZ10s
 theme: newsletter_bilbomatica
 defaults:
   sender: SMTPMailSystem
   formatter: php_mail
-_core:
-  default_config_hash: IhwTepsVwtbtbcT5GzQKhCXDCRvbk3MNkWqPiuiZ10s
 modules:
   swiftmailer:
     none:
-      formatter: swiftmailer
       sender: php_mail
+      formatter: swiftmailer
   simplenews:
     none:
-      formatter: swiftmailer
       sender: php_mail
+      formatter: swiftmailer

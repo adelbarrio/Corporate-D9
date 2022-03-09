@@ -74,7 +74,7 @@ settings:
             - Source
   plugins:
     stylescombo:
-      styles: 'span.ckeditorimage|Margin to IMG.'
+      styles: "span.ckeditorimage|Margin to IMG.\r\nul.ckeditor-ul-padding|Margin Bullets."
     language:
       language_list: un
     drupallink:
