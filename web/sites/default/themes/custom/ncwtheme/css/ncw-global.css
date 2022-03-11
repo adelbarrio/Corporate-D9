@@ -5236,31 +5236,32 @@ body.user-logged-in.toolbar-tray-open.scrolled #header {
 }
 
 /*  Menu for Directives and Guidelines */
-.node--type-directive .sidebar-first .menu--main ul li ul li ul.menu-level-2, .node--type-guideline .sidebar-first .menu--main ul li ul li ul.menu-level-2, .page-view-legislation-directives .sidebar-first .menu--main ul li ul li ul.menu-level-2 {
+.node--type-directive .sidebar-first .menu--main ul li ul li ul.menu-level-2, .node--type-guideline .sidebar-first .menu--main ul li ul li ul.menu-level-2, .page-view-legislation-directives .sidebar-first .menu--main ul li ul li ul.menu-level-2, .page-view-legislation-guidelines .sidebar-first .menu--main ul li ul li ul.menu-level-2 {
   display: block;
 }
-.node--type-directive #block-mainnavigation-2--2 > ul > li:nth-child(6) > div > ul > li > a, .node--type-guideline #block-mainnavigation-2--2 > ul > li:nth-child(6) > div > ul > li > a, .page-view-legislation-directives #block-mainnavigation-2--2 > ul > li:nth-child(6) > div > ul > li > a {
+.node--type-directive #block-mainnavigation-2--2 > ul > li:nth-child(6) > div > ul > li > a, .node--type-guideline #block-mainnavigation-2--2 > ul > li:nth-child(6) > div > ul > li > a, .page-view-legislation-directives #block-mainnavigation-2--2 > ul > li:nth-child(6) > div > ul > li > a, .page-view-legislation-guidelines #block-mainnavigation-2--2 > ul > li:nth-child(6) > div > ul > li > a {
   display: none;
 }
 .node--type-directive #block-mainnavigation-2--2 > ul > li,
 .node--type-directive #block-mainnavigation-2--2 > ul > li:nth-child(6) > div > ul > li > span, .node--type-guideline #block-mainnavigation-2--2 > ul > li,
 .node--type-guideline #block-mainnavigation-2--2 > ul > li:nth-child(6) > div > ul > li > span, .page-view-legislation-directives #block-mainnavigation-2--2 > ul > li,
-.page-view-legislation-directives #block-mainnavigation-2--2 > ul > li:nth-child(6) > div > ul > li > span {
+.page-view-legislation-directives #block-mainnavigation-2--2 > ul > li:nth-child(6) > div > ul > li > span, .page-view-legislation-guidelines #block-mainnavigation-2--2 > ul > li,
+.page-view-legislation-guidelines #block-mainnavigation-2--2 > ul > li:nth-child(6) > div > ul > li > span {
   display: none;
 }
-.node--type-directive #block-mainnavigation-2--2 > ul > li:nth-child(6), .node--type-guideline #block-mainnavigation-2--2 > ul > li:nth-child(6), .page-view-legislation-directives #block-mainnavigation-2--2 > ul > li:nth-child(6) {
+.node--type-directive #block-mainnavigation-2--2 > ul > li:nth-child(6), .node--type-guideline #block-mainnavigation-2--2 > ul > li:nth-child(6), .page-view-legislation-directives #block-mainnavigation-2--2 > ul > li:nth-child(6), .page-view-legislation-guidelines #block-mainnavigation-2--2 > ul > li:nth-child(6) {
   display: block;
 }
-.node--type-directive .sidebar-first .menu--main ul li ul li ul.menu-level-2 li a, .node--type-guideline .sidebar-first .menu--main ul li ul li ul.menu-level-2 li a, .page-view-legislation-directives .sidebar-first .menu--main ul li ul li ul.menu-level-2 li a {
+.node--type-directive .sidebar-first .menu--main ul li ul li ul.menu-level-2 li a, .node--type-guideline .sidebar-first .menu--main ul li ul li ul.menu-level-2 li a, .page-view-legislation-directives .sidebar-first .menu--main ul li ul li ul.menu-level-2 li a, .page-view-legislation-guidelines .sidebar-first .menu--main ul li ul li ul.menu-level-2 li a {
   padding-left: 0;
 }
-.node--type-directive #block-mainnavigation-2--2 > ul > li:nth-child(6) > a, .node--type-guideline #block-mainnavigation-2--2 > ul > li:nth-child(6) > a, .page-view-legislation-directives #block-mainnavigation-2--2 > ul > li:nth-child(6) > a {
+.node--type-directive #block-mainnavigation-2--2 > ul > li:nth-child(6) > a, .node--type-guideline #block-mainnavigation-2--2 > ul > li:nth-child(6) > a, .page-view-legislation-directives #block-mainnavigation-2--2 > ul > li:nth-child(6) > a, .page-view-legislation-guidelines #block-mainnavigation-2--2 > ul > li:nth-child(6) > a {
   padding-bottom: 0;
 }
-.node--type-directive #block-mainnavigation-2--2 > ul > li:nth-child(6) > div > ul, .node--type-guideline #block-mainnavigation-2--2 > ul > li:nth-child(6) > div > ul, .page-view-legislation-directives #block-mainnavigation-2--2 > ul > li:nth-child(6) > div > ul {
+.node--type-directive #block-mainnavigation-2--2 > ul > li:nth-child(6) > div > ul, .node--type-guideline #block-mainnavigation-2--2 > ul > li:nth-child(6) > div > ul, .page-view-legislation-directives #block-mainnavigation-2--2 > ul > li:nth-child(6) > div > ul, .page-view-legislation-guidelines #block-mainnavigation-2--2 > ul > li:nth-child(6) > div > ul {
   padding-top: 0;
 }
-.node--type-directive .block-views-blockfop-flags-block-2, .node--type-guideline .block-views-blockfop-flags-block-2, .page-view-legislation-directives .block-views-blockfop-flags-block-2 {
+.node--type-directive .block-views-blockfop-flags-block-2, .node--type-guideline .block-views-blockfop-flags-block-2, .page-view-legislation-directives .block-views-blockfop-flags-block-2, .page-view-legislation-guidelines .block-views-blockfop-flags-block-2 {
   float: left;
   clear: both;
   margin-top: 2rem;

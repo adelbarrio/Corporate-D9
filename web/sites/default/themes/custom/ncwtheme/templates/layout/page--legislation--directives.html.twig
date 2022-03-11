@@ -16,9 +16,6 @@
     <div id="main" class="col-12 col-lg-9 three-column mx-auto">
       <section class="section">
         <a id="main-content" tabindex="-1"></a>
-        <div class="latest-revision-date moved-by-js">
-          {{ 'Latest update: ' ~ node.revision_timestamp.value|date('d/m/Y') }}
-        </div>
         {{ drupal_view('legislation_directives', 'page') }}
       </section>
     </div>
