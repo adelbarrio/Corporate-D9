@@ -5,6 +5,7 @@ namespace Drupal\ncw_backend;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Menu\MenuLinkManager;
 use Drupal\menu_link_content\Plugin\migrate\source\MenuLink;
+use Drupal\node\Entity\Node;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
 use Drupal\views\ViewExecutable;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -69,6 +70,23 @@ class ncwViewQA implements ContainerInjectionInterface {
         $query->where[0]['conditions'][0]["value"] = $parentFinal;
       }
 
+    }
+
+    //@ ========================================================================
+    //@ Filter by View ID and Display ID.
+    //@ If we are in the target view, extract related node id's and exclude from
+    //@ the query.
+    //@ ========================================================================
+    $viewId = $view->storage->get('id');
+    $displayId = $view->current_display ?? "";
+    if ($viewId === "related_content" && $displayId === "block_4") {
+      if ($node = $this->routeMatch->getParameter('node')) {
+        $tids = [];
+        foreach ($node->field_related_publications as $related) {
+          $tids[] = $related->target_id;
+        }
+        $query->addWhere('conditions', 'node_field_data.nid', $tids, 'NOT IN');
+      }
     }
 
   }
