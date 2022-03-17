@@ -588,6 +588,9 @@ class MultipleTargetLanguageJobItem extends JobItem {
     if (!$plugin->saveTranslation($this, $this->getTargetLangcode())) {
       return FALSE;
     }
+    else{
+      $pub_delete = $this->delete_media_file($this->values["item_id"]["x-default"]);
+    }
 
     // If the plugin could save the translation, we will set it
     // to the 'accepted' state.
@@ -595,6 +598,32 @@ class MultipleTargetLanguageJobItem extends JobItem {
     return TRUE;
 
   }
+
+  /**
+   * @param $nid
+   * @return bool
+   * @throws PluginNotFoundException
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   */
+
+  public function delete_media_file($nid){
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
+    //If the CT is a publication We must delete the file media for all contest except the original.
+    if ($node->values["type"]["x-default"]!='publication'){
+      return true;
+    }
+    $original_target_id = $node->values["field_file_media"]["x-default"][0]["target_id"];
+
+    foreach ($node->values["field_file_media"] as $key=>$file_media){
+      if ($file_media[0]["target_id"] ==$original_target_id and $key != 'x-default'){
+        unset($node->values["field_file_media"][$key]);
+      }
+    }
+    $node->save();
+    return true;
+  }
+
+
 
   /**
    * {@inheritdoc}
