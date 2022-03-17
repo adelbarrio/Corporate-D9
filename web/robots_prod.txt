@@ -118,3 +118,24 @@ Disallow: /*?op=
 Disallow: /*?search_api_views_fulltext
 Disallow: /*=field_available_in_languages
 Disallow: /*/feed
+
+Disallow: /*?came_from=
+Disallow: /*qt-view__country_partner_content__block_1
+Disallow: /*qt-view__country_partner_content__block
+Disallow: /*@@update-completion-percentage
+Disallow: /*@@login
+Disallow: /*@@tryout
+Disallow: /*@@start
+Disallow: /*@@tool-more-info
+Disallow: /*?page=
+Disallow: /*?search_api_fulltext=
+Disallow: /*@@session-browser-sidebar
+Disallow: /rss-feeds/latest/news.xml
+Disallow: /rss-feeds/latest/tools.xml
+Disallow: /rss-feeds/latest/promotional-materials.xml
+Disallow: /*@@reset_password_request?
+Disallow: /*?text=
+Disallow: /*@@more_menu
+Disallow: /*?field_promotional_material_type
+Disallow: /*/surveys?Language=
+
